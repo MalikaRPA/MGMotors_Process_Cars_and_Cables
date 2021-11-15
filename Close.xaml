@@ -1,0 +1,491 @@
+<Activity mc:Ignorable="sap sap2010" x:Class="Close_DSE" mva:VisualBasic.Settings="{x:Null}" sap:VirtualizedContainerService.HintSize="807.333333333333,3737.33333333333" sap2010:WorkflowViewState.IdRef="Close_DSE_1" xmlns="http://schemas.microsoft.com/netfx/2009/xaml/activities" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:mva="clr-namespace:Microsoft.VisualBasic.Activities;assembly=System.Activities" xmlns:p="http://schemas.uipath.com/workflow/activities/cv" xmlns:p1="http://schemas.uipath.com/workflow/activities/ocr" xmlns:sap="http://schemas.microsoft.com/netfx/2009/xaml/activities/presentation" xmlns:sap2010="http://schemas.microsoft.com/netfx/2010/xaml/activities/presentation" xmlns:scg="clr-namespace:System.Collections.Generic;assembly=mscorlib" xmlns:sd="clr-namespace:System.Drawing;assembly=System.Drawing" xmlns:uc="clr-namespace:UiPath.CV;assembly=UiPath.CV" xmlns:ui="http://schemas.uipath.com/workflow/activities" xmlns:uix="http://schemas.uipath.com/workflow/activities/uix" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+  <TextExpression.NamespacesForImplementation>
+    <scg:List x:TypeArguments="x:String" Capacity="40">
+      <x:String>System.Activities</x:String>
+      <x:String>System.Activities.Statements</x:String>
+      <x:String>System.Activities.Expressions</x:String>
+      <x:String>System.Activities.Validation</x:String>
+      <x:String>System.Activities.XamlIntegration</x:String>
+      <x:String>Microsoft.VisualBasic</x:String>
+      <x:String>Microsoft.VisualBasic.Activities</x:String>
+      <x:String>System</x:String>
+      <x:String>System.Collections</x:String>
+      <x:String>System.Collections.Generic</x:String>
+      <x:String>System.Data</x:String>
+      <x:String>System.Diagnostics</x:String>
+      <x:String>System.Drawing</x:String>
+      <x:String>System.IO</x:String>
+      <x:String>System.Linq</x:String>
+      <x:String>System.Net.Mail</x:String>
+      <x:String>System.Xml</x:String>
+      <x:String>System.Xml.Linq</x:String>
+      <x:String>UiPath.Core</x:String>
+      <x:String>UiPath.Core.Activities</x:String>
+      <x:String>System.Windows.Markup</x:String>
+      <x:String>UiPath.UIAutomationNext.Enums</x:String>
+      <x:String>UiPath.UIAutomationCore.Contracts</x:String>
+      <x:String>System.Collections.ObjectModel</x:String>
+      <x:String>UiPath.UIAutomationNext.Activities</x:String>
+      <x:String>System.Activities.DynamicUpdate</x:String>
+      <x:String>UiPath.Platform.ObjectLibrary</x:String>
+      <x:String>UiPath.Shared.Activities</x:String>
+      <x:String>UiPath.CV</x:String>
+      <x:String>System.Runtime.Serialization</x:String>
+      <x:String>UiPath.Shared.ObjectLibrary</x:String>
+      <x:String>UiPath.CV.Activities</x:String>
+      <x:String>System.Reflection</x:String>
+      <x:String>System.Runtime.InteropServices</x:String>
+      <x:String>UiPath.Vision.OCR</x:String>
+      <x:String>UiPath.OCR.Contracts</x:String>
+      <x:String>UiPath.OCR.Activities</x:String>
+      <x:String>UiPath.OCR.Contracts.Activities</x:String>
+      <x:String>UiPath.CV.Activities.Interfaces</x:String>
+      <x:String>UiPath.UIAutomationNext.Contracts</x:String>
+    </scg:List>
+  </TextExpression.NamespacesForImplementation>
+  <TextExpression.ReferencesForImplementation>
+    <scg:List x:TypeArguments="AssemblyReference" Capacity="38">
+      <AssemblyReference>System.Activities</AssemblyReference>
+      <AssemblyReference>Microsoft.VisualBasic</AssemblyReference>
+      <AssemblyReference>mscorlib</AssemblyReference>
+      <AssemblyReference>System.Data</AssemblyReference>
+      <AssemblyReference>System.Data.DataSetExtensions</AssemblyReference>
+      <AssemblyReference>System</AssemblyReference>
+      <AssemblyReference>System.Drawing</AssemblyReference>
+      <AssemblyReference>System.Core</AssemblyReference>
+      <AssemblyReference>System.Xml</AssemblyReference>
+      <AssemblyReference>System.Xml.Linq</AssemblyReference>
+      <AssemblyReference>PresentationFramework</AssemblyReference>
+      <AssemblyReference>WindowsBase</AssemblyReference>
+      <AssemblyReference>PresentationCore</AssemblyReference>
+      <AssemblyReference>System.Xaml</AssemblyReference>
+      <AssemblyReference>UiPath.System.Activities</AssemblyReference>
+      <AssemblyReference>UiPath.UiAutomation.Activities</AssemblyReference>
+      <AssemblyReference>UiPath.UIAutomationNext</AssemblyReference>
+      <AssemblyReference>UiPath.UIAutomationCore</AssemblyReference>
+      <AssemblyReference>UiPath.UIAutomationNext.Activities</AssemblyReference>
+      <AssemblyReference>UiPath.Platform</AssemblyReference>
+      <AssemblyReference>UiPath.Testing.Activities</AssemblyReference>
+      <AssemblyReference>UiPath.Excel.Activities</AssemblyReference>
+      <AssemblyReference>UiPath.OCR.Activities</AssemblyReference>
+      <AssemblyReference>UiPath.System.Activities.Design</AssemblyReference>
+      <AssemblyReference>System.ServiceModel</AssemblyReference>
+      <AssemblyReference>Microsoft.Bcl.AsyncInterfaces</AssemblyReference>
+      <AssemblyReference>System.ValueTuple</AssemblyReference>
+      <AssemblyReference>System.ComponentModel.Composition</AssemblyReference>
+      <AssemblyReference>System.Memory</AssemblyReference>
+      <AssemblyReference>UiPath.Excel</AssemblyReference>
+      <AssemblyReference>System.Runtime.WindowsRuntime</AssemblyReference>
+      <AssemblyReference>UiPath.CV</AssemblyReference>
+      <AssemblyReference>System.Runtime.Serialization</AssemblyReference>
+      <AssemblyReference>UiPath.UIAutomationNext.Activities.Design</AssemblyReference>
+      <AssemblyReference>UiPath.CV.Activities</AssemblyReference>
+      <AssemblyReference>System.Reflection.Metadata</AssemblyReference>
+      <AssemblyReference>UiPath.Vision.Core</AssemblyReference>
+      <AssemblyReference>UiPath.OCR.Contracts</AssemblyReference>
+    </scg:List>
+  </TextExpression.ReferencesForImplementation>
+  <Sequence DisplayName="Close_DSE" sap:VirtualizedContainerService.HintSize="714.666666666667,3672.66666666667" sap2010:WorkflowViewState.IdRef="Sequence_1">
+    <Sequence.Variables>
+      <Variable x:TypeArguments="x:String" Name="url_dse" />
+    </Sequence.Variables>
+    <sap:WorkflowViewStateService.ViewState>
+      <scg:Dictionary x:TypeArguments="x:String, x:Object">
+        <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+      </scg:Dictionary>
+    </sap:WorkflowViewStateService.ViewState>
+    <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="672.666666666667,94.6666666666667" sap2010:WorkflowViewState.IdRef="LogMessage_1" Level="Info" Message="[&quot;Fermeture du site DSE.&quot;]" />
+    <p:CVScope ContinueOnError="{x:Null}" DelayBefore="{x:Null}" Server="{x:Null}" ApiKey="t3BNfuzvRG7QjQtWv16blDwQhY8XtXPMhMNjGYxq/qTWdcPwRYIR3bhtGh1NZ5OPVRVpCjpfSXDbn81A5JdpFQ==" CvMethod="ElementDetection, OCR" DesignTimeCacheId="52cd0656-21ba-42e2-9f11-343808f15a4d" DisplayName="CV Screen Scope 'Page de connexion'" sap:VirtualizedContainerService.HintSize="672.666666666667,1194" sap2010:WorkflowViewState.IdRef="CVScope_2" Version="V3">
+      <p:CVScope.Body>
+        <ActivityAction x:TypeArguments="x:Object">
+          <ActivityAction.Argument>
+            <DelegateInArgument x:TypeArguments="x:Object" Name="CVSessionData" />
+          </ActivityAction.Argument>
+          <Sequence DisplayName="Faire" sap2010:WorkflowViewState.IdRef="Sequence_6">
+            <Sequence.Variables>
+              <Variable x:TypeArguments="x:Boolean" Name="loginExist" />
+            </Sequence.Variables>
+            <p:CvElementExistsWithDescriptor Descriptor="[&quot;Target: Text 'LOGIN' (952,369,68,20)&quot;]" DesignTimeCacheId="52cd0656-21ba-42e2-9f11-343808f15a4d" DesignTimeScaleFactor="1.5" DisplayName="CV Element Exists - Text" sap:VirtualizedContainerService.HintSize="512.666666666667,138" sap2010:WorkflowViewState.IdRef="CvElementExistsWithDescriptor_2" InformativeScreenshot="59a09f956c4a4bd81c13dbf2f10c5ca9" Result="[loginExist]" Version="V3">
+              <p:CvElementExistsWithDescriptor.DesignTimeDescriptor>
+                <uc:CvDescriptor>
+                  <uc:CvDescriptor.Target>
+                    <uc:CvElementDescriptor CellExtraInfo="{x:Null}" DesignTimeArea="952, 369, 68, 20" ElementType="Text" Text="LOGIN" />
+                  </uc:CvDescriptor.Target>
+                </uc:CvDescriptor>
+              </p:CvElementExistsWithDescriptor.DesignTimeDescriptor>
+            </p:CvElementExistsWithDescriptor>
+            <If Condition="[loginExist]" sap:VirtualizedContainerService.HintSize="512.666666666667,680.666666666667" sap2010:WorkflowViewState.IdRef="If_2">
+              <If.Then>
+                <Sequence sap:VirtualizedContainerService.HintSize="476,499.333333333333" sap2010:WorkflowViewState.IdRef="Sequence_8">
+                  <sap:WorkflowViewStateService.ViewState>
+                    <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                      <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                    </scg:Dictionary>
+                  </sap:WorkflowViewStateService.ViewState>
+                  <uix:NApplicationCard AttachMode="ByInstance" CloseMode="IfOpenedByAppBrowser" DisplayName="Use Browser Chrome: SMIL DCS" sap:VirtualizedContainerService.HintSize="434,407.333333333333" sap2010:WorkflowViewState.IdRef="NApplicationCard_2" InteractionMode="DebuggerApi" OpenMode="Never" ScopeGuid="7a6919ca-1d0f-4bc5-817d-4d48d6892038" Version="V1">
+                    <uix:NApplicationCard.Body>
+                      <ActivityAction x:TypeArguments="x:Object">
+                        <ActivityAction.Argument>
+                          <DelegateInArgument x:TypeArguments="x:Object" Name="WSSessionData" />
+                        </ActivityAction.Argument>
+                        <Sequence DisplayName="Faire" sap:VirtualizedContainerService.HintSize="376,189.333333333333" sap2010:WorkflowViewState.IdRef="Sequence_7">
+                          <sap:WorkflowViewStateService.ViewState>
+                            <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                              <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                            </scg:Dictionary>
+                          </sap:WorkflowViewStateService.ViewState>
+                          <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="334,94.6666666666667" sap2010:WorkflowViewState.IdRef="LogMessage_2" Level="Info" Message="[&quot;fermeture du site DSE.&quot;]" />
+                        </Sequence>
+                      </ActivityAction>
+                    </uix:NApplicationCard.Body>
+                    <uix:NApplicationCard.TargetApp>
+                      <uix:TargetApp Area="-11, -11, 1942, 1042" BrowserType="Chrome" IconBase64="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" InformativeScreenshot="0c8a31e8195b2775b10caf1c60de0e1f.png" Selector="&lt;html app='chrome.exe' title='SMIL DCS'/&gt;" Url="https://dcs.smil.com/sme-veh/login" />
+                    </uix:NApplicationCard.TargetApp>
+                  </uix:NApplicationCard>
+                </Sequence>
+              </If.Then>
+              <If.Else>
+                <Sequence sap:VirtualizedContainerService.HintSize="288,84.6666666666667" sap2010:WorkflowViewState.IdRef="Sequence_9">
+                  <sap:WorkflowViewStateService.ViewState>
+                    <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                      <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                    </scg:Dictionary>
+                  </sap:WorkflowViewStateService.ViewState>
+                </Sequence>
+              </If.Else>
+            </If>
+          </Sequence>
+        </ActivityAction>
+      </p:CVScope.Body>
+      <p:CVScope.DesignTimeCacheContainer>
+        <uc:CvCacheContainer>
+          <uc:CvCacheContainer.Caches>
+            <scg:List x:TypeArguments="uc:CVCache" Capacity="1">
+              <uc:CVCache DisplayName="Écran CV Element Exists - 'LOG (Principal)" Id="52cd0656-21ba-42e2-9f11-343808f15a4d" InformativeScreenshot="1a55cb0f29cab7aeed0208262771454b" LogicalPosition="0, 40" OcrText="SAIC MOTOR I N T E R N A T I O N A L Account Password t LOGIN" Position="0, 40" ScaleFactor="1.5" ScreenshotGuid="53e6b827-0279-4305-b86f-e38ed4866183" ServerVersion="1">
+                <uc:CVCache.CvUiElements>
+                  <scg:List x:TypeArguments="uc:CvElementInfo" Capacity="32">
+                    <uc:CvElementInfo Category="Icon" Region="1081, 200, 34, 38" />
+                    <uc:CvElementInfo Category="InputBox" Region="835, 196, 303, 49" />
+                    <uc:CvElementInfo Category="Button" Region="835, 356, 307, 49" />
+                    <uc:CvElementInfo Category="Icon" Region="1088, 284, 26, 32" />
+                    <uc:CvElementInfo Category="ArrowButton" Confidence="Runtime" Region="478, 150, 26, 24" />
+                    <uc:CvElementInfo Category="InputBox" Confidence="Runtime" Region="835, 353, 306, 50" />
+                    <uc:CvElementInfo Category="Icon" Confidence="Runtime" Region="854, 419, 29, 26" />
+                    <uc:CvElementInfo Category="Icon" Confidence="Runtime" Region="998, 325, 23, 20" />
+                    <uc:CvElementInfo Category="Button" Confidence="Runtime" Region="847, 276, 290, 49" />
+                    <uc:CvElementInfo Category="Button" Confidence="Runtime" Region="835, 196, 299, 49" />
+                    <uc:CvElementInfo Category="ArrowButton" Confidence="Runtime" Region="997, 323, 26, 24" />
+                    <uc:CvElementInfo Category="Button" Confidence="Runtime" Region="1089, 296, 23, 19" />
+                    <uc:CvElementInfo Category="Icon" Confidence="Runtime" Region="1262, 308, 19, 20" />
+                    <uc:CvElementInfo Category="Icon" Confidence="Runtime" Region="1085, 252, 22, 22" />
+                    <uc:CvElementInfo Category="Icon" Confidence="Runtime" Region="756, 37, 39, 36" />
+                    <uc:CvElementInfo Category="Icon" Confidence="Runtime" Region="479, 152, 24, 22" />
+                    <uc:CvElementInfo Category="Icon" Confidence="Runtime" Region="519, 39, 22, 23" />
+                    <uc:CvElementInfo Category="ArrowButton" Confidence="Runtime" Region="856, 420, 26, 24" />
+                    <uc:CvElementInfo Category="ArrowButton" Confidence="Runtime" Region="1274, 608, 9, 8" />
+                    <uc:CvElementInfo Category="RadioButton" Confidence="Runtime" Region="856, 424, 22, 19" />
+                    <uc:CvElementInfo Category="Cell" Confidence="Runtime" Region="836, 19, 119, 2" />
+                    <uc:CvElementInfo Category="Cell" Confidence="Runtime" Region="918, 0, 368, 75" />
+                    <uc:CvElementInfo Category="Cell" Confidence="Runtime" Region="869, 243, 263, 33" />
+                    <uc:CvElementInfo Category="Cell" Confidence="Runtime" Region="803, 2, 216, 74" />
+                    <uc:CvElementInfo Category="Cell" Confidence="Runtime" Region="976, 242, 91, 34" />
+                    <uc:CvElementInfo Category="Cell" Confidence="Runtime" Region="1077, 244, 63, 32" />
+                    <uc:CvElementInfo Category="Cell" Confidence="Runtime" Region="1010, 242, 94, 34" />
+                    <uc:CvElementInfo Category="InputBox" Region="840, 276, 298, 48" />
+                    <uc:CvElementInfo Category="ArrowButton" Confidence="Runtime" Region="1089, 296, 22, 19" />
+                  </scg:List>
+                </uc:CVCache.CvUiElements>
+                <uc:CVCache.OcrTexts>
+                  <scg:List x:TypeArguments="uc:OcrTextInfo" Capacity="32">
+                    <uc:OcrTextInfo Region="830, 18, 118, 39" Text="SAIC" />
+                    <uc:OcrTextInfo Region="954, 18, 190, 40" Text="MOTOR" />
+                    <uc:OcrTextInfo Region="824, 79, 12, 20" Text="I" />
+                    <uc:OcrTextInfo Region="844, 80, 19, 19" Text="N" />
+                    <uc:OcrTextInfo Region="872, 80, 18, 19" Text="T" />
+                    <uc:OcrTextInfo Region="898, 80, 18, 19" Text="E" />
+                    <uc:OcrTextInfo Region="924, 79, 19, 20" Text="R" />
+                    <uc:OcrTextInfo Region="950, 79, 20, 20" Text="N" />
+                    <uc:OcrTextInfo Region="979, 80, 20, 19" Text="A" />
+                    <uc:OcrTextInfo Region="1005, 80, 17, 18" Text="T" />
+                    <uc:OcrTextInfo Region="1030, 79, 12, 20" Text="I" />
+                    <uc:OcrTextInfo Region="1050, 80, 18, 19" Text="O" />
+                    <uc:OcrTextInfo Region="1078, 80, 20, 19" Text="N" />
+                    <uc:OcrTextInfo Region="1106, 80, 20, 18" Text="A" />
+                    <uc:OcrTextInfo Region="1134, 79, 18, 20" Text="L" />
+                    <uc:OcrTextInfo Region="848, 210, 84, 19" Text="Account" />
+                    <uc:OcrTextInfo Region="851, 290, 96, 20" Text="Password" />
+                    <uc:OcrTextInfo Region="1097, 302, 6, 10" Text="t" />
+                    <uc:OcrTextInfo Region="952, 369, 68, 20" Text="LOGIN" />
+                  </scg:List>
+                </uc:CVCache.OcrTexts>
+              </uc:CVCache>
+            </scg:List>
+          </uc:CvCacheContainer.Caches>
+        </uc:CvCacheContainer>
+      </p:CVScope.DesignTimeCacheContainer>
+      <p:CVScope.OCREngine>
+        <ActivityFunc x:TypeArguments="sd:Image, scg:IEnumerable(scg:KeyValuePair(sd:Rectangle, x:String))">
+          <ActivityFunc.Argument>
+            <DelegateInArgument x:TypeArguments="sd:Image" Name="Image" />
+          </ActivityFunc.Argument>
+          <p1:UiPathScreenOCR Endpoint="{x:Null}" Output="{x:Null}" Text="{x:Null}" UseLocalServer="{x:Null}" ApiKey="t3BNfuzvRG7QjQtWv16blDwQhY8XtXPMhMNjGYxq/qTWdcPwRYIR3bhtGh1NZ5OPVRVpCjpfSXDbn81A5JdpFQ==" ComputeSkewAngle="False" ExtractWords="True" sap:VirtualizedContainerService.HintSize="200,22" sap2010:WorkflowViewState.IdRef="UiPathScreenOCR_2" Image="[Image]" Language="en" Profile="Screen" Scale="1" Timeout="100000" />
+        </ActivityFunc>
+      </p:CVScope.OCREngine>
+      <p:CVScope.Target>
+        <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" Id="985b8268-9a19-4e68-bf75-0fdde60cc78a" InformativeScreenshot="cdf1c449d425adf0bd5889753a19073a" Selector="&lt;html app='chrome.exe' title='SMIL DCS' /&gt;&lt;webctrl css-selector='body&amp;gt;div&amp;gt;div&amp;gt;div' parentid='app' tag='DIV' /&gt;" WaitForReady="INTERACTIVE">
+          <ui:Target.TimeoutMS>
+            <InArgument x:TypeArguments="x:Int32" />
+          </ui:Target.TimeoutMS>
+        </ui:Target>
+      </p:CVScope.Target>
+      <p:CVScope.UseLocalServer>
+        <InArgument x:TypeArguments="x:Boolean" />
+      </p:CVScope.UseLocalServer>
+      <sap:WorkflowViewStateService.ViewState>
+        <scg:Dictionary x:TypeArguments="x:String, x:Object">
+          <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+          <x:Boolean x:Key="IsPinned">False</x:Boolean>
+        </scg:Dictionary>
+      </sap:WorkflowViewStateService.ViewState>
+    </p:CVScope>
+    <p:CVScope ContinueOnError="{x:Null}" DelayBefore="{x:Null}" Server="{x:Null}" ApiKey="t3BNfuzvRG7QjQtWv16blDwQhY8XtXPMhMNjGYxq/qTWdcPwRYIR3bhtGh1NZ5OPVRVpCjpfSXDbn81A5JdpFQ==" CvMethod="ElementDetection, OCR" DesignTimeCacheId="2b97a8cd-d1fb-41eb-980f-fc9845aabfd0" DisplayName="CV Screen Scope 'IMG'" sap:VirtualizedContainerService.HintSize="672.666666666667,2212" sap2010:WorkflowViewState.IdRef="CVScope_3" Version="V3">
+      <p:CVScope.Body>
+        <ActivityAction x:TypeArguments="x:Object">
+          <ActivityAction.Argument>
+            <DelegateInArgument x:TypeArguments="x:Object" Name="CVSessionData" />
+          </ActivityAction.Argument>
+          <Sequence DisplayName="Faire" sap2010:WorkflowViewState.IdRef="Sequence_10">
+            <Sequence.Variables>
+              <Variable x:TypeArguments="x:Boolean" Name="homeExist" />
+            </Sequence.Variables>
+            <p:CvElementExistsWithDescriptor Descriptor="[&quot;Target: Text 'Recharge yourself' (743,342,285,42)&quot;]" DesignTimeCacheId="2b97a8cd-d1fb-41eb-980f-fc9845aabfd0" DesignTimeScaleFactor="1.5" DisplayName="CV Element Exists - Text" sap:VirtualizedContainerService.HintSize="638.666666666667,138" sap2010:WorkflowViewState.IdRef="CvElementExistsWithDescriptor_3" InformativeScreenshot="cf7d489245618456ea2ef4e9f17dc2b3" Result="[homeExist]" Version="V3">
+              <p:CvElementExistsWithDescriptor.DesignTimeDescriptor>
+                <uc:CvDescriptor>
+                  <uc:CvDescriptor.Target>
+                    <uc:CvElementDescriptor CellExtraInfo="{x:Null}" DesignTimeArea="743, 342, 285, 42" ElementType="Text" Text="Recharge yourself" />
+                  </uc:CvDescriptor.Target>
+                </uc:CvDescriptor>
+              </p:CvElementExistsWithDescriptor.DesignTimeDescriptor>
+            </p:CvElementExistsWithDescriptor>
+            <If Condition="[homeExist]" sap:VirtualizedContainerService.HintSize="638.666666666667,1698.66666666667" sap2010:WorkflowViewState.IdRef="If_3">
+              <If.Then>
+                <Sequence sap:VirtualizedContainerService.HintSize="602,1517.33333333333" sap2010:WorkflowViewState.IdRef="Sequence_11">
+                  <sap:WorkflowViewStateService.ViewState>
+                    <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                      <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                    </scg:Dictionary>
+                  </sap:WorkflowViewStateService.ViewState>
+                  <Assign sap:VirtualizedContainerService.HintSize="560,62" sap2010:WorkflowViewState.IdRef="Assign_1">
+                    <Assign.To>
+                      <OutArgument x:TypeArguments="x:String">[url_dse]</OutArgument>
+                    </Assign.To>
+                    <Assign.Value>
+                      <InArgument x:TypeArguments="x:String">["https://dcs.smil.com/sme-veh/main/home"]</InArgument>
+                    </Assign.Value>
+                  </Assign>
+                  <uix:NApplicationCard AttachMode="ByInstance" CloseMode="Always" DisplayName="Use Browser Chrome: SMIL DCS" sap:VirtualizedContainerService.HintSize="560,1323.33333333333" sap2010:WorkflowViewState.IdRef="NApplicationCard_1" InteractionMode="DebuggerApi" OpenMode="Never" ScopeGuid="93505def-be38-4e42-b84a-bc4e2b381cba" Version="V1">
+                    <uix:NApplicationCard.Body>
+                      <ActivityAction x:TypeArguments="x:Object">
+                        <ActivityAction.Argument>
+                          <DelegateInArgument x:TypeArguments="x:Object" Name="WSSessionData" />
+                        </ActivityAction.Argument>
+                        <Sequence DisplayName="Faire" sap:VirtualizedContainerService.HintSize="526,1105.33333333333" sap2010:WorkflowViewState.IdRef="Sequence_2">
+                          <Sequence.Variables>
+                            <Variable x:TypeArguments="x:Boolean" Name="logoffExist" />
+                          </Sequence.Variables>
+                          <sap:WorkflowViewStateService.ViewState>
+                            <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                              <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                            </scg:Dictionary>
+                          </sap:WorkflowViewStateService.ViewState>
+                          <uix:NClick ClickType="Single" DisplayName="Click '3 petits points'" sap:VirtualizedContainerService.HintSize="484,158" sap2010:WorkflowViewState.IdRef="NClick_1" InteractionMode="Simulate" KeyModifiers="None" MouseButton="Left" ScopeIdentifier="93505def-be38-4e42-b84a-bc4e2b381cba" Version="V1">
+                            <uix:NClick.Target>
+                              <uix:TargetAnchorable BrowserURL="https://dcs.smil.com/sme-veh/main/home" DesignTimeRectangle="1866, 126, 40, 40" FriendlyName="'I'" FullSelectorArgument="&lt;webctrl tag='I' /&gt;" FuzzySelectorArgument="&lt;webctrl tag='I' type='' aaname='' /&gt;" Guid="7d069867-319e-430a-b4da-86742f45d4f3" ImageBase64="iVBORw0KGgoAAAANSUhEUgAAACgAAAAoCAYAAACM/rhtAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAAFiUAABYlAUlSJPAAAALvSURBVFhH7ZXPTlpBFMZdw5vwBrxBcecb0OimmybdsbQbE2PTxpVdtImxKza2CxdsTFg2MTGoC6ikghiNhhYRLJSU+HXO3Jl7h/nTgUvZ3ZN8+Xmccz0zX06OS6nlU6RyTD7OpJPZ+IzIZOFSevksuISgOw+UVn4Oc2riY0wFDuqiQx9nEjliyx00HTwTTklGzk1P9oclWRMvmVRK6fmCZlCXw6kJKrLNoI9S3AE9pyaCzjym7DOoi4p1ziVyaDouZgZ1smYG+QX8TPZgyJhK9qCTTCql9DzZg2EeU8kelA4a5Bfw0zGDNeQ+dlA+/41ac4Dy4R3yq+LcqjpeFB/wtUn1v/CleIUs/73DmdVLbB72UaH68z52P3xHhs6U2ZO07MEmtqtjGPE4wPvXdE61kdJrNyi1n0RRFMN2DwV6FNXxywmt/0DlURQp0a22saLWCRkzmPk8wFB8ZMT1PXJaw8KJ5TEiuic3oo4cIV6geC0OjXhCZb8a1JkORjO42xT11hihuCadJl6j/CCObPHQxyvxIO786j0a4sgazU44e1LGDO5eiWJrjFHeiT5O5dqouA1k5QNs8zrh4E4fXXFkjdbPoNY2g5KbVXOewqCG9JBQLZQ64swWnR6eU92UDxpW75TaQOYefNfDrfhAj+4xm6mJhmxm910zSzNVm6glFY5dN/yD0lvhdDizjj2Y/dRDYyS+4/GExtEtsuxyuuPp5W/IHwzQVfuOx6gctJDh58HFItaxfjSafNRohNJePTjnF4vo2INEtgs3Wsi/aSL3zx0oVcfKFqvfarAdaDph8GWD1V4iv3GBjDJzOi170JUHMvYgkZr6GFPmDMo/6ONMIkdsuYOmg//5fzFr4iWTSinvHnRyLjmcmqAi2wz6KMUd0HNqIujMY8o+g7qoWOdcIoem42JmUCdrZpBfwM8FzeD0DnEqM6cz2YOByBFb7qDpYLIHp6Ai2wz6KMUd0HNqIujMYyrZg9JBg/wCPp7iL91OjKl1dUtIAAAAAElFTkSuQmCC" InformativeScreenshot="d3fd14180a572119960bcd1d13dc915f.png" ScopeSelectorArgument="&lt;html app='chrome.exe' title='SMIL DCS' /&gt;" SearchSteps="FuzzySelector, Image" />
+                            </uix:NClick.Target>
+                          </uix:NClick>
+                          <uix:NClick ClickType="Single" DisplayName="Click 'Log Off'" sap:VirtualizedContainerService.HintSize="484,158" sap2010:WorkflowViewState.IdRef="NClick_2" InteractionMode="Simulate" KeyModifiers="None" MouseButton="Left" ScopeIdentifier="93505def-be38-4e42-b84a-bc4e2b381cba" Version="V1">
+                            <uix:NClick.Target>
+                              <uix:TargetAnchorable BrowserURL="https://dcs.smil.com/sme-veh/main/home" DesignTimeRectangle="1690, 207, 232, 54" ElementType="ListItem" FriendlyName="'Log Off'" FullSelectorArgument="&lt;webctrl parentid='dropdown-menu-3420' tag='LI' /&gt;" FuzzySelectorArgument="&lt;webctrl parentid='dropdown-menu-3420' tag='LI' type='' aaname='Log Off' check:text='Log Off' /&gt;" Guid="a4f3de89-dcf6-40d1-9cd5-e245bbad82cf" ImageBase64="iVBORw0KGgoAAAANSUhEUgAAAOwAAAA6CAYAAACztLUmAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAAFiUAABYlAUlSJPAAAAR2SURBVHhe7dztS1tJFMfx/VNFoqVJ0Yi2WyISiQF33yQ0KaagSB/YJawsXQKytIQWQXwALWQXWlgRNFRfKJSIBkognJ25d2JiYmNiCuY03w/cF45zJzeQnzNn7o0/nX4pC4D+ZnN6cXEhBBZQgMACihBYQBECCyhic3p+fk5gAQ0ILKAIgQUUIbCAIgQWUITAAooQWEARAgsoQmABRQgsoAiBBRQhsIAiBBZQhMACihBYQBECCyhCYAFF+iiwHyQ9PCpDwxnZcS19rXomB2srkohNyUjAXrc5AiEZj6Uku1aUUtX1u8bJ1guJjoX8c4ZDsvyPaSzvSy4ZqY8VeysnfnfgEoG9jdN1SU+4YN0LS2Q+I88Wl+RZck6C91z7RELyn13/Rl/eStT+PjAl8afmnMW/pFASKSyHvfNGplP+WO+K7gSgjsB2q2yuc8xeZ0iif3xqnUnNzPsxl5CgF8o5yR279prdjBfM8ey+a7COJTdtx0zJ2lfXBFyDwHalLGtJe42jEm1J4lVHuTmv39D8ezETaJ0LbOTK+bXAKikHcGeUB7YiJ7umjpwOy4h3rllSjs1J+s01M591ui2v5ut14sijlOT+K8vOgv052jobNjtelYh9nQcvpNCmRvVU9yX7yI4bkeyhbai9v6Zj5ufWtk6uBQNJcWBN0Ban/A+4qSOjSVsPpiRy333oZ1flqDFUn1clWgvqjK0TMxKftBs/YQl6S9ybQ1LK/+KdH3z+ybW0t5f1r8+fTYuSt7Wp+YPhjTHr16rply+9644+sNcQkbjt4+paoJnawFbM0tKrE2dXZK/x0k0Nubngb+DUg3Umf8fs2GFJb525Nqsse79Fvb6dBPbjc3/cq8vZNrb85e/QwgfXYLAkRg+UBrbiasmwf0uk2ddtSdjZNGDGsrPs4Yo8tGMn182ZTar/yrI3u90cWH/pPCrpXddwExdOAovvRWlgTX042a5vLdB+CGtL2W/NjJtP633bKSzafqMSzzfO0m0ww+I7UxrYm/s2biQd5fxlb2KjZX71dLrpdNsa9uHrhoEJLHrADGt0vEtce+ihk11iKTbtEjsEFj1QGtgua9j9FRm3Y/dYw9rX3XEbWtyHxV1QGlgTHfPB73yXuBaI5l3iihy8dsHqKLBGt086NT+eSGDRgz4MbEiCk1My/o3j1/yp63/DfdjHZtna+JYu78Oa8WMN92EDYQl2PMM6JTMrP3avc/na5ujkWWICix70YWDbH1c/6BU52fhd4o1POk108aTTTEbyh0UXli6f461W5GjjFt/WIbDoQR8F9q4cy592tgwsScG1AP1qMAJbei9xO/slmzaAjNKWq4WfbLduSAF9ZkBm2LJsPvG/MG6/HJDwntddksSM+xL5mKk3O61fgTs0IIE17O7tm4xEJ2r/6cEc9yMSf7UuBzxoDyUGJ7DAD4DAAooQWEARAgsoQmABRQgsoAiBBRQhsIAiBBZQhMACihBYQBECCyhCYAFFCCygCIEFFCGwgCIEFlDED+y5/A8iSbMDYg1NPgAAAABJRU5ErkJggg==" InformativeScreenshot="ba0e65146b64db4eb9f68b9d91726438.png" ScopeSelectorArgument="&lt;html app='chrome.exe' title='SMIL DCS' /&gt;" SearchSteps="FuzzySelector, Image" />
+                            </uix:NClick.Target>
+                          </uix:NClick>
+                          <p:CvElementExistsWithDescriptor Descriptor="[&quot;Target: Text 'Do you want to log off ?' (214,60,147,14)&quot;]" DesignTimeCacheId="1a6e8ffa-77d2-4316-9e5c-94fba38055dc" DesignTimeScaleFactor="1.5" DisplayName="CV Element Exists - Text" sap:VirtualizedContainerService.HintSize="484,138" sap2010:WorkflowViewState.IdRef="CvElementExistsWithDescriptor_1" InformativeScreenshot="af06b3a913d73354175a3258ab6cebed" Result="[logoffExist]" Version="V3">
+                            <p:CvElementExistsWithDescriptor.DesignTimeDescriptor>
+                              <uc:CvDescriptor>
+                                <uc:CvDescriptor.Target>
+                                  <uc:CvElementDescriptor CellExtraInfo="{x:Null}" DesignTimeArea="214, 60, 147, 14" ElementType="Text" Text="Do you want to log off ?" />
+                                </uc:CvDescriptor.Target>
+                              </uc:CvDescriptor>
+                            </p:CvElementExistsWithDescriptor.DesignTimeDescriptor>
+                          </p:CvElementExistsWithDescriptor>
+                          <If Condition="[logoffExist]" sap:VirtualizedContainerService.HintSize="484,436.666666666667" sap2010:WorkflowViewState.IdRef="If_4">
+                            <If.Then>
+                              <Sequence sap:VirtualizedContainerService.HintSize="376,252.666666666667" sap2010:WorkflowViewState.IdRef="Sequence_13">
+                                <sap:WorkflowViewStateService.ViewState>
+                                  <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                    <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                                  </scg:Dictionary>
+                                </sap:WorkflowViewStateService.ViewState>
+                                <uix:NClick ClickType="Single" DisplayName="Click 'Yes'" sap:VirtualizedContainerService.HintSize="334,158" sap2010:WorkflowViewState.IdRef="NClick_4" KeyModifiers="None" MouseButton="Left" ScopeIdentifier="93505def-be38-4e42-b84a-bc4e2b381cba" Version="V1">
+                                  <uix:NClick.Target>
+                                    <uix:TargetAnchorable BrowserURL="https://dcs.smil.com/sme-veh/main/home" DesignTimeRectangle="1210, 626, 29, 20" ElementType="Text" FriendlyName="'Yes'" FullSelectorArgument="&lt;webctrl aaname='           Yes         ' tag='SPAN' /&gt;" FuzzySelectorArgument="&lt;webctrl aaname='           Yes         ' tag='SPAN' type='' check:text='Yes' /&gt;" Guid="27a389c2-ab19-4bc9-b87a-26d956ada935" ImageBase64="iVBORw0KGgoAAAANSUhEUgAAACEAAAAYCAYAAAB0kZQKAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAAFiUAABYlAUlSJPAAAAIRSURBVEhL7ZTJSxxhEMX9az169SS5iWBQkpOHIARilICCh+QQUVGMGoOKGhWMhhi3zLgbl3FcnvWjLLtHx8GNmMM0PHqmurrq9atXX0Vlp/TcKJMIlEkE/i8SvT+ls3Np61B6PXQzEXyak/JnpXMegisSVR+l2XXJeGgm6//TiTSlef5U6pgpfPZYFIwjGp3a13bNJ3EIzW+6UkO/k/hT4YYnQvKDvPR23GMDi05gaVeq6fZYXb8rRi4X94Ut6eWXpBbkh5ekoxNXmBrbR1L7dJIDihpzYs1fomnLhBPi5fBBgzXaOPCiizumjjXift1Tg6Yasey+9G1ZmspIORtnzki9t7rRryiJFz3Syp4XgABfiULxfMQKnlisx8ycfo8REuc5/1etxo6RbxxMcroX3FeoG7GiJMC7SwVQBGUijsRrf/1rxlZdhcC45UGY5uTObfiHcH8zmtS4jltJAIoxz+ZUAUbBaEpdjKR+wD21m7sM2nVsCvzaltqmCvs8mATgdzq/GFDuw3c3bdqg6S27Nwm2I2NGw2Ctk4X5dwGbcWhjxti1fR67NwmA8fgiDrf0oRbr/cPOlFe2IevWiGasc+Q0jUh7x09AIg41iNDoq5kSuSGAmTE1edN2jpxbEqPDxIDfjONO2wFuIwE4lKIxF4X/2NbEAQeqP/vGhBfAvqnAaqcVLEniX6FMIlAm4ZAuAENYDm4FKd9vAAAAAElFTkSuQmCC" InformativeScreenshot="1624446c8832b77fe7653651dd94089c.png" ScopeSelectorArgument="&lt;html app='chrome.exe' title='SMIL DCS' /&gt;" SearchSteps="FuzzySelector, Image">
+                                      <uix:TargetAnchorable.Anchors>
+                                        <scg:List x:TypeArguments="uix:ITarget" Capacity="1">
+                                          <uix:Target DesignTimeRectangle="1186, 612, 77, 48" ElementType="Button" FriendlyName="'Yes'" FullSelectorArgument="&lt;webctrl aaname='           Yes         ' tag='BUTTON' /&gt;" FuzzySelectorArgument="&lt;webctrl aaname='           Yes         ' tag='BUTTON' type='button' check:text='Yes' /&gt;" ImageBase64="iVBORw0KGgoAAAANSUhEUgAAAFEAAAA0CAYAAADyttTfAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAAFiUAABYlAUlSJPAAAAL5SURBVHhe7ZvbS1RRFIf7a3vssR4ieougKOqphwiCbgQFPRR00ShMyygx08A0NEvzkre8jONltT62+5wzzdFmWDNnDrV+8DEze/acwc+199oo54h4zHGJLYhLbEHqJN4fETn+WOToAycP3OAomxqJ53pETj7L/7CTgiNcxSQSsesCGwdXsSITib6EmwdnJJGYN8n5O8QlGiEu0QhxiUaISzRCXKIR4hKNEJdohLhEI8QlGiEu0QhxiUaISzRCCpP4/IvI7p7I4obI5b78OY9GRaq7h88pG6QwicceinyaF1GPMjIXXmffRxryqjvh73TZ98oMKXQ5R1E7Wm1Px9JxhI79DJXa97X2M2WHFL4nxiW7XhW5PhDGeiaDwKkVkVNdYezsy1CxzCU8ji+KnH+VXgv5r6dENrdDhXONpU2Re8PpnHZDOtJYBmfCD420m4NBKD983AcvqKiF9SBlclmrU0Xx+Oee2qtVy9jcmsjbbyJDsyIV3Q4qKvWWXjf7ne2CdETi6W6R76tBAAKpMio0vt+vQrZ1rFubUfZzbAGM8z6vp/Uayyr/Ym86p2s87KtUdxxrJ6QjEuHGfgVSkVRmHGeJzvwK1fR+OlRhZEDnIRx5zB1dCL8IHq++S69RJKRjEgEZ7GfXMgJYyiztw8KS5l+W7Kkrlf1BzZZW4MSSyJ2h2u9pJ6S0EoHn2fl5ULl3P4amk20wRXV5UjqJdOdZbRQ0iNsfauc3Ap15Q7cJGtOZF/lzWgkpnUSgcVBRHM6zh/J4PPqsZ8pL2qHnVRSyOA7FOVf6RVa3XGJyKEckot5oU2G5IpBmRFNi3rCeI/d0EkufJgQ8Zzn/F90ZDpIIHKqjOIKYH9q14wEdTjwJHTvuhbCmVcjRKFvB7YR0VOK/AHGJRohLNEJcohHiEo0Ql2iEuEQjxCUaIS7RCHGJRohLNEJcohHiEo0Ql2iEJBL9ZqDmqbsZyG9La47c29KI3yDZGDjKvUEyBru+tA8GN7ECY+okepqNyG8xIfSYT4jZ9gAAAABJRU5ErkJggg==" SearchSteps="FuzzySelector, Image" />
+                                        </scg:List>
+                                      </uix:TargetAnchorable.Anchors>
+                                    </uix:TargetAnchorable>
+                                  </uix:NClick.Target>
+                                </uix:NClick>
+                              </Sequence>
+                            </If.Then>
+                            <If.Else>
+                              <Sequence sap2010:WorkflowViewState.IdRef="Sequence_14">
+                                <sap:WorkflowViewStateService.ViewState>
+                                  <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                    <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                                  </scg:Dictionary>
+                                </sap:WorkflowViewStateService.ViewState>
+                              </Sequence>
+                            </If.Else>
+                          </If>
+                        </Sequence>
+                      </ActivityAction>
+                    </uix:NApplicationCard.Body>
+                    <uix:NApplicationCard.TargetApp>
+                      <uix:TargetApp Area="-11, -11, 1942, 1042" BrowserType="Chrome" IconBase64="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" InformativeScreenshot="4bf51d8d832b88bd46fb6bde5c80abb7.png" Selector="&lt;html app='chrome.exe' title='SMIL DCS'/&gt;" Url="https://dcs.smil.com/sme-veh/login" />
+                    </uix:NApplicationCard.TargetApp>
+                    <sap:WorkflowViewStateService.ViewState>
+                      <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                        <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                        <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                      </scg:Dictionary>
+                    </sap:WorkflowViewStateService.ViewState>
+                  </uix:NApplicationCard>
+                </Sequence>
+              </If.Then>
+              <If.Else>
+                <Sequence sap2010:WorkflowViewState.IdRef="Sequence_12">
+                  <sap:WorkflowViewStateService.ViewState>
+                    <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                      <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                    </scg:Dictionary>
+                  </sap:WorkflowViewStateService.ViewState>
+                </Sequence>
+              </If.Else>
+            </If>
+          </Sequence>
+        </ActivityAction>
+      </p:CVScope.Body>
+      <p:CVScope.DesignTimeCacheContainer>
+        <uc:CvCacheContainer>
+          <uc:CvCacheContainer.Caches>
+            <scg:List x:TypeArguments="uc:CVCache" Capacity="2">
+              <uc:CVCache DisplayName="Écran CV Element Exists - 'Rec " Id="2b97a8cd-d1fb-41eb-980f-fc9845aabfd0" InformativeScreenshot="7a9f4f9c6100a835ba85798ad2d5ee02" LogicalPosition="0, 0" OcrText="CBAS e MD Recharge yourself" Position="0, 0" ScaleFactor="1.5" ScreenshotGuid="2775156e-37fc-4296-a60c-91df6e57c6ff" ServerVersion="1">
+                <uc:CVCache.CvUiElements>
+                  <scg:List x:TypeArguments="uc:CvElementInfo" Capacity="32">
+                    <uc:CvElementInfo Category="Icon" Region="644, 320, 84, 82" />
+                    <uc:CvElementInfo Category="Button" Region="131, 192, 76, 70" />
+                    <uc:CvElementInfo Category="Icon" Confidence="Runtime" Region="248, 262, 51, 52" />
+                    <uc:CvElementInfo Category="RadioButton" Confidence="Runtime" Region="894, 163, 58, 56" />
+                    <uc:CvElementInfo Category="Icon" Confidence="Runtime" Region="270, 206, 63, 52" />
+                    <uc:CvElementInfo Category="Button" Confidence="Runtime" Region="578, 181, 14, 19" />
+                    <uc:CvElementInfo Category="Icon" Confidence="Runtime" Region="327, 345, 72, 57" />
+                    <uc:CvElementInfo Category="Icon" Confidence="Runtime" Region="524, 210, 138, 114" />
+                    <uc:CvElementInfo Category="Button" Confidence="Runtime" Region="314, 252, 85, 80" />
+                    <uc:CvElementInfo Category="Icon" Confidence="Runtime" Region="84, 396, 58, 46" />
+                    <uc:CvElementInfo Category="Icon" Confidence="Runtime" Region="132, 190, 74, 76" />
+                    <uc:CvElementInfo Category="ArrowButton" Confidence="Runtime" Region="578, 179, 16, 24" />
+                    <uc:CvElementInfo Category="Icon" Confidence="Runtime" Region="581, 186, 10, 10" />
+                    <uc:CvElementInfo Category="Button" Confidence="Runtime" Region="332, 351, 62, 48" />
+                    <uc:CvElementInfo Category="Icon" Confidence="Runtime" Region="415, 250, 58, 55" />
+                    <uc:CvElementInfo Category="Icon" Confidence="Runtime" Region="966, 182, 88, 89" />
+                    <uc:CvElementInfo Category="MinimizeButton" Confidence="Runtime" Region="577, 178, 18, 21" />
+                    <uc:CvElementInfo Category="Icon" Confidence="Runtime" Region="318, 250, 80, 78" />
+                    <uc:CvElementInfo Category="Icon" Confidence="Runtime" Region="589, 300, 14, 16" />
+                    <uc:CvElementInfo Category="Button" Confidence="Runtime" Region="248, 263, 50, 48" />
+                    <uc:CvElementInfo Category="Icon" Confidence="Runtime" Region="887, 156, 70, 67" />
+                    <uc:CvElementInfo Category="Button" Confidence="Runtime" Region="897, 162, 54, 60" />
+                    <uc:CvElementInfo Category="ArrowButton" Confidence="Runtime" Region="580, 183, 12, 15" />
+                    <uc:CvElementInfo Category="Icon" Confidence="Runtime" Region="144, 268, 70, 59" />
+                    <uc:CvElementInfo Category="Icon" Confidence="Runtime" Region="338, 270, 40, 42" />
+                    <uc:CvElementInfo Category="Icon" Confidence="Runtime" Region="344, 202, 37, 43" />
+                    <uc:CvElementInfo Category="Icon" Confidence="Runtime" Region="52, 229, 59, 106" />
+                    <uc:CvElementInfo Category="Cell" Confidence="Runtime" Region="516, 336, 139, 62" />
+                  </scg:List>
+                </uc:CVCache.CvUiElements>
+                <uc:CVCache.OcrTexts>
+                  <scg:List x:TypeArguments="uc:OcrTextInfo" Capacity="8">
+                    <uc:OcrTextInfo Region="261, 200, 210, 62" Text="CBAS" />
+                    <uc:OcrTextInfo Region="157, 282, 21, 26" Text="e" />
+                    <uc:OcrTextInfo Region="650, 328, 69, 63" Text="MD" />
+                    <uc:OcrTextInfo Region="743, 342, 152, 42" Text="Recharge" />
+                    <uc:OcrTextInfo Region="900, 342, 128, 40" Text="yourself" />
+                  </scg:List>
+                </uc:CVCache.OcrTexts>
+              </uc:CVCache>
+              <uc:CVCache DisplayName="Écran CV Element Exists - 'Do  " Id="1a6e8ffa-77d2-4316-9e5c-94fba38055dc" InformativeScreenshot="157a8890e0ed200357172c907d7ebb08" LogicalPosition="644, 461" OcrText="Warning X ! Unsaved data will be lost. Do you want to log off ? No Yes" Position="644, 461" ScaleFactor="1.5" ScreenshotGuid="fbc1240e-8421-4b8a-a7e3-33d79883b637" ServerVersion="1">
+                <uc:CVCache.CvUiElements>
+                  <scg:List x:TypeArguments="uc:CvElementInfo" Capacity="14">
+                    <uc:CvElementInfo Category="Button" Region="352, 93, 54, 34" />
+                    <uc:CvElementInfo Category="Button" Region="294, 93, 50, 33" />
+                    <uc:CvElementInfo Category="Icon" Region="14, 52, 28, 28" />
+                    <uc:CvElementInfo Category="CloseButton" Region="389, 16, 18, 17" />
+                    <uc:CvElementInfo Category="InputBox" Confidence="Runtime" Region="294, 92, 50, 34" />
+                    <uc:CvElementInfo Category="RadioButton" Confidence="Runtime" Region="13, 51, 28, 28" />
+                    <uc:CvElementInfo Category="Button" Confidence="Runtime" Region="14, 51, 28, 28" />
+                    <uc:CvElementInfo Category="Icon" Confidence="Runtime" Region="351, 59, 12, 12" />
+                    <uc:CvElementInfo Category="Icon" Confidence="Runtime" Region="297, 94, 47, 31" />
+                    <uc:CvElementInfo Category="Cell" Confidence="Runtime" Region="308, 132, 110, 2" />
+                    <uc:CvElementInfo Category="Cell" Confidence="Runtime" Region="346, 92, 61, 34" />
+                    <uc:CvElementInfo Category="Cell" Confidence="Runtime" Region="367, 132, 54, 3" />
+                    <uc:CvElementInfo Category="Cell" Confidence="Runtime" Region="285, 130, 133, 4" />
+                    <uc:CvElementInfo Category="Cell" Confidence="Runtime" Region="8, 132, 385, 2" />
+                  </scg:List>
+                </uc:CVCache.CvUiElements>
+                <uc:CVCache.OcrTexts>
+                  <scg:List x:TypeArguments="uc:OcrTextInfo" Capacity="17">
+                    <uc:OcrTextInfo Region="14, 16, 68, 19" Text="Warning" />
+                    <uc:OcrTextInfo Region="390, 18, 13, 12" Text="X" />
+                    <uc:OcrTextInfo Region="24, 56, 8, 18" Text="!" />
+                    <uc:OcrTextInfo Region="50, 59, 56, 12" Text="Unsaved" />
+                    <uc:OcrTextInfo Region="110, 60, 28, 12" Text="data" />
+                    <uc:OcrTextInfo Region="140, 60, 20, 12" Text="will" />
+                    <uc:OcrTextInfo Region="164, 60, 16, 12" Text="be" />
+                    <uc:OcrTextInfo Region="183, 60, 26, 12" Text="lost." />
+                    <uc:OcrTextInfo Region="214, 60, 18, 12" Text="Do" />
+                    <uc:OcrTextInfo Region="234, 62, 24, 12" Text="you" />
+                    <uc:OcrTextInfo Region="261, 60, 31, 11" Text="want" />
+                    <uc:OcrTextInfo Region="294, 60, 13, 12" Text="to" />
+                    <uc:OcrTextInfo Region="311, 60, 18, 14" Text="log" />
+                    <uc:OcrTextInfo Region="333, 60, 17, 12" Text="off" />
+                    <uc:OcrTextInfo Region="352, 60, 9, 11" Text="?" />
+                    <uc:OcrTextInfo Region="312, 104, 16, 10" Text="No" />
+                    <uc:OcrTextInfo Region="368, 103, 22, 12" Text="Yes" />
+                  </scg:List>
+                </uc:CVCache.OcrTexts>
+              </uc:CVCache>
+            </scg:List>
+          </uc:CvCacheContainer.Caches>
+        </uc:CvCacheContainer>
+      </p:CVScope.DesignTimeCacheContainer>
+      <p:CVScope.OCREngine>
+        <ActivityFunc x:TypeArguments="sd:Image, scg:IEnumerable(scg:KeyValuePair(sd:Rectangle, x:String))">
+          <ActivityFunc.Argument>
+            <DelegateInArgument x:TypeArguments="sd:Image" Name="Image" />
+          </ActivityFunc.Argument>
+          <p1:UiPathScreenOCR Endpoint="{x:Null}" Output="{x:Null}" Text="{x:Null}" UseLocalServer="{x:Null}" ApiKey="t3BNfuzvRG7QjQtWv16blDwQhY8XtXPMhMNjGYxq/qTWdcPwRYIR3bhtGh1NZ5OPVRVpCjpfSXDbn81A5JdpFQ==" ComputeSkewAngle="False" ExtractWords="True" sap:VirtualizedContainerService.HintSize="200,22" sap2010:WorkflowViewState.IdRef="UiPathScreenOCR_2" Image="[Image]" Language="en" Profile="Screen" Scale="1" Timeout="100000" />
+        </ActivityFunc>
+      </p:CVScope.OCREngine>
+      <p:CVScope.Target>
+        <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" Id="48143e0b-94e4-4f9c-90ba-54500731514c" InformativeScreenshot="7b10335f5c8395c40cae80c6d1a5a25b" Selector="&lt;wnd app='chrome.exe' cls='Chrome_WidgetWin_1' title='SMIL DCS - Google Chrome' /&gt;" WaitForReady="INTERACTIVE">
+          <ui:Target.TimeoutMS>
+            <InArgument x:TypeArguments="x:Int32" />
+          </ui:Target.TimeoutMS>
+        </ui:Target>
+      </p:CVScope.Target>
+      <p:CVScope.UseLocalServer>
+        <InArgument x:TypeArguments="x:Boolean" />
+      </p:CVScope.UseLocalServer>
+    </p:CVScope>
+  </Sequence>
+</Activity>
