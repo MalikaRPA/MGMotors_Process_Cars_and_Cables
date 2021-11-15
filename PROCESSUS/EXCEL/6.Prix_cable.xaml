@@ -9,7 +9,7 @@
   <mva:VisualBasic.Settings>
     <x:Null />
   </mva:VisualBasic.Settings>
-  <sap:VirtualizedContainerService.HintSize>717.333333333333,1277.33333333333</sap:VirtualizedContainerService.HintSize>
+  <sap:VirtualizedContainerService.HintSize>717.333333333333,1380</sap:VirtualizedContainerService.HintSize>
   <sap2010:WorkflowViewState.IdRef>_6_Prix_cable_1</sap2010:WorkflowViewState.IdRef>
   <TextExpression.NamespacesForImplementation>
     <scg:List x:TypeArguments="x:String" Capacity="31">
@@ -72,7 +72,7 @@
       <AssemblyReference>System.Runtime.Serialization</AssemblyReference>
     </scg:List>
   </TextExpression.ReferencesForImplementation>
-  <Sequence DisplayName="_6_Prix_cable" sap:VirtualizedContainerService.HintSize="680.666666666667,1212.66666666667" sap2010:WorkflowViewState.IdRef="Sequence_1">
+  <Sequence DisplayName="_6_Prix_cable" sap:VirtualizedContainerService.HintSize="680.666666666667,1315.33333333333" sap2010:WorkflowViewState.IdRef="Sequence_1">
     <Sequence.Variables>
       <Variable x:TypeArguments="sd:DataTable" Name="dt_cableModel" />
       <Variable x:TypeArguments="x:String" Name="CablePrice" />
@@ -105,6 +105,7 @@
         </ActivityAction>
       </ui:ExcelApplicationScope.Body>
     </ui:ExcelApplicationScope>
+    <WriteLine DisplayName="Write Line" sap:VirtualizedContainerService.HintSize="638.666666666667,62.6666666666667" sap2010:WorkflowViewState.IdRef="WriteLine_2" Text="test" />
     <ui:CommentOut DisplayName="Comment Out" sap:VirtualizedContainerService.HintSize="638.666666666667,718.666666666667" sap2010:WorkflowViewState.IdRef="CommentOut_1">
       <ui:CommentOut.Body>
         <Sequence DisplayName="Activités ignorées" sap:VirtualizedContainerService.HintSize="602,640" sap2010:WorkflowViewState.IdRef="Sequence_7">
