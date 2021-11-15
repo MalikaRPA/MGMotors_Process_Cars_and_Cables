@@ -9,6 +9,12 @@
     <x:Property Name="in_dt_9010" Type="InArgument(sd:DataTable)" />
     <x:Property Name="io_InvoiceNumber" Type="InOutArgument(x:String)" />
     <x:Property Name="io_CarModel" Type="InOutArgument(x:String)" />
+    <x:Property Name="io_CablePrice_File" Type="InOutArgument(x:String)" />
+    <x:Property Name="io_CablePrice" Type="InOutArgument(x:Double)" />
+    <x:Property Name="io_AmountTTC" Type="InArgument(x:Double)" />
+    <x:Property Name="io_AmountHT" Type="InArgument(x:Double)" />
+    <x:Property Name="io_AmountTVA" Type="InArgument(x:Double)" />
+    <x:Property Name="io_TauxTVA" Type="InArgument(x:Double)" />
   </x:Members>
   <this:Process.in_VIN>
     <InArgument x:TypeArguments="x:String" />
@@ -25,10 +31,22 @@
   <this:Process.in_dt_9010>
     <InArgument x:TypeArguments="sd:DataTable" />
   </this:Process.in_dt_9010>
+  <this:Process.io_AmountTTC>
+    <InArgument x:TypeArguments="x:Double" />
+  </this:Process.io_AmountTTC>
+  <this:Process.io_AmountHT>
+    <InArgument x:TypeArguments="x:Double" />
+  </this:Process.io_AmountHT>
+  <this:Process.io_AmountTVA>
+    <InArgument x:TypeArguments="x:Double" />
+  </this:Process.io_AmountTVA>
+  <this:Process.io_TauxTVA>
+    <InArgument x:TypeArguments="x:Double" />
+  </this:Process.io_TauxTVA>
   <mva:VisualBasic.Settings>
     <x:Null />
   </mva:VisualBasic.Settings>
-  <sap:VirtualizedContainerService.HintSize>717.333333333333,1236</sap:VirtualizedContainerService.HintSize>
+  <sap:VirtualizedContainerService.HintSize>717.333333333333,1646.66666666667</sap:VirtualizedContainerService.HintSize>
   <sap2010:WorkflowViewState.IdRef>ProcessTransaction_1</sap2010:WorkflowViewState.IdRef>
   <TextExpression.NamespacesForImplementation>
     <scg:List x:TypeArguments="x:String" Capacity="50">
@@ -97,27 +115,34 @@
       <AssemblyReference>System.Runtime.WindowsRuntime</AssemblyReference>
     </scg:List>
   </TextExpression.ReferencesForImplementation>
-  <Sequence sap2010:Annotation.AnnotationText="Invoke major steps of the business process, which are usually implemented by multiple subworkflows.&#xA;&#xA;If a BusinessRuleException is thrown, the transaction is skipped. &#xA;If another kind of exception occurs, the current transaction can be retried. " DisplayName="Process" sap:VirtualizedContainerService.HintSize="478.666666666667,1171.33333333333" sap2010:WorkflowViewState.IdRef="Sequence_1">
+  <Sequence sap2010:Annotation.AnnotationText="Invoke major steps of the business process, which are usually implemented by multiple subworkflows.&#xA;&#xA;If a BusinessRuleException is thrown, the transaction is skipped. &#xA;If another kind of exception occurs, the current transaction can be retried. " DisplayName="Process" sap:VirtualizedContainerService.HintSize="500,1582" sap2010:WorkflowViewState.IdRef="Sequence_1">
     <sap:WorkflowViewStateService.ViewState>
       <scg:Dictionary x:TypeArguments="x:String, x:Object">
         <x:Boolean x:Key="IsExpanded">True</x:Boolean>
         <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
       </scg:Dictionary>
     </sap:WorkflowViewStateService.ViewState>
-    <ui:LogMessage DisplayName="Log Message Process Start" sap:VirtualizedContainerService.HintSize="436.666666666667,94.6666666666667" sap2010:WorkflowViewState.IdRef="LogMessage_1" Level="Info" Message="[&quot;Started Process&quot;]" />
-    <WriteLine DisplayName="Write Line" sap:VirtualizedContainerService.HintSize="436.666666666667,62.6666666666667" sap2010:WorkflowViewState.IdRef="WriteLine_3" Text="[in_VIN]" />
-    <WriteLine DisplayName="Write Line" sap:VirtualizedContainerService.HintSize="436.666666666667,62.6666666666667" sap2010:WorkflowViewState.IdRef="WriteLine_4" Text="[in_SO]" />
-    <WriteLine DisplayName="Write Line" sap:VirtualizedContainerService.HintSize="436.666666666667,62.6666666666667" sap2010:WorkflowViewState.IdRef="WriteLine_2" Text="[in_RefClient]" />
-    <WriteLine DisplayName="Write Line" sap:VirtualizedContainerService.HintSize="436.666666666667,62.6666666666667" sap2010:WorkflowViewState.IdRef="WriteLine_1" Text="[in_CAR_INVOICE]" />
-    <ui:CommentOut DisplayName="Comment Out" sap:VirtualizedContainerService.HintSize="436.666666666667,284.666666666667" sap2010:WorkflowViewState.IdRef="CommentOut_1">
+    <ui:LogMessage DisplayName="Log Message Process Start" sap:VirtualizedContainerService.HintSize="458,94.6666666666667" sap2010:WorkflowViewState.IdRef="LogMessage_1" Level="Info" Message="[&quot;Started Process&quot;]" />
+    <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="Invoke Asset_Orch_process workflow" sap:VirtualizedContainerService.HintSize="458,114" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_3" UnSafe="False" WorkflowFileName="Asset_Orch_process.xaml">
+      <ui:InvokeWorkflowFile.Arguments>
+        <InArgument x:TypeArguments="x:String" x:Key="out_CablePrice_File">
+          <mva:VisualBasicValue x:TypeArguments="x:String" ExpressionText="io_CablePrice_File" />
+        </InArgument>
+      </ui:InvokeWorkflowFile.Arguments>
+    </ui:InvokeWorkflowFile>
+    <WriteLine DisplayName="Write Line" sap:VirtualizedContainerService.HintSize="458,62.6666666666667" sap2010:WorkflowViewState.IdRef="WriteLine_3" Text="[in_VIN]" />
+    <WriteLine DisplayName="Write Line" sap:VirtualizedContainerService.HintSize="458,62.6666666666667" sap2010:WorkflowViewState.IdRef="WriteLine_4" Text="[in_SO]" />
+    <WriteLine DisplayName="Write Line" sap:VirtualizedContainerService.HintSize="458,62.6666666666667" sap2010:WorkflowViewState.IdRef="WriteLine_2" Text="[in_RefClient]" />
+    <WriteLine DisplayName="Write Line" sap:VirtualizedContainerService.HintSize="458,62.6666666666667" sap2010:WorkflowViewState.IdRef="WriteLine_1" Text="[in_CAR_INVOICE]" />
+    <ui:CommentOut DisplayName="Comment Out" sap:VirtualizedContainerService.HintSize="458,695.333333333333" sap2010:WorkflowViewState.IdRef="CommentOut_1">
       <ui:CommentOut.Body>
-        <Sequence DisplayName="Activités ignorées" sap:VirtualizedContainerService.HintSize="377.333333333333,206" sap2010:WorkflowViewState.IdRef="Sequence_2">
+        <Sequence DisplayName="Activités ignorées" sap:VirtualizedContainerService.HintSize="421.333333333333,616.666666666667" sap2010:WorkflowViewState.IdRef="Sequence_2">
           <sap:WorkflowViewStateService.ViewState>
             <scg:Dictionary x:TypeArguments="x:String, x:Object">
               <x:Boolean x:Key="IsExpanded">True</x:Boolean>
             </scg:Dictionary>
           </sap:WorkflowViewStateService.ViewState>
-          <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="Invoke 5.Liste_des_factures workflow" sap:VirtualizedContainerService.HintSize="335.333333333333,114" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_1" UnSafe="False" WorkflowFileName="PROCESSUS\WEB\5.Liste_des_factures.xaml">
+          <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="Invoke 5.Liste_des_factures workflow" sap:VirtualizedContainerService.HintSize="379.333333333333,114" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_1" UnSafe="False" WorkflowFileName="PROCESSUS\WEB\5.Liste_des_factures.xaml">
             <ui:InvokeWorkflowFile.Arguments>
               <InArgument x:TypeArguments="x:String" x:Key="in_VIN">
                 <mva:VisualBasicValue x:TypeArguments="x:String" ExpressionText="in_VIN" />
@@ -133,13 +158,47 @@
               </OutArgument>
             </ui:InvokeWorkflowFile.Arguments>
           </ui:InvokeWorkflowFile>
+          <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="Invoke 6.Prix_cable workflow" sap:VirtualizedContainerService.HintSize="379.333333333333,114" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_2" UnSafe="False" WorkflowFileName="PROCESSUS\EXCEL\6.Prix_cable.xaml">
+            <ui:InvokeWorkflowFile.Arguments>
+              <InArgument x:TypeArguments="x:String" x:Key="in_CarModel">
+                <mva:VisualBasicValue x:TypeArguments="x:String" ExpressionText="io_CarModel" />
+              </InArgument>
+              <OutArgument x:TypeArguments="x:Double" x:Key="out_CablePrice">
+                <mva:VisualBasicReference x:TypeArguments="x:Double" ExpressionText="io_CablePrice" />
+              </OutArgument>
+              <InArgument x:TypeArguments="x:String" x:Key="in_CablePrice_File">
+                <mva:VisualBasicValue x:TypeArguments="x:String" ExpressionText="io_CablePrice_File" />
+              </InArgument>
+            </ui:InvokeWorkflowFile.Arguments>
+          </ui:InvokeWorkflowFile>
+          <WriteLine DisplayName="Write Line" sap:VirtualizedContainerService.HintSize="379.333333333333,62.6666666666667" sap2010:WorkflowViewState.IdRef="WriteLine_5" Text="[io_CablePrice.ToString]" />
+          <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="Invoke 7.Enregistrer_factures_sur_serveur workflow" sap:VirtualizedContainerService.HintSize="379.333333333333,114" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_4" UnSafe="False" WorkflowFileName="PROCESSUS\WEB\7.Enregistrer_factures_sur_serveur.xaml">
+            <ui:InvokeWorkflowFile.Arguments>
+              <InArgument x:TypeArguments="x:String" x:Key="in_InvoiceNumber">
+                <mva:VisualBasicValue x:TypeArguments="x:String" ExpressionText="io_InvoiceNumber" />
+              </InArgument>
+              <OutArgument x:TypeArguments="x:Double" x:Key="out_AmountTTC">
+                <mva:VisualBasicReference x:TypeArguments="x:Double" ExpressionText="io_AmountTTC" />
+              </OutArgument>
+              <OutArgument x:TypeArguments="x:Double" x:Key="out_AmountHT">
+                <mva:VisualBasicReference x:TypeArguments="x:Double" ExpressionText="io_AmountHT" />
+              </OutArgument>
+              <OutArgument x:TypeArguments="x:Double" x:Key="out_AmountTVA">
+                <mva:VisualBasicReference x:TypeArguments="x:Double" ExpressionText="io_AmountTVA" />
+              </OutArgument>
+              <OutArgument x:TypeArguments="x:Double" x:Key="out_TauxTVA">
+                <mva:VisualBasicReference x:TypeArguments="x:Double" ExpressionText="io_TauxTVA" />
+              </OutArgument>
+            </ui:InvokeWorkflowFile.Arguments>
+          </ui:InvokeWorkflowFile>
         </Sequence>
       </ui:CommentOut.Body>
+      <sap:WorkflowViewStateService.ViewState>
+        <scg:Dictionary x:TypeArguments="x:String, x:Object">
+          <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+          <x:Boolean x:Key="IsPinned">False</x:Boolean>
+        </scg:Dictionary>
+      </sap:WorkflowViewStateService.ViewState>
     </ui:CommentOut>
-    <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="Invoke 6.Prix_cable workflow" sap:VirtualizedContainerService.HintSize="436.666666666667,114" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_2" UnSafe="False" WorkflowFileName="PROCESSUS\EXCEL\6.Prix_cable.xaml">
-      <ui:InvokeWorkflowFile.Arguments>
-        <scg:Dictionary x:TypeArguments="x:String, Argument" />
-      </ui:InvokeWorkflowFile.Arguments>
-    </ui:InvokeWorkflowFile>
   </Sequence>
 </Activity>
