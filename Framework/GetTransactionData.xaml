@@ -11,7 +11,7 @@
     <x:Property Name="out_VIN" Type="OutArgument(x:String)" />
     <x:Property Name="out_SO" Type="OutArgument(x:String)" />
     <x:Property Name="out_RefClient" Type="OutArgument(x:String)" />
-    <x:Property Name="out_CAR_INVOICE" Type="OutArgument(x:String)" />
+    <x:Property Name="out_CABLE_INVOICE" Type="OutArgument(x:String)" />
   </x:Members>
   <mva:VisualBasic.Settings>
     <x:Null />
@@ -146,13 +146,13 @@
           <WriteLine DisplayName="Write Line" sap:VirtualizedContainerService.HintSize="262,62.6666666666667" sap2010:WorkflowViewState.IdRef="WriteLine_3" Text="[out_RefClient]" />
           <Assign sap:VirtualizedContainerService.HintSize="262,62" sap2010:WorkflowViewState.IdRef="Assign_11">
             <Assign.To>
-              <OutArgument x:TypeArguments="x:String">[out_CAR_INVOICE]</OutArgument>
+              <OutArgument x:TypeArguments="x:String">[out_CABLE_INVOICE]</OutArgument>
             </Assign.To>
             <Assign.Value>
-              <InArgument x:TypeArguments="x:String">[out_TransactionItem("CAR INVOICE").ToString]</InArgument>
+              <InArgument x:TypeArguments="x:String">[out_TransactionItem("CABLE INVOICE").ToString]</InArgument>
             </Assign.Value>
           </Assign>
-          <WriteLine DisplayName="Write Line" sap:VirtualizedContainerService.HintSize="262,62.6666666666667" sap2010:WorkflowViewState.IdRef="WriteLine_4" Text="[out_CAR_INVOICE]" />
+          <WriteLine DisplayName="Write Line" sap:VirtualizedContainerService.HintSize="262,62.6666666666667" sap2010:WorkflowViewState.IdRef="WriteLine_4" Text="[out_CABLE_INVOICE]" />
         </Sequence>
       </If.Then>
       <If.Else>

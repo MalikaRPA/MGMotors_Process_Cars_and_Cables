@@ -5,13 +5,12 @@
     <x:Property Name="io_dt_9010" Type="InOutArgument(sd:DataTable)" />
     <x:Property Name="io_dt_9010_full" Type="InOutArgument(sd:DataTable)" />
     <x:Property Name="io_dt_EmailCustomers" Type="InOutArgument(sd:DataTable)" />
-    <x:Property Name="io_Last_Car_Invoice_Number" Type="InOutArgument(x:String)" />
-    <x:Property Name="argument1" Type="InArgument(x:String)" />
+    <x:Property Name="io_Last_Cable_Invoice_Number" Type="InOutArgument(x:String)" />
   </x:Members>
   <mva:VisualBasic.Settings>
     <x:Null />
   </mva:VisualBasic.Settings>
-  <sap:VirtualizedContainerService.HintSize>717.333333333333,1237.33333333333</sap:VirtualizedContainerService.HintSize>
+  <sap:VirtualizedContainerService.HintSize>733.333333333333,1237.33333333333</sap:VirtualizedContainerService.HintSize>
   <sap2010:WorkflowViewState.IdRef>Initialization_1</sap2010:WorkflowViewState.IdRef>
   <TextExpression.NamespacesForImplementation>
     <sco:Collection x:TypeArguments="x:String">
@@ -74,9 +73,10 @@
       <AssemblyReference>System.ValueTuple</AssemblyReference>
       <AssemblyReference>System.Memory</AssemblyReference>
       <AssemblyReference>UiPath.Excel</AssemblyReference>
-      <AssemblyReference>System.Runtime.WindowsRuntime</AssemblyReference>
       <AssemblyReference>System.Reflection.Metadata</AssemblyReference>
       <AssemblyReference>System.Data.DataSetExtensions</AssemblyReference>
+      <AssemblyReference>System.Data.Entity</AssemblyReference>
+      <AssemblyReference>System.Runtime.WindowsRuntime</AssemblyReference>
     </sco:Collection>
   </TextExpression.ReferencesForImplementation>
   <Sequence sap2010:Annotation.AnnotationText="Open applications used in the process and do necessary initialization procedures (e.g., login)." DisplayName="Initialize All Applications" sap:VirtualizedContainerService.HintSize="478.666666666667,1172.66666666667" sap2010:WorkflowViewState.IdRef="Sequence_9">
@@ -93,31 +93,17 @@
     <ui:LogMessage DisplayName="Log message (Initialize applications)" sap:VirtualizedContainerService.HintSize="436.666666666667,94.6666666666667" sap2010:WorkflowViewState.IdRef="LogMessage_1" Level="Trace" Message="[&quot;Opening applications...&quot;]" />
     <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="Invoke ASSETS ORCHESTRATOR workflow" sap:VirtualizedContainerService.HintSize="436.666666666667,114" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_1" UnSafe="False" WorkflowFileName="ASSETS ORCHESTRATOR INIT.xaml">
       <ui:InvokeWorkflowFile.Arguments>
-        <OutArgument x:TypeArguments="x:String" x:Key="out_File_9010">
-          <mva:VisualBasicReference x:TypeArguments="x:String" ExpressionText="io_File_9010" />
-        </OutArgument>
-        <OutArgument x:TypeArguments="x:String" x:Key="out_File_ClientSansCable">
-          <mva:VisualBasicReference x:TypeArguments="x:String" ExpressionText="File_ClientSansCable" />
-        </OutArgument>
-        <OutArgument x:TypeArguments="x:String" x:Key="out_EmailContact_File">
-          <mva:VisualBasicReference x:TypeArguments="x:String" ExpressionText="EmailContact_File" />
-        </OutArgument>
+        <OutArgument x:TypeArguments="x:String" x:Key="out_File_9010">[io_File_9010]</OutArgument>
+        <OutArgument x:TypeArguments="x:String" x:Key="out_File_ClientSansCable">[File_ClientSansCable]</OutArgument>
+        <OutArgument x:TypeArguments="x:String" x:Key="out_EmailContact_File">[EmailContact_File]</OutArgument>
       </ui:InvokeWorkflowFile.Arguments>
     </ui:InvokeWorkflowFile>
     <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="Invoke 1.Lecture_9010 workflow" sap:VirtualizedContainerService.HintSize="436.666666666667,114" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_2" UnSafe="False" WorkflowFileName="PROCESSUS\EXCEL\1.Lecture_9010.xaml">
       <ui:InvokeWorkflowFile.Arguments>
-        <OutArgument x:TypeArguments="sd:DataTable" x:Key="out_dt_9010_full">
-          <mva:VisualBasicReference x:TypeArguments="sd:DataTable" ExpressionText="io_dt_9010_full" />
-        </OutArgument>
-        <OutArgument x:TypeArguments="sd:DataTable" x:Key="out_dt_9010">
-          <mva:VisualBasicReference x:TypeArguments="sd:DataTable" ExpressionText="io_dt_9010" />
-        </OutArgument>
-        <InArgument x:TypeArguments="x:String" x:Key="in_File_9010">
-          <mva:VisualBasicValue x:TypeArguments="x:String" ExpressionText="io_File_9010" />
-        </InArgument>
-        <OutArgument x:TypeArguments="x:String" x:Key="out_Last_Car_Invoice_Number">
-          <mva:VisualBasicReference x:TypeArguments="x:String" ExpressionText="io_Last_Car_Invoice_Number" />
-        </OutArgument>
+        <OutArgument x:TypeArguments="sd:DataTable" x:Key="out_dt_9010_full">[io_dt_9010_full]</OutArgument>
+        <OutArgument x:TypeArguments="sd:DataTable" x:Key="out_dt_9010">[io_dt_9010]</OutArgument>
+        <InArgument x:TypeArguments="x:String" x:Key="in_File_9010">[io_File_9010]</InArgument>
+        <OutArgument x:TypeArguments="x:String" x:Key="out_Last_Cable_Invoice_Number">[io_Last_Cable_Invoice_Number]</OutArgument>
       </ui:InvokeWorkflowFile.Arguments>
     </ui:InvokeWorkflowFile>
     <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="Invoke 2.Clients_Sans_Cable workflow" sap:VirtualizedContainerService.HintSize="436.666666666667,114" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_3" UnSafe="False" WorkflowFileName="PROCESSUS\EXCEL\2.Clients_Sans_Cable.xaml">
@@ -128,16 +114,15 @@
         <InArgument x:TypeArguments="x:String" x:Key="in_File_ClientSansCable">
           <mva:VisualBasicValue x:TypeArguments="x:String" ExpressionText="File_ClientSansCable" />
         </InArgument>
+        <InArgument x:TypeArguments="x:String" x:Key="in_Last_Cable_Invoice_Number">
+          <mva:VisualBasicValue x:TypeArguments="x:String" ExpressionText="io_Last_Cable_Invoice_Number" />
+        </InArgument>
       </ui:InvokeWorkflowFile.Arguments>
     </ui:InvokeWorkflowFile>
     <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="Invoke 3.Contacts_Emails workflow" sap:VirtualizedContainerService.HintSize="436.666666666667,114" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_4" UnSafe="False" WorkflowFileName="PROCESSUS\EXCEL\3.Contacts_Emails.xaml">
       <ui:InvokeWorkflowFile.Arguments>
-        <OutArgument x:TypeArguments="sd:DataTable" x:Key="out_dt_EmailCustomers">
-          <mva:VisualBasicReference x:TypeArguments="sd:DataTable" ExpressionText="io_dt_EmailCustomers" />
-        </OutArgument>
-        <InArgument x:TypeArguments="x:String" x:Key="in_EmailContact_File">
-          <mva:VisualBasicValue x:TypeArguments="x:String" ExpressionText="EmailContact_File" />
-        </InArgument>
+        <OutArgument x:TypeArguments="sd:DataTable" x:Key="out_dt_EmailCustomers">[io_dt_EmailCustomers]</OutArgument>
+        <InArgument x:TypeArguments="x:String" x:Key="in_EmailContact_File">[EmailContact_File]</InArgument>
       </ui:InvokeWorkflowFile.Arguments>
     </ui:InvokeWorkflowFile>
     <ui:CommentOut DisplayName="Comment Out" sap:VirtualizedContainerService.HintSize="436.666666666667,284.666666666667" sap2010:WorkflowViewState.IdRef="CommentOut_1">

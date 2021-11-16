@@ -3,6 +3,8 @@
   "description": "Infrastructure d'entreprise robotique",
   "main": "Main.xaml",
   "dependencies": {
+    "BalaReva.EasyExcel.Activities": "[29.1.1]",
+    "BalaReva.Excel.Activities": "[2021.0.0]",
     "UiPath.Excel.Activities": "[2.11.4]",
     "UiPath.System.Activities": "[21.10.2]",
     "UiPath.Testing.Activities": "[1.4.3]",

@@ -1,0 +1,193 @@
+<Activity mc:Ignorable="sap sap2010" x:Class="_11_Création_Facture_Cable" this:_11_Création_Facture_Cable.in_CableInvoiceNumber="SMEFR21SPA00011I" xmlns="http://schemas.microsoft.com/netfx/2009/xaml/activities" xmlns:bem="clr-namespace:BalaReva.Excel.Merge;assembly=BalaReva.Excel" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:mva="clr-namespace:Microsoft.VisualBasic.Activities;assembly=System.Activities" xmlns:sap="http://schemas.microsoft.com/netfx/2009/xaml/activities/presentation" xmlns:sap2010="http://schemas.microsoft.com/netfx/2010/xaml/activities/presentation" xmlns:scg="clr-namespace:System.Collections.Generic;assembly=mscorlib" xmlns:sco="clr-namespace:System.Collections.ObjectModel;assembly=mscorlib" xmlns:sd="clr-namespace:System.Data;assembly=System.Data" xmlns:this="clr-namespace:" xmlns:ui="http://schemas.uipath.com/workflow/activities" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+  <x:Members>
+    <x:Property Name="in_CableInvoiceNumber" Type="InArgument(x:String)" />
+    <x:Property Name="in_TemplateFactureCable" Type="InArgument(x:String)" />
+    <x:Property Name="in_Folder_path" Type="InArgument(x:String)" />
+    <x:Property Name="out_CableInvoiceFile" Type="OutArgument(x:String)" />
+    <x:Property Name="in_RefClient" Type="InArgument(x:String)" />
+    <x:Property Name="in_PayementMode" Type="InArgument(x:String)" />
+    <x:Property Name="in_dt_CondPaiement" Type="InArgument(sd:DataTable)" />
+    <x:Property Name="in_DateEcheance" Type="InArgument(x:String)" />
+    <x:Property Name="in_dt_InfosClient" Type="InArgument(sd:DataTable)" />
+    <x:Property Name="in_CondLivr" Type="InArgument(x:String)" />
+    <x:Property Name="in_CableModel" Type="InArgument(x:String)" />
+    <x:Property Name="in_SO" Type="InArgument(x:String)" />
+    <x:Property Name="in_VIN" Type="InArgument(x:String)" />
+    <x:Property Name="in_CarModel" Type="InArgument(x:String)" />
+    <x:Property Name="in_CablePrice" Type="InArgument(x:Double)" />
+    <x:Property Name="in_TauxTVA" Type="InArgument(x:Double)" />
+  </x:Members>
+  <mva:VisualBasic.Settings>
+    <x:Null />
+  </mva:VisualBasic.Settings>
+  <sap:VirtualizedContainerService.HintSize>760,2444.66666666667</sap:VirtualizedContainerService.HintSize>
+  <sap2010:WorkflowViewState.IdRef>_11_Création_Facture_Cable_1</sap2010:WorkflowViewState.IdRef>
+  <TextExpression.NamespacesForImplementation>
+    <sco:Collection x:TypeArguments="x:String">
+      <x:String>System.Activities</x:String>
+      <x:String>System.Activities.Statements</x:String>
+      <x:String>System.Activities.Expressions</x:String>
+      <x:String>System.Activities.Validation</x:String>
+      <x:String>System.Activities.XamlIntegration</x:String>
+      <x:String>Microsoft.VisualBasic</x:String>
+      <x:String>Microsoft.VisualBasic.Activities</x:String>
+      <x:String>System</x:String>
+      <x:String>System.Collections</x:String>
+      <x:String>System.Collections.Generic</x:String>
+      <x:String>System.Data</x:String>
+      <x:String>System.Diagnostics</x:String>
+      <x:String>System.Drawing</x:String>
+      <x:String>System.IO</x:String>
+      <x:String>System.Linq</x:String>
+      <x:String>System.Net.Mail</x:String>
+      <x:String>System.Xml</x:String>
+      <x:String>System.Xml.Linq</x:String>
+      <x:String>UiPath.Core</x:String>
+      <x:String>UiPath.Core.Activities</x:String>
+      <x:String>System.Windows.Markup</x:String>
+      <x:String>System.Collections.ObjectModel</x:String>
+      <x:String>System.Runtime.InteropServices</x:String>
+      <x:String>System.Reflection</x:String>
+      <x:String>System.Activities.DynamicUpdate</x:String>
+      <x:String>UiPath.Excel</x:String>
+      <x:String>UiPath.Excel.Activities</x:String>
+      <x:String>System.ComponentModel</x:String>
+      <x:String>System.Runtime.Serialization</x:String>
+      <x:String>System.Xml.Serialization</x:String>
+      <x:String>BalaReva.Excel.Hide_UnHide</x:String>
+      <x:String>BalaReva.Excel.Base</x:String>
+      <x:String>BalaReva.Excel.Enums</x:String>
+      <x:String>BalaReva.Excel.Merge</x:String>
+    </sco:Collection>
+  </TextExpression.NamespacesForImplementation>
+  <TextExpression.ReferencesForImplementation>
+    <sco:Collection x:TypeArguments="AssemblyReference">
+      <AssemblyReference>System.Activities</AssemblyReference>
+      <AssemblyReference>Microsoft.VisualBasic</AssemblyReference>
+      <AssemblyReference>mscorlib</AssemblyReference>
+      <AssemblyReference>System.Data</AssemblyReference>
+      <AssemblyReference>System.Data.DataSetExtensions</AssemblyReference>
+      <AssemblyReference>System</AssemblyReference>
+      <AssemblyReference>System.Drawing</AssemblyReference>
+      <AssemblyReference>System.Core</AssemblyReference>
+      <AssemblyReference>System.Xml</AssemblyReference>
+      <AssemblyReference>System.Xml.Linq</AssemblyReference>
+      <AssemblyReference>PresentationFramework</AssemblyReference>
+      <AssemblyReference>WindowsBase</AssemblyReference>
+      <AssemblyReference>PresentationCore</AssemblyReference>
+      <AssemblyReference>System.Xaml</AssemblyReference>
+      <AssemblyReference>UiPath.System.Activities</AssemblyReference>
+      <AssemblyReference>UiPath.UiAutomation.Activities</AssemblyReference>
+      <AssemblyReference>System.Memory</AssemblyReference>
+      <AssemblyReference>System.Reflection.Metadata</AssemblyReference>
+      <AssemblyReference>System.ServiceModel</AssemblyReference>
+      <AssemblyReference>Microsoft.Bcl.AsyncInterfaces</AssemblyReference>
+      <AssemblyReference>System.ValueTuple</AssemblyReference>
+      <AssemblyReference>System.ComponentModel.Composition</AssemblyReference>
+      <AssemblyReference>UiPath.Excel</AssemblyReference>
+      <AssemblyReference>UiPath.Excel.Activities.Design</AssemblyReference>
+      <AssemblyReference>UiPath.Excel.Activities</AssemblyReference>
+      <AssemblyReference>System.Runtime.Serialization</AssemblyReference>
+      <AssemblyReference>System.Data.Entity</AssemblyReference>
+      <AssemblyReference>BalaReva.Excel</AssemblyReference>
+      <AssemblyReference>BalaReva.Excel.Base</AssemblyReference>
+      <AssemblyReference>System.Runtime.WindowsRuntime</AssemblyReference>
+    </sco:Collection>
+  </TextExpression.ReferencesForImplementation>
+  <Sequence DisplayName="_11_Création_Facture_Cable" sap:VirtualizedContainerService.HintSize="562.666666666667,2380" sap2010:WorkflowViewState.IdRef="Sequence_1">
+    <sap:WorkflowViewStateService.ViewState>
+      <scg:Dictionary x:TypeArguments="x:String, x:Object">
+        <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+      </scg:Dictionary>
+    </sap:WorkflowViewStateService.ViewState>
+    <ui:CommentOut DisplayName="Comment Out" sap:VirtualizedContainerService.HintSize="520.666666666667,52.6666666666667" sap2010:WorkflowViewState.IdRef="CommentOut_1">
+      <ui:CommentOut.Body>
+        <Sequence DisplayName="Activités ignorées" sap:VirtualizedContainerService.HintSize="476,356" sap2010:WorkflowViewState.IdRef="Sequence_2">
+          <sap:WorkflowViewStateService.ViewState>
+            <scg:Dictionary x:TypeArguments="x:String, x:Object">
+              <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+            </scg:Dictionary>
+          </sap:WorkflowViewStateService.ViewState>
+          <Assign sap:VirtualizedContainerService.HintSize="434,62" sap2010:WorkflowViewState.IdRef="Assign_1">
+            <Assign.To>
+              <OutArgument x:TypeArguments="x:String">[out_CableInvoiceFile]</OutArgument>
+            </Assign.To>
+            <Assign.Value>
+              <InArgument x:TypeArguments="x:String">[in_Folder_path + "\" + in_CableInvoiceNumber + ".xlsx"]</InArgument>
+            </Assign.Value>
+          </Assign>
+          <ui:CopyFile ContinueOnError="{x:Null}" sap2010:Annotation.AnnotationText="Créer une copie du template, la déplacer vers le dossier des facturesde cables ou les enregistrer et renommer la facture." Destination="[out_CableInvoiceFile]" DisplayName="Copy File" sap:VirtualizedContainerService.HintSize="434,207.333333333333" sap2010:WorkflowViewState.IdRef="CopyFile_1" Overwrite="True" Path="[in_TemplateFactureCable]">
+            <sap:WorkflowViewStateService.ViewState>
+              <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
+              </scg:Dictionary>
+            </sap:WorkflowViewStateService.ViewState>
+          </ui:CopyFile>
+        </Sequence>
+      </ui:CommentOut.Body>
+      <sap:WorkflowViewStateService.ViewState>
+        <scg:Dictionary x:TypeArguments="x:String, x:Object">
+          <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+          <x:Boolean x:Key="IsPinned">False</x:Boolean>
+        </scg:Dictionary>
+      </sap:WorkflowViewStateService.ViewState>
+    </ui:CommentOut>
+    <Assign sap:VirtualizedContainerService.HintSize="520.666666666667,62" sap2010:WorkflowViewState.IdRef="Assign_2">
+      <Assign.To>
+        <OutArgument x:TypeArguments="x:String">[out_CableInvoiceFile]</OutArgument>
+      </Assign.To>
+      <Assign.Value>
+        <InArgument x:TypeArguments="x:String">["C:\Users\ouizb\Documents\Dossier tests\Factures Cables\SMEFR21SPA00011I.xlsx"]</InArgument>
+      </Assign.Value>
+    </Assign>
+    <ui:ExcelApplicationScope Password="{x:Null}" CreateNewFile="False" DisplayName="Excel Application Scope" sap:VirtualizedContainerService.HintSize="520.666666666667,2093.33333333333" sap2010:WorkflowViewState.IdRef="ExcelApplicationScope_1" InstanceCachePeriod="3000" Visible="False" WorkbookPath="[out_CableInvoiceFile]">
+      <ui:ExcelApplicationScope.Body>
+        <ActivityAction x:TypeArguments="ui:WorkbookApplication">
+          <ActivityAction.Argument>
+            <DelegateInArgument x:TypeArguments="ui:WorkbookApplication" Name="ExcelWorkbookScope" />
+          </ActivityAction.Argument>
+          <Sequence DisplayName="Faire" sap:VirtualizedContainerService.HintSize="486.666666666667,1984.66666666667" sap2010:WorkflowViewState.IdRef="Sequence_3">
+            <sap:WorkflowViewStateService.ViewState>
+              <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+              </scg:Dictionary>
+            </sap:WorkflowViewStateService.ViewState>
+            <ui:ExcelWriteCell Cell="A8" DisplayName="Write Cell REF CLIENT" sap:VirtualizedContainerService.HintSize="444.666666666667,86.6666666666667" sap2010:WorkflowViewState.IdRef="ExcelWriteCell_1" SheetName="CABLE FACT" Text="[in_RefClient]" />
+            <ui:ExcelWriteCell Cell="C8" DisplayName="Write Cell Mode de réglement" sap:VirtualizedContainerService.HintSize="444.666666666667,86.6666666666667" sap2010:WorkflowViewState.IdRef="ExcelWriteCell_2" SheetName="CABLE FACT" Text="[in_PayementMode]" />
+            <WriteLine DisplayName="Write Line" sap:VirtualizedContainerService.HintSize="444.666666666667,62.6666666666667" sap2010:WorkflowViewState.IdRef="WriteLine_1" Text="ici" />
+            <ui:CommentOut DisplayName="Comment Out" sap:VirtualizedContainerService.HintSize="444.666666666667,52.6666666666667" sap2010:WorkflowViewState.IdRef="CommentOut_2">
+              <ui:CommentOut.Body>
+                <Sequence DisplayName="Activités ignorées" sap:VirtualizedContainerService.HintSize="376,178.666666666667" sap2010:WorkflowViewState.IdRef="Sequence_4">
+                  <sap:WorkflowViewStateService.ViewState>
+                    <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                      <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                    </scg:Dictionary>
+                  </sap:WorkflowViewStateService.ViewState>
+                  <ui:ExcelWriteCell Cell="A10" DisplayName="Write Cell Conditions de paiement" sap:VirtualizedContainerService.HintSize="334,86.6666666666667" sap2010:WorkflowViewState.IdRef="ExcelWriteCell_11" SheetName="CABLE FACT" Text="[in_dt_CondPaiement]" />
+                </Sequence>
+              </ui:CommentOut.Body>
+              <sap:WorkflowViewStateService.ViewState>
+                <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                  <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                  <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                </scg:Dictionary>
+              </sap:WorkflowViewStateService.ViewState>
+            </ui:CommentOut>
+            <bem:UnMergeCells ExecutionResult="{x:Null}" FilePassword="{x:Null}" ModifyPassword="{x:Null}" ContinueOnError="False" Delay="3" DisplayName="UnMerge Cells" FilePath="[out_CableInvoiceFile]" sap:VirtualizedContainerService.HintSize="444.666666666667,68.6666666666667" HorizontalAlignment="Center" sap2010:WorkflowViewState.IdRef="UnMergeCells_1" SheetName="CABLE FACT" UnMergeRange="A10:B11" VerticalAlignment="Center" />
+            <ui:ExcelWriteRange AddHeaders="False" DataTable="[in_dt_CondPaiement]" DisplayName="Write Range Condition de paiement" sap:VirtualizedContainerService.HintSize="444.666666666667,86.6666666666667" sap2010:WorkflowViewState.IdRef="ExcelWriteRange_1" SheetName="CABLE FACT" StartingCell="A10:B11" />
+            <bem:MergeCells CellText="{x:Null}" ExecutionResult="{x:Null}" FilePassword="{x:Null}" ModifyPassword="{x:Null}" ContinueOnError="False" Delay="3" DisplayName="Merge Cells" FilePath="[out_CableInvoiceFile]" sap:VirtualizedContainerService.HintSize="444.666666666667,68.6666666666667" HorizontalAlignment="Center" sap2010:WorkflowViewState.IdRef="MergeCells_1" MergeRange="A10:B11" SheetName="CABLE FACT" VerticalAlignment="Center" />
+            <ui:ExcelWriteCell Cell="C10" DisplayName="Write Cell Date d'échéance" sap:VirtualizedContainerService.HintSize="444.666666666667,86.6666666666667" sap2010:WorkflowViewState.IdRef="ExcelWriteCell_3" SheetName="CABLE FACT" Text="[in_DateEcheance]" />
+            <ui:ExcelWriteRange AddHeaders="False" DataTable="[in_dt_InfosClient]" DisplayName="Write Range Facturer à " sap:VirtualizedContainerService.HintSize="444.666666666667,86.6666666666667" sap2010:WorkflowViewState.IdRef="ExcelWriteRange_2" SheetName="CABLE FACT" StartingCell="A15:A21" />
+            <ui:ExcelWriteCell Cell="A31" DisplayName="Write Cell Conditions de livraison" sap:VirtualizedContainerService.HintSize="444.666666666667,86.6666666666667" sap2010:WorkflowViewState.IdRef="ExcelWriteCell_4" SheetName="CABLE FACT" Text="[in_CondLivr]" />
+            <ui:ExcelWriteCell Cell="C23" DisplayName="Write Cell Modèle de cable" sap:VirtualizedContainerService.HintSize="444.666666666667,86.6666666666667" sap2010:WorkflowViewState.IdRef="ExcelWriteCell_5" SheetName="CABLE FACT" Text="[in_CableModel]" />
+            <ui:ExcelWriteCell Cell="E23" DisplayName="Write Cell Num de commande" sap:VirtualizedContainerService.HintSize="444.666666666667,86.6666666666667" sap2010:WorkflowViewState.IdRef="ExcelWriteCell_6" SheetName="CABLE FACT" Text="[in_SO]" />
+            <ui:ExcelWriteCell Cell="F23" DisplayName="Write Cell Num de VIN" sap:VirtualizedContainerService.HintSize="444.666666666667,86.6666666666667" sap2010:WorkflowViewState.IdRef="ExcelWriteCell_7" SheetName="CABLE FACT" Text="[in_VIN]" />
+            <ui:ExcelWriteCell Cell="G23" DisplayName="Write Cell Modèle de voiture" sap:VirtualizedContainerService.HintSize="444.666666666667,86.6666666666667" sap2010:WorkflowViewState.IdRef="ExcelWriteCell_8" SheetName="CABLE FACT" Text="[in_CarModel]" />
+            <ui:ExcelWriteCell Cell="I23" DisplayName="Write Cell Cable price" sap:VirtualizedContainerService.HintSize="444.666666666667,86.6666666666667" sap2010:WorkflowViewState.IdRef="ExcelWriteCell_9" SheetName="CABLE FACT" Text="[in_CablePrice.ToString]" />
+            <ui:ExcelWriteCell Cell="I33" DisplayName="Write Cell Taux de TVA" sap:VirtualizedContainerService.HintSize="444.666666666667,86.6666666666667" sap2010:WorkflowViewState.IdRef="ExcelWriteCell_10" SheetName="CABLE FACT" Text="[&quot;TVA à &quot; + in_TauxTVA.ToString + &quot;%&quot;]" />
+          </Sequence>
+        </ActivityAction>
+      </ui:ExcelApplicationScope.Body>
+    </ui:ExcelApplicationScope>
+  </Sequence>
+</Activity>

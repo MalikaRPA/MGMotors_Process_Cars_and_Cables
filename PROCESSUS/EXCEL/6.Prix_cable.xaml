@@ -3,11 +3,12 @@
     <x:Property Name="in_CarModel" Type="InArgument(x:String)" />
     <x:Property Name="out_CablePrice" Type="OutArgument(x:Double)" />
     <x:Property Name="in_CablePrice_File" Type="InArgument(x:String)" />
+    <x:Property Name="in_CableModel" Type="InArgument(x:String)" />
   </x:Members>
   <mva:VisualBasic.Settings>
     <x:Null />
   </mva:VisualBasic.Settings>
-  <sap:VirtualizedContainerService.HintSize>717.333333333333,1010.66666666667</sap:VirtualizedContainerService.HintSize>
+  <sap:VirtualizedContainerService.HintSize>733.333333333333,1010.66666666667</sap:VirtualizedContainerService.HintSize>
   <sap2010:WorkflowViewState.IdRef>_6_Prix_cable_1</sap2010:WorkflowViewState.IdRef>
   <TextExpression.NamespacesForImplementation>
     <scg:List x:TypeArguments="x:String" Capacity="31">
