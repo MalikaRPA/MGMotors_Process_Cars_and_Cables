@@ -14,7 +14,7 @@
   <mva:VisualBasic.Settings>
     <x:Null />
   </mva:VisualBasic.Settings>
-  <sap:VirtualizedContainerService.HintSize>733.333333333333,1701.33333333333</sap:VirtualizedContainerService.HintSize>
+  <sap:VirtualizedContainerService.HintSize>658,1360</sap:VirtualizedContainerService.HintSize>
   <sap2010:WorkflowViewState.IdRef>Séquence_1</sap2010:WorkflowViewState.IdRef>
   <TextExpression.NamespacesForImplementation>
     <scg:List x:TypeArguments="x:String" Capacity="29">
@@ -80,7 +80,7 @@
       <AssemblyReference>UiPath.Excel</AssemblyReference>
     </scg:List>
   </TextExpression.ReferencesForImplementation>
-  <Sequence DisplayName="Séquence" sap:VirtualizedContainerService.HintSize="606.666666666667,1636.66666666667" sap2010:WorkflowViewState.IdRef="Sequence_1">
+  <Sequence DisplayName="Séquence" sap:VirtualizedContainerService.HintSize="528,1295.33333333333" sap2010:WorkflowViewState.IdRef="Sequence_1">
     <Sequence.Variables>
       <Variable x:TypeArguments="si:DirectoryInfo" Name="file" />
       <Variable x:TypeArguments="s:String[]" Name="filename" />
@@ -90,76 +90,54 @@
         <x:Boolean x:Key="IsExpanded">True</x:Boolean>
       </scg:Dictionary>
     </sap:WorkflowViewStateService.ViewState>
-    <ui:CommentOut DisplayName="Comment Out" sap:VirtualizedContainerService.HintSize="564.666666666667,240" sap2010:WorkflowViewState.IdRef="CommentOut_4">
-      <ui:CommentOut.Body>
-        <Sequence DisplayName="Activités ignorées" sap:VirtualizedContainerService.HintSize="242,161.333333333333" sap2010:WorkflowViewState.IdRef="Sequence_8">
-          <sap:WorkflowViewStateService.ViewState>
-            <scg:Dictionary x:TypeArguments="x:String, x:Object">
-              <x:Boolean x:Key="IsExpanded">True</x:Boolean>
-            </scg:Dictionary>
-          </sap:WorkflowViewStateService.ViewState>
-          <Sequence DisplayName="Facture Excel" sap:VirtualizedContainerService.HintSize="200,69.3333333333333" sap2010:WorkflowViewState.IdRef="Sequence_6">
-            <sap:WorkflowViewStateService.ViewState>
-              <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                <x:Boolean x:Key="IsExpanded">False</x:Boolean>
-                <x:Boolean x:Key="IsPinned">False</x:Boolean>
-              </scg:Dictionary>
-            </sap:WorkflowViewStateService.ViewState>
-            <uascw:ExtractFiles Password="{x:Null}" sap2010:Annotation.AnnotationText="Décompression du zip.&#xA;Déplacement vers le dossier des factures excel." CodePage="Default" DestinationFolder="[in_ExcelDirectory]" DestinationFolderInfo="[file]" DisplayName="Extract/Unzip Files" ExtractToADedicatedFolder="True" FileToExtract="[in_Download_Zip_Excel]" sap:VirtualizedContainerService.HintSize="444,257.333333333333" sap2010:WorkflowViewState.IdRef="ExtractFiles_1" SkipUnsupportedFiles="False">
-              <sap:WorkflowViewStateService.ViewState>
-                <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                  <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
-                </scg:Dictionary>
-              </sap:WorkflowViewStateService.ViewState>
-            </uascw:ExtractFiles>
-            <ui:DeleteFileX sap2010:Annotation.AnnotationText="Suppression du zip dans les téléchargements." DisplayName="Delete File" sap:VirtualizedContainerService.HintSize="444,111.333333333333" sap2010:WorkflowViewState.IdRef="DeleteFileX_1" Path="[in_Download_Zip_Excel]">
-              <sap:WorkflowViewStateService.ViewState>
-                <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                  <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
-                </scg:Dictionary>
-              </sap:WorkflowViewStateService.ViewState>
-            </ui:DeleteFileX>
-          </Sequence>
-        </Sequence>
-      </ui:CommentOut.Body>
-    </ui:CommentOut>
-    <ui:CommentOut DisplayName="Comment Out" sap:VirtualizedContainerService.HintSize="564.666666666667,671.333333333333" sap2010:WorkflowViewState.IdRef="CommentOut_5">
-      <ui:CommentOut.Body>
-        <Sequence DisplayName="Activités ignorées" sap:VirtualizedContainerService.HintSize="528,592.666666666667" sap2010:WorkflowViewState.IdRef="Sequence_9">
-          <sap:WorkflowViewStateService.ViewState>
-            <scg:Dictionary x:TypeArguments="x:String, x:Object">
-              <x:Boolean x:Key="IsExpanded">True</x:Boolean>
-            </scg:Dictionary>
-          </sap:WorkflowViewStateService.ViewState>
-          <Sequence DisplayName="Facture PDF" sap:VirtualizedContainerService.HintSize="486,500.666666666667" sap2010:WorkflowViewState.IdRef="Sequence_7">
-            <Sequence.Variables>
-              <Variable x:TypeArguments="si:DirectoryInfo" Name="filePDF" />
-            </Sequence.Variables>
-            <sap:WorkflowViewStateService.ViewState>
-              <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                <x:Boolean x:Key="IsExpanded">True</x:Boolean>
-                <x:Boolean x:Key="IsPinned">False</x:Boolean>
-              </scg:Dictionary>
-            </sap:WorkflowViewStateService.ViewState>
-            <uascw:ExtractFiles Password="{x:Null}" sap2010:Annotation.AnnotationText="Décompression du zip.&#xA;Déplacement vers le dossier des factures pdf." CodePage="Default" DestinationFolder="[in_PDFDirectory]" DestinationFolderInfo="[filePDF]" DisplayName="Extract/Unzip Files" ExtractToADedicatedFolder="True" FileToExtract="[in_Download_Zip_PDF]" sap:VirtualizedContainerService.HintSize="444,257.333333333333" sap2010:WorkflowViewState.IdRef="ExtractFiles_2" SkipUnsupportedFiles="False">
-              <sap:WorkflowViewStateService.ViewState>
-                <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                  <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
-                </scg:Dictionary>
-              </sap:WorkflowViewStateService.ViewState>
-            </uascw:ExtractFiles>
-            <ui:DeleteFileX sap2010:Annotation.AnnotationText="Suppression du zip dans les téléchargements." DisplayName="Delete File" sap:VirtualizedContainerService.HintSize="444,111.333333333333" sap2010:WorkflowViewState.IdRef="DeleteFileX_2" Path="[in_Download_Zip_PDF]">
-              <sap:WorkflowViewStateService.ViewState>
-                <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                  <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
-                </scg:Dictionary>
-              </sap:WorkflowViewStateService.ViewState>
-            </ui:DeleteFileX>
-          </Sequence>
-        </Sequence>
-      </ui:CommentOut.Body>
-    </ui:CommentOut>
-    <Assign DisplayName="Assign Chemin de la facture PDF du véhicule" sap:VirtualizedContainerService.HintSize="564.666666666667,62" sap2010:WorkflowViewState.IdRef="Assign_5">
+    <Sequence DisplayName="Facture Excel" sap:VirtualizedContainerService.HintSize="486,69.3333333333333" sap2010:WorkflowViewState.IdRef="Sequence_6">
+      <sap:WorkflowViewStateService.ViewState>
+        <scg:Dictionary x:TypeArguments="x:String, x:Object">
+          <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+          <x:Boolean x:Key="IsPinned">False</x:Boolean>
+        </scg:Dictionary>
+      </sap:WorkflowViewStateService.ViewState>
+      <uascw:ExtractFiles Password="{x:Null}" sap2010:Annotation.AnnotationText="Décompression du zip.&#xA;Déplacement vers le dossier des factures excel." CodePage="Default" DestinationFolder="[in_ExcelDirectory]" DestinationFolderInfo="[file]" DisplayName="Extract/Unzip Files" ExtractToADedicatedFolder="True" FileToExtract="[in_Download_Zip_Excel]" sap:VirtualizedContainerService.HintSize="444,257.333333333333" sap2010:WorkflowViewState.IdRef="ExtractFiles_1" SkipUnsupportedFiles="False">
+        <sap:WorkflowViewStateService.ViewState>
+          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+            <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
+          </scg:Dictionary>
+        </sap:WorkflowViewStateService.ViewState>
+      </uascw:ExtractFiles>
+      <ui:DeleteFileX sap2010:Annotation.AnnotationText="Suppression du zip dans les téléchargements." DisplayName="Delete File" sap:VirtualizedContainerService.HintSize="444,111.333333333333" sap2010:WorkflowViewState.IdRef="DeleteFileX_1" Path="[in_Download_Zip_Excel]">
+        <sap:WorkflowViewStateService.ViewState>
+          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+            <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
+          </scg:Dictionary>
+        </sap:WorkflowViewStateService.ViewState>
+      </ui:DeleteFileX>
+    </Sequence>
+    <Sequence DisplayName="Facture PDF" sap:VirtualizedContainerService.HintSize="486,500.666666666667" sap2010:WorkflowViewState.IdRef="Sequence_7">
+      <Sequence.Variables>
+        <Variable x:TypeArguments="si:DirectoryInfo" Name="filePDF" />
+      </Sequence.Variables>
+      <sap:WorkflowViewStateService.ViewState>
+        <scg:Dictionary x:TypeArguments="x:String, x:Object">
+          <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+          <x:Boolean x:Key="IsPinned">False</x:Boolean>
+        </scg:Dictionary>
+      </sap:WorkflowViewStateService.ViewState>
+      <uascw:ExtractFiles Password="{x:Null}" sap2010:Annotation.AnnotationText="Décompression du zip.&#xA;Déplacement vers le dossier des factures pdf." CodePage="Default" DestinationFolder="[in_PDFDirectory]" DestinationFolderInfo="[filePDF]" DisplayName="Extract/Unzip Files" ExtractToADedicatedFolder="True" FileToExtract="[in_Download_Zip_PDF]" sap:VirtualizedContainerService.HintSize="444,257.333333333333" sap2010:WorkflowViewState.IdRef="ExtractFiles_2" SkipUnsupportedFiles="False">
+        <sap:WorkflowViewStateService.ViewState>
+          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+            <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
+          </scg:Dictionary>
+        </sap:WorkflowViewStateService.ViewState>
+      </uascw:ExtractFiles>
+      <ui:DeleteFileX sap2010:Annotation.AnnotationText="Suppression du zip dans les téléchargements." DisplayName="Delete File" sap:VirtualizedContainerService.HintSize="444,111.333333333333" sap2010:WorkflowViewState.IdRef="DeleteFileX_2" Path="[in_Download_Zip_PDF]">
+        <sap:WorkflowViewStateService.ViewState>
+          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+            <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
+          </scg:Dictionary>
+        </sap:WorkflowViewStateService.ViewState>
+      </ui:DeleteFileX>
+    </Sequence>
+    <Assign DisplayName="Assign Chemin de la facture PDF du véhicule" sap:VirtualizedContainerService.HintSize="486,62" sap2010:WorkflowViewState.IdRef="Assign_5">
       <Assign.To>
         <OutArgument x:TypeArguments="x:String">[out_CarInvoicePDF_Path]</OutArgument>
       </Assign.To>
@@ -167,21 +145,21 @@
         <InArgument x:TypeArguments="x:String">[in_PDFDirectory + "\" + in_facturePDFCar]</InArgument>
       </Assign.Value>
     </Assign>
-    <ui:MoveFile ContinueOnError="{x:Null}" sap2010:Annotation.AnnotationText="Déplacer la facture pdf vers le dossier pou les factures de voitures." Destination="[out_CarInvoicePDF_Path]" DisplayName="Move File" sap:VirtualizedContainerService.HintSize="564.666666666667,207.333333333333" sap2010:WorkflowViewState.IdRef="MoveFile_1" Overwrite="True" Path="[in_PDFDirectory + &quot;\&quot; + in_Download_invoice_pdf +&quot;\&quot;+ in_facturePDFCar]">
+    <ui:MoveFile ContinueOnError="{x:Null}" sap2010:Annotation.AnnotationText="Déplacer la facture pdf vers le dossier pou les factures de voitures." Destination="[out_CarInvoicePDF_Path]" DisplayName="Move File" sap:VirtualizedContainerService.HintSize="486,207.333333333333" sap2010:WorkflowViewState.IdRef="MoveFile_1" Overwrite="True" Path="[in_PDFDirectory + &quot;\&quot; + in_Download_invoice_pdf +&quot;\&quot;+ in_facturePDFCar]">
       <sap:WorkflowViewStateService.ViewState>
         <scg:Dictionary x:TypeArguments="x:String, x:Object">
           <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
         </scg:Dictionary>
       </sap:WorkflowViewStateService.ViewState>
     </ui:MoveFile>
-    <ui:DeleteFolderX sap2010:Annotation.AnnotationText="Suppression du dossier du zip dans le dossier &quot;Factures PDF&quot;" DisplayName="Delete Folder" sap:VirtualizedContainerService.HintSize="564.666666666667,111.333333333333" sap2010:WorkflowViewState.IdRef="DeleteFolderX_1" Path="[in_PDFDirectory + &quot;\&quot; + in_Download_invoice_pdf]" Recursive="True">
+    <ui:DeleteFolderX sap2010:Annotation.AnnotationText="Suppression du dossier du zip dans le dossier &quot;Factures PDF&quot;" DisplayName="Delete Folder" sap:VirtualizedContainerService.HintSize="486,111.333333333333" sap2010:WorkflowViewState.IdRef="DeleteFolderX_1" Path="[in_PDFDirectory + &quot;\&quot; + in_Download_invoice_pdf]" Recursive="True">
       <sap:WorkflowViewStateService.ViewState>
         <scg:Dictionary x:TypeArguments="x:String, x:Object">
           <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
         </scg:Dictionary>
       </sap:WorkflowViewStateService.ViewState>
     </ui:DeleteFolderX>
-    <ui:CommentOut DisplayName="Comment Out" sap:VirtualizedContainerService.HintSize="564.666666666667,52.6666666666667" sap2010:WorkflowViewState.IdRef="CommentOut_3">
+    <ui:CommentOut DisplayName="Comment Out" sap:VirtualizedContainerService.HintSize="486,52.6666666666667" sap2010:WorkflowViewState.IdRef="CommentOut_3">
       <ui:CommentOut.Body>
         <Sequence DisplayName="Activités ignorées" sap:VirtualizedContainerService.HintSize="304,358.666666666667" sap2010:WorkflowViewState.IdRef="Sequence_4">
           <sap:WorkflowViewStateService.ViewState>

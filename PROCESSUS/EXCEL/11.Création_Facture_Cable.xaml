@@ -16,11 +16,12 @@
     <x:Property Name="in_CarModel" Type="InArgument(x:String)" />
     <x:Property Name="in_CablePrice" Type="InArgument(x:Double)" />
     <x:Property Name="in_TauxTVA" Type="InArgument(x:Double)" />
+    <x:Property Name="in_CableDirectoryExcel" Type="InArgument(x:String)" />
   </x:Members>
   <mva:VisualBasic.Settings>
     <x:Null />
   </mva:VisualBasic.Settings>
-  <sap:VirtualizedContainerService.HintSize>760,2444.66666666667</sap:VirtualizedContainerService.HintSize>
+  <sap:VirtualizedContainerService.HintSize>658,2701.33333333333</sap:VirtualizedContainerService.HintSize>
   <sap2010:WorkflowViewState.IdRef>_11_Création_Facture_Cable_1</sap2010:WorkflowViewState.IdRef>
   <TextExpression.NamespacesForImplementation>
     <sco:Collection x:TypeArguments="x:String">
@@ -94,44 +95,27 @@
       <AssemblyReference>System.Runtime.WindowsRuntime</AssemblyReference>
     </sco:Collection>
   </TextExpression.ReferencesForImplementation>
-  <Sequence DisplayName="_11_Création_Facture_Cable" sap:VirtualizedContainerService.HintSize="562.666666666667,2380" sap2010:WorkflowViewState.IdRef="Sequence_1">
+  <Sequence DisplayName="_11_Création_Facture_Cable" sap:VirtualizedContainerService.HintSize="562.666666666667,2636.66666666667" sap2010:WorkflowViewState.IdRef="Sequence_1">
     <sap:WorkflowViewStateService.ViewState>
       <scg:Dictionary x:TypeArguments="x:String, x:Object">
         <x:Boolean x:Key="IsExpanded">True</x:Boolean>
       </scg:Dictionary>
     </sap:WorkflowViewStateService.ViewState>
-    <ui:CommentOut DisplayName="Comment Out" sap:VirtualizedContainerService.HintSize="520.666666666667,52.6666666666667" sap2010:WorkflowViewState.IdRef="CommentOut_1">
-      <ui:CommentOut.Body>
-        <Sequence DisplayName="Activités ignorées" sap:VirtualizedContainerService.HintSize="476,356" sap2010:WorkflowViewState.IdRef="Sequence_2">
-          <sap:WorkflowViewStateService.ViewState>
-            <scg:Dictionary x:TypeArguments="x:String, x:Object">
-              <x:Boolean x:Key="IsExpanded">True</x:Boolean>
-            </scg:Dictionary>
-          </sap:WorkflowViewStateService.ViewState>
-          <Assign sap:VirtualizedContainerService.HintSize="434,62" sap2010:WorkflowViewState.IdRef="Assign_1">
-            <Assign.To>
-              <OutArgument x:TypeArguments="x:String">[out_CableInvoiceFile]</OutArgument>
-            </Assign.To>
-            <Assign.Value>
-              <InArgument x:TypeArguments="x:String">[in_Folder_path + "\" + in_CableInvoiceNumber + ".xlsx"]</InArgument>
-            </Assign.Value>
-          </Assign>
-          <ui:CopyFile ContinueOnError="{x:Null}" sap2010:Annotation.AnnotationText="Créer une copie du template, la déplacer vers le dossier des facturesde cables ou les enregistrer et renommer la facture." Destination="[out_CableInvoiceFile]" DisplayName="Copy File" sap:VirtualizedContainerService.HintSize="434,207.333333333333" sap2010:WorkflowViewState.IdRef="CopyFile_1" Overwrite="True" Path="[in_TemplateFactureCable]">
-            <sap:WorkflowViewStateService.ViewState>
-              <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
-              </scg:Dictionary>
-            </sap:WorkflowViewStateService.ViewState>
-          </ui:CopyFile>
-        </Sequence>
-      </ui:CommentOut.Body>
+    <Assign sap:VirtualizedContainerService.HintSize="520.666666666667,62" sap2010:WorkflowViewState.IdRef="Assign_1">
+      <Assign.To>
+        <OutArgument x:TypeArguments="x:String">[out_CableInvoiceFile]</OutArgument>
+      </Assign.To>
+      <Assign.Value>
+        <InArgument x:TypeArguments="x:String" xml:space="preserve">[in_Folder_path + "\" + in_CableDirectoryExcel + "\"+  in_CableInvoiceNumber + ".xlsx"]</InArgument>
+      </Assign.Value>
+    </Assign>
+    <ui:CopyFile ContinueOnError="{x:Null}" sap2010:Annotation.AnnotationText="Créer une copie du template, la déplacer vers le dossier des facturesde cables ou les enregistrer et renommer la facture." Destination="[out_CableInvoiceFile]" DisplayName="Copy File" sap:VirtualizedContainerService.HintSize="520.666666666667,207.333333333333" sap2010:WorkflowViewState.IdRef="CopyFile_1" Overwrite="True" Path="[in_TemplateFactureCable]">
       <sap:WorkflowViewStateService.ViewState>
         <scg:Dictionary x:TypeArguments="x:String, x:Object">
-          <x:Boolean x:Key="IsExpanded">False</x:Boolean>
-          <x:Boolean x:Key="IsPinned">False</x:Boolean>
+          <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
         </scg:Dictionary>
       </sap:WorkflowViewStateService.ViewState>
-    </ui:CommentOut>
+    </ui:CopyFile>
     <Assign sap:VirtualizedContainerService.HintSize="520.666666666667,62" sap2010:WorkflowViewState.IdRef="Assign_2">
       <Assign.To>
         <OutArgument x:TypeArguments="x:String">[out_CableInvoiceFile]</OutArgument>

@@ -10,11 +10,13 @@
     <x:Property Name="out_CarNumber" Type="OutArgument(x:String)" />
     <x:Property Name="out_TemplateFactureCable" Type="OutArgument(x:String)" />
     <x:Property Name="out_Folder_path" Type="OutArgument(x:String)" />
+    <x:Property Name="out_CableDirectoryExcel" Type="OutArgument(x:String)" />
+    <x:Property Name="out_CableDirectoryPDF" Type="OutArgument(x:String)" />
   </x:Members>
   <mva:VisualBasic.Settings>
     <x:Null />
   </mva:VisualBasic.Settings>
-  <sap:VirtualizedContainerService.HintSize>733.333333333333,2639.33333333333</sap:VirtualizedContainerService.HintSize>
+  <sap:VirtualizedContainerService.HintSize>658,3000.66666666667</sap:VirtualizedContainerService.HintSize>
   <sap2010:WorkflowViewState.IdRef>Asset_Orch_process_1</sap2010:WorkflowViewState.IdRef>
   <TextExpression.NamespacesForImplementation>
     <scg:List x:TypeArguments="x:String" Capacity="24">
@@ -64,7 +66,7 @@
       <AssemblyReference>UiPath.UiAutomation.Activities</AssemblyReference>
     </scg:List>
   </TextExpression.ReferencesForImplementation>
-  <Sequence DisplayName="Asset_Orch_process" sap:VirtualizedContainerService.HintSize="486,2574.66666666667" sap2010:WorkflowViewState.IdRef="Sequence_1">
+  <Sequence DisplayName="Asset_Orch_process" sap:VirtualizedContainerService.HintSize="486,2936" sap2010:WorkflowViewState.IdRef="Sequence_1">
     <Sequence.Variables>
       <Variable x:TypeArguments="x:String" Name="CablePrice_File" />
       <Variable x:TypeArguments="x:String" Name="ExcelDirectory" />
@@ -100,7 +102,7 @@
         <OutArgument x:TypeArguments="x:String">[out_Download_Zip_Excel]</OutArgument>
       </ui:GetRobotAsset.Value>
     </ui:GetRobotAsset>
-    <ui:GetRobotAsset TimeoutMS="{x:Null}" AssetName="ExcelDirectory" DisplayName="Get Asset" sap:VirtualizedContainerService.HintSize="444,140.666666666667" sap2010:WorkflowViewState.IdRef="GetRobotAsset_4">
+    <ui:GetRobotAsset TimeoutMS="{x:Null}" AssetName="ExcelDirectoryCar" DisplayName="Get Asset" sap:VirtualizedContainerService.HintSize="444,140.666666666667" sap2010:WorkflowViewState.IdRef="GetRobotAsset_4">
       <ui:GetRobotAsset.Value>
         <OutArgument x:TypeArguments="x:String">[ExcelDirectory]</OutArgument>
       </ui:GetRobotAsset.Value>
@@ -119,7 +121,7 @@
         <OutArgument x:TypeArguments="x:String">[out_Download_Zip_PDF]</OutArgument>
       </ui:GetRobotAsset.Value>
     </ui:GetRobotAsset>
-    <ui:GetRobotAsset TimeoutMS="{x:Null}" AssetName="PDFDirectory" DisplayName="Get Asset" sap:VirtualizedContainerService.HintSize="444,140.666666666667" sap2010:WorkflowViewState.IdRef="GetRobotAsset_6">
+    <ui:GetRobotAsset TimeoutMS="{x:Null}" AssetName="PDFDirectoryCar" DisplayName="Get Asset" sap:VirtualizedContainerService.HintSize="444,140.666666666667" sap2010:WorkflowViewState.IdRef="GetRobotAsset_6">
       <ui:GetRobotAsset.Value>
         <OutArgument x:TypeArguments="x:String">[PDFDirectory]</OutArgument>
       </ui:GetRobotAsset.Value>
@@ -161,5 +163,15 @@
         <InArgument x:TypeArguments="x:String">[out_Folder_path + "\" + TemplateFactureCable]</InArgument>
       </Assign.Value>
     </Assign>
+    <ui:GetRobotAsset TimeoutMS="{x:Null}" AssetName="CableDirectoryExcel" DisplayName="Get Asset" sap:VirtualizedContainerService.HintSize="444,140.666666666667" sap2010:WorkflowViewState.IdRef="GetRobotAsset_11">
+      <ui:GetRobotAsset.Value>
+        <OutArgument x:TypeArguments="x:String">[out_CableDirectoryExcel]</OutArgument>
+      </ui:GetRobotAsset.Value>
+    </ui:GetRobotAsset>
+    <ui:GetRobotAsset TimeoutMS="{x:Null}" AssetName="CableDirectoryPDF" DisplayName="Get Asset" sap:VirtualizedContainerService.HintSize="444,140.666666666667" sap2010:WorkflowViewState.IdRef="GetRobotAsset_12">
+      <ui:GetRobotAsset.Value>
+        <OutArgument x:TypeArguments="x:String">[out_CableDirectoryPDF]</OutArgument>
+      </ui:GetRobotAsset.Value>
+    </ui:GetRobotAsset>
   </Sequence>
 </Activity>
