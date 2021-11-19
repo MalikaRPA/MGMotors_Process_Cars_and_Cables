@@ -3,11 +3,13 @@
     <x:Property Name="out_File_9010" Type="OutArgument(x:String)" />
     <x:Property Name="out_File_ClientSansCable" Type="OutArgument(x:String)" />
     <x:Property Name="out_EmailContact_File" Type="OutArgument(x:String)" />
+    <x:Property Name="out_TemplateComptaPath" Type="OutArgument(x:String)" />
+    <x:Property Name="out_Folder_path" Type="OutArgument(x:String)" />
   </x:Members>
   <mva:VisualBasic.Settings>
     <x:Null />
   </mva:VisualBasic.Settings>
-  <sap:VirtualizedContainerService.HintSize>717.333333333333,1453.33333333333</sap:VirtualizedContainerService.HintSize>
+  <sap:VirtualizedContainerService.HintSize>792.666666666667,1736</sap:VirtualizedContainerService.HintSize>
   <sap2010:WorkflowViewState.IdRef>ASSETS_ORCHESTRATOR_1</sap2010:WorkflowViewState.IdRef>
   <TextExpression.NamespacesForImplementation>
     <scg:List x:TypeArguments="x:String" Capacity="24">
@@ -59,12 +61,12 @@
       <AssemblyReference>System.Reflection.Metadata</AssemblyReference>
     </scg:List>
   </TextExpression.ReferencesForImplementation>
-  <Sequence DisplayName="ASSETS_ORCHESTRATOR" sap:VirtualizedContainerService.HintSize="486,1388.66666666667" sap2010:WorkflowViewState.IdRef="Sequence_1">
+  <Sequence DisplayName="ASSETS_ORCHESTRATOR" sap:VirtualizedContainerService.HintSize="486,1671.33333333333" sap2010:WorkflowViewState.IdRef="Sequence_1">
     <Sequence.Variables>
       <Variable x:TypeArguments="x:String" Name="File_9010" />
-      <Variable x:TypeArguments="x:String" Name="Folder_path" />
       <Variable x:TypeArguments="x:String" Name="File_ClientSansCable" />
       <Variable x:TypeArguments="x:String" Name="EmailContact_File" />
+      <Variable x:TypeArguments="x:String" Name="TemplateComptaPath" />
     </Sequence.Variables>
     <sap:WorkflowViewStateService.ViewState>
       <scg:Dictionary x:TypeArguments="x:String, x:Object">
@@ -73,7 +75,7 @@
     </sap:WorkflowViewStateService.ViewState>
     <ui:GetRobotAsset TimeoutMS="{x:Null}" AssetName="Folder_path" DisplayName="Get Asset" sap:VirtualizedContainerService.HintSize="444,140.666666666667" sap2010:WorkflowViewState.IdRef="GetRobotAsset_1">
       <ui:GetRobotAsset.Value>
-        <OutArgument x:TypeArguments="x:String">[Folder_path]</OutArgument>
+        <OutArgument x:TypeArguments="x:String">[out_Folder_path]</OutArgument>
       </ui:GetRobotAsset.Value>
     </ui:GetRobotAsset>
     <ui:GetRobotAsset TimeoutMS="{x:Null}" AssetName="File_9010" DisplayName="Get Asset" sap:VirtualizedContainerService.HintSize="444,140.666666666667" sap2010:WorkflowViewState.IdRef="GetRobotAsset_2">
@@ -86,7 +88,7 @@
         <OutArgument x:TypeArguments="x:String">[out_File_9010]</OutArgument>
       </Assign.To>
       <Assign.Value>
-        <InArgument x:TypeArguments="x:String">[Folder_path +"\" + File_9010]</InArgument>
+        <InArgument x:TypeArguments="x:String">[out_Folder_path +"\" + File_9010]</InArgument>
       </Assign.Value>
     </Assign>
     <WriteLine DisplayName="Write Line" sap:VirtualizedContainerService.HintSize="444,62.6666666666667" sap2010:WorkflowViewState.IdRef="WriteLine_1" Text="[out_File_9010]" />
@@ -100,7 +102,7 @@
         <OutArgument x:TypeArguments="x:String">[out_File_ClientSansCable]</OutArgument>
       </Assign.To>
       <Assign.Value>
-        <InArgument x:TypeArguments="x:String">[Folder_path +"\" + File_ClientSansCable]</InArgument>
+        <InArgument x:TypeArguments="x:String">[out_Folder_path +"\" + File_ClientSansCable]</InArgument>
       </Assign.Value>
     </Assign>
     <WriteLine DisplayName="Write Line" sap:VirtualizedContainerService.HintSize="444,62.6666666666667" sap2010:WorkflowViewState.IdRef="WriteLine_2" Text="[out_File_ClientSansCable]" />
@@ -114,9 +116,22 @@
         <OutArgument x:TypeArguments="x:String">[out_EmailContact_File]</OutArgument>
       </Assign.To>
       <Assign.Value>
-        <InArgument x:TypeArguments="x:String">[Folder_path +"\" + EmailContact_File]</InArgument>
+        <InArgument x:TypeArguments="x:String">[out_Folder_path +"\" + EmailContact_File]</InArgument>
       </Assign.Value>
     </Assign>
     <WriteLine DisplayName="Write Line" sap:VirtualizedContainerService.HintSize="444,62.6666666666667" sap2010:WorkflowViewState.IdRef="WriteLine_3" Text="[out_EmailContact_File]" />
+    <ui:GetRobotAsset TimeoutMS="{x:Null}" AssetName="TemplateComptaPath" DisplayName="Get Asset" sap:VirtualizedContainerService.HintSize="444,140.666666666667" sap2010:WorkflowViewState.IdRef="GetRobotAsset_5">
+      <ui:GetRobotAsset.Value>
+        <OutArgument x:TypeArguments="x:String">[TemplateComptaPath]</OutArgument>
+      </ui:GetRobotAsset.Value>
+    </ui:GetRobotAsset>
+    <Assign sap:VirtualizedContainerService.HintSize="444,62" sap2010:WorkflowViewState.IdRef="Assign_4">
+      <Assign.To>
+        <OutArgument x:TypeArguments="x:String">[out_TemplateComptaPath]</OutArgument>
+      </Assign.To>
+      <Assign.Value>
+        <InArgument x:TypeArguments="x:String">[out_Folder_path + "\" + TemplateComptaPath]</InArgument>
+      </Assign.Value>
+    </Assign>
   </Sequence>
 </Activity>

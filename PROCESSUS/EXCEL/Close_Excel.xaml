@@ -1,4 +1,4 @@
-<Activity mc:Ignorable="sap sap2010" x:Class="Séquence" mva:VisualBasic.Settings="{x:Null}" sap:VirtualizedContainerService.HintSize="698,1550.66666666667" sap2010:WorkflowViewState.IdRef="Séquence_1" xmlns="http://schemas.microsoft.com/netfx/2009/xaml/activities" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:mva="clr-namespace:Microsoft.VisualBasic.Activities;assembly=System.Activities" xmlns:sap="http://schemas.microsoft.com/netfx/2009/xaml/activities/presentation" xmlns:sap2010="http://schemas.microsoft.com/netfx/2010/xaml/activities/presentation" xmlns:scg="clr-namespace:System.Collections.Generic;assembly=mscorlib" xmlns:ui="http://schemas.uipath.com/workflow/activities" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+<Activity mc:Ignorable="sap sap2010" x:Class="Séquence" mva:VisualBasic.Settings="{x:Null}" sap:VirtualizedContainerService.HintSize="815.333333333333,1550.66666666667" sap2010:WorkflowViewState.IdRef="Séquence_1" xmlns="http://schemas.microsoft.com/netfx/2009/xaml/activities" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:mva="clr-namespace:Microsoft.VisualBasic.Activities;assembly=System.Activities" xmlns:sap="http://schemas.microsoft.com/netfx/2009/xaml/activities/presentation" xmlns:sap2010="http://schemas.microsoft.com/netfx/2010/xaml/activities/presentation" xmlns:scg="clr-namespace:System.Collections.Generic;assembly=mscorlib" xmlns:ui="http://schemas.uipath.com/workflow/activities" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
   <TextExpression.NamespacesForImplementation>
     <scg:List x:TypeArguments="x:String" Capacity="32">
       <x:String>System.Activities</x:String>
@@ -80,12 +80,9 @@
         <x:Boolean x:Key="IsExpanded">True</x:Boolean>
       </scg:Dictionary>
     </sap:WorkflowViewStateService.ViewState>
-    <ui:UiElementExists sap2010:Annotation.AnnotationText="vérifie si des fichiers excel sont ouverts et le ferme après la sauvegarde.&#xD;&#xA;" DisplayName="Element Exists 'Fichier excel'" Exists="[excelExist]" sap:VirtualizedContainerService.HintSize="638.666666666667,168" sap2010:WorkflowViewState.IdRef="UiElementExists_1">
+    <ui:UiElementExists sap2010:Annotation.AnnotationText="vérifie si des fichiers excel sont ouverts et le ferme après la sauvegarde.&#xA;" DisplayName="Element Exists 'Fichier excel'" Exists="[excelExist]" sap:VirtualizedContainerService.HintSize="638.666666666667,168" sap2010:WorkflowViewState.IdRef="UiElementExists_1">
       <ui:UiElementExists.Target>
-        <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" Id="b37cf7bc-b617-499c-abbf-f64be77dc99f" InformativeScreenshot="a47ae5f1e93d205e0b05a3160d636a59" Selector="&lt;wnd app='explorer.exe' cls='CabinetWClass' title='*' /&gt;">
-          <ui:Target.TimeoutMS>
-            <InArgument x:TypeArguments="x:Int32" />
-          </ui:Target.TimeoutMS>
+        <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" Id="b37cf7bc-b617-499c-abbf-f64be77dc99f" InformativeScreenshot="a47ae5f1e93d205e0b05a3160d636a59" Selector="&lt;wnd app='explorer.exe' cls='CabinetWClass' title='*' /&gt;" TimeoutMS="10000">
           <ui:Target.WaitForReady>
             <InArgument x:TypeArguments="ui:WaitForReady" />
           </ui:Target.WaitForReady>
@@ -105,7 +102,7 @@
               <x:Boolean x:Key="IsExpanded">True</x:Boolean>
             </scg:Dictionary>
           </sap:WorkflowViewStateService.ViewState>
-          <ui:WindowScope ApplicationWindow="{x:Null}" SearchScope="{x:Null}" TimeoutMS="{x:Null}" Window="{x:Null}" DisplayName="Attach Window 'excel.exe'" sap:VirtualizedContainerService.HintSize="560,909.333333333333" sap2010:WorkflowViewState.IdRef="WindowScope_1" InformativeScreenshot="f5af0bcbdc080fba00ae40597e75589a" Selector="&lt;wnd app='excel.exe' cls='XLMAIN' title='*' /&gt;">
+          <ui:WindowScope ApplicationWindow="{x:Null}" SearchScope="{x:Null}" TimeoutMS="{x:Null}" Window="{x:Null}" ContinueOnError="True" DisplayName="Attach Window 'excel.exe'" sap:VirtualizedContainerService.HintSize="560,909.333333333333" sap2010:WorkflowViewState.IdRef="WindowScope_1" InformativeScreenshot="f5af0bcbdc080fba00ae40597e75589a" Selector="&lt;wnd app='excel.exe' cls='XLMAIN' title='*' /&gt;">
             <ui:WindowScope.Body>
               <ActivityAction x:TypeArguments="x:Object">
                 <ActivityAction.Argument>

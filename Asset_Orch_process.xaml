@@ -7,19 +7,19 @@
     <x:Property Name="out_PDFDirectory" Type="OutArgument(x:String)" />
     <x:Property Name="out_Dossier_action_sale_invoice" Type="OutArgument(x:String)" />
     <x:Property Name="out_Download_invoice_pdf" Type="OutArgument(x:String)" />
-    <x:Property Name="out_CarNumber" Type="OutArgument(x:String)" />
     <x:Property Name="out_TemplateFactureCable" Type="OutArgument(x:String)" />
     <x:Property Name="out_Folder_path" Type="OutArgument(x:String)" />
     <x:Property Name="out_CableDirectoryExcel" Type="OutArgument(x:String)" />
     <x:Property Name="out_CableDirectoryPDF" Type="OutArgument(x:String)" />
+    <x:Property Name="out_ObjetUrgenceVIN" Type="OutArgument(x:String)" />
   </x:Members>
   <mva:VisualBasic.Settings>
     <x:Null />
   </mva:VisualBasic.Settings>
-  <sap:VirtualizedContainerService.HintSize>658,3000.66666666667</sap:VirtualizedContainerService.HintSize>
+  <sap:VirtualizedContainerService.HintSize>815.333333333333,3352</sap:VirtualizedContainerService.HintSize>
   <sap2010:WorkflowViewState.IdRef>Asset_Orch_process_1</sap2010:WorkflowViewState.IdRef>
   <TextExpression.NamespacesForImplementation>
-    <scg:List x:TypeArguments="x:String" Capacity="24">
+    <scg:List x:TypeArguments="x:String" Capacity="25">
       <x:String>System.Activities</x:String>
       <x:String>System.Activities.Statements</x:String>
       <x:String>System.Activities.Expressions</x:String>
@@ -44,6 +44,7 @@
       <x:String>System.Reflection</x:String>
       <x:String>System.Runtime.InteropServices</x:String>
       <x:String>System.Collections.ObjectModel</x:String>
+      <x:String>System.Activities.DynamicUpdate</x:String>
     </scg:List>
   </TextExpression.NamespacesForImplementation>
   <TextExpression.ReferencesForImplementation>
@@ -66,29 +67,30 @@
       <AssemblyReference>UiPath.UiAutomation.Activities</AssemblyReference>
     </scg:List>
   </TextExpression.ReferencesForImplementation>
-  <Sequence DisplayName="Asset_Orch_process" sap:VirtualizedContainerService.HintSize="486,2936" sap2010:WorkflowViewState.IdRef="Sequence_1">
+  <Sequence DisplayName="Asset_Orch_process" sap:VirtualizedContainerService.HintSize="564.666666666667,3287.33333333333" sap2010:WorkflowViewState.IdRef="Sequence_1">
     <Sequence.Variables>
       <Variable x:TypeArguments="x:String" Name="CablePrice_File" />
       <Variable x:TypeArguments="x:String" Name="ExcelDirectory" />
       <Variable x:TypeArguments="x:String" Name="PDFDirectory" />
       <Variable x:TypeArguments="x:String" Name="TemplateFactureCable" />
+      <Variable x:TypeArguments="x:String" Name="out_CarNumber" />
     </Sequence.Variables>
     <sap:WorkflowViewStateService.ViewState>
       <scg:Dictionary x:TypeArguments="x:String, x:Object">
         <x:Boolean x:Key="IsExpanded">True</x:Boolean>
       </scg:Dictionary>
     </sap:WorkflowViewStateService.ViewState>
-    <ui:GetRobotAsset TimeoutMS="{x:Null}" AssetName="Folder_path" DisplayName="Get Asset" sap:VirtualizedContainerService.HintSize="444,140.666666666667" sap2010:WorkflowViewState.IdRef="GetRobotAsset_2">
+    <ui:GetRobotAsset TimeoutMS="{x:Null}" AssetName="Folder_path" DisplayName="Get Asset" sap:VirtualizedContainerService.HintSize="522.666666666667,140.666666666667" sap2010:WorkflowViewState.IdRef="GetRobotAsset_2">
       <ui:GetRobotAsset.Value>
         <OutArgument x:TypeArguments="x:String">[out_Folder_path]</OutArgument>
       </ui:GetRobotAsset.Value>
     </ui:GetRobotAsset>
-    <ui:GetRobotAsset TimeoutMS="{x:Null}" AssetName="CablePrice_File" DisplayName="Get Asset" sap:VirtualizedContainerService.HintSize="444,140.666666666667" sap2010:WorkflowViewState.IdRef="GetRobotAsset_1">
+    <ui:GetRobotAsset TimeoutMS="{x:Null}" AssetName="CablePrice_File" DisplayName="Get Asset" sap:VirtualizedContainerService.HintSize="522.666666666667,140.666666666667" sap2010:WorkflowViewState.IdRef="GetRobotAsset_1">
       <ui:GetRobotAsset.Value>
         <OutArgument x:TypeArguments="x:String">[CablePrice_File]</OutArgument>
       </ui:GetRobotAsset.Value>
     </ui:GetRobotAsset>
-    <Assign sap:VirtualizedContainerService.HintSize="444,62" sap2010:WorkflowViewState.IdRef="Assign_1">
+    <Assign sap:VirtualizedContainerService.HintSize="522.666666666667,62" sap2010:WorkflowViewState.IdRef="Assign_1">
       <Assign.To>
         <OutArgument x:TypeArguments="x:String">[out_CablePrice_File]</OutArgument>
       </Assign.To>
@@ -96,18 +98,18 @@
         <InArgument x:TypeArguments="x:String">[out_Folder_path + "\" +CablePrice_File]</InArgument>
       </Assign.Value>
     </Assign>
-    <WriteLine DisplayName="Write Line" sap:VirtualizedContainerService.HintSize="444,62.6666666666667" sap2010:WorkflowViewState.IdRef="WriteLine_1" Text="[out_CablePrice_File]" />
-    <ui:GetRobotAsset TimeoutMS="{x:Null}" AssetName="Download_Zip_Excel" DisplayName="Get Asset" sap:VirtualizedContainerService.HintSize="444,140.666666666667" sap2010:WorkflowViewState.IdRef="GetRobotAsset_3">
+    <WriteLine DisplayName="Write Line" sap:VirtualizedContainerService.HintSize="522.666666666667,62.6666666666667" sap2010:WorkflowViewState.IdRef="WriteLine_1" Text="[out_CablePrice_File]" />
+    <ui:GetRobotAsset TimeoutMS="{x:Null}" AssetName="Download_Zip_Excel" DisplayName="Get Asset" sap:VirtualizedContainerService.HintSize="522.666666666667,140.666666666667" sap2010:WorkflowViewState.IdRef="GetRobotAsset_3">
       <ui:GetRobotAsset.Value>
         <OutArgument x:TypeArguments="x:String">[out_Download_Zip_Excel]</OutArgument>
       </ui:GetRobotAsset.Value>
     </ui:GetRobotAsset>
-    <ui:GetRobotAsset TimeoutMS="{x:Null}" AssetName="ExcelDirectoryCar" DisplayName="Get Asset" sap:VirtualizedContainerService.HintSize="444,140.666666666667" sap2010:WorkflowViewState.IdRef="GetRobotAsset_4">
+    <ui:GetRobotAsset TimeoutMS="{x:Null}" AssetName="ExcelDirectoryCar" DisplayName="Get Asset" sap:VirtualizedContainerService.HintSize="522.666666666667,140.666666666667" sap2010:WorkflowViewState.IdRef="GetRobotAsset_4">
       <ui:GetRobotAsset.Value>
         <OutArgument x:TypeArguments="x:String">[ExcelDirectory]</OutArgument>
       </ui:GetRobotAsset.Value>
     </ui:GetRobotAsset>
-    <Assign sap:VirtualizedContainerService.HintSize="444,62" sap2010:WorkflowViewState.IdRef="Assign_2">
+    <Assign sap:VirtualizedContainerService.HintSize="522.666666666667,62" sap2010:WorkflowViewState.IdRef="Assign_2">
       <Assign.To>
         <OutArgument x:TypeArguments="x:String">[out_ExcelDirectory]</OutArgument>
       </Assign.To>
@@ -115,18 +117,18 @@
         <InArgument x:TypeArguments="x:String">[out_Folder_path + "\" + ExcelDirectory]</InArgument>
       </Assign.Value>
     </Assign>
-    <WriteLine DisplayName="Write Line" sap:VirtualizedContainerService.HintSize="444,62.6666666666667" sap2010:WorkflowViewState.IdRef="WriteLine_2" Text="[out_ExcelDirectory]" />
-    <ui:GetRobotAsset TimeoutMS="{x:Null}" AssetName="Download_Zip_PDF" DisplayName="Get Asset" sap:VirtualizedContainerService.HintSize="444,140.666666666667" sap2010:WorkflowViewState.IdRef="GetRobotAsset_5">
+    <WriteLine DisplayName="Write Line" sap:VirtualizedContainerService.HintSize="522.666666666667,62.6666666666667" sap2010:WorkflowViewState.IdRef="WriteLine_2" Text="[out_ExcelDirectory]" />
+    <ui:GetRobotAsset TimeoutMS="{x:Null}" AssetName="Download_Zip_PDF" DisplayName="Get Asset" sap:VirtualizedContainerService.HintSize="522.666666666667,140.666666666667" sap2010:WorkflowViewState.IdRef="GetRobotAsset_5">
       <ui:GetRobotAsset.Value>
         <OutArgument x:TypeArguments="x:String">[out_Download_Zip_PDF]</OutArgument>
       </ui:GetRobotAsset.Value>
     </ui:GetRobotAsset>
-    <ui:GetRobotAsset TimeoutMS="{x:Null}" AssetName="PDFDirectoryCar" DisplayName="Get Asset" sap:VirtualizedContainerService.HintSize="444,140.666666666667" sap2010:WorkflowViewState.IdRef="GetRobotAsset_6">
+    <ui:GetRobotAsset TimeoutMS="{x:Null}" AssetName="PDFDirectoryCar" DisplayName="Get Asset" sap:VirtualizedContainerService.HintSize="522.666666666667,140.666666666667" sap2010:WorkflowViewState.IdRef="GetRobotAsset_6">
       <ui:GetRobotAsset.Value>
         <OutArgument x:TypeArguments="x:String">[PDFDirectory]</OutArgument>
       </ui:GetRobotAsset.Value>
     </ui:GetRobotAsset>
-    <Assign sap:VirtualizedContainerService.HintSize="444,62" sap2010:WorkflowViewState.IdRef="Assign_3">
+    <Assign sap:VirtualizedContainerService.HintSize="522.666666666667,62" sap2010:WorkflowViewState.IdRef="Assign_3">
       <Assign.To>
         <OutArgument x:TypeArguments="x:String">[out_PDFDirectory]</OutArgument>
       </Assign.To>
@@ -134,28 +136,39 @@
         <InArgument x:TypeArguments="x:String">[out_Folder_path + "\" + PDFDirectory]</InArgument>
       </Assign.Value>
     </Assign>
-    <WriteLine DisplayName="Write Line" sap:VirtualizedContainerService.HintSize="444,62.6666666666667" sap2010:WorkflowViewState.IdRef="WriteLine_3" Text="[out_PDFDirectory]" />
-    <ui:GetRobotAsset TimeoutMS="{x:Null}" AssetName="Dossier_action-sale-invoice" DisplayName="Get Asset" sap:VirtualizedContainerService.HintSize="444,140.666666666667" sap2010:WorkflowViewState.IdRef="GetRobotAsset_7">
+    <WriteLine DisplayName="Write Line" sap:VirtualizedContainerService.HintSize="522.666666666667,62.6666666666667" sap2010:WorkflowViewState.IdRef="WriteLine_3" Text="[out_PDFDirectory]" />
+    <ui:GetRobotAsset TimeoutMS="{x:Null}" AssetName="Dossier_action-sale-invoice" DisplayName="Get Asset" sap:VirtualizedContainerService.HintSize="522.666666666667,140.666666666667" sap2010:WorkflowViewState.IdRef="GetRobotAsset_7">
       <ui:GetRobotAsset.Value>
         <OutArgument x:TypeArguments="x:String">[out_Dossier_action_sale_invoice]</OutArgument>
       </ui:GetRobotAsset.Value>
     </ui:GetRobotAsset>
-    <ui:GetRobotAsset TimeoutMS="{x:Null}" AssetName="Download_invoice_pdf" DisplayName="Get Asset" sap:VirtualizedContainerService.HintSize="444,140.666666666667" sap2010:WorkflowViewState.IdRef="GetRobotAsset_8">
+    <ui:GetRobotAsset TimeoutMS="{x:Null}" AssetName="Download_invoice_pdf" DisplayName="Get Asset" sap:VirtualizedContainerService.HintSize="522.666666666667,140.666666666667" sap2010:WorkflowViewState.IdRef="GetRobotAsset_8">
       <ui:GetRobotAsset.Value>
         <OutArgument x:TypeArguments="x:String">[out_Download_invoice_pdf]</OutArgument>
       </ui:GetRobotAsset.Value>
     </ui:GetRobotAsset>
-    <ui:GetRobotAsset TimeoutMS="{x:Null}" AssetName="CarNumber" DisplayName="Get Asset" sap:VirtualizedContainerService.HintSize="444,140.666666666667" sap2010:WorkflowViewState.IdRef="GetRobotAsset_9">
-      <ui:GetRobotAsset.Value>
-        <OutArgument x:TypeArguments="x:String">[out_CarNumber]</OutArgument>
-      </ui:GetRobotAsset.Value>
-    </ui:GetRobotAsset>
-    <ui:GetRobotAsset TimeoutMS="{x:Null}" AssetName="TemplateFactureCable" DisplayName="Get Asset" sap:VirtualizedContainerService.HintSize="444,140.666666666667" sap2010:WorkflowViewState.IdRef="GetRobotAsset_10">
+    <ui:CommentOut DisplayName="Comment Out" sap:VirtualizedContainerService.HintSize="522.666666666667,311.333333333333" sap2010:WorkflowViewState.IdRef="CommentOut_1">
+      <ui:CommentOut.Body>
+        <Sequence DisplayName="Activités ignorées" sap:VirtualizedContainerService.HintSize="486,232.666666666667" sap2010:WorkflowViewState.IdRef="Sequence_2">
+          <sap:WorkflowViewStateService.ViewState>
+            <scg:Dictionary x:TypeArguments="x:String, x:Object">
+              <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+            </scg:Dictionary>
+          </sap:WorkflowViewStateService.ViewState>
+          <ui:GetRobotAsset TimeoutMS="{x:Null}" AssetName="CarNumber" DisplayName="Get Asset" sap:VirtualizedContainerService.HintSize="444,140.666666666667" sap2010:WorkflowViewState.IdRef="GetRobotAsset_9">
+            <ui:GetRobotAsset.Value>
+              <OutArgument x:TypeArguments="x:String">[out_CarNumber]</OutArgument>
+            </ui:GetRobotAsset.Value>
+          </ui:GetRobotAsset>
+        </Sequence>
+      </ui:CommentOut.Body>
+    </ui:CommentOut>
+    <ui:GetRobotAsset TimeoutMS="{x:Null}" AssetName="TemplateFactureCable" DisplayName="Get Asset" sap:VirtualizedContainerService.HintSize="522.666666666667,140.666666666667" sap2010:WorkflowViewState.IdRef="GetRobotAsset_10">
       <ui:GetRobotAsset.Value>
         <OutArgument x:TypeArguments="x:String">[TemplateFactureCable]</OutArgument>
       </ui:GetRobotAsset.Value>
     </ui:GetRobotAsset>
-    <Assign sap:VirtualizedContainerService.HintSize="444,62" sap2010:WorkflowViewState.IdRef="Assign_4">
+    <Assign sap:VirtualizedContainerService.HintSize="522.666666666667,62" sap2010:WorkflowViewState.IdRef="Assign_4">
       <Assign.To>
         <OutArgument x:TypeArguments="x:String">[out_TemplateFactureCable]</OutArgument>
       </Assign.To>
@@ -163,14 +176,19 @@
         <InArgument x:TypeArguments="x:String">[out_Folder_path + "\" + TemplateFactureCable]</InArgument>
       </Assign.Value>
     </Assign>
-    <ui:GetRobotAsset TimeoutMS="{x:Null}" AssetName="CableDirectoryExcel" DisplayName="Get Asset" sap:VirtualizedContainerService.HintSize="444,140.666666666667" sap2010:WorkflowViewState.IdRef="GetRobotAsset_11">
+    <ui:GetRobotAsset TimeoutMS="{x:Null}" AssetName="CableDirectoryExcel" DisplayName="Get Asset" sap:VirtualizedContainerService.HintSize="522.666666666667,140.666666666667" sap2010:WorkflowViewState.IdRef="GetRobotAsset_11">
       <ui:GetRobotAsset.Value>
         <OutArgument x:TypeArguments="x:String">[out_CableDirectoryExcel]</OutArgument>
       </ui:GetRobotAsset.Value>
     </ui:GetRobotAsset>
-    <ui:GetRobotAsset TimeoutMS="{x:Null}" AssetName="CableDirectoryPDF" DisplayName="Get Asset" sap:VirtualizedContainerService.HintSize="444,140.666666666667" sap2010:WorkflowViewState.IdRef="GetRobotAsset_12">
+    <ui:GetRobotAsset TimeoutMS="{x:Null}" AssetName="CableDirectoryPDF" DisplayName="Get Asset" sap:VirtualizedContainerService.HintSize="522.666666666667,140.666666666667" sap2010:WorkflowViewState.IdRef="GetRobotAsset_12">
       <ui:GetRobotAsset.Value>
         <OutArgument x:TypeArguments="x:String">[out_CableDirectoryPDF]</OutArgument>
+      </ui:GetRobotAsset.Value>
+    </ui:GetRobotAsset>
+    <ui:GetRobotAsset TimeoutMS="{x:Null}" AssetName="ObjetUrgenceVIN" DisplayName="Get Asset" sap:VirtualizedContainerService.HintSize="522.666666666667,140.666666666667" sap2010:WorkflowViewState.IdRef="GetRobotAsset_13">
+      <ui:GetRobotAsset.Value>
+        <OutArgument x:TypeArguments="x:String">[out_ObjetUrgenceVIN]</OutArgument>
       </ui:GetRobotAsset.Value>
     </ui:GetRobotAsset>
   </Sequence>

@@ -10,7 +10,7 @@
   <mva:VisualBasic.Settings>
     <x:Null />
   </mva:VisualBasic.Settings>
-  <sap:VirtualizedContainerService.HintSize>658,468.666666666667</sap:VirtualizedContainerService.HintSize>
+  <sap:VirtualizedContainerService.HintSize>834,1048.66666666667</sap:VirtualizedContainerService.HintSize>
   <sap2010:WorkflowViewState.IdRef>_12_Ecriture_Cable_Invoice_dans_9010_1</sap2010:WorkflowViewState.IdRef>
   <TextExpression.NamespacesForImplementation>
     <sco:Collection x:TypeArguments="x:String">
@@ -77,18 +77,20 @@
       <AssemblyReference>System.ValueTuple</AssemblyReference>
       <AssemblyReference>System.ComponentModel.Composition</AssemblyReference>
       <AssemblyReference>UiPath.Excel</AssemblyReference>
+      <AssemblyReference>UiPath.System.Activities.Design</AssemblyReference>
       <AssemblyReference>System.Runtime.WindowsRuntime</AssemblyReference>
     </sco:Collection>
   </TextExpression.ReferencesForImplementation>
-  <Sequence DisplayName="_12_Ecriture_Cable_Invoice_dans_9010" sap:VirtualizedContainerService.HintSize="486,404" sap2010:WorkflowViewState.IdRef="Sequence_1">
+  <Sequence DisplayName="_12_Save_Cable_Invoice" sap:VirtualizedContainerService.HintSize="504.666666666667,984" sap2010:WorkflowViewState.IdRef="Sequence_1">
     <sap:WorkflowViewStateService.ViewState>
       <scg:Dictionary x:TypeArguments="x:String, x:Object">
         <x:Boolean x:Key="IsExpanded">True</x:Boolean>
       </scg:Dictionary>
     </sap:WorkflowViewStateService.ViewState>
-    <ui:CommentOut DisplayName="Comment Out" sap:VirtualizedContainerService.HintSize="444,52.6666666666667" sap2010:WorkflowViewState.IdRef="CommentOut_1">
+    <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="462.666666666667,94.6666666666667" sap2010:WorkflowViewState.IdRef="LogMessage_1" Level="Info" Message="[&quot;13. Save cable invoice ....&quot;]" />
+    <ui:CommentOut DisplayName="Comment Out" sap:VirtualizedContainerService.HintSize="462.666666666667,363.333333333333" sap2010:WorkflowViewState.IdRef="CommentOut_3">
       <ui:CommentOut.Body>
-        <Sequence DisplayName="Activités ignorées" sap:VirtualizedContainerService.HintSize="426,284.666666666667" sap2010:WorkflowViewState.IdRef="Sequence_2">
+        <Sequence DisplayName="Activités ignorées" sap:VirtualizedContainerService.HintSize="426,284.666666666667" sap2010:WorkflowViewState.IdRef="Sequence_4">
           <sap:WorkflowViewStateService.ViewState>
             <scg:Dictionary x:TypeArguments="x:String, x:Object">
               <x:Boolean x:Key="IsExpanded">True</x:Boolean>
@@ -103,14 +105,8 @@
           </ui:MoveFile>
         </Sequence>
       </ui:CommentOut.Body>
-      <sap:WorkflowViewStateService.ViewState>
-        <scg:Dictionary x:TypeArguments="x:String, x:Object">
-          <x:Boolean x:Key="IsExpanded">False</x:Boolean>
-          <x:Boolean x:Key="IsPinned">False</x:Boolean>
-        </scg:Dictionary>
-      </sap:WorkflowViewStateService.ViewState>
     </ui:CommentOut>
-    <Assign sap2010:Annotation.AnnotationText="Mettre le bon chemin pour l'emplacement final." DisplayName="Assign Chemin du dossier dans lequel va être stocké le pdf" sap:VirtualizedContainerService.HintSize="444,107.333333333333" sap2010:WorkflowViewState.IdRef="Assign_1">
+    <Assign sap2010:Annotation.AnnotationText="Mettre le bon chemin pour l'emplacement final." DisplayName="Assign Chemin du dossier dans lequel va être stocké le pdf" sap:VirtualizedContainerService.HintSize="462.666666666667,107.333333333333" sap2010:WorkflowViewState.IdRef="Assign_1">
       <Assign.To>
         <OutArgument x:TypeArguments="x:String">[out_CableInvoiceFilePDF]</OutArgument>
       </Assign.To>
@@ -123,6 +119,7 @@
         </scg:Dictionary>
       </sap:WorkflowViewStateService.ViewState>
     </Assign>
-    <bew:ExportWorkBook CellRange="{x:Null}" ExecutionResult="{x:Null}" FilePassword="{x:Null}" ModifyPassword="{x:Null}" ContinueOnError="False" Delay="3" DisplayName="Export WorkBook" ExportPath="[out_CableInvoiceFilePDF]" FilePath="[in_CableInvoiceFile]" FormatType="PDF" sap:VirtualizedContainerService.HintSize="444,72" sap2010:WorkflowViewState.IdRef="ExportWorkBook_1" SheetName="CABLE FACT" />
+    <bew:ExportWorkBook CellRange="{x:Null}" ExecutionResult="{x:Null}" FilePassword="{x:Null}" ModifyPassword="{x:Null}" ContinueOnError="False" Delay="3" DisplayName="Export WorkBook" ExportPath="[out_CableInvoiceFilePDF]" FilePath="[in_CableInvoiceFile]" FormatType="PDF" sap:VirtualizedContainerService.HintSize="462.666666666667,72" sap2010:WorkflowViewState.IdRef="ExportWorkBook_1" SheetName="CABLE FACT" />
+    <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="462.666666666667,94.6666666666667" sap2010:WorkflowViewState.IdRef="LogMessage_2" Level="Info" Message="[&quot;13. Fin save cable invoice.&quot;]" />
   </Sequence>
 </Activity>

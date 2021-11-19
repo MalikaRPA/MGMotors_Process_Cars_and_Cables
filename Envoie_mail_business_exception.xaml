@@ -1,4 +1,4 @@
-<Activity mc:Ignorable="sap sap2010" x:Class="_13_Comptabilisation_Factures" mva:VisualBasic.Settings="{x:Null}" sap2010:WorkflowViewState.IdRef="_13_Comptabilisation_Factures_1"
+<Activity mc:Ignorable="sap sap2010" x:Class="Envoie_mail_business_exception" mva:VisualBasic.Settings="{x:Null}" sap2010:WorkflowViewState.IdRef="Envoie_mail_business_exception_1"
  xmlns="http://schemas.microsoft.com/netfx/2009/xaml/activities" 
  xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
  xmlns:mva="clr-namespace:Microsoft.VisualBasic.Activities;assembly=System.Activities"
@@ -52,7 +52,7 @@
             <AssemblyReference>UiPath.UiAutomation.Activities</AssemblyReference>
         </sco:Collection>
     </TextExpression.ReferencesForImplementation>
-    <Sequence DisplayName="_13_Comptabilisation_Factures" sap2010:WorkflowViewState.IdRef="Sequence_1">
+    <Sequence DisplayName="Envoie_mail_business_exception" sap2010:WorkflowViewState.IdRef="Sequence_1">
         <sap:WorkflowViewStateService.ViewState>
             <scg:Dictionary x:TypeArguments="x:String, x:Object">
                 <x:Boolean x:Key="IsExpanded">True</x:Boolean>

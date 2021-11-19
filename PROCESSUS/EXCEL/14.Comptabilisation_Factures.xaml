@@ -1,0 +1,288 @@
+<Activity mc:Ignorable="sap sap2010" x:Class="_13_Comptabilisation_Factures" xmlns="http://schemas.microsoft.com/netfx/2009/xaml/activities" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:mva="clr-namespace:Microsoft.VisualBasic.Activities;assembly=System.Activities" xmlns:sap="http://schemas.microsoft.com/netfx/2009/xaml/activities/presentation" xmlns:sap2010="http://schemas.microsoft.com/netfx/2010/xaml/activities/presentation" xmlns:scg="clr-namespace:System.Collections.Generic;assembly=mscorlib" xmlns:sd="clr-namespace:System.Data;assembly=System.Data" xmlns:ui="http://schemas.uipath.com/workflow/activities" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+  <x:Members>
+    <x:Property Name="in_CableInvoiceNumber" Type="InArgument(x:String)" />
+    <x:Property Name="in_RefClient" Type="InArgument(x:String)" />
+    <x:Property Name="in_CablePrice" Type="InArgument(x:Double)" />
+    <x:Property Name="in_TauxTVA" Type="InArgument(x:Double)" />
+    <x:Property Name="in_FichierComptaPath" Type="InArgument(x:String)" />
+  </x:Members>
+  <mva:VisualBasic.Settings>
+    <x:Null />
+  </mva:VisualBasic.Settings>
+  <sap:VirtualizedContainerService.HintSize>718,5958</sap:VirtualizedContainerService.HintSize>
+  <sap2010:WorkflowViewState.IdRef>_13_Comptabilisation_Factures_1</sap2010:WorkflowViewState.IdRef>
+  <TextExpression.NamespacesForImplementation>
+    <scg:List x:TypeArguments="x:String" Capacity="30">
+      <x:String>System.Activities</x:String>
+      <x:String>System.Activities.Statements</x:String>
+      <x:String>System.Activities.Expressions</x:String>
+      <x:String>System.Activities.Validation</x:String>
+      <x:String>System.Activities.XamlIntegration</x:String>
+      <x:String>Microsoft.VisualBasic</x:String>
+      <x:String>Microsoft.VisualBasic.Activities</x:String>
+      <x:String>System</x:String>
+      <x:String>System.Collections</x:String>
+      <x:String>System.Collections.Generic</x:String>
+      <x:String>System.Data</x:String>
+      <x:String>System.Diagnostics</x:String>
+      <x:String>System.Drawing</x:String>
+      <x:String>System.IO</x:String>
+      <x:String>System.Linq</x:String>
+      <x:String>System.Net.Mail</x:String>
+      <x:String>System.Xml</x:String>
+      <x:String>System.Xml.Linq</x:String>
+      <x:String>UiPath.Core</x:String>
+      <x:String>UiPath.Core.Activities</x:String>
+      <x:String>System.Windows.Markup</x:String>
+      <x:String>UiPath.Excel</x:String>
+      <x:String>System.Collections.ObjectModel</x:String>
+      <x:String>UiPath.Excel.Activities</x:String>
+      <x:String>System.Activities.DynamicUpdate</x:String>
+      <x:String>System.ComponentModel</x:String>
+      <x:String>System.Runtime.Serialization</x:String>
+      <x:String>System.Xml.Serialization</x:String>
+      <x:String>System.Reflection</x:String>
+      <x:String>System.Runtime.InteropServices</x:String>
+    </scg:List>
+  </TextExpression.NamespacesForImplementation>
+  <TextExpression.ReferencesForImplementation>
+    <scg:List x:TypeArguments="AssemblyReference" Capacity="26">
+      <AssemblyReference>System.Activities</AssemblyReference>
+      <AssemblyReference>Microsoft.VisualBasic</AssemblyReference>
+      <AssemblyReference>mscorlib</AssemblyReference>
+      <AssemblyReference>System.Data</AssemblyReference>
+      <AssemblyReference>System.Data.DataSetExtensions</AssemblyReference>
+      <AssemblyReference>System</AssemblyReference>
+      <AssemblyReference>System.Drawing</AssemblyReference>
+      <AssemblyReference>System.Core</AssemblyReference>
+      <AssemblyReference>System.Xml</AssemblyReference>
+      <AssemblyReference>System.Xml.Linq</AssemblyReference>
+      <AssemblyReference>PresentationFramework</AssemblyReference>
+      <AssemblyReference>WindowsBase</AssemblyReference>
+      <AssemblyReference>PresentationCore</AssemblyReference>
+      <AssemblyReference>System.Xaml</AssemblyReference>
+      <AssemblyReference>UiPath.System.Activities</AssemblyReference>
+      <AssemblyReference>UiPath.UiAutomation.Activities</AssemblyReference>
+      <AssemblyReference>UiPath.Excel.Activities</AssemblyReference>
+      <AssemblyReference>UiPath.Excel</AssemblyReference>
+      <AssemblyReference>UiPath.Excel.Activities.Design</AssemblyReference>
+      <AssemblyReference>System.Runtime.Serialization</AssemblyReference>
+      <AssemblyReference>System.ServiceModel</AssemblyReference>
+      <AssemblyReference>Microsoft.Bcl.AsyncInterfaces</AssemblyReference>
+      <AssemblyReference>System.ValueTuple</AssemblyReference>
+      <AssemblyReference>System.ComponentModel.Composition</AssemblyReference>
+      <AssemblyReference>System.Memory</AssemblyReference>
+    </scg:List>
+  </TextExpression.ReferencesForImplementation>
+  <Sequence DisplayName="_13_Comptabilisation_Factures" sap:VirtualizedContainerService.HintSize="602,5893.33333333333" sap2010:WorkflowViewState.IdRef="Sequence_1">
+    <Sequence.Variables>
+      <Variable x:TypeArguments="sd:DataTable" Name="dt_compta" />
+      <Variable x:TypeArguments="x:String" Name="rslt" />
+      <Variable x:TypeArguments="x:Int32" Name="nbLigne" />
+      <Variable x:TypeArguments="x:Int32" Name="idx" />
+      <Variable x:TypeArguments="x:Double" Name="ID_Last" />
+      <Variable x:TypeArguments="x:Double" Name="ID_New" />
+      <Variable x:TypeArguments="x:Double" Name="montantTTC" />
+      <Variable x:TypeArguments="x:String" Name="TodayDate" />
+      <Variable x:TypeArguments="x:Double" Name="montantHT" />
+      <Variable x:TypeArguments="x:Double" Name="montantTVA" />
+      <Variable x:TypeArguments="x:Double" Name="tauxTVA" />
+    </Sequence.Variables>
+    <sap:WorkflowViewStateService.ViewState>
+      <scg:Dictionary x:TypeArguments="x:String, x:Object">
+        <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+      </scg:Dictionary>
+    </sap:WorkflowViewStateService.ViewState>
+    <ui:ExcelApplicationScope Password="{x:Null}" DisplayName="Excel Application Scope" sap:VirtualizedContainerService.HintSize="560,5801.33333333333" sap2010:WorkflowViewState.IdRef="ExcelApplicationScope_1" InstanceCachePeriod="3000" Visible="False" WorkbookPath="[in_FichierComptaPath]">
+      <ui:ExcelApplicationScope.Body>
+        <ActivityAction x:TypeArguments="ui:WorkbookApplication">
+          <ActivityAction.Argument>
+            <DelegateInArgument x:TypeArguments="ui:WorkbookApplication" Name="ExcelWorkbookScope" />
+          </ActivityAction.Argument>
+          <Sequence DisplayName="Faire" sap:VirtualizedContainerService.HintSize="526,5692.66666666667" sap2010:WorkflowViewState.IdRef="Sequence_2">
+            <sap:WorkflowViewStateService.ViewState>
+              <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+              </scg:Dictionary>
+            </sap:WorkflowViewStateService.ViewState>
+            <ui:ExcelReadRange AddHeaders="True" DataTable="[dt_compta]" DisplayName="Read Range" sap:VirtualizedContainerService.HintSize="484,58.6666666666667" sap2010:WorkflowViewState.IdRef="ExcelReadRange_1" SheetName="Feuil1">
+              <ui:ExcelReadRange.Range>
+                <InArgument x:TypeArguments="x:String">
+                  <Literal x:TypeArguments="x:String" Value="" />
+                </InArgument>
+              </ui:ExcelReadRange.Range>
+            </ui:ExcelReadRange>
+            <Assign sap:VirtualizedContainerService.HintSize="484,62" sap2010:WorkflowViewState.IdRef="Assign_1">
+              <Assign.To>
+                <OutArgument x:TypeArguments="x:Int32">[nbLigne]</OutArgument>
+              </Assign.To>
+              <Assign.Value>
+                <InArgument x:TypeArguments="x:Int32">[dt_compta.Rows.Count]</InArgument>
+              </Assign.Value>
+            </Assign>
+            <WriteLine DisplayName="Write Line" sap:VirtualizedContainerService.HintSize="484,62.6666666666667" sap2010:WorkflowViewState.IdRef="WriteLine_2" Text="[&quot;La DT comporte &quot; + nbLigne.ToString + &quot; lignes.&quot;]" />
+            <ui:ExcelReadCell Cell="[&quot;A&quot; + nbLigne.ToString]" DisplayName="Read Cell ID de la ligne précédente" sap:VirtualizedContainerService.HintSize="484,58.6666666666667" sap2010:WorkflowViewState.IdRef="ExcelReadCell_1" SheetName="Feuil1">
+              <ui:ExcelReadCell.Result>
+                <OutArgument x:TypeArguments="x:Double">[ID_Last]</OutArgument>
+              </ui:ExcelReadCell.Result>
+            </ui:ExcelReadCell>
+            <ui:OutputDataTable DataTable="[dt_compta]" DisplayName="Output Data Table" sap:VirtualizedContainerService.HintSize="484,80.6666666666667" sap2010:WorkflowViewState.IdRef="OutputDataTable_1" Text="[rslt]" />
+            <WriteLine DisplayName="Write Line" sap:VirtualizedContainerService.HintSize="484,62.6666666666667" sap2010:WorkflowViewState.IdRef="WriteLine_1" Text="[rslt]" />
+            <Assign DisplayName="Index de la 1ére ligne" sap:VirtualizedContainerService.HintSize="484,62" sap2010:WorkflowViewState.IdRef="Assign_2">
+              <Assign.To>
+                <OutArgument x:TypeArguments="x:Int32">[idx]</OutArgument>
+              </Assign.To>
+              <Assign.Value>
+                <InArgument x:TypeArguments="x:Int32">[nbLigne + 2]</InArgument>
+              </Assign.Value>
+            </Assign>
+            <WriteLine DisplayName="Write Line" sap:VirtualizedContainerService.HintSize="484,62.6666666666667" sap2010:WorkflowViewState.IdRef="WriteLine_5" Text="[&quot;Index de la ligne: &quot; + idx.ToString]" />
+            <Assign sap:VirtualizedContainerService.HintSize="484,62" sap2010:WorkflowViewState.IdRef="Assign_3">
+              <Assign.To>
+                <OutArgument x:TypeArguments="x:Double">[ID_New]</OutArgument>
+              </Assign.To>
+              <Assign.Value>
+                <InArgument x:TypeArguments="x:Double">[ID_Last + 1]</InArgument>
+              </Assign.Value>
+            </Assign>
+            <WriteLine DisplayName="Write Line" sap:VirtualizedContainerService.HintSize="484,62.6666666666667" sap2010:WorkflowViewState.IdRef="WriteLine_4" Text="[&quot;Nouvel ID: &quot; + ID_New.ToString]" />
+            <Sequence DisplayName="1ére ligne Montant TTC" sap:VirtualizedContainerService.HintSize="484,2264" sap2010:WorkflowViewState.IdRef="Sequence_3">
+              <sap:WorkflowViewStateService.ViewState>
+                <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                  <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                  <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                </scg:Dictionary>
+              </sap:WorkflowViewStateService.ViewState>
+              <ui:ExcelWriteCell Cell="[&quot;A&quot; + idx.ToString]" DisplayName="ID Colonne A" sap:VirtualizedContainerService.HintSize="334,86.6666666666667" sap2010:WorkflowViewState.IdRef="ExcelWriteCell_1" SheetName="Feuil1" Text="[ID_New.ToString]" />
+              <ui:ExcelWriteCell Cell="[&quot;B&quot; + idx.ToString]" DisplayName="Date facture Colonne B" sap:VirtualizedContainerService.HintSize="334,86.6666666666667" sap2010:WorkflowViewState.IdRef="ExcelWriteCell_2" SheetName="Feuil1" Text="[TodayDate]" />
+              <ui:ExcelWriteCell Cell="[&quot;C&quot; + idx.ToString]" DisplayName="Date facture Colonne C" sap:VirtualizedContainerService.HintSize="334,86.6666666666667" sap2010:WorkflowViewState.IdRef="ExcelWriteCell_3" SheetName="Feuil1" Text="[TodayDate]" />
+              <ui:ExcelWriteCell Cell="[&quot;D&quot; + idx.ToString]" DisplayName="DOC TYPE Colonne D" sap:VirtualizedContainerService.HintSize="334,86.6666666666667" sap2010:WorkflowViewState.IdRef="ExcelWriteCell_4" SheetName="Feuil1" Text="SA" />
+              <ui:ExcelWriteCell Cell="[&quot;E&quot; + idx.ToString]" DisplayName="Company code Colonne E" sap:VirtualizedContainerService.HintSize="334,86.6666666666667" sap2010:WorkflowViewState.IdRef="ExcelWriteCell_5" SheetName="Feuil1" Text="9010" />
+              <ui:ExcelWriteCell Cell="[&quot;F&quot;+ idx.ToString]" DisplayName="Currency Colonne F" sap:VirtualizedContainerService.HintSize="334,86.6666666666667" sap2010:WorkflowViewState.IdRef="ExcelWriteCell_6" SheetName="Feuil1" Text="EUR" />
+              <ui:ExcelWriteCell Cell="[&quot;G&quot;+ idx.ToString]" DisplayName="Invoice number Colonne G" sap:VirtualizedContainerService.HintSize="334,86.6666666666667" sap2010:WorkflowViewState.IdRef="ExcelWriteCell_7" SheetName="Feuil1" Text="[in_CableInvoiceNumber]" />
+              <ui:ExcelWriteCell Cell="[&quot;H&quot; + idx.ToString]" DisplayName="Invoice number Colonne H" sap:VirtualizedContainerService.HintSize="334,86.6666666666667" sap2010:WorkflowViewState.IdRef="ExcelWriteCell_8" SheetName="Feuil1" Text="[in_CableInvoiceNumber]" />
+              <ui:ExcelWriteCell Cell="[&quot;J&quot; + idx.ToString]" DisplayName="Costumer number Colonne J" sap:VirtualizedContainerService.HintSize="334,86.6666666666667" sap2010:WorkflowViewState.IdRef="ExcelWriteCell_9" SheetName="Feuil1" Text="[in_RefClient]" />
+              <Assign sap:VirtualizedContainerService.HintSize="334,62" sap2010:WorkflowViewState.IdRef="Assign_7">
+                <Assign.To>
+                  <OutArgument x:TypeArguments="x:Double">[montantHT]</OutArgument>
+                </Assign.To>
+                <Assign.Value>
+                  <InArgument x:TypeArguments="x:Double">[in_CablePrice]</InArgument>
+                </Assign.Value>
+              </Assign>
+              <WriteLine DisplayName="Write Line" sap:VirtualizedContainerService.HintSize="334,62.6666666666667" sap2010:WorkflowViewState.IdRef="WriteLine_14" Text="[montantHT.ToString]" />
+              <Assign sap:VirtualizedContainerService.HintSize="334,62" sap2010:WorkflowViewState.IdRef="Assign_15">
+                <Assign.To>
+                  <OutArgument x:TypeArguments="x:Double">[tauxTVA]</OutArgument>
+                </Assign.To>
+                <Assign.Value>
+                  <InArgument x:TypeArguments="x:Double">[in_TauxTVA/100]</InArgument>
+                </Assign.Value>
+              </Assign>
+              <WriteLine DisplayName="Write Line" sap:VirtualizedContainerService.HintSize="334,62.6666666666667" sap2010:WorkflowViewState.IdRef="WriteLine_15" Text="[tauxTVA.ToString]" />
+              <Assign sap:VirtualizedContainerService.HintSize="334,62" sap2010:WorkflowViewState.IdRef="Assign_6">
+                <Assign.To>
+                  <OutArgument x:TypeArguments="x:Double">[montantTVA]</OutArgument>
+                </Assign.To>
+                <Assign.Value>
+                  <InArgument x:TypeArguments="x:Double" xml:space="preserve">[montantHT *  tauxTVA]</InArgument>
+                </Assign.Value>
+              </Assign>
+              <WriteLine DisplayName="Write Line" sap:VirtualizedContainerService.HintSize="334,62.6666666666667" sap2010:WorkflowViewState.IdRef="WriteLine_12" Text="[montantTVA.ToString]" />
+              <Assign sap:VirtualizedContainerService.HintSize="334,62" sap2010:WorkflowViewState.IdRef="Assign_5">
+                <Assign.To>
+                  <OutArgument x:TypeArguments="x:Double">[montantTTC]</OutArgument>
+                </Assign.To>
+                <Assign.Value>
+                  <InArgument x:TypeArguments="x:Double">[montantHT + montantTVA]</InArgument>
+                </Assign.Value>
+              </Assign>
+              <WriteLine DisplayName="Write Line" sap:VirtualizedContainerService.HintSize="334,62.6666666666667" sap2010:WorkflowViewState.IdRef="WriteLine_13" Text="[montantTTC.ToString]" />
+              <ui:ExcelWriteCell Cell="[&quot;M&quot; + idx.ToString]" DisplayName="Montant TTC Colonne M" sap:VirtualizedContainerService.HintSize="334,86.6666666666667" sap2010:WorkflowViewState.IdRef="ExcelWriteCell_10" SheetName="Feuil1" Text="[montantTTC.ToString]" />
+              <ui:ExcelWriteCell Cell="[&quot;X&quot; + idx.ToString]" DisplayName="Invoice number Colonne X" sap:VirtualizedContainerService.HintSize="334,86.6666666666667" sap2010:WorkflowViewState.IdRef="ExcelWriteCell_11" SheetName="Feuil1" Text="[in_CableInvoiceNumber]" />
+            </Sequence>
+            <Sequence DisplayName="2éme ligne Montant HT" sap:VirtualizedContainerService.HintSize="484,69.3333333333333" sap2010:WorkflowViewState.IdRef="Sequence_4">
+              <sap:WorkflowViewStateService.ViewState>
+                <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                  <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                  <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                </scg:Dictionary>
+              </sap:WorkflowViewStateService.ViewState>
+              <Assign DisplayName="Index de la 2éme ligne" sap:VirtualizedContainerService.HintSize="334,62" sap2010:WorkflowViewState.IdRef="Assign_8">
+                <Assign.To>
+                  <OutArgument x:TypeArguments="x:Int32">[idx]</OutArgument>
+                </Assign.To>
+                <Assign.Value>
+                  <InArgument x:TypeArguments="x:Int32">[idx + 1]</InArgument>
+                </Assign.Value>
+              </Assign>
+              <WriteLine DisplayName="Write Line" sap:VirtualizedContainerService.HintSize="334,62.6666666666667" sap2010:WorkflowViewState.IdRef="WriteLine_8" Text="[&quot;Index de la ligne: &quot; + idx.ToString]" />
+              <ui:ExcelWriteCell Cell="[&quot;A&quot; + idx.ToString]" DisplayName="ID Colonne A" sap:VirtualizedContainerService.HintSize="334,86.6666666666667" sap2010:WorkflowViewState.IdRef="ExcelWriteCell_12" SheetName="Feuil1" Text="[ID_New.ToString]" />
+              <ui:ExcelWriteCell Cell="[&quot;B&quot; + idx.ToString]" DisplayName="Date facture Colonne B" sap:VirtualizedContainerService.HintSize="334,86.6666666666667" sap2010:WorkflowViewState.IdRef="ExcelWriteCell_13" SheetName="Feuil1" Text="[TodayDate]" />
+              <ui:ExcelWriteCell Cell="[&quot;C&quot; + idx.ToString]" DisplayName="Date facture Colonne C" sap:VirtualizedContainerService.HintSize="334,86.6666666666667" sap2010:WorkflowViewState.IdRef="ExcelWriteCell_14" SheetName="Feuil1" Text="[TodayDate]" />
+              <ui:ExcelWriteCell Cell="[&quot;D&quot; + idx.ToString]" DisplayName="DOC TYPE Colonne D" sap:VirtualizedContainerService.HintSize="334,86.6666666666667" sap2010:WorkflowViewState.IdRef="ExcelWriteCell_15" SheetName="Feuil1" Text="SA" />
+              <ui:ExcelWriteCell Cell="[&quot;E&quot; + idx.ToString]" DisplayName="Company code Colonne E" sap:VirtualizedContainerService.HintSize="334,86.6666666666667" sap2010:WorkflowViewState.IdRef="ExcelWriteCell_16" SheetName="Feuil1" Text="9010" />
+              <ui:ExcelWriteCell Cell="[&quot;F&quot;+ idx.ToString]" DisplayName="Currency Colonne F" sap:VirtualizedContainerService.HintSize="334,86.6666666666667" sap2010:WorkflowViewState.IdRef="ExcelWriteCell_17" SheetName="Feuil1" Text="EUR" />
+              <ui:ExcelWriteCell Cell="[&quot;G&quot;+ idx.ToString]" DisplayName="Invoice number Colonne G" sap:VirtualizedContainerService.HintSize="334,86.6666666666667" sap2010:WorkflowViewState.IdRef="ExcelWriteCell_18" SheetName="Feuil1" Text="[in_CableInvoiceNumber]" />
+              <ui:ExcelWriteCell Cell="[&quot;H&quot; + idx.ToString]" DisplayName="Invoice number Colonne H" sap:VirtualizedContainerService.HintSize="334,86.6666666666667" sap2010:WorkflowViewState.IdRef="ExcelWriteCell_19" SheetName="Feuil1" Text="[in_CableInvoiceNumber]" />
+              <ui:ExcelWriteCell Cell="[&quot;I&quot; + idx.ToString]" DisplayName="Compte Colonne I" sap:VirtualizedContainerService.HintSize="334,86.6666666666667" sap2010:WorkflowViewState.IdRef="ExcelWriteCell_23" SheetName="Feuil1" Text="6001020201" />
+              <ui:ExcelWriteCell Cell="[&quot;M&quot; + idx.ToString]" DisplayName="Montant HT Colonne M" sap:VirtualizedContainerService.HintSize="334,86.6666666666667" sap2010:WorkflowViewState.IdRef="ExcelWriteCell_21" SheetName="Feuil1" Text="[&quot;-&quot; + montantHT.ToString]" />
+              <ui:ExcelWriteCell Cell="[&quot;R&quot; + idx.ToString]" DisplayName="Profit center Colonne R" sap:VirtualizedContainerService.HintSize="334,86.6666666666667" sap2010:WorkflowViewState.IdRef="ExcelWriteCell_24" SheetName="Feuil1" Text="90130" />
+              <ui:ExcelWriteCell Cell="[&quot;X&quot; + idx.ToString]" DisplayName="Invoice number Colonne X" sap:VirtualizedContainerService.HintSize="334,86.6666666666667" sap2010:WorkflowViewState.IdRef="ExcelWriteCell_22" SheetName="Feuil1" Text="[in_CableInvoiceNumber]" />
+            </Sequence>
+            <WriteLine DisplayName="Write Line" sap:VirtualizedContainerService.HintSize="484,62.6666666666667" sap2010:WorkflowViewState.IdRef="WriteLine_11" Text="[&quot;montant tva: &quot; + montantTVA.ToString]" />
+            <If Condition="[montantTVA &gt; 0]" sap:VirtualizedContainerService.HintSize="484,2050" sap2010:WorkflowViewState.IdRef="If_1">
+              <If.Then>
+                <Sequence sap:VirtualizedContainerService.HintSize="418,1868.66666666667" sap2010:WorkflowViewState.IdRef="Sequence_6">
+                  <sap:WorkflowViewStateService.ViewState>
+                    <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                      <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                    </scg:Dictionary>
+                  </sap:WorkflowViewStateService.ViewState>
+                  <Sequence DisplayName="3éme ligne TVA" sap:VirtualizedContainerService.HintSize="376,1776.66666666667" sap2010:WorkflowViewState.IdRef="Sequence_5">
+                    <sap:WorkflowViewStateService.ViewState>
+                      <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                        <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                        <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                      </scg:Dictionary>
+                    </sap:WorkflowViewStateService.ViewState>
+                    <Assign DisplayName="Index de la 3éme ligne" sap:VirtualizedContainerService.HintSize="334,62" sap2010:WorkflowViewState.IdRef="Assign_12">
+                      <Assign.To>
+                        <OutArgument x:TypeArguments="x:Int32">[idx]</OutArgument>
+                      </Assign.To>
+                      <Assign.Value>
+                        <InArgument x:TypeArguments="x:Int32">[idx + 1]</InArgument>
+                      </Assign.Value>
+                    </Assign>
+                    <WriteLine DisplayName="Write Line" sap:VirtualizedContainerService.HintSize="334,62.6666666666667" sap2010:WorkflowViewState.IdRef="WriteLine_9" Text="[&quot;Index de la ligne: &quot; + idx.ToString]" />
+                    <ui:ExcelWriteCell Cell="[&quot;A&quot; + idx.ToString]" DisplayName="ID Colonne A" sap:VirtualizedContainerService.HintSize="334,86.6666666666667" sap2010:WorkflowViewState.IdRef="ExcelWriteCell_25" SheetName="Feuil1" Text="[ID_New.ToString]" />
+                    <ui:ExcelWriteCell Cell="[&quot;B&quot; + idx.ToString]" DisplayName="Date facture Colonne B" sap:VirtualizedContainerService.HintSize="334,86.6666666666667" sap2010:WorkflowViewState.IdRef="ExcelWriteCell_26" SheetName="Feuil1" Text="[TodayDate]" />
+                    <ui:ExcelWriteCell Cell="[&quot;C&quot; + idx.ToString]" DisplayName="Date facture Colonne C" sap:VirtualizedContainerService.HintSize="334,86.6666666666667" sap2010:WorkflowViewState.IdRef="ExcelWriteCell_27" SheetName="Feuil1" Text="[TodayDate]" />
+                    <ui:ExcelWriteCell Cell="[&quot;D&quot; + idx.ToString]" DisplayName="DOC TYPE Colonne D" sap:VirtualizedContainerService.HintSize="334,86.6666666666667" sap2010:WorkflowViewState.IdRef="ExcelWriteCell_28" SheetName="Feuil1" Text="SA" />
+                    <ui:ExcelWriteCell Cell="[&quot;E&quot; + idx.ToString]" DisplayName="Company code Colonne E" sap:VirtualizedContainerService.HintSize="334,86.6666666666667" sap2010:WorkflowViewState.IdRef="ExcelWriteCell_29" SheetName="Feuil1" Text="9010" />
+                    <ui:ExcelWriteCell Cell="[&quot;F&quot;+ idx.ToString]" DisplayName="Currency Colonne F" sap:VirtualizedContainerService.HintSize="334,86.6666666666667" sap2010:WorkflowViewState.IdRef="ExcelWriteCell_30" SheetName="Feuil1" Text="EUR" />
+                    <ui:ExcelWriteCell Cell="[&quot;G&quot;+ idx.ToString]" DisplayName="Invoice number Colonne G" sap:VirtualizedContainerService.HintSize="334,86.6666666666667" sap2010:WorkflowViewState.IdRef="ExcelWriteCell_31" SheetName="Feuil1" Text="[in_CableInvoiceNumber]" />
+                    <ui:ExcelWriteCell Cell="[&quot;H&quot; + idx.ToString]" DisplayName="Invoice number Colonne H" sap:VirtualizedContainerService.HintSize="334,86.6666666666667" sap2010:WorkflowViewState.IdRef="ExcelWriteCell_32" SheetName="Feuil1" Text="[in_CableInvoiceNumber]" />
+                    <ui:ExcelWriteCell Cell="[&quot;I&quot; + idx.ToString]" DisplayName="Compte Colonne I" sap:VirtualizedContainerService.HintSize="334,86.6666666666667" sap2010:WorkflowViewState.IdRef="ExcelWriteCell_33" SheetName="Feuil1" Text="22221010502" />
+                    <ui:ExcelWriteCell Cell="[&quot;M&quot; + idx.ToString]" DisplayName="Montant TVA Colonne M" sap:VirtualizedContainerService.HintSize="334,86.6666666666667" sap2010:WorkflowViewState.IdRef="ExcelWriteCell_34" SheetName="Feuil1" Text="[&quot;-&quot; + montantTVA.ToString]" />
+                    <ui:ExcelWriteCell Cell="[&quot;R&quot; + idx.ToString]" DisplayName="Profit center Colonne R" sap:VirtualizedContainerService.HintSize="334,86.6666666666667" sap2010:WorkflowViewState.IdRef="ExcelWriteCell_35" SheetName="Feuil1" Text="90130" />
+                    <ui:ExcelWriteCell Cell="[&quot;X&quot; + idx.ToString]" DisplayName="Invoice number Colonne X" sap:VirtualizedContainerService.HintSize="334,86.6666666666667" sap2010:WorkflowViewState.IdRef="ExcelWriteCell_36" SheetName="Feuil1" Text="[in_CableInvoiceNumber]" />
+                  </Sequence>
+                </Sequence>
+              </If.Then>
+              <If.Else>
+                <Sequence sap2010:WorkflowViewState.IdRef="Sequence_7">
+                  <sap:WorkflowViewStateService.ViewState>
+                    <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                      <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                    </scg:Dictionary>
+                  </sap:WorkflowViewStateService.ViewState>
+                </Sequence>
+              </If.Else>
+            </If>
+          </Sequence>
+        </ActivityAction>
+      </ui:ExcelApplicationScope.Body>
+    </ui:ExcelApplicationScope>
+  </Sequence>
+</Activity>
