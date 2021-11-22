@@ -13,7 +13,7 @@
   <mva:VisualBasic.Settings>
     <x:Null />
   </mva:VisualBasic.Settings>
-  <sap:VirtualizedContainerService.HintSize>834,2446</sap:VirtualizedContainerService.HintSize>
+  <sap:VirtualizedContainerService.HintSize>626,2687.33333333333</sap:VirtualizedContainerService.HintSize>
   <sap2010:WorkflowViewState.IdRef>_8_Facture_Excel_1</sap2010:WorkflowViewState.IdRef>
   <TextExpression.NamespacesForImplementation>
     <scg:List x:TypeArguments="x:String" Capacity="30">
@@ -80,7 +80,7 @@
       <AssemblyReference>System.Runtime.WindowsRuntime</AssemblyReference>
     </scg:List>
   </TextExpression.ReferencesForImplementation>
-  <Sequence DisplayName="_8_Facture_Excel" sap:VirtualizedContainerService.HintSize="476,2381.33333333333" sap2010:WorkflowViewState.IdRef="Sequence_1">
+  <Sequence DisplayName="_8_Facture_Excel" sap:VirtualizedContainerService.HintSize="476,2622.66666666667" sap2010:WorkflowViewState.IdRef="Sequence_1">
     <Sequence.Variables>
       <Variable x:TypeArguments="x:String" Name="factureExcelCar" />
       <Variable x:TypeArguments="x:String" Name="factureExcelPath" />
@@ -151,6 +151,8 @@
         </ActivityAction>
       </ui:ExcelApplicationScope.Body>
     </ui:ExcelApplicationScope>
+    <ui:DeleteFileX DisplayName="Delete File" sap:VirtualizedContainerService.HintSize="434,80.6666666666667" sap2010:WorkflowViewState.IdRef="DeleteFileX_1" Path="[factureExcelPath]" />
+    <ui:DeleteFolderX DisplayName="Delete Folder" sap:VirtualizedContainerService.HintSize="434,80.6666666666667" sap2010:WorkflowViewState.IdRef="DeleteFolderX_1" Path="[in_ExcelDirectory +&quot;\&quot;+in_Dossier_action_sale_invoice]" Recursive="True" />
     <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="434,94.6666666666667" sap2010:WorkflowViewState.IdRef="LogMessage_2" Level="Info" Message="[&quot;9. Fin lecture facture Excel véhicule.&quot;]" />
   </Sequence>
 </Activity>

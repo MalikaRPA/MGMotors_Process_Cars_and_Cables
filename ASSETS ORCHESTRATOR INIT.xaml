@@ -1,15 +1,23 @@
-<Activity mc:Ignorable="sap sap2010" x:Class="ASSETS_ORCHESTRATOR" xmlns="http://schemas.microsoft.com/netfx/2009/xaml/activities" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:mva="clr-namespace:Microsoft.VisualBasic.Activities;assembly=System.Activities" xmlns:sap="http://schemas.microsoft.com/netfx/2009/xaml/activities/presentation" xmlns:sap2010="http://schemas.microsoft.com/netfx/2010/xaml/activities/presentation" xmlns:scg="clr-namespace:System.Collections.Generic;assembly=mscorlib" xmlns:ui="http://schemas.uipath.com/workflow/activities" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+<Activity mc:Ignorable="sap sap2010" x:Class="ASSETS_ORCHESTRATOR" xmlns="http://schemas.microsoft.com/netfx/2009/xaml/activities" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:mva="clr-namespace:Microsoft.VisualBasic.Activities;assembly=System.Activities" xmlns:sap="http://schemas.microsoft.com/netfx/2009/xaml/activities/presentation" xmlns:sap2010="http://schemas.microsoft.com/netfx/2010/xaml/activities/presentation" xmlns:scg="clr-namespace:System.Collections.Generic;assembly=mscorlib" xmlns:this="clr-namespace:" xmlns:ui="http://schemas.uipath.com/workflow/activities" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
   <x:Members>
     <x:Property Name="out_File_9010" Type="OutArgument(x:String)" />
     <x:Property Name="out_File_ClientSansCable" Type="OutArgument(x:String)" />
     <x:Property Name="out_EmailContact_File" Type="OutArgument(x:String)" />
     <x:Property Name="out_TemplateComptaPath" Type="OutArgument(x:String)" />
     <x:Property Name="out_Folder_path" Type="OutArgument(x:String)" />
+    <x:Property Name="out_Download_Zip_Excel" Type="InArgument(x:String)" />
+    <x:Property Name="out_Download_Zip_PDF" Type="InArgument(x:String)" />
   </x:Members>
+  <this:ASSETS_ORCHESTRATOR.out_Download_Zip_Excel>
+    <InArgument x:TypeArguments="x:String" />
+  </this:ASSETS_ORCHESTRATOR.out_Download_Zip_Excel>
+  <this:ASSETS_ORCHESTRATOR.out_Download_Zip_PDF>
+    <InArgument x:TypeArguments="x:String" />
+  </this:ASSETS_ORCHESTRATOR.out_Download_Zip_PDF>
   <mva:VisualBasic.Settings>
     <x:Null />
   </mva:VisualBasic.Settings>
-  <sap:VirtualizedContainerService.HintSize>792.666666666667,1736</sap:VirtualizedContainerService.HintSize>
+  <sap:VirtualizedContainerService.HintSize>796,2097.33333333333</sap:VirtualizedContainerService.HintSize>
   <sap2010:WorkflowViewState.IdRef>ASSETS_ORCHESTRATOR_1</sap2010:WorkflowViewState.IdRef>
   <TextExpression.NamespacesForImplementation>
     <scg:List x:TypeArguments="x:String" Capacity="24">
@@ -61,7 +69,7 @@
       <AssemblyReference>System.Reflection.Metadata</AssemblyReference>
     </scg:List>
   </TextExpression.ReferencesForImplementation>
-  <Sequence DisplayName="ASSETS_ORCHESTRATOR" sap:VirtualizedContainerService.HintSize="486,1671.33333333333" sap2010:WorkflowViewState.IdRef="Sequence_1">
+  <Sequence DisplayName="ASSETS_ORCHESTRATOR" sap:VirtualizedContainerService.HintSize="486,2032.66666666667" sap2010:WorkflowViewState.IdRef="Sequence_1">
     <Sequence.Variables>
       <Variable x:TypeArguments="x:String" Name="File_9010" />
       <Variable x:TypeArguments="x:String" Name="File_ClientSansCable" />
@@ -133,5 +141,15 @@
         <InArgument x:TypeArguments="x:String">[out_Folder_path + "\" + TemplateComptaPath]</InArgument>
       </Assign.Value>
     </Assign>
+    <ui:GetRobotAsset TimeoutMS="{x:Null}" AssetName="Download_Zip_Excel" DisplayName="Get Asset" sap:VirtualizedContainerService.HintSize="444,140.666666666667" sap2010:WorkflowViewState.IdRef="GetRobotAsset_6">
+      <ui:GetRobotAsset.Value>
+        <OutArgument x:TypeArguments="x:String">[out_Download_Zip_Excel]</OutArgument>
+      </ui:GetRobotAsset.Value>
+    </ui:GetRobotAsset>
+    <ui:GetRobotAsset TimeoutMS="{x:Null}" AssetName="Download_Zip_PDF" DisplayName="Get Asset" sap:VirtualizedContainerService.HintSize="444,140.666666666667" sap2010:WorkflowViewState.IdRef="GetRobotAsset_7">
+      <ui:GetRobotAsset.Value>
+        <OutArgument x:TypeArguments="x:String">[out_Download_Zip_PDF]</OutArgument>
+      </ui:GetRobotAsset.Value>
+    </ui:GetRobotAsset>
   </Sequence>
 </Activity>

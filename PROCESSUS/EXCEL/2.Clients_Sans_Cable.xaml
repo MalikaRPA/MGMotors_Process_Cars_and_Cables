@@ -1,16 +1,13 @@
-<Activity mc:Ignorable="sap sap2010" x:Class="_2_Clients_Exceptions" xmlns="http://schemas.microsoft.com/netfx/2009/xaml/activities" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:mva="clr-namespace:Microsoft.VisualBasic.Activities;assembly=System.Activities" xmlns:sap="http://schemas.microsoft.com/netfx/2009/xaml/activities/presentation" xmlns:sap2010="http://schemas.microsoft.com/netfx/2010/xaml/activities/presentation" xmlns:scg="clr-namespace:System.Collections.Generic;assembly=mscorlib" xmlns:sd="clr-namespace:System.Data;assembly=System.Data" xmlns:this="clr-namespace:" xmlns:ui="http://schemas.uipath.com/workflow/activities" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+<Activity mc:Ignorable="sap sap2010" x:Class="_2_Clients_Exceptions" xmlns="http://schemas.microsoft.com/netfx/2009/xaml/activities" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:mva="clr-namespace:Microsoft.VisualBasic.Activities;assembly=System.Activities" xmlns:sap="http://schemas.microsoft.com/netfx/2009/xaml/activities/presentation" xmlns:sap2010="http://schemas.microsoft.com/netfx/2010/xaml/activities/presentation" xmlns:scg="clr-namespace:System.Collections.Generic;assembly=mscorlib" xmlns:sd="clr-namespace:System.Data;assembly=System.Data" xmlns:ui="http://schemas.uipath.com/workflow/activities" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
   <x:Members>
-    <x:Property Name="in_dt_9010" Type="InArgument(sd:DataTable)" />
     <x:Property Name="in_File_ClientSansCable" Type="InArgument(x:String)" />
     <x:Property Name="in_Last_Cable_Invoice_Number" Type="InArgument(x:String)" />
+    <x:Property Name="io_dt_9010" Type="InOutArgument(sd:DataTable)" />
   </x:Members>
-  <this:_2_Clients_Exceptions.in_dt_9010>
-    <InArgument x:TypeArguments="sd:DataTable" />
-  </this:_2_Clients_Exceptions.in_dt_9010>
   <mva:VisualBasic.Settings>
     <x:Null />
   </mva:VisualBasic.Settings>
-  <sap:VirtualizedContainerService.HintSize>1197.33333333333,3702.66666666667</sap:VirtualizedContainerService.HintSize>
+  <sap:VirtualizedContainerService.HintSize>1197.33333333333,5465.33333333333</sap:VirtualizedContainerService.HintSize>
   <sap2010:WorkflowViewState.IdRef>_2_Clients_Exceptions_1</sap2010:WorkflowViewState.IdRef>
   <TextExpression.NamespacesForImplementation>
     <scg:List x:TypeArguments="x:String" Capacity="31">
@@ -78,7 +75,7 @@
       <AssemblyReference>System.Data.Entity</AssemblyReference>
     </scg:List>
   </TextExpression.ReferencesForImplementation>
-  <Sequence DisplayName="_2_Clients_Exceptions" sap:VirtualizedContainerService.HintSize="1207.33333333333,3638" sap2010:WorkflowViewState.IdRef="Sequence_1">
+  <Sequence DisplayName="_2_Clients_Exceptions" sap:VirtualizedContainerService.HintSize="1207.33333333333,5400.66666666667" sap2010:WorkflowViewState.IdRef="Sequence_1">
     <Sequence.Variables>
       <Variable x:TypeArguments="sd:DataTable" Name="dt_sansCable" />
       <Variable x:TypeArguments="x:String" Name="rslt" />
@@ -119,7 +116,7 @@
         </ActivityAction>
       </ui:ExcelApplicationScope.Body>
     </ui:ExcelApplicationScope>
-    <ui:AddDataColumn x:TypeArguments="x:String" AllowDBNull="{x:Null}" AutoIncrement="{x:Null}" Column="{x:Null}" DefaultValue="{x:Null}" MaxLength="{x:Null}" Unique="{x:Null}" ColumnName="Client sans cable" DataTable="[in_dt_9010]" DisplayName="Add Data Column" sap:VirtualizedContainerService.HintSize="1165.33333333333,190" sap2010:WorkflowViewState.IdRef="AddDataColumn`1_2" />
+    <ui:AddDataColumn x:TypeArguments="x:String" AllowDBNull="{x:Null}" AutoIncrement="{x:Null}" Column="{x:Null}" DefaultValue="{x:Null}" MaxLength="{x:Null}" Unique="{x:Null}" ColumnName="Client sans cable" DataTable="[io_dt_9010]" DisplayName="Add Data Column" sap:VirtualizedContainerService.HintSize="1165.33333333333,190" sap2010:WorkflowViewState.IdRef="AddDataColumn`1_2" />
     <ui:ForEachRow ColumnNames="{x:Null}" CurrentIndex="{x:Null}" DataTable="[dt_sansCable]" DisplayName="For Each Row in Data Table" sap:VirtualizedContainerService.HintSize="1165.33333333333,1314" sap2010:WorkflowViewState.IdRef="ForEachRow_1">
       <ui:ForEachRow.Body>
         <ActivityAction x:TypeArguments="sd:DataRow">
@@ -141,7 +138,7 @@
                 <InArgument x:TypeArguments="x:String">[row("Costumer #").ToString]</InArgument>
               </Assign.Value>
             </Assign>
-            <ui:ForEachRow ColumnNames="{x:Null}" CurrentIndex="{x:Null}" DataTable="[in_dt_9010]" DisplayName="For Each Row in Data Table" sap:VirtualizedContainerService.HintSize="1089.33333333333,893.333333333333" sap2010:WorkflowViewState.IdRef="ForEachRow_2">
+            <ui:ForEachRow ColumnNames="{x:Null}" CurrentIndex="{x:Null}" DataTable="[io_dt_9010]" DisplayName="For Each Row in Data Table" sap:VirtualizedContainerService.HintSize="1089.33333333333,893.333333333333" sap2010:WorkflowViewState.IdRef="ForEachRow_2">
               <ui:ForEachRow.Body>
                 <ActivityAction x:TypeArguments="sd:DataRow">
                   <ActivityAction.Argument>
@@ -219,7 +216,7 @@
         </ActivityAction>
       </ui:ForEachRow.Body>
     </ui:ForEachRow>
-    <ui:FilterDataTable sap2010:Annotation.AnnotationText="Filtres pour garder que les colonnes utiles." DataTable="[in_dt_9010]" DisplayName="Filter Data Table" FilterRowsMode="Remove" sap:VirtualizedContainerService.HintSize="1165.33333333333,193.333333333333" sap2010:WorkflowViewState.IdRef="FilterDataTable_1" OutputDataTable="[in_dt_9010]" SelectColumnsMode="Keep">
+    <ui:FilterDataTable sap2010:Annotation.AnnotationText="Filtres pour garder que les colonnes utiles." DataTable="[io_dt_9010]" DisplayName="Filter Data Table" FilterRowsMode="Remove" sap:VirtualizedContainerService.HintSize="1165.33333333333,193.333333333333" sap2010:WorkflowViewState.IdRef="FilterDataTable_1" OutputDataTable="[io_dt_9010]" SelectColumnsMode="Keep">
       <ui:FilterDataTable.Filters>
         <scg:List x:TypeArguments="ui:FilterOperationArgument" Capacity="4">
           <ui:FilterOperationArgument BooleanOperator="And" Operator="EQ">
@@ -248,14 +245,14 @@
         </scg:Dictionary>
       </sap:WorkflowViewStateService.ViewState>
     </ui:FilterDataTable>
-    <Sequence DisplayName="Last Cable Invoice Number" sap:VirtualizedContainerService.HintSize="1165.33333333333,349.333333333333" sap2010:WorkflowViewState.IdRef="Sequence_33">
+    <Sequence DisplayName="Last Cable Invoice Number" sap:VirtualizedContainerService.HintSize="1165.33333333333,2112" sap2010:WorkflowViewState.IdRef="Sequence_33">
       <sap:WorkflowViewStateService.ViewState>
         <scg:Dictionary x:TypeArguments="x:String, x:Object">
           <x:Boolean x:Key="IsExpanded">True</x:Boolean>
           <x:Boolean x:Key="IsPinned">False</x:Boolean>
         </scg:Dictionary>
       </sap:WorkflowViewStateService.ViewState>
-      <Assign sap:VirtualizedContainerService.HintSize="262,62" sap2010:WorkflowViewState.IdRef="Assign_14">
+      <Assign sap:VirtualizedContainerService.HintSize="844,62" sap2010:WorkflowViewState.IdRef="Assign_14">
         <Assign.To>
           <OutArgument x:TypeArguments="x:Int32">[year]</OutArgument>
         </Assign.To>
@@ -263,8 +260,8 @@
           <InArgument x:TypeArguments="x:Int32">[Cint(Now.ToString(“yy”))]</InArgument>
         </Assign.Value>
       </Assign>
-      <WriteLine DisplayName="Write Line" sap:VirtualizedContainerService.HintSize="262,62.6666666666667" sap2010:WorkflowViewState.IdRef="WriteLine_12" Text="[&quot;L'année actuelle: &quot; + year.ToString]" />
-      <ui:ForEachRow ColumnNames="{x:Null}" CurrentIndex="{x:Null}" DataTable="[in_dt_9010]" DisplayName="For Each Row in Data Table" sap:VirtualizedContainerService.HintSize="262,52.6666666666667" sap2010:WorkflowViewState.IdRef="ForEachRow_5">
+      <WriteLine DisplayName="Write Line" sap:VirtualizedContainerService.HintSize="844,62.6666666666667" sap2010:WorkflowViewState.IdRef="WriteLine_12" Text="[&quot;L'année actuelle: &quot; + year.ToString]" />
+      <ui:ForEachRow ColumnNames="{x:Null}" CurrentIndex="{x:Null}" DataTable="[io_dt_9010]" DisplayName="For Each Row in Data Table" sap:VirtualizedContainerService.HintSize="844,1815.33333333333" sap2010:WorkflowViewState.IdRef="ForEachRow_5">
         <ui:ForEachRow.Body>
           <ActivityAction x:TypeArguments="sd:DataRow">
             <ActivityAction.Argument>
@@ -517,24 +514,24 @@
         </ui:ForEachRow.Body>
         <sap:WorkflowViewStateService.ViewState>
           <scg:Dictionary x:TypeArguments="x:String, x:Object">
-            <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+            <x:Boolean x:Key="IsExpanded">True</x:Boolean>
             <x:Boolean x:Key="IsPinned">False</x:Boolean>
           </scg:Dictionary>
         </sap:WorkflowViewStateService.ViewState>
       </ui:ForEachRow>
     </Sequence>
-    <ui:OutputDataTable DataTable="[in_dt_9010]" DisplayName="Output Data Table" sap:VirtualizedContainerService.HintSize="1165.33333333333,80.6666666666667" sap2010:WorkflowViewState.IdRef="OutputDataTable_3" Text="[rslt1]" />
+    <ui:OutputDataTable DataTable="[io_dt_9010]" DisplayName="Output Data Table" sap:VirtualizedContainerService.HintSize="1165.33333333333,80.6666666666667" sap2010:WorkflowViewState.IdRef="OutputDataTable_3" Text="[rslt1]" />
     <WriteLine DisplayName="Write Line" sap:VirtualizedContainerService.HintSize="1165.33333333333,62.6666666666667" sap2010:WorkflowViewState.IdRef="WriteLine_4" Text="[rslt1]" />
     <Assign sap:VirtualizedContainerService.HintSize="1165.33333333333,62" sap2010:WorkflowViewState.IdRef="Assign_4">
       <Assign.To>
         <OutArgument x:TypeArguments="x:Int32">[nbLigne]</OutArgument>
       </Assign.To>
       <Assign.Value>
-        <InArgument x:TypeArguments="x:Int32">[in_dt_9010.Rows.Count]</InArgument>
+        <InArgument x:TypeArguments="x:Int32">[io_dt_9010.Rows.Count]</InArgument>
       </Assign.Value>
     </Assign>
     <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="1165.33333333333,94.6666666666667" sap2010:WorkflowViewState.IdRef="LogMessage_6" Level="Info" Message="[&quot;Il y a &quot; + nbLigne.ToString + &quot; VIN a traiter.&quot;]" />
-    <ui:ForEachRow ColumnNames="{x:Null}" CurrentIndex="{x:Null}" DataTable="[in_dt_9010]" DisplayName="For Each Row in Data Table" sap:VirtualizedContainerService.HintSize="1165.33333333333,310.666666666667" sap2010:WorkflowViewState.IdRef="ForEachRow_3">
+    <ui:ForEachRow ColumnNames="{x:Null}" CurrentIndex="{x:Null}" DataTable="[io_dt_9010]" DisplayName="For Each Row in Data Table" sap:VirtualizedContainerService.HintSize="1165.33333333333,310.666666666667" sap2010:WorkflowViewState.IdRef="ForEachRow_3">
       <ui:ForEachRow.Body>
         <ActivityAction x:TypeArguments="sd:DataRow">
           <ActivityAction.Argument>

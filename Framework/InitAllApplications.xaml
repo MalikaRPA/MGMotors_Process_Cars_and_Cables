@@ -12,7 +12,7 @@
   <mva:VisualBasic.Settings>
     <x:Null />
   </mva:VisualBasic.Settings>
-  <sap:VirtualizedContainerService.HintSize>718,1374.66666666667</sap:VirtualizedContainerService.HintSize>
+  <sap:VirtualizedContainerService.HintSize>796,1699.33333333333</sap:VirtualizedContainerService.HintSize>
   <sap2010:WorkflowViewState.IdRef>Initialization_1</sap2010:WorkflowViewState.IdRef>
   <TextExpression.NamespacesForImplementation>
     <scg:List x:TypeArguments="x:String" Capacity="30">
@@ -78,14 +78,15 @@
       <AssemblyReference>System.Reflection.Metadata</AssemblyReference>
       <AssemblyReference>System.Data.DataSetExtensions</AssemblyReference>
       <AssemblyReference>System.Data.Entity</AssemblyReference>
-      <AssemblyReference>System.Runtime.WindowsRuntime</AssemblyReference>
     </scg:List>
   </TextExpression.ReferencesForImplementation>
-  <Sequence sap2010:Annotation.AnnotationText="Open applications used in the process and do necessary initialization procedures (e.g., login)." DisplayName="Initialize All Applications" sap:VirtualizedContainerService.HintSize="421.333333333333,1310" sap2010:WorkflowViewState.IdRef="Sequence_9">
+  <Sequence sap2010:Annotation.AnnotationText="Open applications used in the process and do necessary initialization procedures (e.g., login)." DisplayName="Initialize All Applications" sap:VirtualizedContainerService.HintSize="478.666666666667,1634.66666666667" sap2010:WorkflowViewState.IdRef="Sequence_9">
     <Sequence.Variables>
       <Variable x:TypeArguments="x:String" Name="File_ClientSansCable" />
       <Variable x:TypeArguments="x:String" Name="str_TemplateComptaPath" />
       <Variable x:TypeArguments="x:String" Name="str_EmailContact_File" />
+      <Variable x:TypeArguments="x:String" Name="str_Download_Zip_Excel" />
+      <Variable x:TypeArguments="x:String" Name="str_Download_Zip_PDF" />
     </Sequence.Variables>
     <sap:WorkflowViewStateService.ViewState>
       <scg:Dictionary x:TypeArguments="x:String, x:Object">
@@ -93,17 +94,19 @@
         <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
       </scg:Dictionary>
     </sap:WorkflowViewStateService.ViewState>
-    <ui:LogMessage DisplayName="Log message (Initialize applications)" sap:VirtualizedContainerService.HintSize="379.333333333333,94.6666666666667" sap2010:WorkflowViewState.IdRef="LogMessage_1" Level="Trace" Message="[&quot;Opening applications...&quot;]" />
-    <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="Invoke ASSETS ORCHESTRATOR workflow" sap:VirtualizedContainerService.HintSize="379.333333333333,114" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_1" UnSafe="False" WorkflowFileName="ASSETS ORCHESTRATOR INIT.xaml">
+    <ui:LogMessage DisplayName="Log message (Initialize applications)" sap:VirtualizedContainerService.HintSize="436.666666666667,94.6666666666667" sap2010:WorkflowViewState.IdRef="LogMessage_1" Level="Trace" Message="[&quot;Opening applications...&quot;]" />
+    <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="Invoke ASSETS ORCHESTRATOR workflow" sap:VirtualizedContainerService.HintSize="436.666666666667,114" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_1" UnSafe="False" WorkflowFileName="ASSETS ORCHESTRATOR INIT.xaml">
       <ui:InvokeWorkflowFile.Arguments>
         <OutArgument x:TypeArguments="x:String" x:Key="out_File_9010">[io_File_9010]</OutArgument>
         <OutArgument x:TypeArguments="x:String" x:Key="out_File_ClientSansCable">[File_ClientSansCable]</OutArgument>
         <OutArgument x:TypeArguments="x:String" x:Key="out_EmailContact_File">[str_EmailContact_File]</OutArgument>
         <OutArgument x:TypeArguments="x:String" x:Key="out_TemplateComptaPath">[str_TemplateComptaPath]</OutArgument>
         <OutArgument x:TypeArguments="x:String" x:Key="out_Folder_path">[io_Folder_path]</OutArgument>
+        <InArgument x:TypeArguments="x:String" x:Key="out_Download_Zip_Excel">[str_Download_Zip_Excel]</InArgument>
+        <InArgument x:TypeArguments="x:String" x:Key="out_Download_Zip_PDF">[str_Download_Zip_PDF]</InArgument>
       </ui:InvokeWorkflowFile.Arguments>
     </ui:InvokeWorkflowFile>
-    <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="Invoke 1.Lecture_9010 workflow" sap:VirtualizedContainerService.HintSize="379.333333333333,114" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_2" UnSafe="False" WorkflowFileName="PROCESSUS\EXCEL\1.Lecture_9010.xaml">
+    <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="Invoke 1.Lecture_9010 workflow" sap:VirtualizedContainerService.HintSize="436.666666666667,114" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_2" UnSafe="False" WorkflowFileName="PROCESSUS\EXCEL\1.Lecture_9010.xaml">
       <ui:InvokeWorkflowFile.Arguments>
         <OutArgument x:TypeArguments="sd:DataTable" x:Key="out_dt_9010_full">[io_dt_9010_full]</OutArgument>
         <OutArgument x:TypeArguments="sd:DataTable" x:Key="out_dt_9010">[io_dt_9010]</OutArgument>
@@ -111,36 +114,49 @@
         <OutArgument x:TypeArguments="x:String" x:Key="out_Last_Cable_Invoice_Number">[io_Last_Cable_Invoice_Number]</OutArgument>
       </ui:InvokeWorkflowFile.Arguments>
     </ui:InvokeWorkflowFile>
-    <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="Invoke 2.Clients_Sans_Cable workflow" sap:VirtualizedContainerService.HintSize="379.333333333333,114" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_3" UnSafe="False" WorkflowFileName="PROCESSUS\EXCEL\2.Clients_Sans_Cable.xaml">
+    <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="Invoke 2.Clients_Sans_Cable workflow" sap:VirtualizedContainerService.HintSize="436.666666666667,114" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_3" UnSafe="False" WorkflowFileName="PROCESSUS\EXCEL\2.Clients_Sans_Cable.xaml">
       <ui:InvokeWorkflowFile.Arguments>
-        <InArgument x:TypeArguments="sd:DataTable" x:Key="in_dt_9010">[io_dt_9010]</InArgument>
         <InArgument x:TypeArguments="x:String" x:Key="in_File_ClientSansCable">[File_ClientSansCable]</InArgument>
         <InArgument x:TypeArguments="x:String" x:Key="in_Last_Cable_Invoice_Number">[io_Last_Cable_Invoice_Number]</InArgument>
+        <InOutArgument x:TypeArguments="sd:DataTable" x:Key="io_dt_9010">[io_dt_9010]</InOutArgument>
       </ui:InvokeWorkflowFile.Arguments>
     </ui:InvokeWorkflowFile>
-    <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="Invoke 3.Contacts_Emails workflow" sap:VirtualizedContainerService.HintSize="379.333333333333,114" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_4" UnSafe="False" WorkflowFileName="PROCESSUS\EXCEL\3.Contacts_Emails.xaml">
+    <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="Invoke 3.Contacts_Emails workflow" sap:VirtualizedContainerService.HintSize="436.666666666667,114" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_4" UnSafe="False" WorkflowFileName="PROCESSUS\EXCEL\3.Contacts_Emails.xaml">
       <ui:InvokeWorkflowFile.Arguments>
-        <OutArgument x:TypeArguments="sd:DataTable" x:Key="out_dt_EmailCustomers">
-          <mva:VisualBasicReference x:TypeArguments="sd:DataTable" ExpressionText="io_dt_EmailCustomers" />
-        </OutArgument>
-        <InArgument x:TypeArguments="x:String" x:Key="in_EmailContact_File">
-          <mva:VisualBasicValue x:TypeArguments="x:String" ExpressionText="str_EmailContact_File" />
-        </InArgument>
+        <OutArgument x:TypeArguments="sd:DataTable" x:Key="out_dt_EmailCustomers">[io_dt_EmailCustomers]</OutArgument>
+        <InArgument x:TypeArguments="x:String" x:Key="in_EmailContact_File">[str_EmailContact_File]</InArgument>
       </ui:InvokeWorkflowFile.Arguments>
     </ui:InvokeWorkflowFile>
-    <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="Invoke Création_fichier_Compta_SAP workflow" sap:VirtualizedContainerService.HintSize="379.333333333333,114" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_7" UnSafe="False" WorkflowFileName="PROCESSUS\EXCEL\Création_fichier_Compta_SAP.xaml">
+    <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="Invoke Création_fichier_Compta_SAP workflow" sap:VirtualizedContainerService.HintSize="436.666666666667,114" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_7" UnSafe="False" WorkflowFileName="PROCESSUS\EXCEL\Création_fichier_Compta_SAP.xaml">
       <ui:InvokeWorkflowFile.Arguments>
         <OutArgument x:TypeArguments="x:String" x:Key="out_FichierComptaPath">[io_FichierComptaPath]</OutArgument>
         <InArgument x:TypeArguments="x:String" x:Key="in_Folder_path">[io_Folder_path]</InArgument>
         <InArgument x:TypeArguments="x:String" x:Key="in_TemplateComptaPath">[str_TemplateComptaPath]</InArgument>
       </ui:InvokeWorkflowFile.Arguments>
     </ui:InvokeWorkflowFile>
-    <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="Invoke 5.Open_SAP workflow" sap:VirtualizedContainerService.HintSize="379.333333333333,114" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_6" UnSafe="False" WorkflowFileName="PROCESSUS\SAP\5.Open_SAP.xaml">
+    <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="Invoke Suppression_zip workflow" sap:VirtualizedContainerService.HintSize="436.666666666667,114" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_8" UnSafe="False" WorkflowFileName="PROCESSUS\EXCEL\Suppression_zip.xaml">
       <ui:InvokeWorkflowFile.Arguments>
-        <scg:Dictionary x:TypeArguments="x:String, Argument" />
+        <InArgument x:TypeArguments="x:String" x:Key="in_Download_Zip_Excel">[str_Download_Zip_Excel]</InArgument>
+        <InArgument x:TypeArguments="x:String" x:Key="in_Download_Zip_PDF">[str_Download_Zip_PDF]</InArgument>
       </ui:InvokeWorkflowFile.Arguments>
     </ui:InvokeWorkflowFile>
-    <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="Invoke 4.Open_DSC workflow" sap:VirtualizedContainerService.HintSize="379.333333333333,114" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_5" UnSafe="False" WorkflowFileName="PROCESSUS\WEB\4.Open_DSC.xaml">
+    <ui:CommentOut DisplayName="Comment Out" sap:VirtualizedContainerService.HintSize="436.666666666667,284.666666666667" sap2010:WorkflowViewState.IdRef="CommentOut_1">
+      <ui:CommentOut.Body>
+        <Sequence DisplayName="Activités ignorées" sap:VirtualizedContainerService.HintSize="376,206" sap2010:WorkflowViewState.IdRef="Sequence_10">
+          <sap:WorkflowViewStateService.ViewState>
+            <scg:Dictionary x:TypeArguments="x:String, x:Object">
+              <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+            </scg:Dictionary>
+          </sap:WorkflowViewStateService.ViewState>
+          <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="Invoke 5.Open_SAP workflow" sap:VirtualizedContainerService.HintSize="334,114" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_6" UnSafe="False" WorkflowFileName="PROCESSUS\SAP\5.Open_SAP.xaml">
+            <ui:InvokeWorkflowFile.Arguments>
+              <scg:Dictionary x:TypeArguments="x:String, Argument" />
+            </ui:InvokeWorkflowFile.Arguments>
+          </ui:InvokeWorkflowFile>
+        </Sequence>
+      </ui:CommentOut.Body>
+    </ui:CommentOut>
+    <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="Invoke 4.Open_DSC workflow" sap:VirtualizedContainerService.HintSize="436.666666666667,114" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_5" UnSafe="False" WorkflowFileName="PROCESSUS\WEB\4.Open_DSC.xaml">
       <ui:InvokeWorkflowFile.Arguments>
         <scg:Dictionary x:TypeArguments="x:String, Argument" />
       </ui:InvokeWorkflowFile.Arguments>

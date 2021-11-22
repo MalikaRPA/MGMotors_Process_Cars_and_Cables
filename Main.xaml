@@ -6,7 +6,7 @@
   <mva:VisualBasic.Settings>
     <x:Null />
   </mva:VisualBasic.Settings>
-  <sap:VirtualizedContainerService.HintSize>815.333333333333,868</sap:VirtualizedContainerService.HintSize>
+  <sap:VirtualizedContainerService.HintSize>677.333333333333,868</sap:VirtualizedContainerService.HintSize>
   <sap2010:WorkflowViewState.IdRef>Main2_1</sap2010:WorkflowViewState.IdRef>
   <TextExpression.NamespacesForImplementation>
     <scg:List x:TypeArguments="x:String" Capacity="68">
@@ -234,7 +234,7 @@
             </scg:Dictionary>
           </sap:WorkflowViewStateService.ViewState>
           <Transition.To>
-            <State x:Name="__ReferenceID2" sap2010:Annotation.AnnotationText="Process a single transaction. &#xA;The result of the processing can be: 1) Success, 2) Business Exception, 3) System Exception. &#xA;In the case of a system exception, the transaction can be automatically retried." DisplayName="Process Transaction" sap:VirtualizedContainerService.HintSize="566,1451.33333333333" sap2010:WorkflowViewState.IdRef="State_3">
+            <State x:Name="__ReferenceID2" sap2010:Annotation.AnnotationText="Process a single transaction. &#xA;The result of the processing can be: 1) Success, 2) Business Exception, 3) System Exception. &#xA;In the case of a system exception, the transaction can be automatically retried." DisplayName="Process Transaction" sap:VirtualizedContainerService.HintSize="231.333333333333,198.666666666667" sap2010:WorkflowViewState.IdRef="State_3">
               <State.Entry>
                 <TryCatch DisplayName="Try to process transaction" sap:VirtualizedContainerService.HintSize="519.333333333333,961.333333333333" sap2010:WorkflowViewState.IdRef="TryCatch_9">
                   <sap:WorkflowViewStateService.ViewState>
@@ -260,45 +260,19 @@
                       </Assign>
                       <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="Invoke Process workflow" sap:VirtualizedContainerService.HintSize="438.666666666667,114" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_24" UnSafe="False" WorkflowFileName="Framework\Process.xaml">
                         <ui:InvokeWorkflowFile.Arguments>
-                          <InArgument x:TypeArguments="x:String" x:Key="in_VIN">
-                            <mva:VisualBasicValue x:TypeArguments="x:String" ExpressionText="str_VIN" />
-                          </InArgument>
-                          <InArgument x:TypeArguments="x:String" x:Key="in_SO">
-                            <mva:VisualBasicValue x:TypeArguments="x:String" ExpressionText="str_SO" />
-                          </InArgument>
-                          <InArgument x:TypeArguments="x:String" x:Key="in_RefClient">
-                            <mva:VisualBasicValue x:TypeArguments="x:String" ExpressionText="str_RefClient" />
-                          </InArgument>
-                          <InArgument x:TypeArguments="sd:DataTable" x:Key="in_dt_9010">
-                            <mva:VisualBasicValue x:TypeArguments="sd:DataTable" ExpressionText="dt_9010" />
-                          </InArgument>
-                          <InOutArgument x:TypeArguments="x:String" x:Key="io_CarInvoicePDF_Path">
-                            <mva:VisualBasicReference x:TypeArguments="x:String" ExpressionText="str_CarInvoicePDF_Path" />
-                          </InOutArgument>
-                          <InArgument x:TypeArguments="sd:DataTable" x:Key="in_dt_9010_full">
-                            <mva:VisualBasicValue x:TypeArguments="sd:DataTable" ExpressionText="dt_9010_full" />
-                          </InArgument>
-                          <InArgument x:TypeArguments="x:String" x:Key="in_File_9010">
-                            <mva:VisualBasicValue x:TypeArguments="x:String" ExpressionText="File_9010" />
-                          </InArgument>
-                          <InArgument x:TypeArguments="x:String" x:Key="in_CableInvoiceNumber">
-                            <mva:VisualBasicValue x:TypeArguments="x:String" ExpressionText="str_CABLE_INVOICE" />
-                          </InArgument>
-                          <InOutArgument x:TypeArguments="x:String" x:Key="io_CableInvoiceFilePDF">
-                            <mva:VisualBasicReference x:TypeArguments="x:String" ExpressionText="str_CableInvoiceFilePDF" />
-                          </InOutArgument>
-                          <InArgument x:TypeArguments="x:String" x:Key="in_FichierComptaPath">
-                            <mva:VisualBasicValue x:TypeArguments="x:String" ExpressionText="str_FichierComptaPath" />
-                          </InArgument>
-                          <InOutArgument x:TypeArguments="x:String" x:Key="io_PDFDirectory">
-                            <mva:VisualBasicReference x:TypeArguments="x:String" ExpressionText="str_PDFDirectory" />
-                          </InOutArgument>
-                          <InOutArgument x:TypeArguments="x:String" x:Key="io_CableDirectoryPDF">
-                            <mva:VisualBasicReference x:TypeArguments="x:String" ExpressionText="str_CableDirectoryPDF" />
-                          </InOutArgument>
-                          <InArgument x:TypeArguments="x:String" x:Key="in_Mail_Reporting">
-                            <mva:VisualBasicValue x:TypeArguments="x:String" ExpressionText="Mail_Reporting" />
-                          </InArgument>
+                          <InArgument x:TypeArguments="x:String" x:Key="in_VIN">[str_VIN]</InArgument>
+                          <InArgument x:TypeArguments="x:String" x:Key="in_SO">[str_SO]</InArgument>
+                          <InArgument x:TypeArguments="x:String" x:Key="in_RefClient">[str_RefClient]</InArgument>
+                          <InArgument x:TypeArguments="sd:DataTable" x:Key="in_dt_9010">[dt_9010]</InArgument>
+                          <InOutArgument x:TypeArguments="x:String" x:Key="io_CarInvoicePDF_Path">[str_CarInvoicePDF_Path]</InOutArgument>
+                          <InArgument x:TypeArguments="sd:DataTable" x:Key="in_dt_9010_full">[dt_9010_full]</InArgument>
+                          <InArgument x:TypeArguments="x:String" x:Key="in_File_9010">[File_9010]</InArgument>
+                          <InArgument x:TypeArguments="x:String" x:Key="in_CableInvoiceNumber">[str_CABLE_INVOICE]</InArgument>
+                          <InOutArgument x:TypeArguments="x:String" x:Key="io_CableInvoiceFilePDF">[str_CableInvoiceFilePDF]</InOutArgument>
+                          <InArgument x:TypeArguments="x:String" x:Key="in_FichierComptaPath">[str_FichierComptaPath]</InArgument>
+                          <InOutArgument x:TypeArguments="x:String" x:Key="io_PDFDirectory">[str_PDFDirectory]</InOutArgument>
+                          <InOutArgument x:TypeArguments="x:String" x:Key="io_CableDirectoryPDF">[str_CableDirectoryPDF]</InOutArgument>
+                          <InArgument x:TypeArguments="x:String" x:Key="in_Mail_Reporting">[Mail_Reporting]</InArgument>
                         </ui:InvokeWorkflowFile.Arguments>
                       </ui:InvokeWorkflowFile>
                       <TryCatch DisplayName="Try Catch Set Transaction Status (Success)" sap:VirtualizedContainerService.HintSize="438.666666666667,352" sap2010:WorkflowViewState.IdRef="TryCatch_10">
@@ -871,7 +845,7 @@
           </Transition.Action>
           <Transition.Condition>[TransactionItem IsNot Nothing]</Transition.Condition>
         </Transition>
-        <Transition sap2010:Annotation.AnnotationText="This is a simple mecanism to stop the process.&#xA;In reallife scenario you can stop the process when there is no more data to process or on a schedule." DisplayName="No Data" sap:VirtualizedContainerService.HintSize="568.666666666667,1655.33333333333" sap2010:WorkflowViewState.IdRef="Transition_7">
+        <Transition sap2010:Annotation.AnnotationText="This is a simple mecanism to stop the process.&#xA;In reallife scenario you can stop the process when there is no more data to process or on a schedule." DisplayName="No Data" sap:VirtualizedContainerService.HintSize="568.666666666667,1809.33333333333" sap2010:WorkflowViewState.IdRef="Transition_7">
           <sap:WorkflowViewStateService.ViewState>
             <scg:Dictionary x:TypeArguments="x:String, x:Object">
               <av:PointCollection x:Key="ConnectorLocation">350,327.666666666666 350,357.666666666666 90,357.666666666666 90,332</av:PointCollection>
@@ -885,13 +859,13 @@
             <x:Reference>__ReferenceID1</x:Reference>
           </Transition.To>
           <Transition.Action>
-            <Sequence sap:VirtualizedContainerService.HintSize="463.333333333333,1151.33333333333" sap2010:WorkflowViewState.IdRef="Sequence_33">
+            <Sequence sap:VirtualizedContainerService.HintSize="463.333333333333,1305.33333333333" sap2010:WorkflowViewState.IdRef="Sequence_33">
               <sap:WorkflowViewStateService.ViewState>
                 <scg:Dictionary x:TypeArguments="x:String, x:Object">
                   <x:Boolean x:Key="IsExpanded">True</x:Boolean>
                 </scg:Dictionary>
               </sap:WorkflowViewStateService.ViewState>
-              <Sequence sap:VirtualizedContainerService.HintSize="421.333333333333,616.666666666667" sap2010:WorkflowViewState.IdRef="Sequence_32">
+              <Sequence sap:VirtualizedContainerService.HintSize="421.333333333333,770.666666666667" sap2010:WorkflowViewState.IdRef="Sequence_32">
                 <sap:WorkflowViewStateService.ViewState>
                   <scg:Dictionary x:TypeArguments="x:String, x:Object">
                     <x:Boolean x:Key="IsExpanded">True</x:Boolean>
@@ -899,6 +873,11 @@
                   </scg:Dictionary>
                 </sap:WorkflowViewStateService.ViewState>
                 <WriteLine DisplayName="Write Line" sap:VirtualizedContainerService.HintSize="379.333333333333,62.6666666666667" sap2010:WorkflowViewState.IdRef="WriteLine_1" Text="[str_FichierComptaPath]" />
+                <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="Invoke 5.Open_SAP workflow" sap:VirtualizedContainerService.HintSize="379.333333333333,114" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_36" UnSafe="False" WorkflowFileName="PROCESSUS\SAP\5.Open_SAP.xaml">
+                  <ui:InvokeWorkflowFile.Arguments>
+                    <scg:Dictionary x:TypeArguments="x:String, Argument" />
+                  </ui:InvokeWorkflowFile.Arguments>
+                </ui:InvokeWorkflowFile>
                 <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="Invoke 15.Chargement_SAP workflow" sap:VirtualizedContainerService.HintSize="379.333333333333,114" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_30" UnSafe="False" WorkflowFileName="PROCESSUS\SAP\15.Chargement_SAP.xaml">
                   <ui:InvokeWorkflowFile.Arguments>
                     <InArgument x:TypeArguments="x:String" x:Key="in_FichierComptaPath">[str_FichierComptaPath]</InArgument>

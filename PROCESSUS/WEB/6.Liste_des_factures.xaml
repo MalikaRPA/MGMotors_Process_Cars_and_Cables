@@ -11,7 +11,7 @@
   <mva:VisualBasic.Settings>
     <x:Null />
   </mva:VisualBasic.Settings>
-  <sap:VirtualizedContainerService.HintSize>1370,4461.33333333333</sap:VirtualizedContainerService.HintSize>
+  <sap:VirtualizedContainerService.HintSize>1370,4665.33333333333</sap:VirtualizedContainerService.HintSize>
   <sap2010:WorkflowViewState.IdRef>_5_Liste_des_factures_1</sap2010:WorkflowViewState.IdRef>
   <TextExpression.NamespacesForImplementation>
     <scg:List x:TypeArguments="x:String" Capacity="66">
@@ -87,10 +87,9 @@
       <AssemblyReference>UiPath.Mail.Activities</AssemblyReference>
       <AssemblyReference>UiPath.Mail</AssemblyReference>
       <AssemblyReference>UiPath.Mail.Activities.Design</AssemblyReference>
-      <AssemblyReference>System.Runtime.WindowsRuntime</AssemblyReference>
     </scg:List>
   </TextExpression.ReferencesForImplementation>
-  <Sequence DisplayName="6_Liste_des_factures" sap:VirtualizedContainerService.HintSize="1380,4396.66666666667" sap2010:WorkflowViewState.IdRef="Sequence_1">
+  <Sequence DisplayName="6_Liste_des_factures" sap:VirtualizedContainerService.HintSize="1380,4600.66666666667" sap2010:WorkflowViewState.IdRef="Sequence_1">
     <Sequence.Variables>
       <Variable x:TypeArguments="x:Boolean" Name="vinExist" />
       <Variable x:TypeArguments="x:String" Name="rslt" />
@@ -106,13 +105,13 @@
         <scg:Dictionary x:TypeArguments="x:String, Argument" />
       </ui:InvokeWorkflowFile.Arguments>
     </ui:InvokeWorkflowFile>
-    <ui:BrowserScope Browser="{x:Null}" SearchScope="{x:Null}" TimeoutMS="{x:Null}" UiBrowser="{x:Null}" BrowserType="Chrome" DisplayName="Attach Browser 'chrome.exe  SMIL DCS'" sap:VirtualizedContainerService.HintSize="1338,3881.33333333333" sap2010:WorkflowViewState.IdRef="BrowserScope_1" InformativeScreenshot="f15fdf2d0c320ec695c99b550f08e685" Selector="&lt;html app='chrome.exe' title='SMIL DCS' /&gt;">
+    <ui:BrowserScope Browser="{x:Null}" SearchScope="{x:Null}" TimeoutMS="{x:Null}" UiBrowser="{x:Null}" BrowserType="Chrome" DisplayName="Attach Browser 'chrome.exe  SMIL DCS'" sap:VirtualizedContainerService.HintSize="1338,4085.33333333333" sap2010:WorkflowViewState.IdRef="BrowserScope_1" InformativeScreenshot="f15fdf2d0c320ec695c99b550f08e685" Selector="&lt;html app='chrome.exe' title='SMIL DCS' /&gt;">
       <ui:BrowserScope.Body>
         <ActivityAction x:TypeArguments="x:Object">
           <ActivityAction.Argument>
             <DelegateInArgument x:TypeArguments="x:Object" Name="ContextTarget" />
           </ActivityAction.Argument>
-          <Sequence DisplayName="Do" sap:VirtualizedContainerService.HintSize="1304,3735.33333333333" sap2010:WorkflowViewState.IdRef="Sequence_2">
+          <Sequence DisplayName="Do" sap:VirtualizedContainerService.HintSize="1304,3939.33333333333" sap2010:WorkflowViewState.IdRef="Sequence_2">
             <sap:WorkflowViewStateService.ViewState>
               <scg:Dictionary x:TypeArguments="x:String, x:Object">
                 <x:Boolean x:Key="IsExpanded">True</x:Boolean>
@@ -278,14 +277,14 @@
                       </Sequence>
                     </If.Then>
                     <If.Else>
-                      <Sequence sap:VirtualizedContainerService.HintSize="376,445.333333333333" sap2010:WorkflowViewState.IdRef="Sequence_8">
+                      <Sequence sap:VirtualizedContainerService.HintSize="376,438" sap2010:WorkflowViewState.IdRef="Sequence_8">
                         <sap:WorkflowViewStateService.ViewState>
                           <scg:Dictionary x:TypeArguments="x:String, x:Object">
                             <x:Boolean x:Key="IsExpanded">True</x:Boolean>
                           </scg:Dictionary>
                         </sap:WorkflowViewStateService.ViewState>
-                        <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="334,94.6666666666667" sap2010:WorkflowViewState.IdRef="LogMessage_2" Level="Info" Message="[&quot;Le VIN n'existe pas à la 2nd tentative.&quot;]" />
-                        <ui:SendOutlookMail Account="{x:Null}" Bcc="{x:Null}" Cc="{x:Null}" MailMessage="{x:Null}" ReplyTo="{x:Null}" TimeoutMS="{x:Null}" Body="[&quot;Le VIN &quot; + in_VIN + &quot; n'existe pas.&quot; + Environment.NewLine + &quot;Merci de remédier au problème rapidement afin qu'il puisse être traité dans les plus bref délais.&quot;]" DisplayName="Send Outlook Mail Message" sap:VirtualizedContainerService.HintSize="334,156.666666666667" sap2010:WorkflowViewState.IdRef="SendOutlookMail_1" Importance="Normal" IsBodyHtml="False" IsDraft="False" Sensitivity="Normal" Subject="[in_ObjetUrgenceVIN]" To="[in_Mail_Reporting]">
+                        <ui:LogMessage DisplayName="Log Message Business exception: le VIN n'existe pas." sap:VirtualizedContainerService.HintSize="334,94.6666666666667" sap2010:WorkflowViewState.IdRef="LogMessage_2" Level="Error" Message="[&quot;Le VIN n'existe pas à la 2nd tentative.&quot;]" />
+                        <ui:SendOutlookMail Account="{x:Null}" Bcc="{x:Null}" Cc="{x:Null}" MailMessage="{x:Null}" ReplyTo="{x:Null}" TimeoutMS="{x:Null}" Body="[&quot;Le VIN &quot; + in_VIN + &quot; n'existe pas.&quot; + Environment.NewLine + &quot;Merci de remédier au problème rapidement afin qu'il puisse être traité dans les plus bref délais.&quot;]" DisplayName="Send Outlook Mail Message" sap:VirtualizedContainerService.HintSize="334,149.333333333333" sap2010:WorkflowViewState.IdRef="SendOutlookMail_1" Importance="Normal" IsBodyHtml="False" IsDraft="False" Sensitivity="Normal" Subject="[in_ObjetUrgenceVIN]" To="[in_Mail_Reporting]">
                           <ui:SendOutlookMail.Files>
                             <scg:List x:TypeArguments="InArgument(x:String)" Capacity="0" />
                           </ui:SendOutlookMail.Files>
@@ -319,9 +318,9 @@
                 </ui:Target>
               </ui:Click.Target>
             </ui:Click>
-            <ui:GetValue ContinueOnError="{x:Null}" DisplayName="Get Text 'Invoice #'" sap:VirtualizedContainerService.HintSize="622,106" sap2010:WorkflowViewState.IdRef="GetValue_1">
+            <ui:GetValue ContinueOnError="{x:Null}" DisplayName="Get Text 'Invoice #'" sap:VirtualizedContainerService.HintSize="1262,106" sap2010:WorkflowViewState.IdRef="GetValue_1">
               <ui:GetValue.Target>
-                <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" Id="3ff24eb8-8c47-4103-8690-936639cde288" InformativeScreenshot="d7431eb555ffe401eca579911e5c6e38" Selector="&lt;webctrl colName='                                  SMEFR21VEA00398I                             ' tableCol='1' tableRow='1' idx='2' /&gt;">
+                <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" Id="3ff24eb8-8c47-4103-8690-936639cde288" InformativeScreenshot="d18f9e6bfa606de59fe1a349d0ff91d5" Selector="&lt;webctrl aaname='                                 *                             ' tableCol='1' tableRow='1' /&gt;">
                   <ui:Target.TimeoutMS>
                     <InArgument x:TypeArguments="x:Int32" />
                   </ui:Target.TimeoutMS>
@@ -334,10 +333,18 @@
                 <OutArgument x:TypeArguments="x:String">[out_InvoiceNumber]</OutArgument>
               </ui:GetValue.Value>
             </ui:GetValue>
-            <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="622,94.6666666666667" sap2010:WorkflowViewState.IdRef="LogMessage_3" Level="Info" Message="[&quot;Numéro de facture: &quot; + out_InvoiceNumber]" />
-            <ui:GetValue ContinueOnError="{x:Null}" DisplayName="Get Text 'Vehicule qty'" sap:VirtualizedContainerService.HintSize="622,106" sap2010:WorkflowViewState.IdRef="GetValue_2">
+            <Assign sap:VirtualizedContainerService.HintSize="1262,62" sap2010:WorkflowViewState.IdRef="Assign_2">
+              <Assign.To>
+                <OutArgument x:TypeArguments="x:String">[out_InvoiceNumber]</OutArgument>
+              </Assign.To>
+              <Assign.Value>
+                <InArgument x:TypeArguments="x:String">[out_InvoiceNumber.Trim]</InArgument>
+              </Assign.Value>
+            </Assign>
+            <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="1262,94.6666666666667" sap2010:WorkflowViewState.IdRef="LogMessage_3" Level="Info" Message="[&quot;Numéro de facture: &quot; + out_InvoiceNumber]" />
+            <ui:GetValue ContinueOnError="{x:Null}" DisplayName="Get Text 'Vehicule qty'" sap:VirtualizedContainerService.HintSize="1262,106" sap2010:WorkflowViewState.IdRef="GetValue_2">
               <ui:GetValue.Target>
-                <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" Id="3ff24eb8-8c47-4103-8690-936639cde288" InformativeScreenshot="6fc552d06b8a77cbbbb7171158b2f642" Selector="&lt;webctrl tableCol='2' tableRow='1' colName='                                  1                             ' idx='2' /&gt;">
+                <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" Id="3ff24eb8-8c47-4103-8690-936639cde288" InformativeScreenshot="6fc552d06b8a77cbbbb7171158b2f642" Selector="&lt;webctrl tableCol='2' innertext='                                  1                             ' tableRow='1' idx='*' /&gt;">
                   <ui:Target.TimeoutMS>
                     <InArgument x:TypeArguments="x:Int32" />
                   </ui:Target.TimeoutMS>
@@ -350,8 +357,16 @@
                 <OutArgument x:TypeArguments="x:String">[out_CarNumber]</OutArgument>
               </ui:GetValue.Value>
             </ui:GetValue>
-            <WriteLine DisplayName="Write Line" sap:VirtualizedContainerService.HintSize="622,62.6666666666667" sap2010:WorkflowViewState.IdRef="WriteLine_1" Text="[&quot;Nombre de véhicule : &quot; + out_CarNumber]" />
-            <ui:Click AlterIfDisabled="{x:Null}" DelayBefore="{x:Null}" DelayMS="{x:Null}" SendWindowMessages="{x:Null}" ClickType="CLICK_SINGLE" DisplayName="Click 'SAVE'" sap:VirtualizedContainerService.HintSize="622,106" sap2010:WorkflowViewState.IdRef="Click_6" KeyModifiers="None" MouseButton="BTN_LEFT" SimulateClick="True">
+            <Assign sap:VirtualizedContainerService.HintSize="1262,62" sap2010:WorkflowViewState.IdRef="Assign_3">
+              <Assign.To>
+                <OutArgument x:TypeArguments="x:String">[out_CarNumber]</OutArgument>
+              </Assign.To>
+              <Assign.Value>
+                <InArgument x:TypeArguments="x:String">[out_CarNumber.Trim]</InArgument>
+              </Assign.Value>
+            </Assign>
+            <WriteLine DisplayName="Write Line" sap:VirtualizedContainerService.HintSize="1262,62.6666666666667" sap2010:WorkflowViewState.IdRef="WriteLine_1" Text="[&quot;Nombre de véhicule : &quot; + out_CarNumber]" />
+            <ui:Click AlterIfDisabled="{x:Null}" DelayBefore="{x:Null}" DelayMS="{x:Null}" SendWindowMessages="{x:Null}" ClickType="CLICK_SINGLE" DisplayName="Click 'SAVE'" sap:VirtualizedContainerService.HintSize="1262,106" sap2010:WorkflowViewState.IdRef="Click_6" KeyModifiers="None" MouseButton="BTN_LEFT" SimulateClick="True">
               <ui:Click.CursorPosition>
                 <ui:CursorPosition Position="Center">
                   <ui:CursorPosition.OffsetX>
@@ -373,7 +388,7 @@
                 </ui:Target>
               </ui:Click.Target>
             </ui:Click>
-            <ui:ForEachRow ColumnNames="{x:Null}" CurrentIndex="{x:Null}" sap2010:Annotation.AnnotationText="Ajout du numéro de facture à la colonne Car Invoice dans dt_9010." DataTable="[in_dt_9010]" DisplayName="For Each Row in Data Table" sap:VirtualizedContainerService.HintSize="622,640.666666666667" sap2010:WorkflowViewState.IdRef="ForEachRow_2">
+            <ui:ForEachRow ColumnNames="{x:Null}" CurrentIndex="{x:Null}" sap2010:Annotation.AnnotationText="Ajout du numéro de facture à la colonne Car Invoice dans dt_9010." DataTable="[in_dt_9010]" DisplayName="For Each Row in Data Table" sap:VirtualizedContainerService.HintSize="1262,640.666666666667" sap2010:WorkflowViewState.IdRef="ForEachRow_2">
               <ui:ForEachRow.Body>
                 <ActivityAction x:TypeArguments="sd:DataRow">
                   <ActivityAction.Argument>

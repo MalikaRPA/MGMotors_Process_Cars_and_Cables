@@ -22,7 +22,7 @@
   <mva:VisualBasic.Settings>
     <x:Null />
   </mva:VisualBasic.Settings>
-  <sap:VirtualizedContainerService.HintSize>718,2709.33333333333</sap:VirtualizedContainerService.HintSize>
+  <sap:VirtualizedContainerService.HintSize>773.333333333333,2938.66666666667</sap:VirtualizedContainerService.HintSize>
   <sap2010:WorkflowViewState.IdRef>_11_Création_Facture_Cable_1</sap2010:WorkflowViewState.IdRef>
   <TextExpression.NamespacesForImplementation>
     <sco:Collection x:TypeArguments="x:String">
@@ -96,13 +96,14 @@
       <AssemblyReference>UiPath.System.Activities.Design</AssemblyReference>
     </sco:Collection>
   </TextExpression.ReferencesForImplementation>
-  <Sequence DisplayName="_11_Création_Facture_Cable" sap:VirtualizedContainerService.HintSize="476,2644.66666666667" sap2010:WorkflowViewState.IdRef="Sequence_1">
+  <Sequence DisplayName="_11_Création_Facture_Cable" sap:VirtualizedContainerService.HintSize="476,2874" sap2010:WorkflowViewState.IdRef="Sequence_1">
     <sap:WorkflowViewStateService.ViewState>
       <scg:Dictionary x:TypeArguments="x:String, x:Object">
         <x:Boolean x:Key="IsExpanded">True</x:Boolean>
       </scg:Dictionary>
     </sap:WorkflowViewStateService.ViewState>
     <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="434,94.6666666666667" sap2010:WorkflowViewState.IdRef="LogMessage_1" Level="Info" Message="[&quot;12. Création facture cable ....&quot;]" />
+    <WriteLine DisplayName="Write Line" sap:VirtualizedContainerService.HintSize="434,62.6666666666667" sap2010:WorkflowViewState.IdRef="WriteLine_1" Text="[in_CableInvoiceNumber]" />
     <Assign DisplayName="Assign chemin de la facture de cable Excel" sap:VirtualizedContainerService.HintSize="434,62" sap2010:WorkflowViewState.IdRef="Assign_1">
       <Assign.To>
         <OutArgument x:TypeArguments="x:String">[out_CableInvoiceFile]</OutArgument>
@@ -118,18 +119,19 @@
         </scg:Dictionary>
       </sap:WorkflowViewStateService.ViewState>
     </ui:CopyFile>
-    <ui:ExcelApplicationScope Password="{x:Null}" CreateNewFile="False" DisplayName="Excel Application Scope" sap:VirtualizedContainerService.HintSize="434,1934" sap2010:WorkflowViewState.IdRef="ExcelApplicationScope_1" InstanceCachePeriod="3000" Visible="False" WorkbookPath="[out_CableInvoiceFile]">
+    <ui:ExcelApplicationScope Password="{x:Null}" CreateNewFile="False" DisplayName="Excel Application Scope" sap:VirtualizedContainerService.HintSize="434,2060.66666666667" sap2010:WorkflowViewState.IdRef="ExcelApplicationScope_1" InstanceCachePeriod="3000" Visible="False" WorkbookPath="[out_CableInvoiceFile]">
       <ui:ExcelApplicationScope.Body>
         <ActivityAction x:TypeArguments="ui:WorkbookApplication">
           <ActivityAction.Argument>
             <DelegateInArgument x:TypeArguments="ui:WorkbookApplication" Name="ExcelWorkbookScope" />
           </ActivityAction.Argument>
-          <Sequence DisplayName="Faire" sap:VirtualizedContainerService.HintSize="376,1825.33333333333" sap2010:WorkflowViewState.IdRef="Sequence_3">
+          <Sequence DisplayName="Faire" sap:VirtualizedContainerService.HintSize="376,1952" sap2010:WorkflowViewState.IdRef="Sequence_3">
             <sap:WorkflowViewStateService.ViewState>
               <scg:Dictionary x:TypeArguments="x:String, x:Object">
                 <x:Boolean x:Key="IsExpanded">True</x:Boolean>
               </scg:Dictionary>
             </sap:WorkflowViewStateService.ViewState>
+            <ui:ExcelWriteCell Cell="A6" DisplayName="Write Cell Num facture" sap:VirtualizedContainerService.HintSize="334,86.6666666666667" sap2010:WorkflowViewState.IdRef="ExcelWriteCell_14" SheetName="CABLE FACT" Text="[in_CableInvoiceNumber]" />
             <ui:ExcelWriteCell Cell="A8" DisplayName="Write Cell REF CLIENT" sap:VirtualizedContainerService.HintSize="334,86.6666666666667" sap2010:WorkflowViewState.IdRef="ExcelWriteCell_1" SheetName="CABLE FACT" Text="[in_RefClient]" />
             <ui:ExcelWriteCell Cell="C8" DisplayName="Write Cell Mode de réglement" sap:VirtualizedContainerService.HintSize="334,86.6666666666667" sap2010:WorkflowViewState.IdRef="ExcelWriteCell_2" SheetName="CABLE FACT" Text="[in_PayementMode]" />
             <ui:ExcelWriteRange AddHeaders="False" DataTable="[in_dt_CondPaiement]" DisplayName="Write Range Condition de paiement" sap:VirtualizedContainerService.HintSize="334,86.6666666666667" sap2010:WorkflowViewState.IdRef="ExcelWriteRange_1" SheetName="CABLE FACT" StartingCell="A10:A11" />

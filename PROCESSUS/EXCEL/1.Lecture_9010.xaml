@@ -8,10 +8,10 @@
   <mva:VisualBasic.Settings>
     <x:Null />
   </mva:VisualBasic.Settings>
-  <sap:VirtualizedContainerService.HintSize>820,2232</sap:VirtualizedContainerService.HintSize>
+  <sap:VirtualizedContainerService.HintSize>815.333333333333,2455.33333333333</sap:VirtualizedContainerService.HintSize>
   <sap2010:WorkflowViewState.IdRef>Séquence_1</sap2010:WorkflowViewState.IdRef>
   <TextExpression.NamespacesForImplementation>
-    <scg:List x:TypeArguments="x:String" Capacity="60">
+    <scg:List x:TypeArguments="x:String" Capacity="31">
       <x:String>System.Activities</x:String>
       <x:String>System.Activities.Statements</x:String>
       <x:String>System.Activities.Expressions</x:String>
@@ -46,7 +46,7 @@
     </scg:List>
   </TextExpression.NamespacesForImplementation>
   <TextExpression.ReferencesForImplementation>
-    <scg:List x:TypeArguments="AssemblyReference" Capacity="46">
+    <scg:List x:TypeArguments="AssemblyReference" Capacity="28">
       <AssemblyReference>System.Activities</AssemblyReference>
       <AssemblyReference>Microsoft.VisualBasic</AssemblyReference>
       <AssemblyReference>mscorlib</AssemblyReference>
@@ -75,13 +75,13 @@
       <AssemblyReference>Microsoft.Bcl.AsyncInterfaces</AssemblyReference>
       <AssemblyReference>System.ValueTuple</AssemblyReference>
       <AssemblyReference>System.ComponentModel.Composition</AssemblyReference>
-      <AssemblyReference>System.Runtime.WindowsRuntime</AssemblyReference>
     </scg:List>
   </TextExpression.ReferencesForImplementation>
-  <Sequence DisplayName="Séquence" sap:VirtualizedContainerService.HintSize="552,2167.33333333333" sap2010:WorkflowViewState.IdRef="Sequence_1">
+  <Sequence DisplayName="Séquence" sap:VirtualizedContainerService.HintSize="552,2390.66666666667" sap2010:WorkflowViewState.IdRef="Sequence_1">
     <Sequence.Variables>
       <Variable x:TypeArguments="x:String" Name="rslt_dt" />
       <Variable x:TypeArguments="sd:DataTable" Name="dt_filtre" />
+      <Variable x:TypeArguments="x:String" Name="rslt_dt_full" />
     </Sequence.Variables>
     <sap:WorkflowViewStateService.ViewState>
       <scg:Dictionary x:TypeArguments="x:String, x:Object">
@@ -111,6 +111,8 @@
         </scg:Dictionary>
       </sap:WorkflowViewStateService.ViewState>
     </ui:ExcelApplicationScope>
+    <ui:OutputDataTable DataTable="[out_dt_9010_full]" DisplayName="Output Data Table" sap:VirtualizedContainerService.HintSize="510,80.6666666666667" sap2010:WorkflowViewState.IdRef="OutputDataTable_2" Text="[rslt_dt_full]" />
+    <WriteLine DisplayName="Write Line" sap:VirtualizedContainerService.HintSize="510,62.6666666666667" sap2010:WorkflowViewState.IdRef="WriteLine_3" Text="[rslt_dt_full]" />
     <ui:FilterDataTable sap2010:Annotation.AnnotationText="Filtre sur la Cable invoice, on ne garde que les lignes vides." DataTable="[out_dt_9010_full]" DisplayName="Filter Data Table" FilterRowsMode="Remove" sap:VirtualizedContainerService.HintSize="510,208" sap2010:WorkflowViewState.IdRef="FilterDataTable_1" OutputDataTable="[out_dt_9010]" SelectColumnsMode="Keep">
       <ui:FilterDataTable.Filters>
         <scg:List x:TypeArguments="ui:FilterOperationArgument" Capacity="4">

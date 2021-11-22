@@ -9,7 +9,7 @@
   <mva:VisualBasic.Settings>
     <x:Null />
   </mva:VisualBasic.Settings>
-  <sap:VirtualizedContainerService.HintSize>718,5958</sap:VirtualizedContainerService.HintSize>
+  <sap:VirtualizedContainerService.HintSize>796,6329.33333333333</sap:VirtualizedContainerService.HintSize>
   <sap2010:WorkflowViewState.IdRef>_13_Comptabilisation_Factures_1</sap2010:WorkflowViewState.IdRef>
   <TextExpression.NamespacesForImplementation>
     <scg:List x:TypeArguments="x:String" Capacity="30">
@@ -46,7 +46,7 @@
     </scg:List>
   </TextExpression.NamespacesForImplementation>
   <TextExpression.ReferencesForImplementation>
-    <scg:List x:TypeArguments="AssemblyReference" Capacity="26">
+    <scg:List x:TypeArguments="AssemblyReference" Capacity="52">
       <AssemblyReference>System.Activities</AssemblyReference>
       <AssemblyReference>Microsoft.VisualBasic</AssemblyReference>
       <AssemblyReference>mscorlib</AssemblyReference>
@@ -72,9 +72,10 @@
       <AssemblyReference>System.ValueTuple</AssemblyReference>
       <AssemblyReference>System.ComponentModel.Composition</AssemblyReference>
       <AssemblyReference>System.Memory</AssemblyReference>
+      <AssemblyReference>UiPath.System.Activities.Design</AssemblyReference>
     </scg:List>
   </TextExpression.ReferencesForImplementation>
-  <Sequence DisplayName="_13_Comptabilisation_Factures" sap:VirtualizedContainerService.HintSize="602,5893.33333333333" sap2010:WorkflowViewState.IdRef="Sequence_1">
+  <Sequence DisplayName="_13_Comptabilisation_Factures" sap:VirtualizedContainerService.HintSize="602,6264.66666666667" sap2010:WorkflowViewState.IdRef="Sequence_1">
     <Sequence.Variables>
       <Variable x:TypeArguments="sd:DataTable" Name="dt_compta" />
       <Variable x:TypeArguments="x:String" Name="rslt" />
@@ -93,13 +94,14 @@
         <x:Boolean x:Key="IsExpanded">True</x:Boolean>
       </scg:Dictionary>
     </sap:WorkflowViewStateService.ViewState>
-    <ui:ExcelApplicationScope Password="{x:Null}" DisplayName="Excel Application Scope" sap:VirtualizedContainerService.HintSize="560,5801.33333333333" sap2010:WorkflowViewState.IdRef="ExcelApplicationScope_1" InstanceCachePeriod="3000" Visible="False" WorkbookPath="[in_FichierComptaPath]">
+    <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="560,94.6666666666667" sap2010:WorkflowViewState.IdRef="LogMessage_1" Level="Info" Message="[&quot;14. Comptabilisaion factures....&quot;]" />
+    <ui:ExcelApplicationScope Password="{x:Null}" DisplayName="Excel Application Scope" sap:VirtualizedContainerService.HintSize="560,5903.33333333333" sap2010:WorkflowViewState.IdRef="ExcelApplicationScope_1" InstanceCachePeriod="3000" Visible="False" WorkbookPath="[in_FichierComptaPath]">
       <ui:ExcelApplicationScope.Body>
         <ActivityAction x:TypeArguments="ui:WorkbookApplication">
           <ActivityAction.Argument>
             <DelegateInArgument x:TypeArguments="ui:WorkbookApplication" Name="ExcelWorkbookScope" />
           </ActivityAction.Argument>
-          <Sequence DisplayName="Faire" sap:VirtualizedContainerService.HintSize="526,5692.66666666667" sap2010:WorkflowViewState.IdRef="Sequence_2">
+          <Sequence DisplayName="Faire" sap:VirtualizedContainerService.HintSize="526,5794.66666666667" sap2010:WorkflowViewState.IdRef="Sequence_2">
             <sap:WorkflowViewStateService.ViewState>
               <scg:Dictionary x:TypeArguments="x:String, x:Object">
                 <x:Boolean x:Key="IsExpanded">True</x:Boolean>
@@ -146,6 +148,14 @@
               </Assign.Value>
             </Assign>
             <WriteLine DisplayName="Write Line" sap:VirtualizedContainerService.HintSize="484,62.6666666666667" sap2010:WorkflowViewState.IdRef="WriteLine_4" Text="[&quot;Nouvel ID: &quot; + ID_New.ToString]" />
+            <Assign sap:VirtualizedContainerService.HintSize="484,62" sap2010:WorkflowViewState.IdRef="Assign_16">
+              <Assign.To>
+                <OutArgument x:TypeArguments="x:String">[TodayDate]</OutArgument>
+              </Assign.To>
+              <Assign.Value>
+                <InArgument x:TypeArguments="x:String">[Today.ToString("yyyyMMdd")]</InArgument>
+              </Assign.Value>
+            </Assign>
             <Sequence DisplayName="1ére ligne Montant TTC" sap:VirtualizedContainerService.HintSize="484,2264" sap2010:WorkflowViewState.IdRef="Sequence_3">
               <sap:WorkflowViewStateService.ViewState>
                 <scg:Dictionary x:TypeArguments="x:String, x:Object">
@@ -284,5 +294,6 @@
         </ActivityAction>
       </ui:ExcelApplicationScope.Body>
     </ui:ExcelApplicationScope>
+    <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="560,94.6666666666667" sap2010:WorkflowViewState.IdRef="LogMessage_2" Level="Info" Message="[&quot;14. Fin comptabilisaion factures.&quot;]" />
   </Sequence>
 </Activity>
