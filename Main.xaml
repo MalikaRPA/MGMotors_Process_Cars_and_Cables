@@ -6,7 +6,7 @@
   <mva:VisualBasic.Settings>
     <x:Null />
   </mva:VisualBasic.Settings>
-  <sap:VirtualizedContainerService.HintSize>677.333333333333,868</sap:VirtualizedContainerService.HintSize>
+  <sap:VirtualizedContainerService.HintSize>727.333333333333,868</sap:VirtualizedContainerService.HintSize>
   <sap2010:WorkflowViewState.IdRef>Main2_1</sap2010:WorkflowViewState.IdRef>
   <TextExpression.NamespacesForImplementation>
     <scg:List x:TypeArguments="x:String" Capacity="68">
@@ -845,7 +845,7 @@
           </Transition.Action>
           <Transition.Condition>[TransactionItem IsNot Nothing]</Transition.Condition>
         </Transition>
-        <Transition sap2010:Annotation.AnnotationText="This is a simple mecanism to stop the process.&#xA;In reallife scenario you can stop the process when there is no more data to process or on a schedule." DisplayName="No Data" sap:VirtualizedContainerService.HintSize="568.666666666667,1809.33333333333" sap2010:WorkflowViewState.IdRef="Transition_7">
+        <Transition sap2010:Annotation.AnnotationText="This is a simple mecanism to stop the process.&#xA;In reallife scenario you can stop the process when there is no more data to process or on a schedule." DisplayName="No Data" sap:VirtualizedContainerService.HintSize="568.666666666667,1963.33333333333" sap2010:WorkflowViewState.IdRef="Transition_7">
           <sap:WorkflowViewStateService.ViewState>
             <scg:Dictionary x:TypeArguments="x:String, x:Object">
               <av:PointCollection x:Key="ConnectorLocation">350,327.666666666666 350,357.666666666666 90,357.666666666666 90,332</av:PointCollection>
@@ -859,7 +859,7 @@
             <x:Reference>__ReferenceID1</x:Reference>
           </Transition.To>
           <Transition.Action>
-            <Sequence sap:VirtualizedContainerService.HintSize="463.333333333333,1305.33333333333" sap2010:WorkflowViewState.IdRef="Sequence_33">
+            <Sequence sap:VirtualizedContainerService.HintSize="463.333333333333,1459.33333333333" sap2010:WorkflowViewState.IdRef="Sequence_33">
               <sap:WorkflowViewStateService.ViewState>
                 <scg:Dictionary x:TypeArguments="x:String, x:Object">
                   <x:Boolean x:Key="IsExpanded">True</x:Boolean>
@@ -910,8 +910,28 @@
               </ui:InvokeWorkflowFile>
               <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="Invoke 19.Envoie_Reporting_Robot workflow" sap:VirtualizedContainerService.HintSize="421.333333333333,114" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_35" UnSafe="False" WorkflowFileName="PROCESSUS\OUTLOOK\19.Envoie_Reporting_Robot.xaml">
                 <ui:InvokeWorkflowFile.Arguments>
-                  <InArgument x:TypeArguments="x:String" x:Key="Mail_Reporting">[Mail_Reporting]</InArgument>
-                  <InArgument x:TypeArguments="x:String" x:Key="in_reportingPath">[str_reportingPath]</InArgument>
+                  <InArgument x:TypeArguments="x:String" x:Key="Mail_Reporting">
+                    <mva:VisualBasicValue x:TypeArguments="x:String" ExpressionText="Mail_Reporting" />
+                  </InArgument>
+                  <InArgument x:TypeArguments="x:String" x:Key="in_reportingPath">
+                    <mva:VisualBasicValue x:TypeArguments="x:String" ExpressionText="str_reportingPath" />
+                  </InArgument>
+                </ui:InvokeWorkflowFile.Arguments>
+              </ui:InvokeWorkflowFile>
+              <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="Invoke 20. Move_invoices_sent workflow" sap:VirtualizedContainerService.HintSize="421.333333333333,114" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_37" UnSafe="False" WorkflowFileName="PROCESSUS\EXCEL\20. Move_invoices_sent.xaml">
+                <ui:InvokeWorkflowFile.Arguments>
+                  <InArgument x:TypeArguments="sd:DataTable" x:Key="in_dt_9010">
+                    <mva:VisualBasicValue x:TypeArguments="sd:DataTable" ExpressionText="dt_9010" />
+                  </InArgument>
+                  <InArgument x:TypeArguments="x:String" x:Key="in_PDFDirectory">
+                    <mva:VisualBasicValue x:TypeArguments="x:String" ExpressionText="str_PDFDirectory" />
+                  </InArgument>
+                  <InArgument x:TypeArguments="x:String" x:Key="in_Folder_path">
+                    <mva:VisualBasicValue x:TypeArguments="x:String" ExpressionText="str_Folder_path" />
+                  </InArgument>
+                  <InArgument x:TypeArguments="x:String" x:Key="in_CableDirectoryPDF">
+                    <mva:VisualBasicValue x:TypeArguments="x:String" ExpressionText="str_CableDirectoryPDF" />
+                  </InArgument>
                 </ui:InvokeWorkflowFile.Arguments>
               </ui:InvokeWorkflowFile>
               <ui:LogMessage DisplayName="Log message (No more transations available)" sap:VirtualizedContainerService.HintSize="421.333333333333,94.6666666666667" sap2010:WorkflowViewState.IdRef="LogMessage_30" Level="Info" Message="[&quot;Process finished due to no more transaction data&quot;]" />
