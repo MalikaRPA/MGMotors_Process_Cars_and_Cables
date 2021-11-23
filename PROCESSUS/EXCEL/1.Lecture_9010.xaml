@@ -8,7 +8,7 @@
   <mva:VisualBasic.Settings>
     <x:Null />
   </mva:VisualBasic.Settings>
-  <sap:VirtualizedContainerService.HintSize>815.333333333333,2455.33333333333</sap:VirtualizedContainerService.HintSize>
+  <sap:VirtualizedContainerService.HintSize>727.333333333333,2049.33333333333</sap:VirtualizedContainerService.HintSize>
   <sap2010:WorkflowViewState.IdRef>Séquence_1</sap2010:WorkflowViewState.IdRef>
   <TextExpression.NamespacesForImplementation>
     <scg:List x:TypeArguments="x:String" Capacity="31">
@@ -77,19 +77,20 @@
       <AssemblyReference>System.ComponentModel.Composition</AssemblyReference>
     </scg:List>
   </TextExpression.ReferencesForImplementation>
-  <Sequence DisplayName="Séquence" sap:VirtualizedContainerService.HintSize="552,2390.66666666667" sap2010:WorkflowViewState.IdRef="Sequence_1">
+  <Sequence DisplayName="Séquence" sap:VirtualizedContainerService.HintSize="476,1984.66666666667" sap2010:WorkflowViewState.IdRef="Sequence_1">
     <Sequence.Variables>
       <Variable x:TypeArguments="x:String" Name="rslt_dt" />
       <Variable x:TypeArguments="sd:DataTable" Name="dt_filtre" />
       <Variable x:TypeArguments="x:String" Name="rslt_dt_full" />
+      <Variable x:TypeArguments="x:String" Name="lastCable" />
     </Sequence.Variables>
     <sap:WorkflowViewStateService.ViewState>
       <scg:Dictionary x:TypeArguments="x:String, x:Object">
         <x:Boolean x:Key="IsExpanded">True</x:Boolean>
       </scg:Dictionary>
     </sap:WorkflowViewStateService.ViewState>
-    <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="510,94.6666666666667" sap2010:WorkflowViewState.IdRef="LogMessage_3" Level="Info" Message="[&quot;1. Lecture du fichier 9010....&quot;]" />
-    <ui:ExcelApplicationScope Password="{x:Null}" sap2010:Annotation.AnnotationText="Lectur du fichier 9010.&#xA;datatable: out_dt_9010_full" DisplayName="Excel Application Scope" sap:VirtualizedContainerService.HintSize="510,304.666666666667" sap2010:WorkflowViewState.IdRef="ExcelApplicationScope_1" InstanceCachePeriod="3000" Visible="False" WorkbookPath="[in_File_9010]">
+    <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="434,94.6666666666667" sap2010:WorkflowViewState.IdRef="LogMessage_3" Level="Info" Message="[&quot;1. Lecture du fichier 9010....&quot;]" />
+    <ui:ExcelApplicationScope Password="{x:Null}" sap2010:Annotation.AnnotationText="Lectur du fichier 9010.&#xA;datatable: out_dt_9010_full" DisplayName="Excel Application Scope" sap:VirtualizedContainerService.HintSize="434,304.666666666667" sap2010:WorkflowViewState.IdRef="ExcelApplicationScope_1" InstanceCachePeriod="3000" Visible="False" WorkbookPath="[in_File_9010]">
       <ui:ExcelApplicationScope.Body>
         <ActivityAction x:TypeArguments="ui:WorkbookApplication">
           <ActivityAction.Argument>
@@ -111,9 +112,9 @@
         </scg:Dictionary>
       </sap:WorkflowViewStateService.ViewState>
     </ui:ExcelApplicationScope>
-    <ui:OutputDataTable DataTable="[out_dt_9010_full]" DisplayName="Output Data Table" sap:VirtualizedContainerService.HintSize="510,80.6666666666667" sap2010:WorkflowViewState.IdRef="OutputDataTable_2" Text="[rslt_dt_full]" />
-    <WriteLine DisplayName="Write Line" sap:VirtualizedContainerService.HintSize="510,62.6666666666667" sap2010:WorkflowViewState.IdRef="WriteLine_3" Text="[rslt_dt_full]" />
-    <ui:FilterDataTable sap2010:Annotation.AnnotationText="Filtre sur la Cable invoice, on ne garde que les lignes vides." DataTable="[out_dt_9010_full]" DisplayName="Filter Data Table" FilterRowsMode="Remove" sap:VirtualizedContainerService.HintSize="510,208" sap2010:WorkflowViewState.IdRef="FilterDataTable_1" OutputDataTable="[out_dt_9010]" SelectColumnsMode="Keep">
+    <ui:OutputDataTable DataTable="[out_dt_9010_full]" DisplayName="Output Data Table" sap:VirtualizedContainerService.HintSize="434,80.6666666666667" sap2010:WorkflowViewState.IdRef="OutputDataTable_2" Text="[rslt_dt_full]" />
+    <WriteLine DisplayName="Write Line" sap:VirtualizedContainerService.HintSize="434,62.6666666666667" sap2010:WorkflowViewState.IdRef="WriteLine_3" Text="[rslt_dt_full]" />
+    <ui:FilterDataTable sap2010:Annotation.AnnotationText="Filtre sur la Cable invoice, on ne garde que les lignes vides." DataTable="[out_dt_9010_full]" DisplayName="Filter Data Table" FilterRowsMode="Remove" sap:VirtualizedContainerService.HintSize="434,208" sap2010:WorkflowViewState.IdRef="FilterDataTable_1" OutputDataTable="[out_dt_9010]" SelectColumnsMode="Keep">
       <ui:FilterDataTable.Filters>
         <scg:List x:TypeArguments="ui:FilterOperationArgument" Capacity="4">
           <ui:FilterOperationArgument BooleanOperator="And" Operator="STARTSWITH">
@@ -137,33 +138,19 @@
         </scg:Dictionary>
       </sap:WorkflowViewStateService.ViewState>
     </ui:FilterDataTable>
-    <ui:SortDataTable ColumnIndex="{x:Null}" DataColumn="{x:Null}" ColumnName="CABLE INVOICE" DataTable="[out_dt_9010_full]" DisplayName="Sort Data Table" sap:VirtualizedContainerService.HintSize="510,244.666666666667" sap2010:WorkflowViewState.IdRef="SortDataTable_1" Order="Decending" OutputDataTable="[dt_filtre]" SortOrder="Descending" />
-    <ui:OutputDataTable DataTable="[dt_filtre]" DisplayName="Output Data Table" sap:VirtualizedContainerService.HintSize="510,80.6666666666667" sap2010:WorkflowViewState.IdRef="OutputDataTable_1" Text="[rslt_dt]" />
-    <WriteLine DisplayName="Write Line" sap:VirtualizedContainerService.HintSize="510,62.6666666666667" sap2010:WorkflowViewState.IdRef="WriteLine_2" Text="Data table dt_filtre:" />
-    <WriteLine DisplayName="Write Line" sap:VirtualizedContainerService.HintSize="510,62.6666666666667" sap2010:WorkflowViewState.IdRef="WriteLine_1" Text="[rslt_dt.ToString]" />
-    <ui:ForEachRow ColumnNames="{x:Null}" CurrentIndex="{x:Null}" DataTable="[dt_filtre]" DisplayName="For Each Row in Data Table" sap:VirtualizedContainerService.HintSize="510,468" sap2010:WorkflowViewState.IdRef="ForEachRow_1">
-      <ui:ForEachRow.Body>
-        <ActivityAction x:TypeArguments="sd:DataRow">
-          <ActivityAction.Argument>
-            <DelegateInArgument x:TypeArguments="sd:DataRow" Name="row" />
-          </ActivityAction.Argument>
-          <Sequence DisplayName="Body" sap:VirtualizedContainerService.HintSize="476,344" sap2010:WorkflowViewState.IdRef="Sequence_6">
-            <sap:WorkflowViewStateService.ViewState>
-              <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                <x:Boolean x:Key="IsExpanded">True</x:Boolean>
-              </scg:Dictionary>
-            </sap:WorkflowViewStateService.ViewState>
-            <ui:GetRowItem Column="{x:Null}" ColumnIndex="{x:Null}" ColumnName="CABLE INVOICE" DisplayName="Get Row Item" sap:VirtualizedContainerService.HintSize="434,190" sap2010:WorkflowViewState.IdRef="GetRowItem_1" Row="[row]">
-              <ui:GetRowItem.Value>
-                <OutArgument x:TypeArguments="x:String">[out_Last_Cable_Invoice_Number]</OutArgument>
-              </ui:GetRowItem.Value>
-            </ui:GetRowItem>
-            <ui:Break sap:VirtualizedContainerService.HintSize="434,22" sap2010:WorkflowViewState.IdRef="Break_1" />
-          </Sequence>
-        </ActivityAction>
-      </ui:ForEachRow.Body>
-    </ui:ForEachRow>
-    <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="510,94.6666666666667" sap2010:WorkflowViewState.IdRef="LogMessage_2" Level="Info" Message="[&quot;Le dernier Cable Invoice: &quot; + out_Last_Cable_Invoice_Number]" />
-    <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="510,94.6666666666667" sap2010:WorkflowViewState.IdRef="LogMessage_4" Level="Info" Message="[&quot;1. Fin de la lecture du fichier 9010.&quot;]" />
+    <ui:SortDataTable ColumnIndex="{x:Null}" DataColumn="{x:Null}" ColumnName="CABLE INVOICE" DataTable="[out_dt_9010_full]" DisplayName="Sort Data Table" sap:VirtualizedContainerService.HintSize="434,244.666666666667" sap2010:WorkflowViewState.IdRef="SortDataTable_1" Order="Decending" OutputDataTable="[dt_filtre]" SortOrder="Descending" />
+    <ui:OutputDataTable DataTable="[dt_filtre]" DisplayName="Output Data Table" sap:VirtualizedContainerService.HintSize="434,80.6666666666667" sap2010:WorkflowViewState.IdRef="OutputDataTable_1" Text="[rslt_dt]" />
+    <WriteLine DisplayName="Write Line" sap:VirtualizedContainerService.HintSize="434,62.6666666666667" sap2010:WorkflowViewState.IdRef="WriteLine_2" Text="Data table dt_filtre:" />
+    <WriteLine DisplayName="Write Line" sap:VirtualizedContainerService.HintSize="434,62.6666666666667" sap2010:WorkflowViewState.IdRef="WriteLine_1" Text="[rslt_dt.ToString]" />
+    <Assign sap:VirtualizedContainerService.HintSize="434,62" sap2010:WorkflowViewState.IdRef="Assign_1">
+      <Assign.To>
+        <OutArgument x:TypeArguments="x:String">[out_Last_Cable_Invoice_Number]</OutArgument>
+      </Assign.To>
+      <Assign.Value>
+        <InArgument x:TypeArguments="x:String">[dt_filtre.Rows(0).Item("CABLE INVOICE").ToString]</InArgument>
+      </Assign.Value>
+    </Assign>
+    <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="434,94.6666666666667" sap2010:WorkflowViewState.IdRef="LogMessage_2" Level="Info" Message="[&quot;Le dernier Cable Invoice: &quot; + out_Last_Cable_Invoice_Number]" />
+    <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="434,94.6666666666667" sap2010:WorkflowViewState.IdRef="LogMessage_4" Level="Info" Message="[&quot;1. Fin de la lecture du fichier 9010.&quot;]" />
   </Sequence>
 </Activity>

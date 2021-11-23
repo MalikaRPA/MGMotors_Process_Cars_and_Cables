@@ -14,7 +14,7 @@
   <mva:VisualBasic.Settings>
     <x:Null />
   </mva:VisualBasic.Settings>
-  <sap:VirtualizedContainerService.HintSize>982,3258.66666666667</sap:VirtualizedContainerService.HintSize>
+  <sap:VirtualizedContainerService.HintSize>982,3280</sap:VirtualizedContainerService.HintSize>
   <sap2010:WorkflowViewState.IdRef>Séquence_1</sap2010:WorkflowViewState.IdRef>
   <TextExpression.NamespacesForImplementation>
     <scg:List x:TypeArguments="x:String" Capacity="29">
@@ -81,7 +81,7 @@
       <AssemblyReference>UiPath.System.Activities.Design</AssemblyReference>
     </scg:List>
   </TextExpression.ReferencesForImplementation>
-  <Sequence DisplayName="Séquence" sap:VirtualizedContainerService.HintSize="992,3194" sap2010:WorkflowViewState.IdRef="Sequence_1">
+  <Sequence DisplayName="Séquence" sap:VirtualizedContainerService.HintSize="992,3215.33333333333" sap2010:WorkflowViewState.IdRef="Sequence_1">
     <Sequence.Variables>
       <Variable x:TypeArguments="si:DirectoryInfo" Name="file" />
       <Variable x:TypeArguments="s:String[]" Name="filename" />
@@ -92,9 +92,9 @@
         <x:Boolean x:Key="IsExpanded">True</x:Boolean>
       </scg:Dictionary>
     </sap:WorkflowViewStateService.ViewState>
-    <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="950,93.3333333333333" sap2010:WorkflowViewState.IdRef="LogMessage_1" Level="Info" Message="[&quot;8. Unzip &amp; move Invoice PDF &amp; Excel .....&quot;]" />
-    <Delay Duration="00:00:10" sap:VirtualizedContainerService.HintSize="950,22" sap2010:WorkflowViewState.IdRef="Delay_1" />
-    <Sequence DisplayName="Facture Excel" sap:VirtualizedContainerService.HintSize="950,880.666666666667" sap2010:WorkflowViewState.IdRef="Sequence_6">
+    <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="950,94.6666666666667" sap2010:WorkflowViewState.IdRef="LogMessage_1" Level="Info" Message="[&quot;8. Unzip &amp; move Invoice PDF &amp; Excel .....&quot;]" />
+    <Delay Duration="00:00:05" sap:VirtualizedContainerService.HintSize="950,22" sap2010:WorkflowViewState.IdRef="Delay_1" />
+    <Sequence DisplayName="Facture Excel" sap:VirtualizedContainerService.HintSize="950,887.333333333333" sap2010:WorkflowViewState.IdRef="Sequence_6">
       <Sequence.Variables>
         <Variable x:TypeArguments="x:Boolean" Name="pathExist" />
       </Sequence.Variables>
@@ -104,16 +104,16 @@
           <x:Boolean x:Key="IsPinned">False</x:Boolean>
         </scg:Dictionary>
       </sap:WorkflowViewStateService.ViewState>
-      <ui:PathExists DisplayName="Path Exists" Exists="[pathExist]" sap:VirtualizedContainerService.HintSize="908,90" sap2010:WorkflowViewState.IdRef="PathExists_1" Path="[in_Download_Zip_Excel]" PathType="File" />
-      <If Condition="[pathExist]" sap:VirtualizedContainerService.HintSize="908,508" sap2010:WorkflowViewState.IdRef="If_1">
+      <ui:PathExists DisplayName="Path Exists" Exists="[pathExist]" sap:VirtualizedContainerService.HintSize="908,90.6666666666667" sap2010:WorkflowViewState.IdRef="PathExists_1" Path="[in_Download_Zip_Excel]" PathType="File" />
+      <If Condition="[pathExist]" sap:VirtualizedContainerService.HintSize="908,513.333333333333" sap2010:WorkflowViewState.IdRef="If_1">
         <If.Then>
-          <Sequence sap:VirtualizedContainerService.HintSize="486,345.333333333333" sap2010:WorkflowViewState.IdRef="Sequence_8">
+          <Sequence sap:VirtualizedContainerService.HintSize="486,349.333333333333" sap2010:WorkflowViewState.IdRef="Sequence_8">
             <sap:WorkflowViewStateService.ViewState>
               <scg:Dictionary x:TypeArguments="x:String, x:Object">
                 <x:Boolean x:Key="IsExpanded">True</x:Boolean>
               </scg:Dictionary>
             </sap:WorkflowViewStateService.ViewState>
-            <uascw:ExtractFiles Password="{x:Null}" sap2010:Annotation.AnnotationText="Décompression du zip.&#xA;Déplacement vers le dossier des factures excel." CodePage="Default" DestinationFolder="[in_ExcelDirectory]" DestinationFolderInfo="[file]" DisplayName="Extract/Unzip Files" ExtractToADedicatedFolder="True" FileToExtract="[in_Download_Zip_Excel]" sap:VirtualizedContainerService.HintSize="444,253.333333333333" sap2010:WorkflowViewState.IdRef="ExtractFiles_1" SkipUnsupportedFiles="False">
+            <uascw:ExtractFiles Password="{x:Null}" sap2010:Annotation.AnnotationText="Décompression du zip.&#xA;Déplacement vers le dossier des factures excel." CodePage="Default" DestinationFolder="[in_ExcelDirectory]" DestinationFolderInfo="[file]" DisplayName="Extract/Unzip Files" ExtractToADedicatedFolder="True" FileToExtract="[in_Download_Zip_Excel]" sap:VirtualizedContainerService.HintSize="444,257.333333333333" sap2010:WorkflowViewState.IdRef="ExtractFiles_1" SkipUnsupportedFiles="False">
               <sap:WorkflowViewStateService.ViewState>
                 <scg:Dictionary x:TypeArguments="x:String, x:Object">
                   <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
@@ -123,7 +123,7 @@
           </Sequence>
         </If.Then>
         <If.Else>
-          <Sequence sap:VirtualizedContainerService.HintSize="376,336" sap2010:WorkflowViewState.IdRef="Sequence_9">
+          <Sequence sap:VirtualizedContainerService.HintSize="376,337.333333333333" sap2010:WorkflowViewState.IdRef="Sequence_9">
             <sap:WorkflowViewStateService.ViewState>
               <scg:Dictionary x:TypeArguments="x:String, x:Object">
                 <x:Boolean x:Key="IsExpanded">True</x:Boolean>
@@ -131,8 +131,8 @@
               </scg:Dictionary>
             </sap:WorkflowViewStateService.ViewState>
             <Delay Duration="00:00:10" sap:VirtualizedContainerService.HintSize="334,22" sap2010:WorkflowViewState.IdRef="Delay_2" />
-            <ui:PathExists DisplayName="Path Exists" Exists="[pathExist]" sap:VirtualizedContainerService.HintSize="334,90" sap2010:WorkflowViewState.IdRef="PathExists_4" Path="[in_Download_Zip_Excel]" PathType="File" />
-            <If Condition="[pathExist]" sap:VirtualizedContainerService.HintSize="334,52" sap2010:WorkflowViewState.IdRef="If_4">
+            <ui:PathExists DisplayName="Path Exists" Exists="[pathExist]" sap:VirtualizedContainerService.HintSize="334,90.6666666666667" sap2010:WorkflowViewState.IdRef="PathExists_4" Path="[in_Download_Zip_Excel]" PathType="File" />
+            <If Condition="[pathExist]" sap:VirtualizedContainerService.HintSize="334,52.6666666666667" sap2010:WorkflowViewState.IdRef="If_4">
               <sap:WorkflowViewStateService.ViewState>
                 <scg:Dictionary x:TypeArguments="x:String, x:Object">
                   <x:Boolean x:Key="IsExpanded">False</x:Boolean>
@@ -170,7 +170,7 @@
           </Sequence>
         </If.Else>
       </If>
-      <ui:DeleteFileX sap2010:Annotation.AnnotationText="Suppression du zip dans les téléchargements." DisplayName="Delete File" sap:VirtualizedContainerService.HintSize="908,110.666666666667" sap2010:WorkflowViewState.IdRef="DeleteFileX_1" Path="[in_Download_Zip_Excel]">
+      <ui:DeleteFileX sap2010:Annotation.AnnotationText="Suppression du zip dans les téléchargements." DisplayName="Delete File" sap:VirtualizedContainerService.HintSize="908,111.333333333333" sap2010:WorkflowViewState.IdRef="DeleteFileX_1" Path="[in_Download_Zip_Excel]">
         <sap:WorkflowViewStateService.ViewState>
           <scg:Dictionary x:TypeArguments="x:String, x:Object">
             <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
@@ -178,7 +178,7 @@
         </sap:WorkflowViewStateService.ViewState>
       </ui:DeleteFileX>
     </Sequence>
-    <Sequence DisplayName="Facture PDF" sap:VirtualizedContainerService.HintSize="950,880.666666666667" sap2010:WorkflowViewState.IdRef="Sequence_7">
+    <Sequence DisplayName="Facture PDF" sap:VirtualizedContainerService.HintSize="950,887.333333333333" sap2010:WorkflowViewState.IdRef="Sequence_7">
       <Sequence.Variables>
         <Variable x:TypeArguments="si:DirectoryInfo" Name="filePDF" />
         <Variable x:TypeArguments="x:Boolean" Name="pathExist" />
@@ -189,16 +189,16 @@
           <x:Boolean x:Key="IsPinned">False</x:Boolean>
         </scg:Dictionary>
       </sap:WorkflowViewStateService.ViewState>
-      <ui:PathExists DisplayName="Path Exists" Exists="[pathExist]" sap:VirtualizedContainerService.HintSize="908,90" sap2010:WorkflowViewState.IdRef="PathExists_2" Path="[in_Download_Zip_PDF]" PathType="File" />
-      <If Condition="[pathExist]" sap:VirtualizedContainerService.HintSize="908,508" sap2010:WorkflowViewState.IdRef="If_2">
+      <ui:PathExists DisplayName="Path Exists" Exists="[pathExist]" sap:VirtualizedContainerService.HintSize="908,90.6666666666667" sap2010:WorkflowViewState.IdRef="PathExists_2" Path="[in_Download_Zip_PDF]" PathType="File" />
+      <If Condition="[pathExist]" sap:VirtualizedContainerService.HintSize="908,513.333333333333" sap2010:WorkflowViewState.IdRef="If_2">
         <If.Then>
-          <Sequence sap:VirtualizedContainerService.HintSize="486,345.333333333333" sap2010:WorkflowViewState.IdRef="Sequence_10">
+          <Sequence sap:VirtualizedContainerService.HintSize="486,349.333333333333" sap2010:WorkflowViewState.IdRef="Sequence_10">
             <sap:WorkflowViewStateService.ViewState>
               <scg:Dictionary x:TypeArguments="x:String, x:Object">
                 <x:Boolean x:Key="IsExpanded">True</x:Boolean>
               </scg:Dictionary>
             </sap:WorkflowViewStateService.ViewState>
-            <uascw:ExtractFiles Password="{x:Null}" sap2010:Annotation.AnnotationText="Décompression du zip.&#xA;Déplacement vers le dossier des factures pdf." CodePage="Default" DestinationFolder="[in_PDFDirectory]" DestinationFolderInfo="[filePDF]" DisplayName="Extract/Unzip Files" ExtractToADedicatedFolder="True" FileToExtract="[in_Download_Zip_PDF]" sap:VirtualizedContainerService.HintSize="444,253.333333333333" sap2010:WorkflowViewState.IdRef="ExtractFiles_2" SkipUnsupportedFiles="False">
+            <uascw:ExtractFiles Password="{x:Null}" sap2010:Annotation.AnnotationText="Décompression du zip.&#xA;Déplacement vers le dossier des factures pdf." CodePage="Default" DestinationFolder="[in_PDFDirectory]" DestinationFolderInfo="[filePDF]" DisplayName="Extract/Unzip Files" ExtractToADedicatedFolder="True" FileToExtract="[in_Download_Zip_PDF]" sap:VirtualizedContainerService.HintSize="444,257.333333333333" sap2010:WorkflowViewState.IdRef="ExtractFiles_2" SkipUnsupportedFiles="False">
               <sap:WorkflowViewStateService.ViewState>
                 <scg:Dictionary x:TypeArguments="x:String, x:Object">
                   <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
@@ -208,15 +208,15 @@
           </Sequence>
         </If.Then>
         <If.Else>
-          <Sequence sap:VirtualizedContainerService.HintSize="376,336" sap2010:WorkflowViewState.IdRef="Sequence_11">
+          <Sequence sap:VirtualizedContainerService.HintSize="376,337.333333333333" sap2010:WorkflowViewState.IdRef="Sequence_11">
             <sap:WorkflowViewStateService.ViewState>
               <scg:Dictionary x:TypeArguments="x:String, x:Object">
                 <x:Boolean x:Key="IsExpanded">True</x:Boolean>
               </scg:Dictionary>
             </sap:WorkflowViewStateService.ViewState>
             <Delay Duration="00:00:10" sap:VirtualizedContainerService.HintSize="334,22" sap2010:WorkflowViewState.IdRef="Delay_3" />
-            <ui:PathExists DisplayName="Path Exists" Exists="[pathExist]" sap:VirtualizedContainerService.HintSize="334,90" sap2010:WorkflowViewState.IdRef="PathExists_5" Path="[in_Download_Zip_PDF]" PathType="File" />
-            <If Condition="[pathExist]" sap:VirtualizedContainerService.HintSize="334,52" sap2010:WorkflowViewState.IdRef="If_5">
+            <ui:PathExists DisplayName="Path Exists" Exists="[pathExist]" sap:VirtualizedContainerService.HintSize="334,90.6666666666667" sap2010:WorkflowViewState.IdRef="PathExists_5" Path="[in_Download_Zip_PDF]" PathType="File" />
+            <If Condition="[pathExist]" sap:VirtualizedContainerService.HintSize="334,52.6666666666667" sap2010:WorkflowViewState.IdRef="If_5">
               <sap:WorkflowViewStateService.ViewState>
                 <scg:Dictionary x:TypeArguments="x:String, x:Object">
                   <x:Boolean x:Key="IsExpanded">False</x:Boolean>
@@ -254,7 +254,7 @@
           </Sequence>
         </If.Else>
       </If>
-      <ui:DeleteFileX sap2010:Annotation.AnnotationText="Suppression du zip dans les téléchargements." DisplayName="Delete File" sap:VirtualizedContainerService.HintSize="908,110.666666666667" sap2010:WorkflowViewState.IdRef="DeleteFileX_2" Path="[in_Download_Zip_PDF]">
+      <ui:DeleteFileX sap2010:Annotation.AnnotationText="Suppression du zip dans les téléchargements." DisplayName="Delete File" sap:VirtualizedContainerService.HintSize="908,111.333333333333" sap2010:WorkflowViewState.IdRef="DeleteFileX_2" Path="[in_Download_Zip_PDF]">
         <sap:WorkflowViewStateService.ViewState>
           <scg:Dictionary x:TypeArguments="x:String, x:Object">
             <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
@@ -262,13 +262,13 @@
         </sap:WorkflowViewStateService.ViewState>
       </ui:DeleteFileX>
     </Sequence>
-    <Sequence sap:VirtualizedContainerService.HintSize="950,781.333333333333" sap2010:WorkflowViewState.IdRef="Sequence_20">
+    <Sequence sap:VirtualizedContainerService.HintSize="950,788" sap2010:WorkflowViewState.IdRef="Sequence_20">
       <sap:WorkflowViewStateService.ViewState>
         <scg:Dictionary x:TypeArguments="x:String, x:Object">
           <x:Boolean x:Key="IsExpanded">True</x:Boolean>
         </scg:Dictionary>
       </sap:WorkflowViewStateService.ViewState>
-      <Assign DisplayName="Assign Chemin de la facture PDF du véhicule" sap:VirtualizedContainerService.HintSize="672,61.3333333333333" sap2010:WorkflowViewState.IdRef="Assign_5">
+      <Assign DisplayName="Assign Chemin de la facture PDF du véhicule" sap:VirtualizedContainerService.HintSize="672,62" sap2010:WorkflowViewState.IdRef="Assign_5">
         <Assign.To>
           <OutArgument x:TypeArguments="x:String">[out_CarInvoicePDF_Path]</OutArgument>
         </Assign.To>
@@ -276,16 +276,16 @@
           <InArgument x:TypeArguments="x:String">[in_PDFDirectory + "\" + in_facturePDFCar]</InArgument>
         </Assign.Value>
       </Assign>
-      <ui:PathExists DisplayName="Path Exists" Exists="[fileExist]" sap:VirtualizedContainerService.HintSize="672,90" sap2010:WorkflowViewState.IdRef="PathExists_3" Path="[in_PDFDirectory + &quot;\&quot; + in_Download_invoice_pdf +&quot;\&quot;+ in_facturePDFCar]" PathType="File" />
-      <If Condition="[fileExist]" sap:VirtualizedContainerService.HintSize="672,458" sap2010:WorkflowViewState.IdRef="If_3">
+      <ui:PathExists DisplayName="Path Exists" Exists="[fileExist]" sap:VirtualizedContainerService.HintSize="672,90.6666666666667" sap2010:WorkflowViewState.IdRef="PathExists_3" Path="[in_PDFDirectory + &quot;\&quot; + in_Download_invoice_pdf +&quot;\&quot;+ in_facturePDFCar]" PathType="File" />
+      <If Condition="[fileExist]" sap:VirtualizedContainerService.HintSize="672,463.333333333333" sap2010:WorkflowViewState.IdRef="If_3">
         <If.Then>
-          <Sequence sap:VirtualizedContainerService.HintSize="426,296" sap2010:WorkflowViewState.IdRef="Sequence_12">
+          <Sequence sap:VirtualizedContainerService.HintSize="426,299.333333333333" sap2010:WorkflowViewState.IdRef="Sequence_12">
             <sap:WorkflowViewStateService.ViewState>
               <scg:Dictionary x:TypeArguments="x:String, x:Object">
                 <x:Boolean x:Key="IsExpanded">True</x:Boolean>
               </scg:Dictionary>
             </sap:WorkflowViewStateService.ViewState>
-            <ui:MoveFile ContinueOnError="{x:Null}" sap2010:Annotation.AnnotationText="Déplacer la facture pdf vers le dossier pou les factures de voitures." Destination="[out_CarInvoicePDF_Path]" DisplayName="Move File" sap:VirtualizedContainerService.HintSize="384,204" sap2010:WorkflowViewState.IdRef="MoveFile_1" Overwrite="True" Path="[in_PDFDirectory + &quot;\&quot; + in_Download_invoice_pdf +&quot;\&quot;+ in_facturePDFCar]">
+            <ui:MoveFile ContinueOnError="{x:Null}" sap2010:Annotation.AnnotationText="Déplacer la facture pdf vers le dossier pou les factures de voitures." Destination="[out_CarInvoicePDF_Path]" DisplayName="Move File" sap:VirtualizedContainerService.HintSize="384,207.333333333333" sap2010:WorkflowViewState.IdRef="MoveFile_1" Overwrite="True" Path="[in_PDFDirectory + &quot;\&quot; + in_Download_invoice_pdf +&quot;\&quot;+ in_facturePDFCar]">
               <sap:WorkflowViewStateService.ViewState>
                 <scg:Dictionary x:TypeArguments="x:String, x:Object">
                   <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
@@ -295,7 +295,7 @@
           </Sequence>
         </If.Then>
         <If.Else>
-          <Sequence sap:VirtualizedContainerService.HintSize="200,68" sap2010:WorkflowViewState.IdRef="Sequence_13">
+          <Sequence sap:VirtualizedContainerService.HintSize="200,69.3333333333333" sap2010:WorkflowViewState.IdRef="Sequence_13">
             <sap:WorkflowViewStateService.ViewState>
               <scg:Dictionary x:TypeArguments="x:String, x:Object">
                 <x:Boolean x:Key="IsExpanded">False</x:Boolean>

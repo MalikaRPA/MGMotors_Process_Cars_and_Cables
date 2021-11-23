@@ -3,6 +3,8 @@
   "description": "Infrastructure d'entreprise robotique",
   "main": "Main.xaml",
   "dependencies": {
+    "BalaReva.DataTable.Activities": "[3.0.1]",
+    "BalaReva.EasyDataTable.Activities": "[3.0.1]",
     "BalaReva.EasyExcel.Activities": "[29.1.1]",
     "BalaReva.Excel.Activities": "[2021.0.0]",
     "BalaReva.Pdf.Activities": "[2019.3.1]",
@@ -16,7 +18,7 @@
   "entitiesStores": [],
   "schemaVersion": "4.0",
   "studioVersion": "21.10.3.0",
-  "projectVersion": "1.0.2",
+  "projectVersion": "1.0.3",
   "runtimeOptions": {
     "autoDispose": false,
     "isPausable": true,
