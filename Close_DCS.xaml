@@ -85,7 +85,7 @@
     </ui:GetRobotAsset>
     <ui:UiElementExists DisplayName="Element Exists 'DIV'" Exists="[dcsOpen]" sap:VirtualizedContainerService.HintSize="814,106" sap2010:WorkflowViewState.IdRef="UiElementExists_1">
       <ui:UiElementExists.Target>
-        <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" Id="00cf6d6c-491a-4ae7-a0e4-afb92bd8d721" InformativeScreenshot="0ad35c7ef51b8227be88498fc7fafde0" Selector="&lt;html app='chrome.exe' title='SMIL DCS' /&gt;&lt;webctrl css-selector='body&amp;gt;div&amp;gt;div&amp;gt;div' parentid='app' tag='DIV' /&gt;" TimeoutMS="10000">
+        <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" Id="00cf6d6c-491a-4ae7-a0e4-afb92bd8d721" InformativeScreenshot="0ad35c7ef51b8227be88498fc7fafde0" Selector="&lt;html app='chrome.exe' title='SMIL DCS' /&gt;&lt;webctrl css-selector='body&amp;gt;div&amp;gt;div&amp;gt;div' parentid='app' tag='DIV' /&gt;" TimeoutMS="3000">
           <ui:Target.WaitForReady>
             <InArgument x:TypeArguments="ui:WaitForReady" />
           </ui:Target.WaitForReady>
@@ -137,7 +137,7 @@
           </sap:WorkflowViewStateService.ViewState>
           <ui:UiElementExists DisplayName="Element Exists 'DIV'" Exists="[dcsOpen]" sap:VirtualizedContainerService.HintSize="484,106" sap2010:WorkflowViewState.IdRef="UiElementExists_2">
             <ui:UiElementExists.Target>
-              <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" Id="00cf6d6c-491a-4ae7-a0e4-afb92bd8d721" InformativeScreenshot="35e507fa2daef1286fd03c44e0bc2c7a" Selector="&lt;wnd app='chrome.exe' cls='Chrome_WidgetWin_1' title='SMIL DCS - Google Chrome' /&gt;&lt;ctrl name='SMIL DCS - Google Chrome' role='pane' /&gt;&lt;ctrl name='Google Chrome' role='pane' /&gt;&lt;ctrl name='SMIL DCS' role='page tab' /&gt;" TimeoutMS="10000">
+              <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" Id="00cf6d6c-491a-4ae7-a0e4-afb92bd8d721" InformativeScreenshot="35e507fa2daef1286fd03c44e0bc2c7a" Selector="&lt;wnd app='chrome.exe' cls='Chrome_WidgetWin_1' title='SMIL DCS - Google Chrome' /&gt;&lt;ctrl name='SMIL DCS - Google Chrome' role='pane' /&gt;&lt;ctrl name='Google Chrome' role='pane' /&gt;&lt;ctrl name='SMIL DCS' role='page tab' /&gt;" TimeoutMS="3000">
                 <ui:Target.WaitForReady>
                   <InArgument x:TypeArguments="ui:WaitForReady" />
                 </ui:Target.WaitForReady>

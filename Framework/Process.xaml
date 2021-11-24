@@ -7,7 +7,6 @@
     <x:Property Name="io_CarInvoicePDF_Path" Type="InOutArgument(x:String)" />
     <x:Property Name="in_dt_9010_full" Type="InArgument(sd:DataTable)" />
     <x:Property Name="in_File_9010" Type="InArgument(x:String)" />
-    <x:Property Name="in_CableInvoiceNumber" Type="InArgument(x:String)" />
     <x:Property Name="io_CableInvoiceFilePDF" Type="InOutArgument(x:String)" />
     <x:Property Name="in_FichierComptaPath" Type="InArgument(x:String)" />
     <x:Property Name="io_PDFDirectory" Type="InOutArgument(x:String)" />
@@ -23,9 +22,6 @@
   <this:Process.in_File_9010>
     <InArgument x:TypeArguments="x:String" />
   </this:Process.in_File_9010>
-  <this:Process.in_CableInvoiceNumber>
-    <InArgument x:TypeArguments="x:String" />
-  </this:Process.in_CableInvoiceNumber>
   <this:Process.in_FichierComptaPath>
     <InArgument x:TypeArguments="x:String" />
   </this:Process.in_FichierComptaPath>
@@ -35,7 +31,7 @@
   <mva:VisualBasic.Settings>
     <x:Null />
   </mva:VisualBasic.Settings>
-  <sap:VirtualizedContainerService.HintSize>806,2819.33333333333</sap:VirtualizedContainerService.HintSize>
+  <sap:VirtualizedContainerService.HintSize>709.333333333333,2963.33333333333</sap:VirtualizedContainerService.HintSize>
   <sap2010:WorkflowViewState.IdRef>ProcessTransaction_1</sap2010:WorkflowViewState.IdRef>
   <TextExpression.NamespacesForImplementation>
     <scg:List x:TypeArguments="x:String" Capacity="29">
@@ -104,7 +100,7 @@
       <AssemblyReference>UiPath.System.Activities.Design</AssemblyReference>
     </scg:List>
   </TextExpression.ReferencesForImplementation>
-  <Sequence sap2010:Annotation.AnnotationText="Invoke major steps of the business process, which are usually implemented by multiple subworkflows.&#xA;&#xA;If a BusinessRuleException is thrown, the transaction is skipped. &#xA;If another kind of exception occurs, the current transaction can be retried. " DisplayName="Process" sap:VirtualizedContainerService.HintSize="421.333333333333,2754.66666666667" sap2010:WorkflowViewState.IdRef="Sequence_1">
+  <Sequence sap2010:Annotation.AnnotationText="Invoke major steps of the business process, which are usually implemented by multiple subworkflows.&#xA;&#xA;If a BusinessRuleException is thrown, the transaction is skipped. &#xA;If another kind of exception occurs, the current transaction can be retried. " DisplayName="Process" sap:VirtualizedContainerService.HintSize="421.333333333333,2898.66666666667" sap2010:WorkflowViewState.IdRef="Sequence_1">
     <Sequence.Variables>
       <Variable x:TypeArguments="x:String" Name="str_factureExcelCar" />
       <Variable x:TypeArguments="x:String" Name="str_facturePDFCar" />
@@ -133,6 +129,7 @@
       <Variable x:TypeArguments="x:String" Name="str_CableDirectoryExcel" />
       <Variable x:TypeArguments="x:String" Name="str_CableInvoiceFile" />
       <Variable x:TypeArguments="x:String" Name="str_ObjetUrgenceVIN" />
+      <Variable x:TypeArguments="x:String" Name="str_CableInvoiceNumber" />
     </Sequence.Variables>
     <sap:WorkflowViewStateService.ViewState>
       <scg:Dictionary x:TypeArguments="x:String, x:Object">
@@ -160,7 +157,24 @@
     <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="379.333333333333,94.6666666666667" sap2010:WorkflowViewState.IdRef="LogMessage_2" Level="Info" Message="[&quot;Le VIN traité est : &quot; + in_VIN]" />
     <WriteLine DisplayName="Write Line" sap:VirtualizedContainerService.HintSize="379.333333333333,62.6666666666667" sap2010:WorkflowViewState.IdRef="WriteLine_4" Text="[&quot;SO: &quot; + in_SO]" />
     <WriteLine DisplayName="Write Line" sap:VirtualizedContainerService.HintSize="379.333333333333,62.6666666666667" sap2010:WorkflowViewState.IdRef="WriteLine_2" Text="[&quot;Client: &quot; + in_RefClient]" />
-    <WriteLine DisplayName="Write Line" sap:VirtualizedContainerService.HintSize="379.333333333333,62.6666666666667" sap2010:WorkflowViewState.IdRef="WriteLine_1" Text="[&quot;Cable invoice number: &quot; + in_CableInvoiceNumber]" />
+    <ui:CommentOut DisplayName="Comment Out" sap:VirtualizedContainerService.HintSize="379.333333333333,52.6666666666667" sap2010:WorkflowViewState.IdRef="CommentOut_1">
+      <ui:CommentOut.Body>
+        <Sequence DisplayName="Activités ignorées" sap:VirtualizedContainerService.HintSize="271.333333333333,154.666666666667" sap2010:WorkflowViewState.IdRef="Sequence_2">
+          <sap:WorkflowViewStateService.ViewState>
+            <scg:Dictionary x:TypeArguments="x:String, x:Object">
+              <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+            </scg:Dictionary>
+          </sap:WorkflowViewStateService.ViewState>
+          <WriteLine DisplayName="Write Line" sap:VirtualizedContainerService.HintSize="229.333333333333,62.6666666666667" sap2010:WorkflowViewState.IdRef="WriteLine_1" Text="[&quot;Cable invoice number: &quot; + str_CableInvoiceNumber]" />
+        </Sequence>
+      </ui:CommentOut.Body>
+      <sap:WorkflowViewStateService.ViewState>
+        <scg:Dictionary x:TypeArguments="x:String, x:Object">
+          <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+          <x:Boolean x:Key="IsPinned">False</x:Boolean>
+        </scg:Dictionary>
+      </sap:WorkflowViewStateService.ViewState>
+    </ui:CommentOut>
     <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="Invoke 6.Liste_des_factures workflow" sap:VirtualizedContainerService.HintSize="379.333333333333,114" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_1" UnSafe="False" WorkflowFileName="PROCESSUS\WEB\6.Liste_des_factures.xaml">
       <ui:InvokeWorkflowFile.Arguments>
         <InArgument x:TypeArguments="x:String" x:Key="in_VIN">[in_VIN]</InArgument>
@@ -231,9 +245,15 @@
         <OutArgument x:TypeArguments="x:String" x:Key="out_CableModel">[str_CableModel]</OutArgument>
       </ui:InvokeWorkflowFile.Arguments>
     </ui:InvokeWorkflowFile>
+    <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="Invoke Création_CableInvoiceNumber workflow" sap:VirtualizedContainerService.HintSize="379.333333333333,114" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_11" UnSafe="False" WorkflowFileName="Création_CableInvoiceNumber.xaml">
+      <ui:InvokeWorkflowFile.Arguments>
+        <InArgument x:TypeArguments="sd:DataTable" x:Key="in_dt_9010">[in_dt_9010]</InArgument>
+        <OutArgument x:TypeArguments="x:String" x:Key="out_CableInvoiceNumber">[str_CableInvoiceNumber]</OutArgument>
+        <InArgument x:TypeArguments="x:String" x:Key="in_VIN">[in_VIN]</InArgument>
+      </ui:InvokeWorkflowFile.Arguments>
+    </ui:InvokeWorkflowFile>
     <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="Invoke 12.Création_Facture_Cable workflow" sap:VirtualizedContainerService.HintSize="379.333333333333,114" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_8" UnSafe="False" WorkflowFileName="PROCESSUS\EXCEL\12.Création_Facture_Cable.xaml">
       <ui:InvokeWorkflowFile.Arguments>
-        <InArgument x:TypeArguments="x:String" x:Key="in_CableInvoiceNumber">[in_CableInvoiceNumber]</InArgument>
         <InArgument x:TypeArguments="x:String" x:Key="in_TemplateFactureCable">[str_TemplateFactureCable]</InArgument>
         <InArgument x:TypeArguments="x:String" x:Key="in_Folder_path">[str_Folder_path]</InArgument>
         <OutArgument x:TypeArguments="x:String" x:Key="out_CableInvoiceFile">[str_CableInvoiceFile]</OutArgument>
@@ -251,6 +271,7 @@
         <InArgument x:TypeArguments="x:Double" x:Key="in_TauxTVA">[dbl_TauxTVA]</InArgument>
         <InArgument x:TypeArguments="x:String" x:Key="in_CableDirectoryExcel">[str_CableDirectoryExcel]</InArgument>
         <InArgument x:TypeArguments="x:String" x:Key="in_CarNumber">[str_CarNumber]</InArgument>
+        <InArgument x:TypeArguments="x:String" x:Key="in_CableInvoiceNumber">[str_CableInvoiceNumber]</InArgument>
       </ui:InvokeWorkflowFile.Arguments>
     </ui:InvokeWorkflowFile>
     <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="Invoke 11.Ecritures_dans_9010 workflow" sap:VirtualizedContainerService.HintSize="379.333333333333,114" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_7" UnSafe="False" WorkflowFileName="PROCESSUS\EXCEL\11.Ecritures_dans_9010.xaml">
@@ -263,7 +284,7 @@
         <InArgument x:TypeArguments="x:Double" x:Key="in_AmountTTC">[dbl_AmountTTC]</InArgument>
         <InArgument x:TypeArguments="x:Double" x:Key="in_CablePrice">[dbl_CablePrice]</InArgument>
         <InArgument x:TypeArguments="x:String" x:Key="in_File_9010">[in_File_9010]</InArgument>
-        <InArgument x:TypeArguments="x:String" x:Key="in_CableInvoiceNumber">[in_CableInvoiceNumber]</InArgument>
+        <InArgument x:TypeArguments="x:String" x:Key="in_CableInvoiceNumber">[str_CableInvoiceNumber]</InArgument>
       </ui:InvokeWorkflowFile.Arguments>
     </ui:InvokeWorkflowFile>
     <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="Invoke 13.Save_Cable_Invoice_ workflow" sap:VirtualizedContainerService.HintSize="379.333333333333,114" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_9" UnSafe="False" WorkflowFileName="PROCESSUS\EXCEL\13.Save_Cable_Invoice_.xaml">
@@ -273,12 +294,12 @@
         <OutArgument x:TypeArguments="x:String" x:Key="out_CableInvoiceFilePDF">[io_CableInvoiceFilePDF]</OutArgument>
         <InArgument x:TypeArguments="x:String" x:Key="in_Folder_path">[str_Folder_path]</InArgument>
         <InArgument x:TypeArguments="x:String" x:Key="in_CableDirectoryPDF">[io_CableDirectoryPDF]</InArgument>
-        <InArgument x:TypeArguments="x:String" x:Key="in_CableInvoiceNumber">[in_CableInvoiceNumber]</InArgument>
+        <InArgument x:TypeArguments="x:String" x:Key="in_CableInvoiceNumber">[str_CableInvoiceNumber]</InArgument>
       </ui:InvokeWorkflowFile.Arguments>
     </ui:InvokeWorkflowFile>
     <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="Invoke 14.Comptabilisation_Factures workflow" sap:VirtualizedContainerService.HintSize="379.333333333333,114" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_10" UnSafe="False" WorkflowFileName="PROCESSUS\EXCEL\14.Comptabilisation_Factures.xaml">
       <ui:InvokeWorkflowFile.Arguments>
-        <InArgument x:TypeArguments="x:String" x:Key="in_CableInvoiceNumber">[in_CableInvoiceNumber]</InArgument>
+        <InArgument x:TypeArguments="x:String" x:Key="in_CableInvoiceNumber">[str_CableInvoiceNumber]</InArgument>
         <InArgument x:TypeArguments="x:String" x:Key="in_RefClient">[in_RefClient]</InArgument>
         <InArgument x:TypeArguments="x:Double" x:Key="in_CablePrice">[dbl_CablePrice]</InArgument>
         <InArgument x:TypeArguments="x:Double" x:Key="in_TauxTVA">[dbl_TauxTVA]</InArgument>

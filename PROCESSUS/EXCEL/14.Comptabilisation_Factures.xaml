@@ -9,7 +9,7 @@
   <mva:VisualBasic.Settings>
     <x:Null />
   </mva:VisualBasic.Settings>
-  <sap:VirtualizedContainerService.HintSize>792,6329.33333333333</sap:VirtualizedContainerService.HintSize>
+  <sap:VirtualizedContainerService.HintSize>834,8292.66666666667</sap:VirtualizedContainerService.HintSize>
   <sap2010:WorkflowViewState.IdRef>_13_Comptabilisation_Factures_1</sap2010:WorkflowViewState.IdRef>
   <TextExpression.NamespacesForImplementation>
     <scg:List x:TypeArguments="x:String" Capacity="30">
@@ -76,7 +76,7 @@
       <AssemblyReference>System.Runtime.WindowsRuntime</AssemblyReference>
     </scg:List>
   </TextExpression.ReferencesForImplementation>
-  <Sequence DisplayName="_13_Comptabilisation_Factures" sap:VirtualizedContainerService.HintSize="602,6264.66666666667" sap2010:WorkflowViewState.IdRef="Sequence_1">
+  <Sequence DisplayName="_13_Comptabilisation_Factures" sap:VirtualizedContainerService.HintSize="844,8228" sap2010:WorkflowViewState.IdRef="Sequence_1">
     <Sequence.Variables>
       <Variable x:TypeArguments="sd:DataTable" Name="dt_compta" />
       <Variable x:TypeArguments="x:String" Name="rslt" />
@@ -95,27 +95,27 @@
         <x:Boolean x:Key="IsExpanded">True</x:Boolean>
       </scg:Dictionary>
     </sap:WorkflowViewStateService.ViewState>
-    <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="560,94.6666666666667" sap2010:WorkflowViewState.IdRef="LogMessage_1" Level="Info" Message="[&quot;14. Comptabilisation des factures....&quot;]" />
-    <ui:ExcelApplicationScope Password="{x:Null}" DisplayName="Excel Application Scope" sap:VirtualizedContainerService.HintSize="560,5903.33333333333" sap2010:WorkflowViewState.IdRef="ExcelApplicationScope_1" InstanceCachePeriod="3000" Visible="False" WorkbookPath="[in_FichierComptaPath]">
+    <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="802,94.6666666666667" sap2010:WorkflowViewState.IdRef="LogMessage_1" Level="Info" Message="[&quot;14. Comptabilisation des factures....&quot;]" />
+    <ui:ExcelApplicationScope Password="{x:Null}" DisplayName="Excel Application Scope" sap:VirtualizedContainerService.HintSize="802,7866.66666666667" sap2010:WorkflowViewState.IdRef="ExcelApplicationScope_1" InstanceCachePeriod="3000" Visible="False" WorkbookPath="[in_FichierComptaPath]">
       <ui:ExcelApplicationScope.Body>
         <ActivityAction x:TypeArguments="ui:WorkbookApplication">
           <ActivityAction.Argument>
             <DelegateInArgument x:TypeArguments="ui:WorkbookApplication" Name="ExcelWorkbookScope" />
           </ActivityAction.Argument>
-          <Sequence DisplayName="Faire" sap:VirtualizedContainerService.HintSize="526,5794.66666666667" sap2010:WorkflowViewState.IdRef="Sequence_2">
+          <Sequence DisplayName="Faire" sap:VirtualizedContainerService.HintSize="768,7758" sap2010:WorkflowViewState.IdRef="Sequence_2">
             <sap:WorkflowViewStateService.ViewState>
               <scg:Dictionary x:TypeArguments="x:String, x:Object">
                 <x:Boolean x:Key="IsExpanded">True</x:Boolean>
               </scg:Dictionary>
             </sap:WorkflowViewStateService.ViewState>
-            <ui:ExcelReadRange AddHeaders="True" DataTable="[dt_compta]" DisplayName="Read Range" sap:VirtualizedContainerService.HintSize="484,58.6666666666667" sap2010:WorkflowViewState.IdRef="ExcelReadRange_1" SheetName="Feuil1">
+            <ui:ExcelReadRange AddHeaders="True" DataTable="[dt_compta]" DisplayName="Read Range" sap:VirtualizedContainerService.HintSize="726,58.6666666666667" sap2010:WorkflowViewState.IdRef="ExcelReadRange_1" SheetName="Feuil1">
               <ui:ExcelReadRange.Range>
                 <InArgument x:TypeArguments="x:String">
                   <Literal x:TypeArguments="x:String" Value="" />
                 </InArgument>
               </ui:ExcelReadRange.Range>
             </ui:ExcelReadRange>
-            <Assign sap:VirtualizedContainerService.HintSize="484,62" sap2010:WorkflowViewState.IdRef="Assign_1">
+            <Assign sap:VirtualizedContainerService.HintSize="726,62" sap2010:WorkflowViewState.IdRef="Assign_1">
               <Assign.To>
                 <OutArgument x:TypeArguments="x:Int32">[nbLigne]</OutArgument>
               </Assign.To>
@@ -123,15 +123,43 @@
                 <InArgument x:TypeArguments="x:Int32">[dt_compta.Rows.Count]</InArgument>
               </Assign.Value>
             </Assign>
-            <WriteLine DisplayName="Write Line" sap:VirtualizedContainerService.HintSize="484,62.6666666666667" sap2010:WorkflowViewState.IdRef="WriteLine_2" Text="[&quot;La DT comporte &quot; + nbLigne.ToString + &quot; lignes.&quot;]" />
-            <ui:ExcelReadCell Cell="[&quot;A&quot; + nbLigne.ToString]" DisplayName="Read Cell ID de la ligne précédente" sap:VirtualizedContainerService.HintSize="484,58.6666666666667" sap2010:WorkflowViewState.IdRef="ExcelReadCell_1" SheetName="Feuil1">
-              <ui:ExcelReadCell.Result>
-                <OutArgument x:TypeArguments="x:Double">[ID_Last]</OutArgument>
-              </ui:ExcelReadCell.Result>
-            </ui:ExcelReadCell>
-            <ui:OutputDataTable DataTable="[dt_compta]" DisplayName="Output Data Table" sap:VirtualizedContainerService.HintSize="484,80.6666666666667" sap2010:WorkflowViewState.IdRef="OutputDataTable_1" Text="[rslt]" />
-            <WriteLine DisplayName="Write Line" sap:VirtualizedContainerService.HintSize="484,62.6666666666667" sap2010:WorkflowViewState.IdRef="WriteLine_1" Text="[rslt]" />
-            <Assign DisplayName="Index de la 1ére ligne" sap:VirtualizedContainerService.HintSize="484,62" sap2010:WorkflowViewState.IdRef="Assign_2">
+            <WriteLine DisplayName="Write Line" sap:VirtualizedContainerService.HintSize="726,62.6666666666667" sap2010:WorkflowViewState.IdRef="WriteLine_2" Text="[&quot;La DT comporte &quot; + nbLigne.ToString + &quot; lignes.&quot;]" />
+            <If Condition="[nbLigne = 0]" sap:VirtualizedContainerService.HintSize="726,314.666666666667" sap2010:WorkflowViewState.IdRef="If_2">
+              <If.Then>
+                <Sequence sap:VirtualizedContainerService.HintSize="304,154" sap2010:WorkflowViewState.IdRef="Sequence_8">
+                  <sap:WorkflowViewStateService.ViewState>
+                    <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                      <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                    </scg:Dictionary>
+                  </sap:WorkflowViewStateService.ViewState>
+                  <Assign sap:VirtualizedContainerService.HintSize="262,62" sap2010:WorkflowViewState.IdRef="Assign_17">
+                    <Assign.To>
+                      <OutArgument x:TypeArguments="x:Double">[ID_Last]</OutArgument>
+                    </Assign.To>
+                    <Assign.Value>
+                      <InArgument x:TypeArguments="x:Double">0</InArgument>
+                    </Assign.Value>
+                  </Assign>
+                </Sequence>
+              </If.Then>
+              <If.Else>
+                <Sequence sap:VirtualizedContainerService.HintSize="376,150.666666666667" sap2010:WorkflowViewState.IdRef="Sequence_9">
+                  <sap:WorkflowViewStateService.ViewState>
+                    <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                      <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                    </scg:Dictionary>
+                  </sap:WorkflowViewStateService.ViewState>
+                  <ui:ExcelReadCell Cell="[&quot;A&quot; + nbLigne.ToString]" DisplayName="Read Cell ID de la ligne précédente" sap:VirtualizedContainerService.HintSize="334,58.6666666666667" sap2010:WorkflowViewState.IdRef="ExcelReadCell_1" SheetName="Feuil1">
+                    <ui:ExcelReadCell.Result>
+                      <OutArgument x:TypeArguments="x:Double">[ID_Last]</OutArgument>
+                    </ui:ExcelReadCell.Result>
+                  </ui:ExcelReadCell>
+                </Sequence>
+              </If.Else>
+            </If>
+            <ui:OutputDataTable DataTable="[dt_compta]" DisplayName="Output Data Table" sap:VirtualizedContainerService.HintSize="726,80.6666666666667" sap2010:WorkflowViewState.IdRef="OutputDataTable_1" Text="[rslt]" />
+            <WriteLine DisplayName="Write Line" sap:VirtualizedContainerService.HintSize="726,62.6666666666667" sap2010:WorkflowViewState.IdRef="WriteLine_1" Text="[rslt]" />
+            <Assign DisplayName="Index de la 1ére ligne" sap:VirtualizedContainerService.HintSize="726,62" sap2010:WorkflowViewState.IdRef="Assign_2">
               <Assign.To>
                 <OutArgument x:TypeArguments="x:Int32">[idx]</OutArgument>
               </Assign.To>
@@ -139,8 +167,8 @@
                 <InArgument x:TypeArguments="x:Int32">[nbLigne + 2]</InArgument>
               </Assign.Value>
             </Assign>
-            <WriteLine DisplayName="Write Line" sap:VirtualizedContainerService.HintSize="484,62.6666666666667" sap2010:WorkflowViewState.IdRef="WriteLine_5" Text="[&quot;Index de la ligne: &quot; + idx.ToString]" />
-            <Assign sap:VirtualizedContainerService.HintSize="484,62" sap2010:WorkflowViewState.IdRef="Assign_3">
+            <WriteLine DisplayName="Write Line" sap:VirtualizedContainerService.HintSize="726,62.6666666666667" sap2010:WorkflowViewState.IdRef="WriteLine_5" Text="[&quot;Index de la ligne: &quot; + idx.ToString]" />
+            <Assign sap:VirtualizedContainerService.HintSize="726,62" sap2010:WorkflowViewState.IdRef="Assign_3">
               <Assign.To>
                 <OutArgument x:TypeArguments="x:Double">[ID_New]</OutArgument>
               </Assign.To>
@@ -148,8 +176,8 @@
                 <InArgument x:TypeArguments="x:Double">[ID_Last + 1]</InArgument>
               </Assign.Value>
             </Assign>
-            <WriteLine DisplayName="Write Line" sap:VirtualizedContainerService.HintSize="484,62.6666666666667" sap2010:WorkflowViewState.IdRef="WriteLine_4" Text="[&quot;Nouvel ID: &quot; + ID_New.ToString]" />
-            <Assign sap:VirtualizedContainerService.HintSize="484,62" sap2010:WorkflowViewState.IdRef="Assign_16">
+            <WriteLine DisplayName="Write Line" sap:VirtualizedContainerService.HintSize="726,62.6666666666667" sap2010:WorkflowViewState.IdRef="WriteLine_4" Text="[&quot;Nouvel ID: &quot; + ID_New.ToString]" />
+            <Assign sap:VirtualizedContainerService.HintSize="726,62" sap2010:WorkflowViewState.IdRef="Assign_16">
               <Assign.To>
                 <OutArgument x:TypeArguments="x:String">[TodayDate]</OutArgument>
               </Assign.To>
@@ -157,7 +185,7 @@
                 <InArgument x:TypeArguments="x:String">[Today.ToString("yyyyMMdd")]</InArgument>
               </Assign.Value>
             </Assign>
-            <Sequence DisplayName="1ére ligne Montant TTC" sap:VirtualizedContainerService.HintSize="484,2264" sap2010:WorkflowViewState.IdRef="Sequence_3">
+            <Sequence DisplayName="1ére ligne Montant TTC" sap:VirtualizedContainerService.HintSize="726,2264" sap2010:WorkflowViewState.IdRef="Sequence_3">
               <sap:WorkflowViewStateService.ViewState>
                 <scg:Dictionary x:TypeArguments="x:String, x:Object">
                   <x:Boolean x:Key="IsExpanded">True</x:Boolean>
@@ -212,10 +240,10 @@
               <ui:ExcelWriteCell Cell="[&quot;M&quot; + idx.ToString]" DisplayName="Montant TTC Colonne M" sap:VirtualizedContainerService.HintSize="334,86.6666666666667" sap2010:WorkflowViewState.IdRef="ExcelWriteCell_10" SheetName="Feuil1" Text="[montantTTC.ToString]" />
               <ui:ExcelWriteCell Cell="[&quot;X&quot; + idx.ToString]" DisplayName="Invoice number Colonne X" sap:VirtualizedContainerService.HintSize="334,86.6666666666667" sap2010:WorkflowViewState.IdRef="ExcelWriteCell_11" SheetName="Feuil1" Text="[in_CableInvoiceNumber]" />
             </Sequence>
-            <Sequence DisplayName="2éme ligne Montant HT" sap:VirtualizedContainerService.HintSize="484,69.3333333333333" sap2010:WorkflowViewState.IdRef="Sequence_4">
+            <Sequence DisplayName="2éme ligne Montant HT" sap:VirtualizedContainerService.HintSize="484,1776.66666666667" sap2010:WorkflowViewState.IdRef="Sequence_4">
               <sap:WorkflowViewStateService.ViewState>
                 <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                  <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                  <x:Boolean x:Key="IsExpanded">True</x:Boolean>
                   <x:Boolean x:Key="IsPinned">False</x:Boolean>
                 </scg:Dictionary>
               </sap:WorkflowViewStateService.ViewState>
@@ -274,7 +302,7 @@
                     <ui:ExcelWriteCell Cell="[&quot;F&quot;+ idx.ToString]" DisplayName="Currency Colonne F" sap:VirtualizedContainerService.HintSize="334,86.6666666666667" sap2010:WorkflowViewState.IdRef="ExcelWriteCell_30" SheetName="Feuil1" Text="EUR" />
                     <ui:ExcelWriteCell Cell="[&quot;G&quot;+ idx.ToString]" DisplayName="Invoice number Colonne G" sap:VirtualizedContainerService.HintSize="334,86.6666666666667" sap2010:WorkflowViewState.IdRef="ExcelWriteCell_31" SheetName="Feuil1" Text="[in_CableInvoiceNumber]" />
                     <ui:ExcelWriteCell Cell="[&quot;H&quot; + idx.ToString]" DisplayName="Invoice number Colonne H" sap:VirtualizedContainerService.HintSize="334,86.6666666666667" sap2010:WorkflowViewState.IdRef="ExcelWriteCell_32" SheetName="Feuil1" Text="[in_CableInvoiceNumber]" />
-                    <ui:ExcelWriteCell Cell="[&quot;I&quot; + idx.ToString]" DisplayName="Compte Colonne I" sap:VirtualizedContainerService.HintSize="334,86.6666666666667" sap2010:WorkflowViewState.IdRef="ExcelWriteCell_33" SheetName="Feuil1" Text="22221010502" />
+                    <ui:ExcelWriteCell Cell="[&quot;I&quot; + idx.ToString]" DisplayName="Compte Colonne I" sap:VirtualizedContainerService.HintSize="334,86.6666666666667" sap2010:WorkflowViewState.IdRef="ExcelWriteCell_33" SheetName="Feuil1" Text="2221010502" />
                     <ui:ExcelWriteCell Cell="[&quot;M&quot; + idx.ToString]" DisplayName="Montant TVA Colonne M" sap:VirtualizedContainerService.HintSize="334,86.6666666666667" sap2010:WorkflowViewState.IdRef="ExcelWriteCell_34" SheetName="Feuil1" Text="[&quot;-&quot; + montantTVA.ToString]" />
                     <ui:ExcelWriteCell Cell="[&quot;R&quot; + idx.ToString]" DisplayName="Profit center Colonne R" sap:VirtualizedContainerService.HintSize="334,86.6666666666667" sap2010:WorkflowViewState.IdRef="ExcelWriteCell_35" SheetName="Feuil1" Text="90130" />
                     <ui:ExcelWriteCell Cell="[&quot;X&quot; + idx.ToString]" DisplayName="Invoice number Colonne X" sap:VirtualizedContainerService.HintSize="334,86.6666666666667" sap2010:WorkflowViewState.IdRef="ExcelWriteCell_36" SheetName="Feuil1" Text="[in_CableInvoiceNumber]" />

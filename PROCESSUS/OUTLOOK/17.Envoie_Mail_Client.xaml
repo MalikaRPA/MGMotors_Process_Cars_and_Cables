@@ -12,7 +12,7 @@
   <mva:VisualBasic.Settings>
     <x:Null />
   </mva:VisualBasic.Settings>
-  <sap:VirtualizedContainerService.HintSize>668,6276.66666666667</sap:VirtualizedContainerService.HintSize>
+  <sap:VirtualizedContainerService.HintSize>709.333333333333,6787.33333333333</sap:VirtualizedContainerService.HintSize>
   <sap2010:WorkflowViewState.IdRef>_16_Envoie_Rapport_SAP_1</sap2010:WorkflowViewState.IdRef>
   <TextExpression.NamespacesForImplementation>
     <scg:List x:TypeArguments="x:String" Capacity="44">
@@ -63,7 +63,7 @@
     </scg:List>
   </TextExpression.NamespacesForImplementation>
   <TextExpression.ReferencesForImplementation>
-    <scg:List x:TypeArguments="AssemblyReference" Capacity="33">
+    <scg:List x:TypeArguments="AssemblyReference" Capacity="66">
       <AssemblyReference>System.Activities</AssemblyReference>
       <AssemblyReference>Microsoft.VisualBasic</AssemblyReference>
       <AssemblyReference>mscorlib</AssemblyReference>
@@ -97,9 +97,10 @@
       <AssemblyReference>BalaReva.EasyExcel.Utilities</AssemblyReference>
       <AssemblyReference>System.Data.Entity</AssemblyReference>
       <AssemblyReference>System.Collections.Immutable</AssemblyReference>
+      <AssemblyReference>System.Runtime.WindowsRuntime</AssemblyReference>
     </scg:List>
   </TextExpression.ReferencesForImplementation>
-  <Sequence DisplayName="_16_Envoie_Rapport_SAP" sap:VirtualizedContainerService.HintSize="678,6212" sap2010:WorkflowViewState.IdRef="Sequence_1">
+  <Sequence DisplayName="_16_Envoie_Rapport_SAP" sap:VirtualizedContainerService.HintSize="678,6722.66666666667" sap2010:WorkflowViewState.IdRef="Sequence_1">
     <Sequence.Variables>
       <Variable x:TypeArguments="x:String" Name="TodayNow" />
       <Variable x:TypeArguments="x:String" Name="client" />
@@ -120,6 +121,7 @@
       <Variable x:TypeArguments="x:String" Name="facture_car" />
       <Variable x:TypeArguments="x:String" Name="facture_cable" />
       <Variable x:TypeArguments="scg:List(x:String)" Default="[New List(Of String)]" Name="Liste_Facture" />
+      <Variable x:TypeArguments="x:String" Name="Dossier_templateMail" />
     </Sequence.Variables>
     <sap:WorkflowViewStateService.ViewState>
       <scg:Dictionary x:TypeArguments="x:String, x:Object">
@@ -127,6 +129,12 @@
       </scg:Dictionary>
     </sap:WorkflowViewStateService.ViewState>
     <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="636,94.6666666666667" sap2010:WorkflowViewState.IdRef="LogMessage_1" Level="Info" Message="[&quot;17. Envoie mail client ....&quot;]" />
+    <ui:GetRobotAsset TimeoutMS="{x:Null}" AssetName="Dossier_templateMail" DisplayName="Get Asset" sap:VirtualizedContainerService.HintSize="636,140.666666666667" sap2010:WorkflowViewState.IdRef="GetRobotAsset_1">
+      <ui:GetRobotAsset.Value>
+        <OutArgument x:TypeArguments="x:String">[Dossier_templateMail]</OutArgument>
+      </ui:GetRobotAsset.Value>
+    </ui:GetRobotAsset>
+    <WriteLine DisplayName="Write Line" sap:VirtualizedContainerService.HintSize="636,62.6666666666667" sap2010:WorkflowViewState.IdRef="WriteLine_19" Text="[Dossier_templateMail]" />
     <ui:Comment sap:VirtualizedContainerService.HintSize="636,364.666666666667" sap2010:WorkflowViewState.IdRef="Comment_3" Text="Objectif : envoyer les factures à chaque client&#xA; 1. Récupérer les mails des clients de dt_EmailCustomers&#xA; 2. Ajout de la colonne Traitement à dt_9010&#xA; 3. Création dt_client avec une colonne client&#xA; 4. Garder les valeurs unique des clients &#xA; 5. Jointure avec dt_Email pour conserver les clients dont on a besoin et leur contact&#xA; 6. Supression des clients qui ont aucun mail&#xA; 7. Pour chaque client avec au moins 1 mail&#xA; 8. Je prend le num de facture véhicule et cable (reconstruction des chemin des facture pdf) et j'écris &quot;facture envoyée&quot; dans la colonne Traitement&#xA; 9. Compte le nb de facture par client&#xA; 10. récupére le template des mails&#xA;11. Envoie du mail au client avec toutes ses factures, le nb de facture et en destinataire les mails des contacts" />
     <ui:AddDataColumn x:TypeArguments="x:Object" AllowDBNull="{x:Null}" AutoIncrement="{x:Null}" Column="{x:Null}" DefaultValue="{x:Null}" MaxLength="{x:Null}" Unique="{x:Null}" ColumnName="Traitement" DataTable="[io_dt_9010]" DisplayName="2. Add Data Column Traitement" sap:VirtualizedContainerService.HintSize="636,190" sap2010:WorkflowViewState.IdRef="AddDataColumn`1_1" />
     <ui:FilterDataTable DataTable="[io_dt_9010]" DisplayName="3. Création de dt_client" FilterRowsMode="Keep" sap:VirtualizedContainerService.HintSize="636,162.666666666667" sap2010:WorkflowViewState.IdRef="FilterDataTable_1" OutputDataTable="[dt_client]" SelectColumnsMode="Keep">
@@ -365,7 +373,7 @@
                         <x:Boolean x:Key="IsExpanded">True</x:Boolean>
                       </scg:Dictionary>
                     </sap:WorkflowViewStateService.ViewState>
-                    <If Condition="[client.Equals(Row(&quot;Customer#(green:send to multi recipients)&quot;).ToString)]" sap:VirtualizedContainerService.HintSize="484,1076" sap2010:WorkflowViewState.IdRef="If_1">
+                    <If Condition="[client.Equals(Row(&quot;Customer#(green:send to multi recipients)&quot;).ToString) and Not Row(&quot;CAR INVOICE&quot;).ToString.Equals(&quot;&quot;) and Not Row(&quot;CABLE INVOICE&quot;).ToString.Equals(&quot;&quot;)]" sap:VirtualizedContainerService.HintSize="484,1076" sap2010:WorkflowViewState.IdRef="If_1">
                       <If.Then>
                         <Sequence sap:VirtualizedContainerService.HintSize="304,891.333333333333" sap2010:WorkflowViewState.IdRef="Sequence_6">
                           <Sequence.Variables>
@@ -476,7 +484,7 @@
               </Assign.Value>
             </Assign>
             <WriteLine DisplayName="Write Line" sap:VirtualizedContainerService.HintSize="560,62.6666666666667" sap2010:WorkflowViewState.IdRef="WriteLine_6" Text="[&quot;Nombre de facture: &quot; + nbFacture.ToString]" />
-            <ui:GetOutlookMailMessages Account="{x:Null}" Filter="{x:Null}" FilterByMessageIds="{x:Null}" TimeoutMS="{x:Null}" DisplayName="10. Get Outlook Mail Messages" GetAttachements="False" sap:VirtualizedContainerService.HintSize="560,22" sap2010:WorkflowViewState.IdRef="GetOutlookMailMessages_1" MailFolder="Archive" MarkAsRead="False" Messages="[template]" OnlyUnreadMessages="False" OrderByDate="NewestFirst" Top="30" />
+            <ui:GetOutlookMailMessages Filter="{x:Null}" FilterByMessageIds="{x:Null}" TimeoutMS="{x:Null}" Account="FINANCE" DisplayName="10. Get Outlook Mail Messages" GetAttachements="False" sap:VirtualizedContainerService.HintSize="560,22" sap2010:WorkflowViewState.IdRef="GetOutlookMailMessages_1" MailFolder="[Dossier_templateMail]" MarkAsRead="False" Messages="[template]" OnlyUnreadMessages="False" OrderByDate="NewestFirst" Top="30" />
             <ui:ForEach x:TypeArguments="snm:MailMessage" CurrentIndex="{x:Null}" DisplayName="For Each" sap:VirtualizedContainerService.HintSize="560,469.333333333333" sap2010:WorkflowViewState.IdRef="ForEach`1_3" Values="[template]">
               <ui:ForEach.Body>
                 <ActivityAction x:TypeArguments="snm:MailMessage">
@@ -541,46 +549,35 @@
     </ui:ForEachRow>
     <ui:OutputDataTable DataTable="[io_dt_9010]" DisplayName="Output Data Table" sap:VirtualizedContainerService.HintSize="636,80.6666666666667" sap2010:WorkflowViewState.IdRef="OutputDataTable_2" Text="[rslt_dt_9010]" />
     <WriteLine DisplayName="Write Line" sap:VirtualizedContainerService.HintSize="636,62.6666666666667" sap2010:WorkflowViewState.IdRef="WriteLine_9" Text="[rslt_dt_9010]" />
-    <ui:CommentOut DisplayName="Comment Out" sap:VirtualizedContainerService.HintSize="636,240" sap2010:WorkflowViewState.IdRef="CommentOut_2">
-      <ui:CommentOut.Body>
-        <Sequence DisplayName="Activités ignorées" sap:VirtualizedContainerService.HintSize="242,161.333333333333" sap2010:WorkflowViewState.IdRef="Sequence_21">
-          <sap:WorkflowViewStateService.ViewState>
-            <scg:Dictionary x:TypeArguments="x:String, x:Object">
-              <x:Boolean x:Key="IsExpanded">True</x:Boolean>
-            </scg:Dictionary>
-          </sap:WorkflowViewStateService.ViewState>
-          <Sequence DisplayName="Déplacer les brouillons vers le dossier Drafts de la boite Finance" sap:VirtualizedContainerService.HintSize="200,69.3333333333333" sap2010:WorkflowViewState.IdRef="Sequence_20">
-            <Sequence.Variables>
-              <Variable x:TypeArguments="scg:List(snm:MailMessage)" Name="brouillons" />
-            </Sequence.Variables>
-            <sap:WorkflowViewStateService.ViewState>
-              <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                <x:Boolean x:Key="IsExpanded">False</x:Boolean>
-                <x:Boolean x:Key="IsPinned">False</x:Boolean>
-              </scg:Dictionary>
-            </sap:WorkflowViewStateService.ViewState>
-            <ui:GetOutlookMailMessages Account="{x:Null}" Filter="{x:Null}" FilterByMessageIds="{x:Null}" TimeoutMS="{x:Null}" DisplayName="10. Get Outlook Mail Messages Brouillons" GetAttachements="False" sap:VirtualizedContainerService.HintSize="434,22" sap2010:WorkflowViewState.IdRef="GetOutlookMailMessages_2" MailFolder="Brouillons" MarkAsRead="False" Messages="[brouillons]" OnlyUnreadMessages="True" OrderByDate="NewestFirst" Top="500" />
-            <ui:ForEach x:TypeArguments="snm:MailMessage" CurrentIndex="{x:Null}" DisplayName="For Each" sap:VirtualizedContainerService.HintSize="434,303.333333333333" sap2010:WorkflowViewState.IdRef="ForEach`1_4" Values="[brouillons]">
-              <ui:ForEach.Body>
-                <ActivityAction x:TypeArguments="snm:MailMessage">
-                  <ActivityAction.Argument>
-                    <DelegateInArgument x:TypeArguments="snm:MailMessage" Name="item" />
-                  </ActivityAction.Argument>
-                  <Sequence DisplayName="Corps" sap:VirtualizedContainerService.HintSize="376,178.666666666667" sap2010:WorkflowViewState.IdRef="Sequence_19">
-                    <sap:WorkflowViewStateService.ViewState>
-                      <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                        <x:Boolean x:Key="IsExpanded">True</x:Boolean>
-                      </scg:Dictionary>
-                    </sap:WorkflowViewStateService.ViewState>
-                    <ui:MoveOutlookMessage Account="FINANCE" DisplayName="Move Outlook Mail Message" sap:VirtualizedContainerService.HintSize="334,86.6666666666667" sap2010:WorkflowViewState.IdRef="MoveOutlookMessage_1" MailFolder="Drafts" MailMessage="[item]" />
-                  </Sequence>
-                </ActivityAction>
-              </ui:ForEach.Body>
-            </ui:ForEach>
-          </Sequence>
-        </Sequence>
-      </ui:CommentOut.Body>
-    </ui:CommentOut>
+    <Sequence DisplayName="Déplacer les brouillons vers le dossier Drafts de la boite Finance" sap:VirtualizedContainerService.HintSize="636,467.333333333333" sap2010:WorkflowViewState.IdRef="Sequence_20">
+      <Sequence.Variables>
+        <Variable x:TypeArguments="scg:List(snm:MailMessage)" Name="brouillons" />
+      </Sequence.Variables>
+      <sap:WorkflowViewStateService.ViewState>
+        <scg:Dictionary x:TypeArguments="x:String, x:Object">
+          <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+          <x:Boolean x:Key="IsPinned">False</x:Boolean>
+        </scg:Dictionary>
+      </sap:WorkflowViewStateService.ViewState>
+      <ui:GetOutlookMailMessages Account="{x:Null}" Filter="{x:Null}" FilterByMessageIds="{x:Null}" TimeoutMS="{x:Null}" DisplayName="10. Get Outlook Mail Messages Brouillons" GetAttachements="False" sap:VirtualizedContainerService.HintSize="434,22" sap2010:WorkflowViewState.IdRef="GetOutlookMailMessages_2" MailFolder="Brouillons" MarkAsRead="False" Messages="[brouillons]" OnlyUnreadMessages="False" OrderByDate="NewestFirst" Top="500" />
+      <ui:ForEach x:TypeArguments="snm:MailMessage" CurrentIndex="{x:Null}" DisplayName="For Each" sap:VirtualizedContainerService.HintSize="434,313.333333333333" sap2010:WorkflowViewState.IdRef="ForEach`1_4" Values="[brouillons]">
+        <ui:ForEach.Body>
+          <ActivityAction x:TypeArguments="snm:MailMessage">
+            <ActivityAction.Argument>
+              <DelegateInArgument x:TypeArguments="snm:MailMessage" Name="item" />
+            </ActivityAction.Argument>
+            <Sequence DisplayName="Corps" sap:VirtualizedContainerService.HintSize="376,185.333333333333" sap2010:WorkflowViewState.IdRef="Sequence_19">
+              <sap:WorkflowViewStateService.ViewState>
+                <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                  <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                </scg:Dictionary>
+              </sap:WorkflowViewStateService.ViewState>
+              <ui:MoveOutlookMessage Account="FINANCE" DisplayName="Move Outlook Mail Message" sap:VirtualizedContainerService.HintSize="334,93.3333333333333" sap2010:WorkflowViewState.IdRef="MoveOutlookMessage_1" MailFolder="Drafts" MailMessage="[item]" />
+            </Sequence>
+          </ActivityAction>
+        </ui:ForEach.Body>
+      </ui:ForEach>
+    </Sequence>
     <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="636,94.6666666666667" sap2010:WorkflowViewState.IdRef="LogMessage_4" Level="Info" Message="[&quot;17. Fin envoie mail client.&quot;]" />
   </Sequence>
 </Activity>
