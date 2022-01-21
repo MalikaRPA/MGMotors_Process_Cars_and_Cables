@@ -1,10 +1,12 @@
-<Activity mc:Ignorable="sap sap2010" x:Class="_16_Envoie_Rapport_SAP" xmlns="http://schemas.microsoft.com/netfx/2009/xaml/activities" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:mva="clr-namespace:Microsoft.VisualBasic.Activities;assembly=System.Activities" xmlns:sap="http://schemas.microsoft.com/netfx/2009/xaml/activities/presentation" xmlns:sap2010="http://schemas.microsoft.com/netfx/2010/xaml/activities/presentation" xmlns:scg="clr-namespace:System.Collections.Generic;assembly=mscorlib" xmlns:sd="clr-namespace:System.Data;assembly=System.Data" xmlns:snm="clr-namespace:System.Net.Mail;assembly=System" xmlns:this="clr-namespace:" xmlns:ui="http://schemas.uipath.com/workflow/activities" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+<Activity mc:Ignorable="sap sap2010" x:Class="_16_Envoie_Rapport_SAP" xmlns="http://schemas.microsoft.com/netfx/2009/xaml/activities" xmlns:be="clr-namespace:BalaReva.EasyDataTable;assembly=BalaReva.EasyDataTable" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:mva="clr-namespace:Microsoft.VisualBasic.Activities;assembly=System.Activities" xmlns:sap="http://schemas.microsoft.com/netfx/2009/xaml/activities/presentation" xmlns:sap2010="http://schemas.microsoft.com/netfx/2010/xaml/activities/presentation" xmlns:scg="clr-namespace:System.Collections.Generic;assembly=mscorlib" xmlns:sd="clr-namespace:System.Data;assembly=System.Data" xmlns:snm="clr-namespace:System.Net.Mail;assembly=System" xmlns:this="clr-namespace:" xmlns:ui="http://schemas.uipath.com/workflow/activities" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
   <x:Members>
     <x:Property Name="in_Folder_path" Type="InArgument(x:String)" />
     <x:Property Name="in_PDFDirectory" Type="InArgument(x:String)" />
     <x:Property Name="in_CableDirectoryPDF" Type="InArgument(x:String)" />
     <x:Property Name="in_dt_EmailCustomers" Type="InArgument(sd:DataTable)" />
     <x:Property Name="io_dt_9010" Type="InOutArgument(sd:DataTable)" />
+    <x:Property Name="out_dt_VIN_Inexistant" Type="OutArgument(sd:DataTable)" />
+    <x:Property Name="out_dt_clientSansMail" Type="OutArgument(sd:DataTable)" />
   </x:Members>
   <this:_16_Envoie_Rapport_SAP.in_dt_EmailCustomers>
     <InArgument x:TypeArguments="sd:DataTable" />
@@ -12,10 +14,10 @@
   <mva:VisualBasic.Settings>
     <x:Null />
   </mva:VisualBasic.Settings>
-  <sap:VirtualizedContainerService.HintSize>709.333333333333,6787.33333333333</sap:VirtualizedContainerService.HintSize>
+  <sap:VirtualizedContainerService.HintSize>779.333333333333,9122</sap:VirtualizedContainerService.HintSize>
   <sap2010:WorkflowViewState.IdRef>_16_Envoie_Rapport_SAP_1</sap2010:WorkflowViewState.IdRef>
   <TextExpression.NamespacesForImplementation>
-    <scg:List x:TypeArguments="x:String" Capacity="44">
+    <scg:List x:TypeArguments="x:String" Capacity="45">
       <x:String>System.Activities</x:String>
       <x:String>System.Activities.Statements</x:String>
       <x:String>System.Activities.Expressions</x:String>
@@ -60,10 +62,11 @@
       <x:String>BalaReva.EasyExcel.Utilities</x:String>
       <x:String>System.Security</x:String>
       <x:String>UiPath.Mail.SMTP.Activities</x:String>
+      <x:String>BalaReva.EasyDataTable</x:String>
     </scg:List>
   </TextExpression.NamespacesForImplementation>
   <TextExpression.ReferencesForImplementation>
-    <scg:List x:TypeArguments="AssemblyReference" Capacity="66">
+    <scg:List x:TypeArguments="AssemblyReference" Capacity="35">
       <AssemblyReference>System.Activities</AssemblyReference>
       <AssemblyReference>Microsoft.VisualBasic</AssemblyReference>
       <AssemblyReference>mscorlib</AssemblyReference>
@@ -97,13 +100,13 @@
       <AssemblyReference>BalaReva.EasyExcel.Utilities</AssemblyReference>
       <AssemblyReference>System.Data.Entity</AssemblyReference>
       <AssemblyReference>System.Collections.Immutable</AssemblyReference>
-      <AssemblyReference>System.Runtime.WindowsRuntime</AssemblyReference>
+      <AssemblyReference>BalaReva.EasyDataTable</AssemblyReference>
     </scg:List>
   </TextExpression.ReferencesForImplementation>
-  <Sequence DisplayName="_16_Envoie_Rapport_SAP" sap:VirtualizedContainerService.HintSize="678,6722.66666666667" sap2010:WorkflowViewState.IdRef="Sequence_1">
+  <Sequence DisplayName="_16_Envoie_Rapport_SAP" sap:VirtualizedContainerService.HintSize="678,9057.33333333333" sap2010:WorkflowViewState.IdRef="Sequence_1">
     <Sequence.Variables>
       <Variable x:TypeArguments="x:String" Name="TodayNow" />
-      <Variable x:TypeArguments="x:String" Name="client" />
+      <Variable x:TypeArguments="x:String" Name="ID_client" />
       <Variable x:TypeArguments="x:String" Name="mail_1" />
       <Variable x:TypeArguments="x:String" Name="mail_2" />
       <Variable x:TypeArguments="x:String" Name="mail_3" />
@@ -122,6 +125,8 @@
       <Variable x:TypeArguments="x:String" Name="facture_cable" />
       <Variable x:TypeArguments="scg:List(x:String)" Default="[New List(Of String)]" Name="Liste_Facture" />
       <Variable x:TypeArguments="x:String" Name="Dossier_templateMail" />
+      <Variable x:TypeArguments="x:String" Name="Groupe" />
+      <Variable x:TypeArguments="x:String" Name="NameClient" />
     </Sequence.Variables>
     <sap:WorkflowViewStateService.ViewState>
       <scg:Dictionary x:TypeArguments="x:String, x:Object">
@@ -136,7 +141,112 @@
     </ui:GetRobotAsset>
     <WriteLine DisplayName="Write Line" sap:VirtualizedContainerService.HintSize="636,62.6666666666667" sap2010:WorkflowViewState.IdRef="WriteLine_19" Text="[Dossier_templateMail]" />
     <ui:Comment sap:VirtualizedContainerService.HintSize="636,364.666666666667" sap2010:WorkflowViewState.IdRef="Comment_3" Text="Objectif : envoyer les factures à chaque client&#xA; 1. Récupérer les mails des clients de dt_EmailCustomers&#xA; 2. Ajout de la colonne Traitement à dt_9010&#xA; 3. Création dt_client avec une colonne client&#xA; 4. Garder les valeurs unique des clients &#xA; 5. Jointure avec dt_Email pour conserver les clients dont on a besoin et leur contact&#xA; 6. Supression des clients qui ont aucun mail&#xA; 7. Pour chaque client avec au moins 1 mail&#xA; 8. Je prend le num de facture véhicule et cable (reconstruction des chemin des facture pdf) et j'écris &quot;facture envoyée&quot; dans la colonne Traitement&#xA; 9. Compte le nb de facture par client&#xA; 10. récupére le template des mails&#xA;11. Envoie du mail au client avec toutes ses factures, le nb de facture et en destinataire les mails des contacts" />
+    <Sequence DisplayName="VIN inexistants" sap:VirtualizedContainerService.HintSize="636,895.333333333333" sap2010:WorkflowViewState.IdRef="Sequence_22">
+      <sap:WorkflowViewStateService.ViewState>
+        <scg:Dictionary x:TypeArguments="x:String, x:Object">
+          <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+          <x:Boolean x:Key="IsPinned">False</x:Boolean>
+        </scg:Dictionary>
+      </sap:WorkflowViewStateService.ViewState>
+      <ui:FilterDataTable DataTable="[io_dt_9010]" DisplayName="Filter Data Table DT VIN Inexistants" FilterRowsMode="Keep" sap:VirtualizedContainerService.HintSize="338,162.666666666667" sap2010:WorkflowViewState.IdRef="FilterDataTable_4" OutputDataTable="[out_dt_VIN_Inexistant]" SelectColumnsMode="Keep">
+        <ui:FilterDataTable.Filters>
+          <scg:List x:TypeArguments="ui:FilterOperationArgument" Capacity="4">
+            <ui:FilterOperationArgument Operand="{x:Null}" BooleanOperator="And" Operator="EMPTY">
+              <ui:FilterOperationArgument.Column>
+                <InArgument x:TypeArguments="x:String">["CAR INVOICE"]</InArgument>
+              </ui:FilterOperationArgument.Column>
+            </ui:FilterOperationArgument>
+            <ui:FilterOperationArgument Operand="{x:Null}" BooleanOperator="And" Operator="EMPTY">
+              <ui:FilterOperationArgument.Column>
+                <InArgument x:TypeArguments="x:String">["CABLE INVOICE"]</InArgument>
+              </ui:FilterOperationArgument.Column>
+            </ui:FilterOperationArgument>
+          </scg:List>
+        </ui:FilterDataTable.Filters>
+        <ui:FilterDataTable.SelectColumns>
+          <scg:List x:TypeArguments="InArgument" Capacity="4">
+            <x:Null />
+          </scg:List>
+        </ui:FilterDataTable.SelectColumns>
+      </ui:FilterDataTable>
+      <ui:AddDataColumn x:TypeArguments="x:Object" AllowDBNull="{x:Null}" AutoIncrement="{x:Null}" Column="{x:Null}" DefaultValue="{x:Null}" MaxLength="{x:Null}" Unique="{x:Null}" ColumnName="Traitement" DataTable="[out_dt_VIN_Inexistant]" DisplayName="Add Data Column Traitement" sap:VirtualizedContainerService.HintSize="338,190" sap2010:WorkflowViewState.IdRef="AddDataColumn`1_2" />
+      <ui:ForEachRow ColumnNames="{x:Null}" CurrentIndex="{x:Null}" DataTable="[out_dt_VIN_Inexistant]" DisplayName="For Each Row in Data Table" sap:VirtualizedContainerService.HintSize="338,278" sap2010:WorkflowViewState.IdRef="ForEachRow_3">
+        <ui:ForEachRow.Body>
+          <ActivityAction x:TypeArguments="sd:DataRow">
+            <ActivityAction.Argument>
+              <DelegateInArgument x:TypeArguments="sd:DataRow" Name="row" />
+            </ActivityAction.Argument>
+            <Sequence DisplayName="Body" sap:VirtualizedContainerService.HintSize="304,154" sap2010:WorkflowViewState.IdRef="Sequence_21">
+              <sap:WorkflowViewStateService.ViewState>
+                <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                  <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                </scg:Dictionary>
+              </sap:WorkflowViewStateService.ViewState>
+              <Assign sap:VirtualizedContainerService.HintSize="262,62" sap2010:WorkflowViewState.IdRef="Assign_10">
+                <Assign.To>
+                  <OutArgument x:TypeArguments="x:Object">[row("Traitement")]</OutArgument>
+                </Assign.To>
+                <Assign.Value>
+                  <InArgument x:TypeArguments="x:Object">["VIN inexistant"]</InArgument>
+                </Assign.Value>
+              </Assign>
+            </Sequence>
+          </ActivityAction>
+        </ui:ForEachRow.Body>
+      </ui:ForEachRow>
+      <ui:CommentOut DisplayName="Comment Out" sap:VirtualizedContainerService.HintSize="338,52.6666666666667" sap2010:WorkflowViewState.IdRef="CommentOut_7">
+        <ui:CommentOut.Body>
+          <Sequence DisplayName="Activités ignorées" sap:VirtualizedContainerService.HintSize="242,114" sap2010:WorkflowViewState.IdRef="Sequence_33">
+            <sap:WorkflowViewStateService.ViewState>
+              <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+              </scg:Dictionary>
+            </sap:WorkflowViewStateService.ViewState>
+            <be:ShowDataTable AllowColumnWordWrap="False" DisplayName="Show DataTable" sap:VirtualizedContainerService.HintSize="200,22" sap2010:WorkflowViewState.IdRef="ShowDataTable_1" InputDataTable="[out_dt_VIN_Inexistant]" Title="Datatable View" />
+          </Sequence>
+        </ui:CommentOut.Body>
+        <sap:WorkflowViewStateService.ViewState>
+          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+            <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+            <x:Boolean x:Key="IsPinned">False</x:Boolean>
+          </scg:Dictionary>
+        </sap:WorkflowViewStateService.ViewState>
+      </ui:CommentOut>
+    </Sequence>
+    <ui:FilterDataTable DataTable="[io_dt_9010]" DisplayName="Filter Data Table Suppression des VIN inexistants" FilterRowsMode="Remove" sap:VirtualizedContainerService.HintSize="636,162.666666666667" sap2010:WorkflowViewState.IdRef="FilterDataTable_3" OutputDataTable="[io_dt_9010]" SelectColumnsMode="Keep">
+      <ui:FilterDataTable.Filters>
+        <scg:List x:TypeArguments="ui:FilterOperationArgument" Capacity="4">
+          <ui:FilterOperationArgument Operand="{x:Null}" BooleanOperator="And" Operator="EMPTY">
+            <ui:FilterOperationArgument.Column>
+              <InArgument x:TypeArguments="x:String">["CAR INVOICE"]</InArgument>
+            </ui:FilterOperationArgument.Column>
+          </ui:FilterOperationArgument>
+          <ui:FilterOperationArgument Operand="{x:Null}" BooleanOperator="Or" Operator="EMPTY">
+            <ui:FilterOperationArgument.Column>
+              <InArgument x:TypeArguments="x:String">["CABLE INVOICE"]</InArgument>
+            </ui:FilterOperationArgument.Column>
+          </ui:FilterOperationArgument>
+        </scg:List>
+      </ui:FilterDataTable.Filters>
+      <ui:FilterDataTable.SelectColumns>
+        <scg:List x:TypeArguments="InArgument" Capacity="4">
+          <x:Null />
+        </scg:List>
+      </ui:FilterDataTable.SelectColumns>
+    </ui:FilterDataTable>
     <ui:AddDataColumn x:TypeArguments="x:Object" AllowDBNull="{x:Null}" AutoIncrement="{x:Null}" Column="{x:Null}" DefaultValue="{x:Null}" MaxLength="{x:Null}" Unique="{x:Null}" ColumnName="Traitement" DataTable="[io_dt_9010]" DisplayName="2. Add Data Column Traitement" sap:VirtualizedContainerService.HintSize="636,190" sap2010:WorkflowViewState.IdRef="AddDataColumn`1_1" />
+    <ui:CommentOut DisplayName="Comment Out" sap:VirtualizedContainerService.HintSize="636,192.666666666667" sap2010:WorkflowViewState.IdRef="CommentOut_8">
+      <ui:CommentOut.Body>
+        <Sequence DisplayName="Activités ignorées" sap:VirtualizedContainerService.HintSize="242,114" sap2010:WorkflowViewState.IdRef="Sequence_34">
+          <sap:WorkflowViewStateService.ViewState>
+            <scg:Dictionary x:TypeArguments="x:String, x:Object">
+              <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+            </scg:Dictionary>
+          </sap:WorkflowViewStateService.ViewState>
+          <be:ShowDataTable AllowColumnWordWrap="False" DisplayName="Show DataTable" sap:VirtualizedContainerService.HintSize="200,22" sap2010:WorkflowViewState.IdRef="ShowDataTable_2" InputDataTable="[io_dt_9010]" Title="Datatable View" />
+        </Sequence>
+      </ui:CommentOut.Body>
+    </ui:CommentOut>
     <ui:FilterDataTable DataTable="[io_dt_9010]" DisplayName="3. Création de dt_client" FilterRowsMode="Keep" sap:VirtualizedContainerService.HintSize="636,162.666666666667" sap2010:WorkflowViewState.IdRef="FilterDataTable_1" OutputDataTable="[dt_client]" SelectColumnsMode="Keep">
       <ui:FilterDataTable.Filters>
         <scg:List x:TypeArguments="ui:FilterOperationArgument" Capacity="4">
@@ -146,6 +256,8 @@
       <ui:FilterDataTable.SelectColumns>
         <scg:List x:TypeArguments="InArgument" Capacity="4">
           <InArgument x:TypeArguments="x:String">["Customer#(green:send to multi recipients)"]</InArgument>
+          <InArgument x:TypeArguments="x:String">["GROUPE"]</InArgument>
+          <InArgument x:TypeArguments="x:String">["FULL NAME"]</InArgument>
         </scg:List>
       </ui:FilterDataTable.SelectColumns>
     </ui:FilterDataTable>
@@ -164,6 +276,87 @@
         </scg:List>
       </ui:JoinDataTables.Arguments>
     </ui:JoinDataTables>
+    <Sequence DisplayName="Client sans contacts mails" sap:VirtualizedContainerService.HintSize="636,487.333333333333" sap2010:WorkflowViewState.IdRef="Sequence_24">
+      <sap:WorkflowViewStateService.ViewState>
+        <scg:Dictionary x:TypeArguments="x:String, x:Object">
+          <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+          <x:Boolean x:Key="IsPinned">False</x:Boolean>
+        </scg:Dictionary>
+      </sap:WorkflowViewStateService.ViewState>
+      <ui:FilterDataTable DataTable="[dt_client]" DisplayName="Création DT client sans mail" FilterRowsMode="Keep" sap:VirtualizedContainerService.HintSize="436.666666666667,162.666666666667" sap2010:WorkflowViewState.IdRef="FilterDataTable_6" OutputDataTable="[out_dt_clientSansMail]" SelectColumnsMode="Keep">
+        <ui:FilterDataTable.Filters>
+          <scg:List x:TypeArguments="ui:FilterOperationArgument" Capacity="16">
+            <ui:FilterOperationArgument Operand="{x:Null}" BooleanOperator="And" Operator="EMPTY">
+              <ui:FilterOperationArgument.Column>
+                <InArgument x:TypeArguments="x:String">["Recipient 1"]</InArgument>
+              </ui:FilterOperationArgument.Column>
+            </ui:FilterOperationArgument>
+            <ui:FilterOperationArgument Operand="{x:Null}" BooleanOperator="And" Operator="EMPTY">
+              <ui:FilterOperationArgument.Column>
+                <InArgument x:TypeArguments="x:String">["Recipient 2"]</InArgument>
+              </ui:FilterOperationArgument.Column>
+            </ui:FilterOperationArgument>
+            <ui:FilterOperationArgument Operand="{x:Null}" BooleanOperator="And" Operator="EMPTY">
+              <ui:FilterOperationArgument.Column>
+                <InArgument x:TypeArguments="x:String">["Recipient 3"]</InArgument>
+              </ui:FilterOperationArgument.Column>
+            </ui:FilterOperationArgument>
+            <ui:FilterOperationArgument Operand="{x:Null}" BooleanOperator="And" Operator="EMPTY">
+              <ui:FilterOperationArgument.Column>
+                <InArgument x:TypeArguments="x:String">["Recipient 4"]</InArgument>
+              </ui:FilterOperationArgument.Column>
+            </ui:FilterOperationArgument>
+            <ui:FilterOperationArgument Operand="{x:Null}" BooleanOperator="And" Operator="EMPTY">
+              <ui:FilterOperationArgument.Column>
+                <InArgument x:TypeArguments="x:String">["Recipient 5"]</InArgument>
+              </ui:FilterOperationArgument.Column>
+            </ui:FilterOperationArgument>
+            <ui:FilterOperationArgument Operand="{x:Null}" BooleanOperator="And" Operator="EMPTY">
+              <ui:FilterOperationArgument.Column>
+                <InArgument x:TypeArguments="x:String">["CC1"]</InArgument>
+              </ui:FilterOperationArgument.Column>
+            </ui:FilterOperationArgument>
+            <ui:FilterOperationArgument Operand="{x:Null}" BooleanOperator="And" Operator="EMPTY">
+              <ui:FilterOperationArgument.Column>
+                <InArgument x:TypeArguments="x:String">["CC2"]</InArgument>
+              </ui:FilterOperationArgument.Column>
+            </ui:FilterOperationArgument>
+            <ui:FilterOperationArgument Operand="{x:Null}" BooleanOperator="And" Operator="EMPTY">
+              <ui:FilterOperationArgument.Column>
+                <InArgument x:TypeArguments="x:String">["CC3"]</InArgument>
+              </ui:FilterOperationArgument.Column>
+            </ui:FilterOperationArgument>
+            <ui:FilterOperationArgument Operand="{x:Null}" BooleanOperator="And" Operator="EMPTY">
+              <ui:FilterOperationArgument.Column>
+                <InArgument x:TypeArguments="x:String">["CC4"]</InArgument>
+              </ui:FilterOperationArgument.Column>
+            </ui:FilterOperationArgument>
+            <ui:FilterOperationArgument Operand="{x:Null}" BooleanOperator="And" Operator="EMPTY">
+              <ui:FilterOperationArgument.Column>
+                <InArgument x:TypeArguments="x:String">["CC5"]</InArgument>
+              </ui:FilterOperationArgument.Column>
+            </ui:FilterOperationArgument>
+          </scg:List>
+        </ui:FilterDataTable.Filters>
+        <ui:FilterDataTable.SelectColumns>
+          <scg:List x:TypeArguments="InArgument" Capacity="4">
+            <InArgument x:TypeArguments="x:String">["Customer#(green:send to multi recipients)"]</InArgument>
+          </scg:List>
+        </ui:FilterDataTable.SelectColumns>
+      </ui:FilterDataTable>
+      <ui:CommentOut DisplayName="Comment Out" sap:VirtualizedContainerService.HintSize="436.666666666667,192.666666666667" sap2010:WorkflowViewState.IdRef="CommentOut_9">
+        <ui:CommentOut.Body>
+          <Sequence DisplayName="Activités ignorées" sap:VirtualizedContainerService.HintSize="242,114" sap2010:WorkflowViewState.IdRef="Sequence_35">
+            <sap:WorkflowViewStateService.ViewState>
+              <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+              </scg:Dictionary>
+            </sap:WorkflowViewStateService.ViewState>
+            <be:ShowDataTable AllowColumnWordWrap="False" DisplayName="Show DataTable" sap:VirtualizedContainerService.HintSize="200,22" sap2010:WorkflowViewState.IdRef="ShowDataTable_4" InputDataTable="[out_dt_clientSansMail]" Title="Datatable View" />
+          </Sequence>
+        </ui:CommentOut.Body>
+      </ui:CommentOut>
+    </Sequence>
     <ui:FilterDataTable DataTable="[dt_client]" DisplayName="6. Filter Supprime client sans mail" FilterRowsMode="Remove" sap:VirtualizedContainerService.HintSize="636,162.666666666667" sap2010:WorkflowViewState.IdRef="FilterDataTable_2" OutputDataTable="[dt_client]" SelectColumnsMode="Keep">
       <ui:FilterDataTable.Filters>
         <scg:List x:TypeArguments="ui:FilterOperationArgument" Capacity="16">
@@ -225,6 +418,18 @@
         </scg:List>
       </ui:FilterDataTable.SelectColumns>
     </ui:FilterDataTable>
+    <ui:CommentOut DisplayName="Comment Out" sap:VirtualizedContainerService.HintSize="636,192.666666666667" sap2010:WorkflowViewState.IdRef="CommentOut_10">
+      <ui:CommentOut.Body>
+        <Sequence DisplayName="Activités ignorées" sap:VirtualizedContainerService.HintSize="242,114" sap2010:WorkflowViewState.IdRef="Sequence_36">
+          <sap:WorkflowViewStateService.ViewState>
+            <scg:Dictionary x:TypeArguments="x:String, x:Object">
+              <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+            </scg:Dictionary>
+          </sap:WorkflowViewStateService.ViewState>
+          <be:ShowDataTable AllowColumnWordWrap="False" DisplayName="Show DataTable" sap:VirtualizedContainerService.HintSize="200,22" sap2010:WorkflowViewState.IdRef="ShowDataTable_3" InputDataTable="[dt_client]" Title="Datatable View" />
+        </Sequence>
+      </ui:CommentOut.Body>
+    </ui:CommentOut>
     <ui:OutputDataTable DataTable="[dt_client]" DisplayName="Output Data Table" sap:VirtualizedContainerService.HintSize="636,80.6666666666667" sap2010:WorkflowViewState.IdRef="OutputDataTable_1" Text="[rslt]" />
     <WriteLine DisplayName="Write Line" sap:VirtualizedContainerService.HintSize="636,62.6666666666667" sap2010:WorkflowViewState.IdRef="WriteLine_1" Text="[rslt]" />
     <Assign DisplayName="Assign date du jour" sap:VirtualizedContainerService.HintSize="636,62" sap2010:WorkflowViewState.IdRef="Assign_7">
@@ -235,13 +440,13 @@
         <InArgument x:TypeArguments="x:String">[Today.ToString("dd/MM/yyyy")]</InArgument>
       </Assign.Value>
     </Assign>
-    <ui:ForEachRow ColumnNames="{x:Null}" CurrentIndex="{x:Null}" DataTable="[dt_client]" DisplayName="7. For Each Row in Data Table CLIENT" sap:VirtualizedContainerService.HintSize="636,3762.66666666667" sap2010:WorkflowViewState.IdRef="ForEachRow_1">
+    <ui:ForEachRow ColumnNames="{x:Null}" CurrentIndex="{x:Null}" DataTable="[dt_client]" DisplayName="7. For Each Row in Data Table CLIENT" sap:VirtualizedContainerService.HintSize="636,3966.66666666667" sap2010:WorkflowViewState.IdRef="ForEachRow_1">
       <ui:ForEachRow.Body>
         <ActivityAction x:TypeArguments="sd:DataRow">
           <ActivityAction.Argument>
             <DelegateInArgument x:TypeArguments="sd:DataRow" Name="row" />
           </ActivityAction.Argument>
-          <Sequence DisplayName="Body" sap:VirtualizedContainerService.HintSize="602,3638.66666666667" sap2010:WorkflowViewState.IdRef="Sequence_4">
+          <Sequence DisplayName="Body" sap:VirtualizedContainerService.HintSize="602,3842.66666666667" sap2010:WorkflowViewState.IdRef="Sequence_4">
             <Sequence.Variables>
               <Variable x:TypeArguments="scg:List(snm:MailMessage)" Name="template" />
             </Sequence.Variables>
@@ -252,13 +457,29 @@
             </sap:WorkflowViewStateService.ViewState>
             <Assign sap:VirtualizedContainerService.HintSize="560,62" sap2010:WorkflowViewState.IdRef="Assign_2">
               <Assign.To>
-                <OutArgument x:TypeArguments="x:String">[client]</OutArgument>
+                <OutArgument x:TypeArguments="x:String">[ID_client]</OutArgument>
               </Assign.To>
               <Assign.Value>
                 <InArgument x:TypeArguments="x:String">[row("Customer#(green:send to multi recipients)").ToString]</InArgument>
               </Assign.Value>
             </Assign>
-            <WriteLine DisplayName="Write Line" sap:VirtualizedContainerService.HintSize="560,62.6666666666667" sap2010:WorkflowViewState.IdRef="WriteLine_3" Text="[&quot;Client: &quot; + client]" />
+            <Assign sap:VirtualizedContainerService.HintSize="560,62" sap2010:WorkflowViewState.IdRef="Assign_11">
+              <Assign.To>
+                <OutArgument x:TypeArguments="x:String">[Groupe]</OutArgument>
+              </Assign.To>
+              <Assign.Value>
+                <InArgument x:TypeArguments="x:String">[row("GROUPE").ToString]</InArgument>
+              </Assign.Value>
+            </Assign>
+            <Assign sap:VirtualizedContainerService.HintSize="560,62" sap2010:WorkflowViewState.IdRef="Assign_12">
+              <Assign.To>
+                <OutArgument x:TypeArguments="x:String">[NameClient]</OutArgument>
+              </Assign.To>
+              <Assign.Value>
+                <InArgument x:TypeArguments="x:String">[row("FULL NAME").ToString]</InArgument>
+              </Assign.Value>
+            </Assign>
+            <WriteLine DisplayName="Write Line" sap:VirtualizedContainerService.HintSize="560,62.6666666666667" sap2010:WorkflowViewState.IdRef="WriteLine_3" Text="[&quot;Client: &quot; + ID_client]" />
             <ui:MultipleAssign DisplayName="Multiple Assign Mails" sap:VirtualizedContainerService.HintSize="560,52.6666666666667" sap2010:WorkflowViewState.IdRef="MultipleAssign_1">
               <ui:MultipleAssign.AssignOperations>
                 <scg:List x:TypeArguments="ui:AssignOperation" Capacity="16">
@@ -373,7 +594,7 @@
                         <x:Boolean x:Key="IsExpanded">True</x:Boolean>
                       </scg:Dictionary>
                     </sap:WorkflowViewStateService.ViewState>
-                    <If Condition="[client.Equals(Row(&quot;Customer#(green:send to multi recipients)&quot;).ToString) and Not Row(&quot;CAR INVOICE&quot;).ToString.Equals(&quot;&quot;) and Not Row(&quot;CABLE INVOICE&quot;).ToString.Equals(&quot;&quot;)]" sap:VirtualizedContainerService.HintSize="484,1076" sap2010:WorkflowViewState.IdRef="If_1">
+                    <If Condition="[ID_client.Equals(Row(&quot;Customer#(green:send to multi recipients)&quot;).ToString) and Not Row(&quot;CAR INVOICE&quot;).ToString.Equals(&quot;&quot;) and Not Row(&quot;CABLE INVOICE&quot;).ToString.Equals(&quot;&quot;)]" sap:VirtualizedContainerService.HintSize="484,1076" sap2010:WorkflowViewState.IdRef="If_1">
                       <If.Then>
                         <Sequence sap:VirtualizedContainerService.HintSize="304,891.333333333333" sap2010:WorkflowViewState.IdRef="Sequence_6">
                           <Sequence.Variables>
@@ -432,7 +653,7 @@
                         </Sequence>
                       </If.Then>
                       <If.Else>
-                        <Sequence sap2010:WorkflowViewState.IdRef="Sequence_7">
+                        <Sequence sap:VirtualizedContainerService.HintSize="200,84.6666666666667" sap2010:WorkflowViewState.IdRef="Sequence_7">
                           <sap:WorkflowViewStateService.ViewState>
                             <scg:Dictionary x:TypeArguments="x:String, x:Object">
                               <x:Boolean x:Key="IsExpanded">True</x:Boolean>
@@ -497,7 +718,7 @@
                         <x:Boolean x:Key="IsExpanded">True</x:Boolean>
                       </scg:Dictionary>
                     </sap:WorkflowViewStateService.ViewState>
-                    <ui:SendOutlookMail Account="{x:Null}" Bcc="{x:Null}" MailMessage="{x:Null}" ReplyTo="{x:Null}" TimeoutMS="{x:Null}" AttachmentsCollection="[Liste_Facture]" Body="[item.BodyAsHtml]" Cc="[cc_1 + &quot;;&quot; + cc_2 + &quot;;&quot; + cc_3 + &quot;;&quot; + cc_4 + &quot;;&quot; + cc_5]" DisplayName="11. Send Outlook Mail Message" sap:VirtualizedContainerService.HintSize="334,156.666666666667" sap2010:WorkflowViewState.IdRef="SendOutlookMail_2" Importance="Normal" IsBodyHtml="True" IsDraft="True" Sensitivity="Normal" Subject="[nbFacture.ToString + &quot; FACTURES - SAIC MOTOR FRANCE&quot;]" To="[mail_1+ &quot;;&quot; + mail_2+ &quot;;&quot; + mail_3+ &quot;;&quot; + mail_4+ &quot;;&quot; + mail_5]">
+                    <ui:SendOutlookMail Account="{x:Null}" Bcc="{x:Null}" MailMessage="{x:Null}" ReplyTo="{x:Null}" TimeoutMS="{x:Null}" AttachmentsCollection="[Liste_Facture]" Body="[item.BodyAsHtml]" Cc="[cc_1 + &quot;;&quot; + cc_2 + &quot;;&quot; + cc_3 + &quot;;&quot; + cc_4 + &quot;;&quot; + cc_5]" DisplayName="11. Send Outlook Mail Message" sap:VirtualizedContainerService.HintSize="334,156.666666666667" sap2010:WorkflowViewState.IdRef="SendOutlookMail_2" Importance="Normal" IsBodyHtml="True" IsDraft="True" Sensitivity="Normal" Subject="[nbFacture.ToString + &quot; FACTURES - SAIC MOTOR FRANCE - &quot; +Groupe +&quot; - &quot; + NameClient]" To="[mail_1+ &quot;;&quot; + mail_2+ &quot;;&quot; + mail_3+ &quot;;&quot; + mail_4+ &quot;;&quot; + mail_5]">
                       <ui:SendOutlookMail.Files>
                         <scg:List x:TypeArguments="InArgument(x:String)" Capacity="4">
                           <InArgument x:TypeArguments="x:String" />

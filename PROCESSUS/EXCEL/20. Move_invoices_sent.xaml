@@ -11,7 +11,7 @@
   <mva:VisualBasic.Settings>
     <x:Null />
   </mva:VisualBasic.Settings>
-  <sap:VirtualizedContainerService.HintSize>727.333333333333,2002.66666666667</sap:VirtualizedContainerService.HintSize>
+  <sap:VirtualizedContainerService.HintSize>779.333333333333,2105.33333333333</sap:VirtualizedContainerService.HintSize>
   <sap2010:WorkflowViewState.IdRef>Séquence_1</sap2010:WorkflowViewState.IdRef>
   <TextExpression.NamespacesForImplementation>
     <scg:List x:TypeArguments="x:String" Capacity="31">
@@ -72,10 +72,11 @@
       <AssemblyReference>System.Runtime.Serialization</AssemblyReference>
     </scg:List>
   </TextExpression.ReferencesForImplementation>
-  <Sequence DisplayName="Séquence" sap:VirtualizedContainerService.HintSize="502,1938" sap2010:WorkflowViewState.IdRef="Sequence_1">
+  <Sequence DisplayName="Séquence" sap:VirtualizedContainerService.HintSize="502,2040.66666666667" sap2010:WorkflowViewState.IdRef="Sequence_1">
     <Sequence.Variables>
       <Variable x:TypeArguments="sd:DataTable" Name="dt_factures" />
       <Variable x:TypeArguments="x:String" Name="FacturesEnvoyees_Path" />
+      <Variable x:TypeArguments="x:String" Name="Folder_path" />
     </Sequence.Variables>
     <sap:WorkflowViewStateService.ViewState>
       <scg:Dictionary x:TypeArguments="x:String, x:Object">
@@ -88,6 +89,7 @@
         <OutArgument x:TypeArguments="x:String">[FacturesEnvoyees_Path]</OutArgument>
       </ui:GetRobotAsset.Value>
     </ui:GetRobotAsset>
+    <WriteLine DisplayName="Write Line" sap:VirtualizedContainerService.HintSize="460,62.6666666666667" sap2010:WorkflowViewState.IdRef="WriteLine_3" Text="[FacturesEnvoyees_Path]" />
     <ui:FilterDataTable DataTable="[in_dt_9010]" DisplayName="Filter Data Table" FilterRowsMode="Keep" sap:VirtualizedContainerService.HintSize="460,162.666666666667" sap2010:WorkflowViewState.IdRef="FilterDataTable_1" OutputDataTable="[dt_factures]" SelectColumnsMode="Keep">
       <ui:FilterDataTable.Filters>
         <scg:List x:TypeArguments="ui:FilterOperationArgument" Capacity="4">
@@ -160,7 +162,7 @@
               </Assign.Value>
             </Assign>
             <WriteLine DisplayName="Write Line" sap:VirtualizedContainerService.HintSize="384,62.6666666666667" sap2010:WorkflowViewState.IdRef="WriteLine_2" Text="[facture_cable_initial]" />
-            <ui:MoveFile ContinueOnError="{x:Null}" Destination="[FacturesEnvoyees_Path]" DisplayName="Move File" sap:VirtualizedContainerService.HintSize="384,162" sap2010:WorkflowViewState.IdRef="MoveFile_2" Overwrite="False" Path="[facture_cable_initial]" />
+            <ui:MoveFile ContinueOnError="{x:Null}" Destination="[FacturesEnvoyees_Path]" DisplayName="Move File" sap:VirtualizedContainerService.HintSize="384,162" sap2010:WorkflowViewState.IdRef="MoveFile_2" Overwrite="True" Path="[facture_cable_initial]" />
           </Sequence>
         </ActivityAction>
       </ui:ForEachRow.Body>
