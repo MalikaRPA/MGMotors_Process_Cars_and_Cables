@@ -76,6 +76,7 @@
       <AssemblyReference>System.Reflection.Metadata</AssemblyReference>
       <AssemblyReference>System.Data.DataSetExtensions</AssemblyReference>
       <AssemblyReference>System.Data.Entity</AssemblyReference>
+      <AssemblyReference>System.Runtime.WindowsRuntime</AssemblyReference>
     </scg:List>
   </TextExpression.ReferencesForImplementation>
   <Sequence sap2010:Annotation.AnnotationText="Open applications used in the process and do necessary initialization procedures (e.g., login)." DisplayName="Initialize All Applications" sap:VirtualizedContainerService.HintSize="421.333333333333,1402.66666666667" sap2010:WorkflowViewState.IdRef="Sequence_9">
@@ -95,13 +96,27 @@
     <ui:LogMessage DisplayName="Log message (Initialize applications)" sap:VirtualizedContainerService.HintSize="379.333333333333,94.6666666666667" sap2010:WorkflowViewState.IdRef="LogMessage_1" Level="Trace" Message="[&quot;Opening applications...&quot;]" />
     <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="Invoke ASSETS ORCHESTRATOR workflow" sap:VirtualizedContainerService.HintSize="379.333333333333,114" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_1" UnSafe="False" WorkflowFileName="ASSETS ORCHESTRATOR INIT.xaml">
       <ui:InvokeWorkflowFile.Arguments>
-        <OutArgument x:TypeArguments="x:String" x:Key="out_File_9010">[io_File_9010]</OutArgument>
-        <OutArgument x:TypeArguments="x:String" x:Key="out_File_ClientSansCable">[File_ClientSansCable]</OutArgument>
-        <OutArgument x:TypeArguments="x:String" x:Key="out_EmailContact_File">[str_EmailContact_File]</OutArgument>
-        <OutArgument x:TypeArguments="x:String" x:Key="out_TemplateComptaPath">[str_TemplateComptaPath]</OutArgument>
-        <OutArgument x:TypeArguments="x:String" x:Key="out_Folder_path">[io_Folder_path]</OutArgument>
-        <InArgument x:TypeArguments="x:String" x:Key="out_Download_Zip_Excel">[str_Download_Zip_Excel]</InArgument>
-        <InArgument x:TypeArguments="x:String" x:Key="out_Download_Zip_PDF">[str_Download_Zip_PDF]</InArgument>
+        <OutArgument x:TypeArguments="x:String" x:Key="out_File_9010">
+          <mva:VisualBasicReference x:TypeArguments="x:String" ExpressionText="io_File_9010" />
+        </OutArgument>
+        <OutArgument x:TypeArguments="x:String" x:Key="out_File_ClientSansCable">
+          <mva:VisualBasicReference x:TypeArguments="x:String" ExpressionText="File_ClientSansCable" />
+        </OutArgument>
+        <OutArgument x:TypeArguments="x:String" x:Key="out_EmailContact_File">
+          <mva:VisualBasicReference x:TypeArguments="x:String" ExpressionText="str_EmailContact_File" />
+        </OutArgument>
+        <OutArgument x:TypeArguments="x:String" x:Key="out_TemplateComptaPath">
+          <mva:VisualBasicReference x:TypeArguments="x:String" ExpressionText="str_TemplateComptaPath" />
+        </OutArgument>
+        <OutArgument x:TypeArguments="x:String" x:Key="out_Folder_path">
+          <mva:VisualBasicReference x:TypeArguments="x:String" ExpressionText="io_Folder_path" />
+        </OutArgument>
+        <OutArgument x:TypeArguments="x:String" x:Key="out_Download_Zip_Excel">
+          <mva:VisualBasicReference x:TypeArguments="x:String" ExpressionText="str_Download_Zip_Excel" />
+        </OutArgument>
+        <OutArgument x:TypeArguments="x:String" x:Key="out_Download_Zip_PDF">
+          <mva:VisualBasicReference x:TypeArguments="x:String" ExpressionText="str_Download_Zip_PDF" />
+        </OutArgument>
       </ui:InvokeWorkflowFile.Arguments>
     </ui:InvokeWorkflowFile>
     <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="Invoke 1.Lecture_9010 workflow" sap:VirtualizedContainerService.HintSize="379.333333333333,114" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_2" UnSafe="False" WorkflowFileName="PROCESSUS\EXCEL\1.Lecture_9010.xaml">

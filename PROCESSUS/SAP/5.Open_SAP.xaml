@@ -1,6 +1,6 @@
-<Activity mc:Ignorable="sap sap2010" x:Class="_14_Chargement_Compta_SAP" mva:VisualBasic.Settings="{x:Null}" sap:VirtualizedContainerService.HintSize="779.333333333333,2742.66666666667" sap2010:WorkflowViewState.IdRef="_14_Chargement_Compta_SAP_1" xmlns="http://schemas.microsoft.com/netfx/2009/xaml/activities" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:mva="clr-namespace:Microsoft.VisualBasic.Activities;assembly=System.Activities" xmlns:sap="http://schemas.microsoft.com/netfx/2009/xaml/activities/presentation" xmlns:sap2010="http://schemas.microsoft.com/netfx/2010/xaml/activities/presentation" xmlns:scg="clr-namespace:System.Collections.Generic;assembly=mscorlib" xmlns:ss="clr-namespace:System.Security;assembly=mscorlib" xmlns:ucas="clr-namespace:UiPath.Core.Activities.SAP;assembly=UiPath.UiAutomation.Activities" xmlns:ui="http://schemas.uipath.com/workflow/activities" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+<Activity mc:Ignorable="sap sap2010" x:Class="_14_Chargement_Compta_SAP" mva:VisualBasic.Settings="{x:Null}" sap:VirtualizedContainerService.HintSize="779.333333333333,2933.33333333333" sap2010:WorkflowViewState.IdRef="_14_Chargement_Compta_SAP_1" xmlns="http://schemas.microsoft.com/netfx/2009/xaml/activities" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:mva="clr-namespace:Microsoft.VisualBasic.Activities;assembly=System.Activities" xmlns:sap="http://schemas.microsoft.com/netfx/2009/xaml/activities/presentation" xmlns:sap2010="http://schemas.microsoft.com/netfx/2010/xaml/activities/presentation" xmlns:scg="clr-namespace:System.Collections.Generic;assembly=mscorlib" xmlns:ss="clr-namespace:System.Security;assembly=mscorlib" xmlns:ucas="clr-namespace:UiPath.Core.Activities.SAP;assembly=UiPath.UiAutomation.Activities" xmlns:ui="http://schemas.uipath.com/workflow/activities" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
   <TextExpression.NamespacesForImplementation>
-    <scg:List x:TypeArguments="x:String" Capacity="56">
+    <scg:List x:TypeArguments="x:String" Capacity="29">
       <x:String>System.Activities</x:String>
       <x:String>System.Activities.Statements</x:String>
       <x:String>System.Activities.Expressions</x:String>
@@ -33,7 +33,7 @@
     </scg:List>
   </TextExpression.NamespacesForImplementation>
   <TextExpression.ReferencesForImplementation>
-    <scg:List x:TypeArguments="AssemblyReference" Capacity="34">
+    <scg:List x:TypeArguments="AssemblyReference" Capacity="18">
       <AssemblyReference>System.Activities</AssemblyReference>
       <AssemblyReference>Microsoft.VisualBasic</AssemblyReference>
       <AssemblyReference>mscorlib</AssemblyReference>
@@ -54,7 +54,7 @@
       <AssemblyReference>UiPath.UIAutomationNext</AssemblyReference>
     </scg:List>
   </TextExpression.ReferencesForImplementation>
-  <Sequence DisplayName="_5.Open_SAP" sap:VirtualizedContainerService.HintSize="554.666666666667,2678" sap2010:WorkflowViewState.IdRef="Sequence_1">
+  <Sequence DisplayName="_5.Open_SAP" sap:VirtualizedContainerService.HintSize="554.666666666667,2868.66666666667" sap2010:WorkflowViewState.IdRef="Sequence_1">
     <Sequence.Variables>
       <Variable x:TypeArguments="ss:SecureString" Name="psw" />
       <Variable x:TypeArguments="x:String" Name="user" />
@@ -62,6 +62,7 @@
       <Variable x:TypeArguments="x:String" Name="Langue_SAP" />
       <Variable x:TypeArguments="x:String" Name="Transaction_SAP" />
       <Variable x:TypeArguments="x:Boolean" Name="popUpExist" />
+      <Variable x:TypeArguments="x:String" Name="connexion_SAP" />
     </Sequence.Variables>
     <sap:WorkflowViewStateService.ViewState>
       <scg:Dictionary x:TypeArguments="x:String, x:Object">
@@ -85,7 +86,12 @@
         <OutArgument x:TypeArguments="x:String">[Transaction_SAP]</OutArgument>
       </ui:GetRobotAsset.Value>
     </ui:GetRobotAsset>
-    <ucas:Logon Window="{x:Null}" ConnectionName="SAP ECC 6.0 Quality Assurance System" DelayBetweenRetries="500" DisplayName="SAP Logon" sap:VirtualizedContainerService.HintSize="512.666666666667,140" sap2010:WorkflowViewState.IdRef="Logon_1" Retries="5" SAPLogonPath="C:\Program Files (x86)\SAP\FrontEnd\SAPgui\saplogon.exe" />
+    <ui:GetRobotAsset TimeoutMS="{x:Null}" AssetName="connexion_SAP" DisplayName="Get Asset" sap:VirtualizedContainerService.HintSize="512.666666666667,140.666666666667" sap2010:WorkflowViewState.IdRef="GetRobotAsset_4">
+      <ui:GetRobotAsset.Value>
+        <OutArgument x:TypeArguments="x:String">[connexion_SAP]</OutArgument>
+      </ui:GetRobotAsset.Value>
+    </ui:GetRobotAsset>
+    <ucas:Logon Window="{x:Null}" ConnectionName="[connexion_SAP]" DelayBetweenRetries="500" DisplayName="SAP Logon" sap:VirtualizedContainerService.HintSize="512.666666666667,140" sap2010:WorkflowViewState.IdRef="Logon_1" Retries="5" SAPLogonPath="C:\Program Files (x86)\SAP\FrontEnd\SAPgui\saplogon.exe" />
     <ucas:Login Password="{x:Null}" Window="{x:Null}" Client="[Client_SAP]" DisplayName="SAP Login 'saplogon.exe  SAP'" sap:VirtualizedContainerService.HintSize="512.666666666667,374" sap2010:WorkflowViewState.IdRef="Login_1" IsSecure="True" Language="[Langue_SAP]" MultiLogonOptionToChoose="Single" SecurePassword="[psw]" Timeout="5000" Username="[user]">
       <ucas:Login.Target>
         <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" Id="78b125e5-8619-419e-aed3-b8d2b733ec20" InformativeScreenshot="2ea8493a32c6026a7a96e5006791597f" Selector="&lt;wnd app='saplogon.exe' cls='SAP_FRONTEND_SESSION' title='SAP' /&gt;">
@@ -122,7 +128,7 @@
         </ui:Target>
       </ui:UiElementExists.Target>
     </ui:UiElementExists>
-    <If Condition="[popUpExist]" sap:VirtualizedContainerService.HintSize="512.666666666667,620.666666666667" sap2010:WorkflowViewState.IdRef="If_1">
+    <If Condition="[popUpExist]" sap:VirtualizedContainerService.HintSize="512.666666666667,630.666666666667" sap2010:WorkflowViewState.IdRef="If_1">
       <If.Then>
         <Sequence sap:VirtualizedContainerService.HintSize="476,436" sap2010:WorkflowViewState.IdRef="Sequence_5">
           <sap:WorkflowViewStateService.ViewState>

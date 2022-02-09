@@ -14,7 +14,7 @@
   <mva:VisualBasic.Settings>
     <x:Null />
   </mva:VisualBasic.Settings>
-  <sap:VirtualizedContainerService.HintSize>779.333333333333,9122</sap:VirtualizedContainerService.HintSize>
+  <sap:VirtualizedContainerService.HintSize>668,9638.66666666667</sap:VirtualizedContainerService.HintSize>
   <sap2010:WorkflowViewState.IdRef>_16_Envoie_Rapport_SAP_1</sap2010:WorkflowViewState.IdRef>
   <TextExpression.NamespacesForImplementation>
     <scg:List x:TypeArguments="x:String" Capacity="45">
@@ -66,7 +66,7 @@
     </scg:List>
   </TextExpression.NamespacesForImplementation>
   <TextExpression.ReferencesForImplementation>
-    <scg:List x:TypeArguments="AssemblyReference" Capacity="35">
+    <scg:List x:TypeArguments="AssemblyReference" Capacity="34">
       <AssemblyReference>System.Activities</AssemblyReference>
       <AssemblyReference>Microsoft.VisualBasic</AssemblyReference>
       <AssemblyReference>mscorlib</AssemblyReference>
@@ -103,7 +103,7 @@
       <AssemblyReference>BalaReva.EasyDataTable</AssemblyReference>
     </scg:List>
   </TextExpression.ReferencesForImplementation>
-  <Sequence DisplayName="_16_Envoie_Rapport_SAP" sap:VirtualizedContainerService.HintSize="678,9057.33333333333" sap2010:WorkflowViewState.IdRef="Sequence_1">
+  <Sequence DisplayName="_16_Envoie_Rapport_SAP" sap:VirtualizedContainerService.HintSize="678,9574" sap2010:WorkflowViewState.IdRef="Sequence_1">
     <Sequence.Variables>
       <Variable x:TypeArguments="x:String" Name="TodayNow" />
       <Variable x:TypeArguments="x:String" Name="ID_client" />
@@ -127,6 +127,12 @@
       <Variable x:TypeArguments="x:String" Name="Dossier_templateMail" />
       <Variable x:TypeArguments="x:String" Name="Groupe" />
       <Variable x:TypeArguments="x:String" Name="NameClient" />
+      <Variable x:TypeArguments="x:String" Name="cc_6" />
+      <Variable x:TypeArguments="x:String" Name="cc_7" />
+      <Variable x:TypeArguments="x:String" Name="cc_8" />
+      <Variable x:TypeArguments="x:String" Name="cc_9" />
+      <Variable x:TypeArguments="x:String" Name="cc_10" />
+      <Variable x:TypeArguments="x:String" Name="cc_11" />
     </Sequence.Variables>
     <sap:WorkflowViewStateService.ViewState>
       <scg:Dictionary x:TypeArguments="x:String, x:Object">
@@ -440,13 +446,13 @@
         <InArgument x:TypeArguments="x:String">[Today.ToString("dd/MM/yyyy")]</InArgument>
       </Assign.Value>
     </Assign>
-    <ui:ForEachRow ColumnNames="{x:Null}" CurrentIndex="{x:Null}" DataTable="[dt_client]" DisplayName="7. For Each Row in Data Table CLIENT" sap:VirtualizedContainerService.HintSize="636,3966.66666666667" sap2010:WorkflowViewState.IdRef="ForEachRow_1">
+    <ui:ForEachRow ColumnNames="{x:Null}" CurrentIndex="{x:Null}" DataTable="[dt_client]" DisplayName="7. For Each Row in Data Table CLIENT" sap:VirtualizedContainerService.HintSize="636,4483.33333333333" sap2010:WorkflowViewState.IdRef="ForEachRow_1">
       <ui:ForEachRow.Body>
         <ActivityAction x:TypeArguments="sd:DataRow">
           <ActivityAction.Argument>
             <DelegateInArgument x:TypeArguments="sd:DataRow" Name="row" />
           </ActivityAction.Argument>
-          <Sequence DisplayName="Body" sap:VirtualizedContainerService.HintSize="602,3842.66666666667" sap2010:WorkflowViewState.IdRef="Sequence_4">
+          <Sequence DisplayName="Body" sap:VirtualizedContainerService.HintSize="602,4359.33333333333" sap2010:WorkflowViewState.IdRef="Sequence_4">
             <Sequence.Variables>
               <Variable x:TypeArguments="scg:List(snm:MailMessage)" Name="template" />
             </Sequence.Variables>
@@ -480,9 +486,9 @@
               </Assign.Value>
             </Assign>
             <WriteLine DisplayName="Write Line" sap:VirtualizedContainerService.HintSize="560,62.6666666666667" sap2010:WorkflowViewState.IdRef="WriteLine_3" Text="[&quot;Client: &quot; + ID_client]" />
-            <ui:MultipleAssign DisplayName="Multiple Assign Mails" sap:VirtualizedContainerService.HintSize="560,52.6666666666667" sap2010:WorkflowViewState.IdRef="MultipleAssign_1">
+            <ui:MultipleAssign DisplayName="Multiple Assign Mails" sap:VirtualizedContainerService.HintSize="560,559.333333333333" sap2010:WorkflowViewState.IdRef="MultipleAssign_1">
               <ui:MultipleAssign.AssignOperations>
-                <scg:List x:TypeArguments="ui:AssignOperation" Capacity="16">
+                <scg:List x:TypeArguments="ui:AssignOperation" Capacity="32">
                   <ui:AssignOperation sap2010:WorkflowViewState.IdRef="AssignOperation_1">
                     <ui:AssignOperation.To>
                       <OutArgument x:TypeArguments="x:String">[mail_1]</OutArgument>
@@ -563,11 +569,59 @@
                       <InArgument x:TypeArguments="x:String">[row("CC5").ToString]</InArgument>
                     </ui:AssignOperation.Value>
                   </ui:AssignOperation>
+                  <ui:AssignOperation sap2010:WorkflowViewState.IdRef="AssignOperation_11">
+                    <ui:AssignOperation.To>
+                      <OutArgument x:TypeArguments="x:String">[cc_6]</OutArgument>
+                    </ui:AssignOperation.To>
+                    <ui:AssignOperation.Value>
+                      <InArgument x:TypeArguments="x:String">[row("CC6").ToString]</InArgument>
+                    </ui:AssignOperation.Value>
+                  </ui:AssignOperation>
+                  <ui:AssignOperation sap2010:WorkflowViewState.IdRef="AssignOperation_12">
+                    <ui:AssignOperation.To>
+                      <OutArgument x:TypeArguments="x:String">[cc_7]</OutArgument>
+                    </ui:AssignOperation.To>
+                    <ui:AssignOperation.Value>
+                      <InArgument x:TypeArguments="x:String">[row("CC7").ToString]</InArgument>
+                    </ui:AssignOperation.Value>
+                  </ui:AssignOperation>
+                  <ui:AssignOperation sap2010:WorkflowViewState.IdRef="AssignOperation_13">
+                    <ui:AssignOperation.To>
+                      <OutArgument x:TypeArguments="x:String">[cc_8]</OutArgument>
+                    </ui:AssignOperation.To>
+                    <ui:AssignOperation.Value>
+                      <InArgument x:TypeArguments="x:String">[row("CC8").ToString]</InArgument>
+                    </ui:AssignOperation.Value>
+                  </ui:AssignOperation>
+                  <ui:AssignOperation sap2010:WorkflowViewState.IdRef="AssignOperation_14">
+                    <ui:AssignOperation.To>
+                      <OutArgument x:TypeArguments="x:String">[cc_9]</OutArgument>
+                    </ui:AssignOperation.To>
+                    <ui:AssignOperation.Value>
+                      <InArgument x:TypeArguments="x:String">[row("CC9").ToString]</InArgument>
+                    </ui:AssignOperation.Value>
+                  </ui:AssignOperation>
+                  <ui:AssignOperation sap2010:WorkflowViewState.IdRef="AssignOperation_15">
+                    <ui:AssignOperation.To>
+                      <OutArgument x:TypeArguments="x:String">[cc_10]</OutArgument>
+                    </ui:AssignOperation.To>
+                    <ui:AssignOperation.Value>
+                      <InArgument x:TypeArguments="x:String">[row("CC10").ToString]</InArgument>
+                    </ui:AssignOperation.Value>
+                  </ui:AssignOperation>
+                  <ui:AssignOperation sap2010:WorkflowViewState.IdRef="AssignOperation_16">
+                    <ui:AssignOperation.To>
+                      <OutArgument x:TypeArguments="x:String">[cc_11]</OutArgument>
+                    </ui:AssignOperation.To>
+                    <ui:AssignOperation.Value>
+                      <InArgument x:TypeArguments="x:String">[row("CC11").ToString]</InArgument>
+                    </ui:AssignOperation.Value>
+                  </ui:AssignOperation>
                 </scg:List>
               </ui:MultipleAssign.AssignOperations>
               <sap:WorkflowViewStateService.ViewState>
                 <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                  <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                  <x:Boolean x:Key="IsExpanded">True</x:Boolean>
                   <x:Boolean x:Key="IsPinned">False</x:Boolean>
                 </scg:Dictionary>
               </sap:WorkflowViewStateService.ViewState>
@@ -582,19 +636,19 @@
             <WriteLine DisplayName="Write Line" sap:VirtualizedContainerService.HintSize="560,62.6666666666667" sap2010:WorkflowViewState.IdRef="WriteLine_16" Text="[&quot;cc_3: &quot; + cc_3]" />
             <WriteLine DisplayName="Write Line" sap:VirtualizedContainerService.HintSize="560,62.6666666666667" sap2010:WorkflowViewState.IdRef="WriteLine_17" Text="[&quot;cc_4: &quot; + cc_4]" />
             <WriteLine DisplayName="Write Line" sap:VirtualizedContainerService.HintSize="560,62.6666666666667" sap2010:WorkflowViewState.IdRef="WriteLine_18" Text="[&quot;cc_5: &quot; + cc_5]" />
-            <ui:ForEachRow ColumnNames="{x:Null}" CurrentIndex="{x:Null}" DataTable="[io_dt_9010]" DisplayName="8. For Each Row in Data Table 9010" sap:VirtualizedContainerService.HintSize="560,1292" sap2010:WorkflowViewState.IdRef="ForEachRow_2">
+            <ui:ForEachRow ColumnNames="{x:Null}" CurrentIndex="{x:Null}" DataTable="[io_dt_9010]" DisplayName="8. For Each Row in Data Table 9010" sap:VirtualizedContainerService.HintSize="560,1302" sap2010:WorkflowViewState.IdRef="ForEachRow_2">
               <ui:ForEachRow.Body>
                 <ActivityAction x:TypeArguments="sd:DataRow">
                   <ActivityAction.Argument>
                     <DelegateInArgument x:TypeArguments="sd:DataRow" Name="Row" />
                   </ActivityAction.Argument>
-                  <Sequence DisplayName="Body" sap:VirtualizedContainerService.HintSize="526,1168" sap2010:WorkflowViewState.IdRef="Sequence_5">
+                  <Sequence DisplayName="Body" sap:VirtualizedContainerService.HintSize="526,1178" sap2010:WorkflowViewState.IdRef="Sequence_5">
                     <sap:WorkflowViewStateService.ViewState>
                       <scg:Dictionary x:TypeArguments="x:String, x:Object">
                         <x:Boolean x:Key="IsExpanded">True</x:Boolean>
                       </scg:Dictionary>
                     </sap:WorkflowViewStateService.ViewState>
-                    <If Condition="[ID_client.Equals(Row(&quot;Customer#(green:send to multi recipients)&quot;).ToString) and Not Row(&quot;CAR INVOICE&quot;).ToString.Equals(&quot;&quot;) and Not Row(&quot;CABLE INVOICE&quot;).ToString.Equals(&quot;&quot;)]" sap:VirtualizedContainerService.HintSize="484,1076" sap2010:WorkflowViewState.IdRef="If_1">
+                    <If Condition="[ID_client.Equals(Row(&quot;Customer#(green:send to multi recipients)&quot;).ToString) and Not Row(&quot;CAR INVOICE&quot;).ToString.Equals(&quot;&quot;) and Not Row(&quot;CABLE INVOICE&quot;).ToString.Equals(&quot;&quot;)]" sap:VirtualizedContainerService.HintSize="484,1086" sap2010:WorkflowViewState.IdRef="If_1">
                       <If.Then>
                         <Sequence sap:VirtualizedContainerService.HintSize="304,891.333333333333" sap2010:WorkflowViewState.IdRef="Sequence_6">
                           <Sequence.Variables>
@@ -718,7 +772,7 @@
                         <x:Boolean x:Key="IsExpanded">True</x:Boolean>
                       </scg:Dictionary>
                     </sap:WorkflowViewStateService.ViewState>
-                    <ui:SendOutlookMail Account="{x:Null}" Bcc="{x:Null}" MailMessage="{x:Null}" ReplyTo="{x:Null}" TimeoutMS="{x:Null}" AttachmentsCollection="[Liste_Facture]" Body="[item.BodyAsHtml]" Cc="[cc_1 + &quot;;&quot; + cc_2 + &quot;;&quot; + cc_3 + &quot;;&quot; + cc_4 + &quot;;&quot; + cc_5]" DisplayName="11. Send Outlook Mail Message" sap:VirtualizedContainerService.HintSize="334,156.666666666667" sap2010:WorkflowViewState.IdRef="SendOutlookMail_2" Importance="Normal" IsBodyHtml="True" IsDraft="True" Sensitivity="Normal" Subject="[nbFacture.ToString + &quot; FACTURES - SAIC MOTOR FRANCE - &quot; +Groupe +&quot; - &quot; + NameClient]" To="[mail_1+ &quot;;&quot; + mail_2+ &quot;;&quot; + mail_3+ &quot;;&quot; + mail_4+ &quot;;&quot; + mail_5]">
+                    <ui:SendOutlookMail Account="{x:Null}" Bcc="{x:Null}" MailMessage="{x:Null}" ReplyTo="{x:Null}" TimeoutMS="{x:Null}" AttachmentsCollection="[Liste_Facture]" Body="[item.BodyAsHtml]" Cc="[cc_1 + &quot;;&quot; + cc_2 + &quot;;&quot; + cc_3 + &quot;;&quot; + cc_4 + &quot;;&quot; + cc_5+ &quot;;&quot; + cc_6 + &quot;;&quot; +cc_7+ &quot;;&quot; + cc_8 + &quot;;&quot; + cc_9 + &quot;;&quot; + cc_10+ &quot;;&quot; + cc_11]" DisplayName="11. Send Outlook Mail Message" sap:VirtualizedContainerService.HintSize="334,156.666666666667" sap2010:WorkflowViewState.IdRef="SendOutlookMail_2" Importance="Normal" IsBodyHtml="True" IsDraft="True" Sensitivity="Normal" Subject="[nbFacture.ToString + &quot; FACTURES - SAIC MOTOR FRANCE - &quot; +Groupe +&quot; - &quot; + NameClient]" To="[mail_1+ &quot;;&quot; + mail_2+ &quot;;&quot; + mail_3+ &quot;;&quot; + mail_4+ &quot;;&quot; + mail_5]">
                       <ui:SendOutlookMail.Files>
                         <scg:List x:TypeArguments="InArgument(x:String)" Capacity="4">
                           <InArgument x:TypeArguments="x:String" />

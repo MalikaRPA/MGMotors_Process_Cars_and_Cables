@@ -6,7 +6,7 @@
   <mva:VisualBasic.Settings>
     <x:Null />
   </mva:VisualBasic.Settings>
-  <sap:VirtualizedContainerService.HintSize>908,1687.33333333333</sap:VirtualizedContainerService.HintSize>
+  <sap:VirtualizedContainerService.HintSize>779.333333333333,1707.33333333333</sap:VirtualizedContainerService.HintSize>
   <sap2010:WorkflowViewState.IdRef>Séquence_1</sap2010:WorkflowViewState.IdRef>
   <TextExpression.NamespacesForImplementation>
     <scg:List x:TypeArguments="x:String" Capacity="29">
@@ -71,17 +71,16 @@
       <AssemblyReference>System.Memory</AssemblyReference>
       <AssemblyReference>UiPath.Excel</AssemblyReference>
       <AssemblyReference>UiPath.System.Activities.Design</AssemblyReference>
-      <AssemblyReference>System.Runtime.WindowsRuntime</AssemblyReference>
     </scg:List>
   </TextExpression.ReferencesForImplementation>
-  <Sequence DisplayName="Séquence" sap:VirtualizedContainerService.HintSize="918,1622.66666666667" sap2010:WorkflowViewState.IdRef="Sequence_1">
+  <Sequence DisplayName="Séquence" sap:VirtualizedContainerService.HintSize="568,1642.66666666667" sap2010:WorkflowViewState.IdRef="Sequence_1">
     <sap:WorkflowViewStateService.ViewState>
       <scg:Dictionary x:TypeArguments="x:String, x:Object">
         <x:Boolean x:Key="IsExpanded">True</x:Boolean>
       </scg:Dictionary>
     </sap:WorkflowViewStateService.ViewState>
-    <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="876,94.6666666666667" sap2010:WorkflowViewState.IdRef="LogMessage_1" Level="Info" Message="[&quot;Suppression zip .....&quot;]" />
-    <Sequence DisplayName="Facture Excel" sap:VirtualizedContainerService.HintSize="876,610.666666666667" sap2010:WorkflowViewState.IdRef="Sequence_6">
+    <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="526,94.6666666666667" sap2010:WorkflowViewState.IdRef="LogMessage_1" Level="Info" Message="[&quot;Suppression zip .....&quot;]" />
+    <Sequence DisplayName="Facture Excel" sap:VirtualizedContainerService.HintSize="526,620.666666666667" sap2010:WorkflowViewState.IdRef="Sequence_6">
       <Sequence.Variables>
         <Variable x:TypeArguments="x:Boolean" Name="pathExist" />
       </Sequence.Variables>
@@ -91,16 +90,16 @@
           <x:Boolean x:Key="IsPinned">False</x:Boolean>
         </scg:Dictionary>
       </sap:WorkflowViewStateService.ViewState>
-      <ui:PathExists DisplayName="Path Exists" Exists="[pathExist]" sap:VirtualizedContainerService.HintSize="834,90.6666666666667" sap2010:WorkflowViewState.IdRef="PathExists_1" Path="[in_Download_Zip_Excel]" PathType="File" />
-      <If Condition="[pathExist]" sap:VirtualizedContainerService.HintSize="834,388" sap2010:WorkflowViewState.IdRef="If_1">
+      <ui:PathExists DisplayName="Path Exists" Exists="[pathExist]" sap:VirtualizedContainerService.HintSize="484,90.6666666666667" sap2010:WorkflowViewState.IdRef="PathExists_1" Path="[in_Download_Zip_Excel]" PathType="File" />
+      <If Condition="[pathExist]" sap:VirtualizedContainerService.HintSize="484,398" sap2010:WorkflowViewState.IdRef="If_1">
         <If.Then>
-          <Sequence sap:VirtualizedContainerService.HintSize="797.333333333333,203.333333333333" sap2010:WorkflowViewState.IdRef="Sequence_8">
+          <Sequence sap:VirtualizedContainerService.HintSize="426,203.333333333333" sap2010:WorkflowViewState.IdRef="Sequence_8">
             <sap:WorkflowViewStateService.ViewState>
               <scg:Dictionary x:TypeArguments="x:String, x:Object">
                 <x:Boolean x:Key="IsExpanded">True</x:Boolean>
               </scg:Dictionary>
             </sap:WorkflowViewStateService.ViewState>
-            <ui:DeleteFileX sap2010:Annotation.AnnotationText="Suppression du zip dans les téléchargements." DisplayName="Delete File" sap:VirtualizedContainerService.HintSize="755.333333333333,111.333333333333" sap2010:WorkflowViewState.IdRef="DeleteFileX_3" Path="[in_Download_Zip_Excel]">
+            <ui:DeleteFileX sap2010:Annotation.AnnotationText="Suppression du zip dans les téléchargements." DisplayName="Delete File" sap:VirtualizedContainerService.HintSize="384,111.333333333333" sap2010:WorkflowViewState.IdRef="DeleteFileX_3" Path="[in_Download_Zip_Excel]">
               <sap:WorkflowViewStateService.ViewState>
                 <scg:Dictionary x:TypeArguments="x:String, x:Object">
                   <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
@@ -121,7 +120,7 @@
         </If.Else>
       </If>
     </Sequence>
-    <Sequence DisplayName="Facture PDF" sap:VirtualizedContainerService.HintSize="876,610.666666666667" sap2010:WorkflowViewState.IdRef="Sequence_7">
+    <Sequence DisplayName="Facture PDF" sap:VirtualizedContainerService.HintSize="526,620.666666666667" sap2010:WorkflowViewState.IdRef="Sequence_7">
       <Sequence.Variables>
         <Variable x:TypeArguments="x:Boolean" Name="pathExist" />
       </Sequence.Variables>
@@ -132,7 +131,7 @@
         </scg:Dictionary>
       </sap:WorkflowViewStateService.ViewState>
       <ui:PathExists DisplayName="Path Exists" Exists="[pathExist]" sap:VirtualizedContainerService.HintSize="484,90.6666666666667" sap2010:WorkflowViewState.IdRef="PathExists_2" Path="[in_Download_Zip_PDF]" PathType="File" />
-      <If Condition="[pathExist]" sap:VirtualizedContainerService.HintSize="484,388" sap2010:WorkflowViewState.IdRef="If_2">
+      <If Condition="[pathExist]" sap:VirtualizedContainerService.HintSize="484,398" sap2010:WorkflowViewState.IdRef="If_2">
         <If.Then>
           <Sequence sap:VirtualizedContainerService.HintSize="426,203.333333333333" sap2010:WorkflowViewState.IdRef="Sequence_10">
             <sap:WorkflowViewStateService.ViewState>
@@ -160,6 +159,6 @@
         </If.Else>
       </If>
     </Sequence>
-    <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="876,94.6666666666667" sap2010:WorkflowViewState.IdRef="LogMessage_2" Level="Info" Message="[&quot;Fin suppresssion zip.&quot;]" />
+    <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="526,94.6666666666667" sap2010:WorkflowViewState.IdRef="LogMessage_2" Level="Info" Message="[&quot;Fin suppresssion zip.&quot;]" />
   </Sequence>
 </Activity>
